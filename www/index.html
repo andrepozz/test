@@ -16,7 +16,7 @@
 	<script src="js/leaflet.js"></script>
 	<script src="js/leaflet.usermarker.js"></script>
 	<script src="js/function_checkConnection.js"></script>
-	<script type="text/javascript" src="barcodescanner.js"></script>
+	<script src="barcodescanner.js"></script>
 	<script type="text/javascript" src="cordova.js"></script>
 
 	<title>QRcode</title>
@@ -67,7 +67,7 @@
 	
 	<script type="text/javascript" charset="utf-8">
 	
-	$( document ).on( "pagebeforeshow", "#QRcode", function() {
+	$( document ).on( "pageshow", "#QRcode", function() {
 	console.log("sono fuori");
 	cordova.plugins.barcodeScanner.scan(
 	console.log("sono entrato");
