@@ -21,6 +21,38 @@
 </head>
 <body>
 
+<!-- Start of page: #index -->
+<div data-role="page" id="index">
+
+	<div data-role="header">
+		<h1>QRcode</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content" >
+		
+	
+	<script type="text/javascript" charset="utf-8">
+	
+	$( document ).on( "pagebeforeshow", "#index", function() {
+	
+	
+	});
+	// /PAGEBEFORESHOW
+	
+	
+	</script>
+	
+	<ul data-role="listview">
+	<li><a href="#QRcode" data-transition="slide">Scan!</a></li>
+	</ul>
+		
+	</div><!-- /content -->
+
+	<div data-role="footer" data-theme="a" data-position="fixed">
+
+	</div><!-- /footer -->
+</div><!-- /page index -->
+
 <!-- Start of page: #QRcode -->
 <div data-role="page" id="QRcode">
 
@@ -34,8 +66,9 @@
 	<script type="text/javascript" charset="utf-8">
 	
 	$( document ).on( "pagebeforeshow", "#QRcode", function() {
-	
+	console.log("sono fuori");
 	cordova.plugins.barcodeScanner.scan(
+	console.log("sono entrato");
       function (result) {
           alert("We got a barcode\n" +
                 "Result: " + result.text + "\n" +
