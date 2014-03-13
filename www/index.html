@@ -62,9 +62,7 @@
 			}); // AJAX END
 		} // END MATCH
 		
-        },function (error) { 
-            console.log("Scanning failed: ", error); 
-        }); //END SCANNER
+       
 		
 	
 	// NOME ESERCIZIO + INDIRIZZO + DESCRIZIONE
@@ -179,6 +177,11 @@
 	$(document).on("click", 'button.userMarker', function(){
 		map.setView(new L.LatLng(userLatitude, userLongitude),16);
 	});
+	
+	// FINE SUCCESS SCANNER
+	 },function (error) { 
+            console.log("Scanning failed: ", error); 
+    }); //END SCANNER
 	
 	});
 	// /PAGESHOW
