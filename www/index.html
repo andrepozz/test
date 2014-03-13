@@ -35,16 +35,17 @@
 	
 	<script type="text/javascript" charset="utf-8">
 	
-	$(document).on('pageshow', '#QRcode', function(e) {    
+	$(document).on('pagebeforeshow', '#QRcode', function(e) {    
 
             var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-            scanner.scan( function (result) { 
-                alert("We got a barcode\n" + 
-                "Result: " + result.text + "\n" + 
-                "Format: " + result.format + "\n" + 
-                "Cancelled: " + result.cancelled);  
-
+            scanner.scan( function (result) {
+			
+			var url = result.text;
+			var match = url.match(/it\/content\/(\d+)/);
+			if (match) {
+				var idEsercizio = match[1];
+			}
             },function (error) { 
                 console.log("Scanning failed: ", error); 
             });
@@ -60,6 +61,8 @@
 
 	</div><!-- /footer -->
 </div><!-- /page QRcode -->
+
+
 
 
 </body>
