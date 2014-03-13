@@ -49,10 +49,10 @@
 		if (match) {
 			idEsercizio = match[1];
 			alert(idEsercizio);
-			/*
+			var jsurl = "js/"+idEsercizio+".js";
+			alert(jsurl);
 			$.ajax({
-				alert(idEsercizio);
-				url: "js/"+idEsercizio+".js",
+				url: jsurl,
 				dataType: 'json',
 				async: false,
 				success: function(data) {
@@ -60,16 +60,13 @@
 				sessionStorage.setItem('jsonVetrina', JSON.stringify(jsonVetrina));
 				}
 			}); // AJAX END
-			*/
 		} // END MATCH
 		
         },function (error) { 
             console.log("Scanning failed: ", error); 
         }); //END SCANNER
 		
-		});
-	// /PAGESHOW
-	/*
+	
 	// NOME ESERCIZIO + INDIRIZZO + DESCRIZIONE
 	
 		var esercizioLatitude;
@@ -119,7 +116,7 @@
 	L.tileLayer('img/como/{z}/{x}/{y}.png', {
 		maxZoom: 18
 	}).addTo(map);
-	
+	*/
 	var userLatitude;
 	var userLongitude;
 	var markerUtente;
@@ -206,7 +203,6 @@
 	
 	// /FUNZIONE DIRECTIONS
 	
-	*/
 	</script>
 	
 	<!-- NOME ESERCIZIO -->
