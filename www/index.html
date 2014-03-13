@@ -47,8 +47,8 @@
 		var match = url.match(/it\/content\/(\d+)/);
 		if (match) {
 			idEsercizio = match[1];
-			
 			$.ajax({
+				alert(idEsercizio);
 				url: "js/"+idEsercizio+".js",
 				dataType: 'json',
 				async: false,
@@ -72,7 +72,7 @@
 		var parcheggioLatitude;
 		var parcheggioLongitude;
 		var nomeEsercizioMappa;
-	
+		alert(jsonVetrina);
 		$.each(jsonVetrina, function(index, info) {
 				
 				$("h3.nomeEsercizio").html(info.NomeEsercizio);
