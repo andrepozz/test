@@ -1,0 +1,105 @@
+a{
+text-decoration:none;
+}
+
+/* MAPPA */
+
+#map {
+    border: 0 none;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+
+/* ELENCO INDIRIZZO + NAVIGAZIONE + DISTANZA*/
+
+ul.funzionalitaMappa{
+    width: 100%;
+    margin:0;padding:0; /* CSS Reset */
+    margin: auto; /* center it */
+	min-height: 35px;
+}
+li.singolaFunzionalitaMappa{
+    width: 33.3333%;
+    float:left; /* squish them together */
+    list-style-type: none; /* remove the dots */
+    display:inline-block; /* IMPORTANT */
+	text-align: center;
+	background: #ffffff;
+	min-height: 35px;
+	line-height: 35px;
+	border-bottom: 2px solid #fd613d;
+	font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+    li.singolaFunzionalitaMappa{
+        width: 100%;
+    }
+}
+
+/* PARCHEGGIO VICINO*/
+
+ul.parcheggioVicino{
+    width: 100%;
+    margin:0;padding:0; /* CSS Reset */
+    margin: auto; /* center it */
+	min-height: 35px;
+}
+li.immagineParcheggio{
+    width: 100%;
+    float:left; /* squish them together */
+    list-style-type: none; /* remove the dots */
+    display:inline-block; /* IMPORTANT */
+	text-align: center;
+	background: #ffffff;
+	min-height: 35px;
+	line-height: 35px;
+	padding: 5px 0 0 0;
+}
+
+img.imgParcheggio{
+	max-width: 100%;
+	height: auto;
+	float: left;
+	padding: 0 0 0 1em;
+	
+}
+
+@media screen and (max-width: 800px) {
+    li.immagineParcheggio, li.nomeParcheggio{
+        width: 100%;
+    }
+}
+
+
+
+/* NOME */
+
+#box-nomeEsercizio{
+margin: 10px 0 10px 0;
+background: #ffffff;
+padding: 10px 10px 5px 10px;
+min-height: 30px;
+}
+
+/* DESCRIZIONE */
+
+#box-descrizioneEsercizio{
+margin: 10px 0 10px 0;
+background: #ffffff;
+padding: 10px 10px 5px 10px;
+min-height: 100px;
+}
+
+/* BARCHART */
+
+#barChart{
+    border: 0 none;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.highcharts-container { overflow: visible !important; }
