@@ -2,72 +2,27 @@
 <html>
 <head>
 	<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-	<script type="text/javascript" src="cordova.js"></script>
-	<script src="barcodescanner.js"></script>
-
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css" />
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/jquery.mobile-1.4.1.min.js"></script>
 	
-	<script src="js/leaflet.js"></script>
-	<script src="js/leaflet.usermarker.js"></script>
-	<script src="js/function_checkConnection.js"></script>
-	<script src="js/highcharts.js"></script>
-	
-	<link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css" />
 	<link rel="stylesheet" href="css/themes/ccn20.min.css" />
 	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
-
+	
+	<script src="js/highcharts.js"></script>
 	<link rel="stylesheet" href="css/leaflet.css" />
 	<link rel="stylesheet" href="css/leaflet.usermarker.css" />
 	<link rel="stylesheet" href="css/vetrina.css" />
-
-
-
+	<script src="js/leaflet.js"></script>
+	<script src="js/leaflet.usermarker.js"></script>
+	<script src="js/function_checkConnection.js"></script>
+	<script src="barcodescanner.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
 
 	<title>QRcode</title>
 </head>
 <body>
-<!-- Start of page: #QRscanner -->
-<div data-role="page" id="QRscanner">
 
-	<div data-role="header">
-		<h1>Scanner</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content" >
-		
-	
-	<script type="text/javascript" charset="utf-8">
-	
-	$( document ).on( "pagecreate", "#QRscanner", function() {
-	
-	var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-	
-	scanner.scan( function (result) {
-		
-		var url = result.text;
-		var match = url.match(/it\/content\/(\d+)/);
-		if (match) {
-			idEsercizio = match[1];
-			document.location.href="#vetrinaMappa";
-			
-		} // END MATCH
-		// FINE SUCCESS SCANNER
-		},function (error) { 
-            console.log("Scanning failed: ", error); 
-		}); //END SCANNER
-	
-	});
-	// /PAGESHOW
-
-	</script>
-	
-
-	</div><!-- /content -->
-
-	<div data-role="footer" data-theme="a" data-position="fixed">
-	</div><!-- /footer -->
-</div><!-- /page QRscanner -->
 
 <!-- Start of page: #vetrinaMappa -->
 <div data-role="page" id="vetrinaMappa">
@@ -82,19 +37,43 @@
 	<script type="text/javascript" charset="utf-8">
 	
 	$( document ).on( "pageshow", "#vetrinaMappa", function() {
-		
-		var jsonVetrina;		
-		var jsurl = "js/"+idEsercizio+".js";
-		
-		$.ajax({
-			url: jsurl,
-			dataType: 'json',
-			async: false,
-			success: function(data) {
-			jsonVetrina = data;
-			sessionStorage.setItem('jsonVetrina', JSON.stringify(jsonVetrina));
-			}
-		}); // AJAX END
+	var map;
+var jsonVetrina = [
+    {
+    "idEsercizio": "16",
+    "NomeEsercizio": "Mitchumm",
+    "Descrizione": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "Indirizzo": "via Milano 11",
+    "Citta": "Como",
+    "Cap": "22100",
+    "Latitudine": "45.805650500000",
+    "Longitudine": "9.085535300000",
+    "Orario": {
+        "lunedi": "10.00-17.00",
+        "giovedi": "11.00-16.00",
+        "domenica": "chiuso",
+        "martedi": "chiuso",
+        "mercoledi": "chiuso",
+        "venerdi": "chiuso",
+        "sabato": "chiuso"
+    },
+    "Website": "www.negozio1.it",
+    "Telefono": "3334554456",
+    "Email": "info@negozio.it",
+    "Facebook": "https://www.facebook.com/MitchummIndustries",
+    "Twitter": "https://twitter.com/MITCHUMM",
+    "Foursquare": "https://it.foursquare.com/v/mitchumm-store/4fbbba82e4b0182c68e66fe1",
+    "Logo": "09.jpg",
+    "Parcheggio": {
+        "idParcheggio": "8",
+        "nomeParcheggio": "Autosilo 1",
+        "indirizzoParcheggio": "viale Lecco 9",
+        "latitudineParcheggio": "45.810391500000",
+        "longitudineParcheggio": "9.086423300000"
+    },
+    "Statistiche": "si"
+	}
+	];
 		
 	// NOME ESERCIZIO + INDIRIZZO + DESCRIZIONE
 	
@@ -125,10 +104,16 @@
 	
 	// MAPPA + POSIZIONE UTENTE
 	
-	var map = new L.Map('map');
+	map = new L.Map('map');
 	
-	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-	L.tileLayer(osmUrl, {minZoom: 8, maxZoom: 18}).addTo(map);
+	
+	L.tileLayer('img/como/{z}/{x}/{y}.png', {
+		maxZoom: 18
+	}).addTo(map);
+	
+	
+	//var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	//L.tileLayer(osmUrl, {minZoom: 8, maxZoom: 18}).addTo(map);
 	
 	var controlloZoom = L.control({ position: 'bottomleft' });
 
