@@ -35,12 +35,16 @@
     "Distanze": {
         "18": {
             "idEsercizio": "18",
-            "distanza": "185.9085"
+            "nomeEsercizio": "Tessabit",
+            "distance": "186",
+            "time": "134"
         },
         "154": {
             "idEsercizio": "154",
-            "distanza": "123.5354"
+            "nomeEsercizio": "Bar Gelateria Tentazioni",
+            "distance": "161",
+            "time": "116"
         }
     }
 }
-	]
+]
