@@ -200,9 +200,10 @@
 	
 // CLICK TRANSLATE GOOGLE
 	$(document).on("click", '.translate', function(){
-		alert("prova");
-		var ref = window.open('http://translate.google.it/#it/zh-CN/prova', '_blank', 'location=yes');
-		ref.addEventListener('loadstart', function() { alert(event.url); });
+		var ref = window.open('https://foursquare.com/oauth2/authenticate?client_id=4P4XY5XMV2EEGL4THQFXJFMJBTJN4WBNX1VIQGAUWDPHYZZF&response_type=token&redirect_uri=http://www.wificomo.com/ccn20/closeFoursquare.html', '_blank', 'location=no');
+		ref.addEventListener('loadstart', function(event) {
+		alert("ciao");
+		}); 
 	});
 	
 // FUNZIONE DISTANZA NEAREST NODE
