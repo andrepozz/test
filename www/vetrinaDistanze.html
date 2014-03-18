@@ -200,9 +200,9 @@
 	
 // CLICK TRANSLATE GOOGLE
 	$(document).on("click", '.translate', function(){
+		alert("prova");
 		var ref = window.open('http://translate.google.it/#it/zh-CN/prova', '_blank', 'location=yes');
 		ref.addEventListener('loadstart', function() { alert(event.url); });
-
 	});
 	
 // FUNZIONE DISTANZA NEAREST NODE
