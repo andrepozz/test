@@ -28,6 +28,7 @@
 	<gap:plugin name="org.apache.cordova.camera" version="0.2.4" />
 	<gap:plugin name="org.apache.cordova.media-capture" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
+	<gap:plugin name="dk.interface.cordova.plugin.googlenavigate" />
     <icon src="icon.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
     <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48-mdpi.png" />
