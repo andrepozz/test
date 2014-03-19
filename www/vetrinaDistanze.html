@@ -76,6 +76,10 @@
 				descrizioneEsercizio = info.Descrizione;
 				linguaDescrizioneEsercizio = info.LinguaDescrizione;
 		});
+		
+//NAVIGATE BUTTON
+		
+		$( ".navigateEsercizio" ).append( "<a href='#' geoPosition='"+esercizioLatitude+","+esercizioLongitude+"'class='directions'>Navigazione</a>" );
 
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = "ru";
@@ -274,7 +278,7 @@
 	<div id="map" style="width: 1920px; height:400px"></div>
 	<ul class="funzionalitaMappa">
 	<li class="singolaFunzionalitaMappa indirizzoEsercizio"></li>
-	<li class="singolaFunzionalitaMappa"><a href="#" class="directions">Navigazione</a></li>
+	<li class="singolaFunzionalitaMappa navigateEsercizio"></li>
 	<li class="singolaFunzionalitaMappa distanzaEsercizio"></li>
 	</ul>
 	<!-- /MAPPA + INDIRIZZO + DIRECTIONS + PANORAMICA + DISTANZA -->
