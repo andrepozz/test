@@ -200,7 +200,11 @@
 	
 // CLICK TRANSLATE GOOGLE
 	$(document).on("click", '.translate', function(){
-		var ref = window.open('http://translate.google.it/#it/zh-CN/prova', '_blank', 'location=yes');
+		var descrizioneTranslate = $(".descrizioneEsercizio").text();
+		var linguaDescrizione = "it";
+		var codLingua = "en";
+		var urlTranslate = encodeURI("http://translate.google.com/#"+linguaDescrizione+"/"+codLingua+"/"+descrizioneTranslate+"");
+		var ref = window.open(urlTranslate, '_blank', 'location=yes');
 		//ref.addEventListener('loadstart', function() { alert(event.url); });
 	});
 	
