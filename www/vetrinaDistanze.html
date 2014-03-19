@@ -59,6 +59,8 @@
 		var esercizioLatitude;
 		var esercizioLongitude;
 		var nomeEsercizioMappa;
+		var descrizioneEsercizio;
+		var linguaDescrizioneEsercizio;
 	
 		$.each(jsonVetrina, function(index, info) {
 				
@@ -67,10 +69,20 @@
 				$(".descrizioneEsercizio").html(info.Descrizione);
 				$(".nomeParcheggio").html(""+info.Parcheggio.nomeParcheggio+" "+info.Parcheggio.indirizzoParcheggio+"");
 				
+				 
 				esercizioLatitude = info.Latitudine;
 				esercizioLongitude = info.Longitudine;
 				nomeEsercizioMappa = info.NomeEsercizio;
+				descrizioneEsercizio = info.Descrizione;
+				linguaDescrizioneEsercizio = info.LinguaDescrizione;
 		});
+
+// DESCRIZIONE + TRANSLATE BUTTON
+		var codLingua = "ru";
+		if(codLingua != "it" || codLingua != "en"){
+			$( "#box-descrizioneEsercizio" ).append( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
+		}
+		
 			
 // MAPPA + POSIZIONE UTENTE
 	
@@ -201,8 +213,8 @@
 // CLICK TRANSLATE GOOGLE
 	$(document).on("click", '.translate', function(){
 		var descrizioneTranslate = $(".descrizioneEsercizio").text();
-		var linguaDescrizione = "it";
-		var codLingua = "en";
+		var linguaDescrizione = $(this).attr('linguaDescrizione');
+		var codLingua = $(this).attr('codLingua');
 		var urlTranslate = encodeURI("http://translate.google.com/#"+linguaDescrizione+"/"+codLingua+"/"+descrizioneTranslate+"");
 		var ref = window.open(urlTranslate, '_blank', 'location=yes');
 		//ref.addEventListener('loadstart', function() { alert(event.url); });
@@ -270,7 +282,6 @@
 	
 	<div id="box-descrizioneEsercizio">
 	<p class="descrizioneEsercizio"></p>
-	<button class="translate">Traduci</button>
 	</div>
 	<!-- /DESCRIZIONE ESERCIZIO -->
 	
