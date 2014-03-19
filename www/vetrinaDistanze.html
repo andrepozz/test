@@ -211,8 +211,8 @@
 
 // CLICK DIRECTIONS GOOGLE
 	$(document).on("click", 'a.directions', function(){
-		alert(esercizioLatitude);
-		directions(esercizioLatitude, esercizioLongitude);
+		var geoPosition = $(this).attr('geoPosition');
+		directions(geoPosition);
 	});
 	
 // CLICK TRANSLATE GOOGLE
@@ -251,14 +251,11 @@
 		
 // FUNZIONE DIRECTIONS GOOGLE
 	
-	function directions(esercizioLatitude, esercizioLongitude) {
-		var latLongDirections = ""+esercizioLatitude+","+esercizioLongitude+"";
-		$(".directions").click(function(){
-		navigator.google_navigate.navigate(latLongDirections, function() {
+	function directions(geoPosition) {
+		navigator.google_navigate.navigate(geoPosition, function() {
 			console.log('Success');
 		}, function(errMsg) {
 			console.log("Failed: " + errMsg);
-		});
 		});
 	}
 	
