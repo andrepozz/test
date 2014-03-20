@@ -161,7 +161,7 @@
 		var descrizioneTranslate = $(".descrizioneEsercizio").text();
 		alert(descrizioneTranslate);
 		if(!(codLingua == 'ru' || codLingua == 'en')){
-			if(descrizioneTranslate != null)
+			if(descrizioneTranslate != "")
 			{
 			$( ".traduciDescrizioneEsercizio" ).html("");
 			$( ".traduciDescrizioneEsercizio" ).html( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
