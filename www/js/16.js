@@ -1,50 +1,60 @@
 [
     {
-        "idEsercizio": "16",
-        "NomeEsercizio": "Mitchumm",
-        "Descrizione": "This is the shop description in ENGLISH",
-        "LinguaDescrizione": "en",
-        "Indirizzo": "via Milano 11",
+        "idEsercizio": "157",
+        "NomeEsercizio": "Enoteca da Gigi",
+        "Indirizzo": "via Bernardino Luini 48",
         "Citta": "Como",
         "Cap": "22100",
-        "Latitudine": "45.805650500000",
-        "Longitudine": "9.085535300000",
+        "Latitudine": "45.809857200000",
+        "Longitudine": "9.083437300000",
         "Orario": {
-            "lunedi": "10.00-17.00",
-            "giovedi": "11.00-16.00",
-            "domenica": "chiuso",
-            "martedi": "chiuso",
-            "mercoledi": "chiuso",
-            "venerdi": "chiuso",
-            "sabato": "chiuso"
+            "lunedi": "15.00-18.00",
+            "martedi": "9.30-18.00",
+            "mercoledi": "15.00-18.00",
+            "giovedi": "9.30-18.00",
+            "venerdi": "9.30-18.00",
+            "sabato": "9.30-18.00",
+            "domenica": "9.30-18.00"
         },
-        "Website": "www.negozio1.it",
-        "Telefono": "3334554456",
-        "Email": "info@negozio.it",
-        "Facebook": "https://www.facebook.com/MitchummIndustries",
-        "Twitter": "https://twitter.com/MITCHUMM",
-        "Foursquare": "https://it.foursquare.com/v/mitchumm-store/4fbbba82e4b0182c68e66fe1",
-        "Logo": "09.jpg",
-        "Parcheggio": {
-            "idParcheggio": "8",
-            "nomeParcheggio": "Autosilo 1",
-            "indirizzoParcheggio": "viale Lecco 9",
-            "latitudineParcheggio": "45.810391500000",
-            "longitudineParcheggio": "9.086423300000"
-        },
+        "Website": "http://www.enotecagigi.com",
+        "Email": "info@enotecagigi.com",
         "Statistiche": "si",
         "Distanze": {
-            "18": {
-                "idEsercizio": "18",
-                "nomeEsercizio": "Tessabit",
-                "distance": "186",
-                "time": "134"
+            "34": {
+                "idEsercizio": "34",
+                "nomeEsercizio": "Moglia",
+                "distance": "79",
+                "time": "57"
             },
-            "154": {
-                "idEsercizio": "154",
-                "nomeEsercizio": "Bar Gelateria Tentazioni",
-                "distance": "161",
-                "time": "116"
+            "35": {
+                "idEsercizio": "35",
+                "nomeEsercizio": "Seveso",
+                "distance": "118",
+                "time": "85"
+            },
+            "147": {
+                "idEsercizio": "147",
+                "nomeEsercizio": "Viamaestra",
+                "distance": "29",
+                "time": "21"
+            },
+            "151": {
+                "idEsercizio": "151",
+                "nomeEsercizio": "Hops!",
+                "distance": "44",
+                "time": "32"
+            },
+            "152": {
+                "idEsercizio": "152",
+                "nomeEsercizio": "Filippo Caimi",
+                "distance": "138",
+                "time": "99"
+            },
+            "153": {
+                "idEsercizio": "153",
+                "nomeEsercizio": "Gloook",
+                "distance": "91",
+                "time": "66"
             }
         }
     }
