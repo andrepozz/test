@@ -154,6 +154,7 @@
 			var distance = 5000;
 		
 			$.getJSON("js/jsonPosition.js", function( jsonPosition ) {
+			alert("getJson");
 				$.each(jsonPosition, function(index, info) {
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
 					if(distance > currentDistance && info.idEsercizio != idEsercizio)
