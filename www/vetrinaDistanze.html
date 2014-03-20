@@ -38,14 +38,14 @@
 
 	$( document ).on( "pageshow", "#vetrinaMappa", function() {
 	
-// GET FILE VETRINA
+// CARICA FILE VETRINA
 	
-		var idEsercizio = "16";
+		var path = window.localStorage.getItem("pathSD");
+		var jsonPath = path + "/16.js";
 		var jsonVetrina;		
-		var jsurl = "js/"+idEsercizio+".js";
-				
+		
 		$.ajax({
-			url: jsurl,
+			url: jsonPath,
 			dataType: 'json',
 			async: false,
 			success: function(data) {
@@ -82,7 +82,7 @@
 		$( ".navigateEsercizio" ).append( "<a href='#' geoPosition='"+esercizioLatitude+","+esercizioLongitude+"'class='directions'>Navigazione</a>" );
 
 // DESCRIZIONE + TRANSLATE BUTTON
-		var codLingua = "ru";
+		var codLingua = localStorage.getItem("codLingua");
 		if(codLingua != "it" || codLingua != "en"){
 			$( "#box-descrizioneEsercizio" ).append( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
 		}
