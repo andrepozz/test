@@ -113,19 +113,20 @@
 	
 		var path = window.localStorage.getItem("pathSD");
 		var jsonPath = path + "/esercizi/"+idEsercizio+".js";
+		var jsonVetrina = null;
 		
 		$.ajax({
 			url: jsonPath,
 			dataType: 'json',
 			async: false,
 			success: function(data) {
-			json = data;
-			sessionStorage.setItem('jsonVetrina', JSON.stringify(json));
+			jsonVetrina = data;
+			sessionStorage.setItem('jsonVetrina', JSON.stringify(jsonVetrina));
 			}
 		}); // AJAX END
 	
 // NOME ESERCIZIO + INDIRIZZO + DESCRIZIONE
-		var jsonVetrina = JSON.parse(window.sessionStorage.getItem("jsonVetrina"));
+	
 		var esercizioLatitude;
 		var esercizioLongitude;
 		var nomeEsercizioMappa;
@@ -134,6 +135,7 @@
 		var parcheggioVicino;
 	
 		$.each(jsonVetrina, function(index, info) {
+				
 				$("h3.nomeEsercizio").html(info.NomeEsercizio);
 				$(".indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
 				$(".descrizioneEsercizio").html(""); // SVUOTA DESCRIZIONE PER PREVENIRE DESCRIZIONI NULLE
@@ -238,6 +240,7 @@
 			userLongitude = position.coords.longitude;
 	
 			var distance = 5000;
+			alert(idEsercizio);
 			$.getJSON("js/jsonPosition.js", function( jsonPosition ) {
 				$.each(jsonPosition, function(index, info) {
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
@@ -258,7 +261,6 @@
 				{
 					if(nearestEsercizio in obj.Distanze){
 						$.each(obj.Distanze, function(index, info) {
-							alert("idEsercizioJSON"+info.idEsercizio);
 							if(info.idEsercizio == nearestEsercizio){
 								var minutes = Math.floor(info.time / 60);
 								var seconds = info.time - minutes * 60;
