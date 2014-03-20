@@ -151,7 +151,9 @@
 		
 			var jsonPosition = path+"/position.js";
 			$.getJSON(jsonPosition, function( dataPosition ) {
+				alert(dataPosition);
 				$.each(dataPosition, function(index, info) {
+					alert(index);
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
 					if(distance > currentDistance && info.idEsercizio != idEsercizio)
 					{
