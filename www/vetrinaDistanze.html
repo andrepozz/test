@@ -84,9 +84,7 @@
 
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = localStorage.getItem("codLingua");
-		alert(codLingua);
 		if(codLingua !== "it" || codLingua !== "en"){
-		alert(codLingua);
 			$( ".traduciDescrizioneEsercizio" ).html("");
 			$( ".traduciDescrizioneEsercizio" ).append( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
 		}
@@ -153,7 +151,9 @@
 			
 			var distance = 5000;
 		
-			$.getJSON("js/jsonPosition.js", function( jsonPosition ) {
+			var jsonPosition = path+"position.js";
+			alert("jsonPosition");
+			$.getJSON(jsonPosition, function( jsonPosition ) {
 			alert("getJson");
 				$.each(jsonPosition, function(index, info) {
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
