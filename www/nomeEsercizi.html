@@ -158,9 +158,13 @@
 
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = localStorage.getItem("codLingua");
+		var descrizioneTranslate = $(".descrizioneEsercizio").text();
 		if(!(codLingua == 'ru' || codLingua == 'en')){
+			if(descrizioneTranslate != null)
+			{
 			$( ".traduciDescrizioneEsercizio" ).html("");
 			$( ".traduciDescrizioneEsercizio" ).html( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
+			}
 		}
 
 
