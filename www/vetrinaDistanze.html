@@ -75,7 +75,10 @@
 				nomeEsercizioMappa = info.NomeEsercizio;
 				descrizioneEsercizio = info.Descrizione;
 				linguaDescrizioneEsercizio = info.LinguaDescrizione;
-				//parcheggioVicino = info.Parcheggio.nomeParcheggio+" "+info.Parcheggio.indirizzoParcheggio;
+				if (info.Parcheggio != undefined)
+				{
+				parcheggioVicino = info.Parcheggio.nomeParcheggio+" "+info.Parcheggio.indirizzoParcheggio;
+				}
 		});
 		
 //NAVIGATE BUTTON
@@ -86,20 +89,21 @@
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = localStorage.getItem("codLingua");
 		if(!(codLingua == 'it' || codLingua == 'en')){
-			$( "#box-descrizioneEsercizio" ).html("");
-			$( "#box-descrizioneEsercizio" ).append( "<p class='descrizioneEsercizio'>"+descrizioneEsercizio+"</p><button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
+			$( ".descrizioneEsercizio" ).html("");
+			$( ".descrizioneEsercizio" ).append( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
 		}
-		else{
-			$( "#box-descrizioneEsercizio" ).html("");
-			$( "#box-descrizioneEsercizio" ).append( "<p class='descrizioneEsercizio'>"+descrizioneEsercizio+"</p>" );	
-		}
+
 
 // PARCHEGGIO VICINO
 		
+		if (parcheggioVicino == undefined){
+		$( ".parcheggioVicino" ).html("");
+		}
+		else{
 		$( ".parcheggioVicino" ).html("");
 		$( ".parcheggioVicino" ).append( "<li class='immagineParcheggio'><img class='imgParcheggio' src='img/parcheggioVicino.png' style='width: 37px; height: 50px;'><p class='nomeParcheggio'>"+parcheggioVicino+"</p></li>" );
+		}
 		
-	
 // MAPPA + POSIZIONE UTENTE
 	
 		//INIZIALIZZAZIONE MAPPA
@@ -152,14 +156,14 @@
 // FUNCTION SUCCESS WATCH POSITION
 
 		function onSuccess(position) {
+	 		
 			userLatitude = position.coords.latitude;
 			userLongitude = position.coords.longitude;
-									
+	
 			var distance = 5000;
 		
-			var jsonPosition = path+"/position.js";
-			$.getJSON(jsonPosition, function( dataPosition ) {
-				$.each(dataPosition, function(index, info) {
+			$.getJSON("js/jsonPosition.js", function( jsonPosition ) {
+				$.each(jsonPosition, function(index, info) {
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
 					if(distance > currentDistance && info.idEsercizio != idEsercizio)
 					{
@@ -200,7 +204,6 @@
 			map.setView(new L.LatLng(userLatitude, userLongitude),16);
 			}
 			markerUtente.setLatLng([userLatitude, userLongitude],{pulsing:true}).update();
-			markerUtente.setAccuracy(userAccuracy);
 	
 		} // END ON SUCCESS
 	
@@ -224,8 +227,8 @@
 
 // CLICK DIRECTIONS GOOGLE
 	$(document).on("click", 'a.directions', function(){
-		var geoPosition = $(this).attr('geoPosition');
-		directions(geoPosition);
+		alert(esercizioLatitude);
+		directions(esercizioLatitude, esercizioLongitude);
 	});
 	
 // CLICK TRANSLATE GOOGLE
@@ -264,11 +267,14 @@
 		
 // FUNZIONE DIRECTIONS GOOGLE
 	
-	function directions(geoPosition) {
-		navigator.google_navigate.navigate(geoPosition, function() {
+	function directions(esercizioLatitude, esercizioLongitude) {
+		var latLongDirections = ""+esercizioLatitude+","+esercizioLongitude+"";
+		$(".directions").click(function(){
+		navigator.google_navigate.navigate(latLongDirections, function() {
 			console.log('Success');
 		}, function(errMsg) {
 			console.log("Failed: " + errMsg);
+		});
 		});
 	}
 	
@@ -296,12 +302,14 @@
 	<!-- DESCRIZIONE ESERCIZIO -->
 	
 	<div id="box-descrizioneEsercizio">
+	<p class="descrizioneEsercizio"></p>
 	</div>
 	<!-- /DESCRIZIONE ESERCIZIO -->
 	
 	<!-- PARCHEGGIO VICINO ESERCIZIO -->
 	
 	<ul class="parcheggioVicino">
+	<li class="immagineParcheggio"><img class="imgParcheggio" src="images/parcheggioVicino.png" style="width: 37px; height: 50px;"><p class="nomeParcheggio"></p></li>
 	</ul>
 	<!-- /PARCHEGGIO VICINO ESERCIZIO -->
 		
@@ -744,6 +752,7 @@
         </div><!-- /navbar -->
 	</div><!-- /footer -->
 </div><!-- /page vetrinaStatistiche -->
+
 
 </body>
 </html>
