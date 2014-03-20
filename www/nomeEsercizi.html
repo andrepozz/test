@@ -240,7 +240,7 @@
 			userLongitude = position.coords.longitude;
 	
 			var distance = 5000;
-		
+			alert("idEsercizioPage "+idEsercizio);
 			$.getJSON("js/jsonPosition.js", function( jsonPosition ) {
 				$.each(jsonPosition, function(index, info) {
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
@@ -261,6 +261,7 @@
 				{
 					if(nearestEsercizio in obj.Distanze){
 						$.each(obj.Distanze, function(index, info) {
+							alert("idEsercizioJSON"+info.idEsercizio);
 							if(info.idEsercizio == nearestEsercizio){
 								var minutes = Math.floor(info.time / 60);
 								var seconds = info.time - minutes * 60;
