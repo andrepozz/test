@@ -120,9 +120,10 @@
 		var markerEsercizio;
 		var group;
 		var watchID = null;
-		var options = { maximumAge: 10000, timeout: 30000, enableHighAccuracy: true };
+		var options = { maximumAge: 5000, timeout: 30000, enableHighAccuracy: true };
       
-		watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
+		//watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
+		onSuccess();
 	
 		var parkingIcon = L.icon({
 			iconUrl: 'img/parking.png',
@@ -141,31 +142,24 @@
 
 // FUNCTION SUCCESS WATCH POSITION
 
-		function onSuccess(position) {
+		function onSuccess() {
 	 		
-			userLatitude = position.coords.latitude;
-			userLongitude = position.coords.longitude;
-						
+			userLatitude = 45.803979;
+			userLongitude = 9.086079;
+									
 			var distance = 5000;
 		
 			var jsonPosition = path+"/position.js";
-			alert("jsonPosition");
 			$.getJSON(jsonPosition, function( dataPosition ) {
-			alert("getJson");
-			alert(dataPosition);
 				$.each(dataPosition, function(index, info) {
-					alert(index);
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
-					alert(currentDistance);
 					if(distance > currentDistance && info.idEsercizio != idEsercizio)
 					{
 						distance = currentDistance;
-						alert("distance: "+distance);
 						nearestEsercizio = info.idEsercizio;
-						alert("nearestEsercizio: "+nearestEsercizio);
 					}
 				});
-				alert("Nodo vicino: "+nearestEsercizio);
+				console.log("Nodo vicino: "+nearestEsercizio);
 				
 		
 			var L = jsonVetrina.length;
