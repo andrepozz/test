@@ -159,7 +159,8 @@
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = localStorage.getItem("codLingua");
 		if(!(codLingua == 'it' || codLingua == 'en')){
-			$( ".descrizioneEsercizio" ).append( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
+			$( ".traduciDescrizioneEsercizio" ).html("");
+			$( ".traduciDescrizioneEsercizio" ).html( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
 		}
 
 
@@ -372,6 +373,7 @@
 	
 	<div id="box-descrizioneEsercizio">
 	<p class="descrizioneEsercizio"></p>
+	<p class="traduciDescrizioneEsercizio"></p>
 	</div>
 	<!-- /DESCRIZIONE ESERCIZIO -->
 	
