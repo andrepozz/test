@@ -62,6 +62,7 @@
 		var nomeEsercizioMappa;
 		var descrizioneEsercizio;
 		var linguaDescrizioneEsercizio;
+		var parcheggioVicino;
 	
 		$.each(jsonVetrina, function(index, info) {
 				
@@ -74,6 +75,7 @@
 				nomeEsercizioMappa = info.NomeEsercizio;
 				descrizioneEsercizio = info.Descrizione;
 				linguaDescrizioneEsercizio = info.LinguaDescrizione;
+				parcheggioVicino = info.Parcheggio.nomeParcheggio+" "+info.Parcheggio.indirizzoParcheggio;
 		});
 		
 //NAVIGATE BUTTON
@@ -91,7 +93,13 @@
 			$( "#box-descrizioneEsercizio" ).html("");
 			$( "#box-descrizioneEsercizio" ).append( "<p class='descrizioneEsercizio'>"+descrizioneEsercizio+"</p>" );	
 		}
-			
+
+// PARCHEGGIO VICINO
+		
+		$( ".parcheggioVicino" ).html("");
+		$( ".parcheggioVicino" ).append( "<li class='immagineParcheggio'><img class='imgParcheggio' src='img/parcheggioVicino.png' style='width: 37px; height: 50px;'><p class='nomeParcheggio'>"+parcheggioVicino+"</p></li>" );
+		
+	
 // MAPPA + POSIZIONE UTENTE
 	
 		//INIZIALIZZAZIONE MAPPA
@@ -294,7 +302,6 @@
 	<!-- PARCHEGGIO VICINO ESERCIZIO -->
 	
 	<ul class="parcheggioVicino">
-	<li class="immagineParcheggio"><img class="imgParcheggio" src="images/parcheggioVicino.png" style="width: 37px; height: 50px;"><p class="nomeParcheggio"></p></li>
 	</ul>
 	<!-- /PARCHEGGIO VICINO ESERCIZIO -->
 		

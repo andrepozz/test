@@ -132,6 +132,7 @@
 		var nomeEsercizioMappa;
 		var descrizioneEsercizio;
 		var linguaDescrizioneEsercizio;
+		var parcheggioVicino;
 	
 		$.each(jsonVetrina, function(index, info) {
 				
@@ -144,6 +145,7 @@
 				nomeEsercizioMappa = info.NomeEsercizio;
 				descrizioneEsercizio = info.Descrizione;
 				linguaDescrizioneEsercizio = info.LinguaDescrizione;
+				parcheggioVicino = info.Parcheggio.nomeParcheggio+" "+info.Parcheggio.indirizzoParcheggio;
 		});
 		
 //NAVIGATE BUTTON
