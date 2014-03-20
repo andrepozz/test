@@ -123,8 +123,7 @@
 		var watchID = null;
 		var options = { maximumAge: 5000, timeout: 30000, enableHighAccuracy: true };
       
-		//watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
-		onSuccess();
+		watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
 	
 		var parkingIcon = L.icon({
 			iconUrl: 'img/parking.png',
@@ -143,18 +142,15 @@
 
 // FUNCTION SUCCESS WATCH POSITION
 
-		function onSuccess() {
-	 		alert("success");
-			userLatitude = 45.803979;
-			userLongitude = 9.086079;
+		function onSuccess(position) {
+			userLatitude = position.coords.latitude;
+			userLongitude = position.coords.longitude;
 									
 			var distance = 5000;
 		
 			var jsonPosition = path+"/position.js";
-			$.getJSON("js/jsonPosition.js", function( dataPosition ) {
-				alert(dataPosition);
+			$.getJSON(jsonPosition, function( dataPosition ) {
 				$.each(dataPosition, function(index, info) {
-					alert(index);
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
 					if(distance > currentDistance && info.idEsercizio != idEsercizio)
 					{
@@ -162,7 +158,7 @@
 						nearestEsercizio = info.idEsercizio;
 					}
 				});
-				alert("Nodo vicino: "+nearestEsercizio);
+				console.log("Nodo vicino: "+nearestEsercizio);
 				
 		
 			var L = jsonVetrina.length;
@@ -187,14 +183,15 @@
 			}
 			}); //END GET JSON POSITION 
 	
-			//var userAccuracy = position.coords.accuracy 
+			var userAccuracy = position.coords.accuracy 
 
 			if (!markerUtente) {
 			markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").addTo(map);
-			//markerUtente.setAccuracy(userAccuracy);
+			markerUtente.setAccuracy(userAccuracy);
 			map.setView(new L.LatLng(userLatitude, userLongitude),16);
 			}
 			markerUtente.setLatLng([userLatitude, userLongitude],{pulsing:true}).update();
+			markerUtente.setAccuracy(userAccuracy);
 	
 		} // END ON SUCCESS
 	
