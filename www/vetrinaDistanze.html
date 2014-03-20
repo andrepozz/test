@@ -150,7 +150,7 @@
 			var distance = 5000;
 		
 			var jsonPosition = path+"/position.js";
-			$.getJSON(jsonPosition, function( dataPosition ) {
+			$.getJSON("js/jsonPosition.js", function( dataPosition ) {
 				alert(dataPosition);
 				$.each(dataPosition, function(index, info) {
 					alert(index);
