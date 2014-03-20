@@ -144,6 +144,7 @@
 				esercizioLatitude = info.Latitudine;
 				esercizioLongitude = info.Longitudine;
 				nomeEsercizioMappa = info.NomeEsercizio;
+				descrizioneEsercizio = info.NomeEsercizio;
 				linguaDescrizioneEsercizio = info.LinguaDescrizione;
 				if (info.Parcheggio != undefined)
 				{
@@ -158,10 +159,8 @@
 
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = localStorage.getItem("codLingua");
-		var descrizioneTranslate = $(".descrizioneEsercizio").text();
-		alert(descrizioneTranslate);
 		if(!(codLingua == 'ru' || codLingua == 'en')){
-			if(descrizioneTranslate != "")
+			if(descrizioneEsercizio != undefined)
 			{
 			$( ".traduciDescrizioneEsercizio" ).html("");
 			$( ".traduciDescrizioneEsercizio" ).html( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
