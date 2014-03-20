@@ -156,6 +156,7 @@
 				$.each(dataPosition, function(index, info) {
 					alert(index);
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
+					alert(currentDistance);
 					if(distance > currentDistance && info.idEsercizio != idEsercizio)
 					{
 						distance = currentDistance;
