@@ -23,12 +23,18 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
-	<gap:plugin name="com.phonegap.plugins.barcodescanner" version="1.1.0" />
-	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.6" />
-	<gap:plugin name="org.apache.cordova.camera" version="0.2.4" />
-	<gap:plugin name="org.apache.cordova.media-capture" />
+	<gap:plugin name="com.phonegap.plugins.facebookconnect">
+    <param name="APP_ID" value="1448410138727682" />
+    <param name="APP_NAME" value="ccn20" />
+	</gap:plugin>
+	<gap:plugin name="org.apache.cordova.file" version="0.2.4" />
+	<gap:plugin name="org.apache.cordova.file-transfer" version="0.3.3" />
+	<gap:plugin name="org.apache.cordova.geolocation" />
+	<gap:plugin name="org.apache.cordova.network-information" />
+	<gap:plugin name="org.apache.cordova.device" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" />
 	<gap:plugin name="dk.interface.cordova.plugin.googlenavigate" />
+	<gap:plugin name="com.phonegap.plugins.barcodescanner" />
     <icon src="icon.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
     <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48-mdpi.png" />

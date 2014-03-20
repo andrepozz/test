@@ -18,146 +18,21 @@
 </head>
 <body>
 
-<!-- PAGE #index -->
-<div data-role="page" id="index">
+<!-- PAGE #downloadLingua -->
+		<div data-role="page" id="downloadLingua">
 
-	<!-- /HEADER -->
-	<div data-role="header">
-		<h1>Index</h1>
-		<a href="opzioni.html" rel="external" data-icon="gear" class="ui-btn-right" data-transition="slide">Options</a>
-	</div>
-	<!-- /HEADER -->
+		<!-- /HEADER -->
+		<div data-role="header">
+		<h1>DownloadLingua</h1>
+		<a href="#" data-rel="back" id="indietro" class="jqm-navmenu-link ui-btn ui-corner-all ui-nodisc-icon ui-alt-icon ui-btn-left" data-transition="slide" data-direction="reverse">indietro</a>
+		</div>
+		<!-- /HEADER -->
 	
-	<!-- CONTENT -->
-	<div role="main" class="ui-content" >
+		<!-- CONTENT -->
+		<div role="main" class="ui-content" >
 	
-	<script>   
-	$( "#index" ).on( "pagebeforeshow", function() {	
-	
-	document.addEventListener("backbutton", function(e){
-    
-		if($.mobile.activePage.is('#index')){
-        e.preventDefault();
-        return false;
-		}
-		else {
-        navigator.app.backHistory()
-		}
-	}, false);
-	
-	var lingua = window.localStorage.getItem("lingua");
-	
-	if (lingua == null) {
-	
-	//var connection = checkConnection();
-	
-		//if (connection != "No_network") {
-		document.location.href="#lingue";
-		//}
-		//else {
-		//alert("devi essere connesso");
-		//}
-	}
-		
-	});
-	</script>
-	
-	<h1>INDEX</h1>
-	<ul data-role="listview">
-	<li><a href="eserciziVicini.html" rel="external" data-transition="slide">Ricerca per Distanza</a></li>
-	<li><a href="categorie.html" rel="external" data-transition="slide">Ricerca per Categoria</a></li>
-	<li><a href="nomeEsercizi.html" rel="external" data-transition="slide">Ricerca per Nome</a></li>
-	<li><a href="brandEsercizi.html" rel="external" data-transition="slide">Ricerca per Brand</a></li>
-	<li><a href="vetrinaEsercizio.html" rel="external" data-transition="slide">Vetrina</a></li>
-	</ul>
-	
-	</div>
-	<!-- /CONTENT -->
-
-	<!-- FOOTER -->
-	<div data-role="footer" data-theme="a" data-position="fixed">
-		<h4>Page Footer</h4>
-	</div>
-	<!-- /FOOTER -->
-</div><!-- /PAGE #index -->
-
-<!-- PAGE #lingue -->
-<div data-role="page" id="lingue">
-
-	<!-- /HEADER -->
-	<div data-role="header">
-		<h1>Lingue</h1>
-	</div>
-	<!-- /HEADER -->
-	
-	<!-- CONTENT -->
-	<div role="main" class="ui-content" >
-	
-	<div id="fb-root"></div>
-	<script>
-  
-	$( "#lingue" ).on( "pagebeforeshow", function() {	
-	
-	//LISTA LINGUE
-	$("ul#listaLingue").html("");
-		
-		$.getJSON("js/lingue.js", function( data ) {
-		
-			$.each(data, function(index, info) {
-			$("ul#listaLingue").append($("<li></li>",{"html":"<a href='#setup' class='lingua' id='" + info.idLingua + "' codiceLingua='"+info.codiceLingua+"' nomeLingua='"+index+"' data-transition='slide' ><img src='img/lingue/"+info.codiceLingua+".png' alt='Facebook' class='ui-li-icon ui-corner-none'>" + info.nomeLingua + "</a>" }));
-			});
-	
-			$("ul#listaLingue").listview("refresh");
-		});
-	
-	}); //ON "pagebeforeshow"
-	
-	//ON "click"
-	$(document).on("click", 'a.lingua', function(){
-	
-	idLingua = $(this).attr('id');
-	lingua = $(this).attr('nomeLingua');
-	codLingua = $(this).attr('codiceLingua');
-	
-	window.localStorage.setItem("lingua", lingua);
-	window.localStorage.setItem("idLingua", idLingua);
-	window.localStorage.setItem("codLingua", codLingua);
-	
-	}); //ON "click"
-	
-</script>
-	
-	<h1>LINGUE</h1>
-
-	<ul data-role="listview" id="listaLingue" data-inset="true">
-	</ul>
-	
-	</div>
-	<!-- CONTENT -->
-
-	<!-- FOOTER -->
-	<div data-role="footer" data-theme="a" data-position="fixed">
-		<h4>Page Footer</h4>
-	</div>
-	<!-- /FOOTER -->
-
-</div><!-- /PAGE #lingue -->
-
-
-<!-- PAGE #setup -->
-<div data-role="page" id="setup">
-
-	<!-- /HEADER -->
-	<div data-role="header">
-		<h1>Setup</h1>
-	</div>
-	<!-- /HEADER -->
-	
-	<!-- CONTENT -->
-	<div role="main" class="ui-content" >
-	
-	<script>   
-	$( "#setup" ).on( "pageshow", function() {	
+		<script>
+		$( "#downloadLingua" ).on( "pageshow", function() {	
 	
 	sessionStorage.setItem("vetrineOK", 0);
 	
@@ -393,7 +268,7 @@
 									$("li.vetrine").html("download vetrine <img src='img/downloadok.png'>");
 									$("li.vetrine").css("color","green");
 									
-									$("p.downloadComplete").html("<a href='#facebook' class='ui-btn' data-transition='slide'>continua</a>");
+									$("p.downloadComplete").html("<a href='#opzioni' class='ui-btn' data-transition='slide'>Fatto</a>");
 									}
 								}
 								else {
@@ -443,13 +318,10 @@
 		}
 	});
 	
-	
 	}
-
-	
-	</script>
-	
-	<ul style="list-style-type: none">
+		</script>
+		
+		<ul style="list-style-type: none">
 	<li class="categorie">download categorie...<img src="img/download.gif"></li>
 	<li class="sottocategorie">download sottocategorie...<img src="img/download.gif"></li>
 	<li class="nome">configurazione ricerca per nome... <img src="img/download.gif"></li>
@@ -462,300 +334,15 @@
 	
 	<p class="downloadComplete">attendere...</p>
 	
-	</div>
-	<!-- CONTENT -->
+		</div>
+		<!-- /CONTENT -->
 
-	<!-- FOOTER -->
-	<div data-role="footer" data-theme="a" data-position="fixed">
-		<h4>Setup</h4>
-	</div>
-	<!-- /FOOTER -->
-
-</div><!-- /PAGE #setup -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- PAGE #facebook -->
-<div data-role="page" id="facebook">
-
-	<!-- /HEADER -->
-	<div data-role="header">
-		<h1>Facebook</h1>
-	</div>
-	<!-- /HEADER -->
-	
-	<!-- CONTENT -->
-	<div role="main" class="ui-content" >
-	
-	<div id="fb-root"></div>
-	<script>
-  
-	$( "#facebook" ).on( "pagebeforeshow", function() {	
-	
-	FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
-	
-	//GET LOGIN STATUS
-	FB.getLoginStatus(function(response) {
-	
-		//CONNESSO
-		if (response.status === 'connected') {
-		$("p.facebook").html('account facebook collegato');
-		}
-		//APP NON AUTORIZZATA
-		else if (response.status === 'not_authorized') {
-		$("p.facebook").html('<button class="ui-btn ui-shadow">Collega Account</button>');
-		} 
-		//NON CONNESSO
-		else {
-		$("p.facebook").html('<button class="facebook ui-btn ui-shadow">Collega Account</button>');
-		}
+		<!-- FOOTER -->
+		<div data-role="footer" data-theme="a" data-position="fixed"><h4>Page Footer</h4></div>
+		<!-- /FOOTER -->
 		
-	}, true);
-	
-	}); //ON "pageshow"
-	
-	$(document).on("click", 'button.facebook', function(){
-	
-	FB.login(function(response) {
-            
-		if (response.authResponse) {
-			
-			FB.api('/me', function(response) {
-			$("p.facebook").html('Benvenuto, ' + response.name + '.');
-			$("a#saltaAFoursquare").html('Avanti');
-			});
-		}
-		else {
-            alert('not logged in');
-        }
-    },
-	{ scope: "email" }
-    );
-	
-	}); //ON "click"
-	
-</script>
-	
-	<h1>FACEBOOK</h1>
-
-	<p class="facebook"></p>
-	<a href="#foursquare" id="saltaAFoursquare" data-transition="slide">Salta</a>
-		
-	</div>
-	<!-- CONTENT -->
-
-	<!-- FOOTER -->
-	<div data-role="footer" data-theme="a" data-position="fixed">
-		<h4>Page Footer</h4>
-	</div>
-	<!-- /FOOTER -->
-
-</div><!-- /PAGE #facebook -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- PAGE #foursquare -->
-<div data-role="page" id="foursquare">
-
-	<!-- /HEADER -->
-	<div data-role="header">
-		<h1>Foursquare</h1>
-	</div>
-	<!-- /HEADER -->
-	
-	<!-- CONTENT -->
-	<div role="main" class="ui-content" >
-	
-	<script>   
-	$( "#foursquare" ).on( "pagebeforeshow", function() {	
-	
-	var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
-	
-		if(tokenFoursquare == null) {
-		$("p.foursquare").html('<button class="foursquare ui-btn ui-shadow">Collega Account</button>');
-		}
-		else {
-		$.getJSON('https://api.foursquare.com/v2/users/self?oauth_token='+tokenFoursquare+'&v=20140304', function(data){
-		var user = data['response']['user']['firstName'];
-		
-		$("p.foursquare").html('Benvenuto, ' + user + '.');
-		$("a#saltaATwitter").html('Avanti');
-		});
-		
-		}
-	
-	}); //ON "pagebeforeshow"
-	
-	$(document).on("click", 'button.foursquare', function(){
-	
-	var ref = window.open('https://foursquare.com/oauth2/authenticate?client_id=4P4XY5XMV2EEGL4THQFXJFMJBTJN4WBNX1VIQGAUWDPHYZZF&response_type=token&redirect_uri=http://www.wificomo.com/ccn20/closeFoursquare.html', '_blank', 'location=no');
-	
-	ref.addEventListener('loadstart', function(event) {
-    closeFoursquare(event.url,ref);
-	}); 
-	
-	function closeFoursquare(loc,ref) {
-   
-		if (loc.indexOf("www.wificomo.com/ccn20/closeFoursquare.html#") > -1){
-		var tokenFoursquare = loc.substring(loc.indexOf("=")+1);
-		window.localStorage.setItem("tokenFoursquare", tokenFoursquare);
-		
-		$.getJSON('https://api.foursquare.com/v2/users/self?oauth_token='+tokenFoursquare+'&v=20140304', function(data){
-		var user = data['response']['user']['firstName'];
-		$("p.foursquare").html('Benvenuto, ' + user + '.');
-		$("a#saltaATwitter").html('Avanti');
-		});
-		
-		ref.close();
-		}
-	}
-	
-	
-	}); //ON "click"
-	
-	
-        
-		
-		 
-    
-
-	
-
-	
-	</script>
-	
-	<h1>Foursquare</h1>
-	<p class="foursquare"></p>
-	<a href="#twitter" id="saltaATwitter" data-transition="slide">Salta</a>
-	
-	</div>
-	<!-- CONTENT -->
-
-	<!-- FOOTER -->
-	<div data-role="footer" data-theme="a" data-position="fixed">
-		<h4>Page Footer</h4>
-	</div>
-	<!-- /FOOTER -->
-
-</div><!-- /PAGE #foursquare -->
-
-<!-- PAGE #twitter -->
-<div data-role="page" id="twitter">
-
-	<!-- /HEADER -->
-	<div data-role="header">
-		<h1>Twitter</h1>
-	</div>
-	<!-- /HEADER -->
-	
-	<!-- CONTENT -->
-	<div role="main" class="ui-content" >
-	
-	<script>   
-	$( "#twitter" ).on( "pagebeforeshow", function() {	
-	
-	var twitterToken = window.localStorage.getItem("twitterToken");
-	
-		if(twitterToken == null) {
-		$("p.twitter").html('<button class="twitter ui-btn ui-shadow">Collega Account</button>');
-		}
-		else {
-		
-		var twitterName = window.localStorage.getItem("twitterName");
-		
-		$("p.twitter").html('Benvenuto, ' + twitterName + '.');
-		$("a#saltaAIndex").html('Avanti');
-		}
-	
-	}); //ON "pagebeforeshow"
-	
-	
-	$(document).on("click", 'button.twitter', function(){
-	
-	var ref = window.open('http://www.wificomo.com/twitter/twitterConnect.php', '_blank', 'location=no');
-		
-		ref.addEventListener('loadstart', function(event) {
-        closeTwitter(event.url,ref);
-		});  
-	
-	function closeTwitter(loc,ref) {
-   
-		if (loc.indexOf("www.wificomo.com/twitter/twitterTokens.php?") > -1){
-		
-		var twitterToken = loc.substring(loc.indexOf("oauth_token=")+12, loc.indexOf("&"));
-		var twitterVerifier = loc.substring(loc.indexOf("oauth_verifier=")+15, loc.indexOf("&t"));
-		var twitterName = loc.substring(loc.indexOf("twitterName=")+12);
-		twitterName = decodeURIComponent(twitterName);
-		
-		window.localStorage.setItem("twitterToken", twitterToken);
-		window.localStorage.setItem("twitterVerifier", twitterVerifier);
-		window.localStorage.setItem("twitterName", twitterName);
-		
-		$("p.twitter").html('Benvenuto, ' + twitterName + '.');
-		$("a#saltaAIndex").html('Avanti');
-		
-		ref.close();
-		}
-	}
-	
-	}); //ON "click"
-	
-	</script>
-	
-	<h1>Twitter</h1>
-	<p class="twitter"></p>
-	<a href="#index" id="saltaAIndex" data-transition="slide">Salta</a>
-	
-	</div>
-	<!-- CONTENT -->
-
-	<!-- FOOTER -->
-	<div data-role="footer" data-theme="a" data-position="fixed">
-		<h4>Page Footer</h4>
-	</div>
-	<!-- /FOOTER -->
-
-</div><!-- /PAGE #twitter -->
+		</div>
+<!-- /PAGE #downloadLingua -->
 
 </body>
 </html>
