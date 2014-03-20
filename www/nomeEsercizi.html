@@ -215,9 +215,7 @@
 		var group;
 		var watchID = null;
 		var options = { maximumAge: 5000, timeout: 30000, enableHighAccuracy: true };
-      
-		watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
-	
+      	
 		var parkingIcon = L.icon({
 			iconUrl: 'img/parking.png',
 			iconSize:     [32, 37], // size of the icon
@@ -230,10 +228,10 @@
 			popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
 		});
 		
-		
-	
 		markerEsercizio = L.marker([esercizioLatitude, esercizioLongitude], {icon: markerIcon}).addTo(map).bindPopup(nomeEsercizioMappa);
 
+		watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
+		
 // FUNCTION SUCCESS WATCH POSITION
 
 		function onSuccess(position) {
