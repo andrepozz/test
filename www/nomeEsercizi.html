@@ -138,12 +138,12 @@
 				
 				$("h3.nomeEsercizio").html(info.NomeEsercizio);
 				$(".indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
+				$(".descrizioneEsercizio").html(""); // SVUOTA DESCRIZIONE PER PREVENIRE DESCRIZIONI NULLE
 				$(".descrizioneEsercizio").html(info.Descrizione);
 				 
 				esercizioLatitude = info.Latitudine;
 				esercizioLongitude = info.Longitudine;
 				nomeEsercizioMappa = info.NomeEsercizio;
-				descrizioneEsercizio = info.Descrizione;
 				linguaDescrizioneEsercizio = info.LinguaDescrizione;
 				if (info.Parcheggio != undefined)
 				{
@@ -174,8 +174,6 @@
 		$( ".parcheggioVicino" ).append( "<li class='immagineParcheggio'><img class='imgParcheggio' src='img/parcheggioVicino.png' style='width: 37px; height: 50px;'><p class='nomeParcheggio'>"+parcheggioVicino+"</p></li>" );
 		}
 		
-	}); //PAGEBEFORESHOW
-	$( document ).on( "pageshow", "#vetrinaMappa", function() {
 		
 // MAPPA + POSIZIONE UTENTE
 	
