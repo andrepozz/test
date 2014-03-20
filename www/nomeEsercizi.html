@@ -113,7 +113,7 @@
 	
 		var path = window.localStorage.getItem("pathSD");
 		var jsonPath = path + "/esercizi/"+idEsercizio+".js";
-		var jsonVetrina = null;
+		var jsonVetrina;
 		
 		$.ajax({
 			url: jsonPath,
@@ -142,7 +142,6 @@
 				$(".descrizioneEsercizio").html(info.Descrizione);
 				 
 				esercizioLatitude = info.Latitudine;
-				alert(esercizioLatitude);
 				esercizioLongitude = info.Longitudine;
 				nomeEsercizioMappa = info.NomeEsercizio;
 				descrizioneEsercizio = info.Descrizione;
@@ -206,8 +205,7 @@
 		};
 		controlloZoom.addTo(map);
 		
-		alert("ESEr"+esercizioLatitude);
-
+		
 		var userLatitude;
 		var userLongitude;
 		var markerUtente;
@@ -240,7 +238,6 @@
 			userLongitude = position.coords.longitude;
 	
 			var distance = 5000;
-			alert(idEsercizio);
 			$.getJSON("js/jsonPosition.js", function( jsonPosition ) {
 				$.each(jsonPosition, function(index, info) {
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
@@ -254,6 +251,7 @@
 				
 		
 			var L = jsonVetrina.length;
+			alert("JsonLength" +L);
 			for (var i = 0; i < L; i++)
 			{
 				var obj = jsonVetrina[i];
