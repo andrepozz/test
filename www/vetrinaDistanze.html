@@ -79,13 +79,15 @@
 		
 //NAVIGATE BUTTON
 		
+		$( ".navigateEsercizio" ).html("");
 		$( ".navigateEsercizio" ).append( "<a href='#' geoPosition='"+esercizioLatitude+","+esercizioLongitude+"'class='directions'>Navigazione</a>" );
 
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = localStorage.getItem("codLingua");
 		alert(codLingua);
-		if(codLingua != "it" || codLingua != "en"){
-			$( "#box-descrizioneEsercizio" ).append( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
+		if(codLingua !== "it" || codLingua !== "en"){
+			$( ".traduciDescrizioneEsercizio" ).html("");
+			$( ".traduciDescrizioneEsercizio" ).append( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
 		}
 		
 			
@@ -285,6 +287,7 @@
 	
 	<div id="box-descrizioneEsercizio">
 	<p class="descrizioneEsercizio"></p>
+	<p class="traduciDescrizioneEsercizio"></p>
 	</div>
 	<!-- /DESCRIZIONE ESERCIZIO -->
 	
