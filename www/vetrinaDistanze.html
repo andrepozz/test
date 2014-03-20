@@ -85,8 +85,7 @@
 
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = localStorage.getItem("codLingua");
-		alert(typeof codLingua);
-		if(codLingua != "it" || codLingua != "en"){
+		if(!(codLingua == 'it' || codLingua == 'en'))
 			$( ".traduciDescrizioneEsercizio" ).html("");
 			$( ".traduciDescrizioneEsercizio" ).append( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
 		}
