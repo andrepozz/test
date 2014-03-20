@@ -161,7 +161,6 @@
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = localStorage.getItem("codLingua");
 		if(!(codLingua == 'ru' || codLingua == 'en')){
-			alert(descrizioneEsercizio);
 			if(descrizioneEsercizio != undefined)
 			{
 			$( ".traduciDescrizioneEsercizio" ).html("");
@@ -231,7 +230,7 @@
 			popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
 		});
 		
-		alert(esercizioLatitude);
+		alert("ESEr"+esercizioLatitude);
 	
 		markerEsercizio = L.marker([esercizioLatitude, esercizioLongitude], {icon: markerIcon}).addTo(map).bindPopup(nomeEsercizioMappa);
 
