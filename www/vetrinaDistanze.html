@@ -86,6 +86,7 @@
 		var codLingua = localStorage.getItem("codLingua");
 		alert(codLingua);
 		if(codLingua !== "it" || codLingua !== "en"){
+		alert(codLingua);
 			$( ".traduciDescrizioneEsercizio" ).html("");
 			$( ".traduciDescrizioneEsercizio" ).append( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
 		}
@@ -146,7 +147,10 @@
 	 		
 			userLatitude = position.coords.latitude;
 			userLongitude = position.coords.longitude;
-	
+			
+			alert("userLatitude: "+userLatitude);
+			alert("userLongitude: "+userLongitude);
+			
 			var distance = 5000;
 		
 			$.getJSON("js/jsonPosition.js", function( jsonPosition ) {
@@ -155,7 +159,9 @@
 					if(distance > currentDistance && info.idEsercizio != idEsercizio)
 					{
 						distance = currentDistance;
+						alert("distance: "+distance);
 						nearestEsercizio = info.idEsercizio;
+						alert("nearestEsercizio: "+nearestEsercizio);
 					}
 				});
 				alert("Nodo vicino: "+nearestEsercizio);
