@@ -120,7 +120,7 @@
 		var markerEsercizio;
 		var group;
 		var watchID = null;
-		var options = { maximumAge: 5000, timeout: 30000, enableHighAccuracy: true };
+		var options = { maximumAge: 10000, timeout: 30000, enableHighAccuracy: true };
       
 		watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
 	
