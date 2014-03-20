@@ -250,11 +250,12 @@
 				console.log("Nodo vicino: "+nearestEsercizio);
 				
 		
-			var L = jsonVetrina.length;
-			alert("JsonLength" +L);
+			var jsonVetrinaSession = JSON.parse(window.sessionStorage.getItem("jsonVetrina"));
+			
+			var L = jsonVetrinaSession.length;
 			for (var i = 0; i < L; i++)
 			{
-				var obj = jsonVetrina[i];
+				var obj = jsonVetrinaSession[i];
 				for (var j in obj.Distanze)
 				{
 					if(nearestEsercizio in obj.Distanze){
