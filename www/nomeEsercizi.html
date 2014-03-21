@@ -254,8 +254,9 @@
 				});
 				console.log("Nodo vicino: "+nearestEsercizio);
 							
-					var obj = jsonVetrina[0];
+				var obj = jsonVetrina[0];
 					if(nearestEsercizio in obj.Distanze){
+					alert("dentro");
 							$.each(obj.Distanze, function(index, infoDistance) {
 								if(infoDistance.idEsercizio == nearestEsercizio){
 									var minutes = Math.floor(infoDistance.time / 60);
