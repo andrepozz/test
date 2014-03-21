@@ -230,7 +230,7 @@
 		
 		markerEsercizio = L.marker([esercizioLatitude, esercizioLongitude], {icon: markerIcon}).addTo(map).bindPopup(nomeEsercizioMappa);
 		
-		$(".distanzaEsercizio").html("<img src='img/download.gif'>");
+		//$(".distanzaEsercizio").html("<img src='img/download.gif'>");
 		
 		watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
 		
