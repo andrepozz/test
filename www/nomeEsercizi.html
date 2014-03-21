@@ -254,7 +254,8 @@
 				});
 				console.log("Nodo vicino: "+nearestEsercizio);
 							
-				var obj = jsonVetrina[0];
+				var jsonVetrinaSession = JSON.parse(window.sessionStorage.getItem("jsonVetrina"));
+				var obj = jsonVetrinaSession[0];
 					if(nearestEsercizio in obj.Distanze){
 					alert("dentro");
 							$.each(obj.Distanze, function(index, infoDistance) {
