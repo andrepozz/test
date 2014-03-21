@@ -107,7 +107,7 @@
 	<script type="text/javascript" charset="utf-8">
 	
 
-	$( document ).on( "pagebeforeshow", "#vetrinaMappa", function() {
+	$( document ).on( "pageshow", "#vetrinaMappa", function() {
 	
 // CARICA FILE VETRINA
 	
@@ -230,7 +230,7 @@
 		
 		markerEsercizio = L.marker([esercizioLatitude, esercizioLongitude], {icon: markerIcon}).addTo(map).bindPopup(nomeEsercizioMappa);
 		
-		//$(".distanzaEsercizio").html("<img src='img/download.gif'>");
+		$(".distanzaEsercizio").html("");
 		
 		watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
 		
