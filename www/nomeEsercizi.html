@@ -133,9 +133,9 @@
 		var descrizioneEsercizio;
 		var linguaDescrizioneEsercizio;
 		var parcheggioVicino;
+		var map;
 	
 		$.each(jsonVetrina, function(index, info) {
-				
 				$("h3.nomeEsercizio").html(info.NomeEsercizio);
 				$(".indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
 				$(".descrizioneEsercizio").html(""); // SVUOTA DESCRIZIONE PER PREVENIRE DESCRIZIONI NULLE
@@ -155,7 +155,7 @@
 //NAVIGATE BUTTON
 		
 		$( ".navigateEsercizio" ).html("");
-		$( ".navigateEsercizio" ).append( "<a href='#' geoPosition='"+esercizioLatitude+","+esercizioLongitude+"'class='directions'>Navigazione</a>" );
+		$( ".navigateEsercizio" ).append("<a href='#' geoPosition='"+esercizioLatitude+","+esercizioLongitude+"'class='directions'>Navigazione</a>");
 
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = localStorage.getItem("codLingua");
@@ -185,7 +185,12 @@
 // MAPPA + POSIZIONE UTENTE
 	
 		//INIZIALIZZAZIONE MAPPA
-		var map = new L.Map('map');
+		
+		$( "#map" ).remove();
+		var $map = $("<div>", {id: "map", class: "a", style:"width: 1920px; height:400px"});
+		$("#mappa").append($map);
+		
+		map = new L.Map('map');
 	
 		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 		L.tileLayer(osmUrl, {minZoom: 8, maxZoom: 18}).addTo(map);
@@ -212,14 +217,8 @@
 		var markerEsercizio;
 		var group;
 		var watchID = null;
-		var options = { maximumAge: 5000, timeout: 30000, enableHighAccuracy: true };
-      	
-		var parkingIcon = L.icon({
-			iconUrl: 'img/parking.png',
-			iconSize:     [32, 37], // size of the icon
-			popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
-		});
-	
+		var options = { maximumAge: 3000, timeout: 30000, enableHighAccuracy: true };
+      		
 		var markerIcon = L.icon({
 			iconUrl: 'img/marker-icon.png',
 			iconSize:     [25, 41], // size of the icon
@@ -238,7 +237,7 @@
 			userLongitude = position.coords.longitude;
 	
 			var distance = 5000;
-			$.getJSON("js/jsonPosition.js", function( jsonPosition ) {
+			$.getJSON("js/position.js", function( jsonPosition ) {
 				$.each(jsonPosition, function(index, info) {
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
 					if(distance > currentDistance && info.idEsercizio != idEsercizio)
@@ -248,14 +247,11 @@
 					}
 				});
 				console.log("Nodo vicino: "+nearestEsercizio);
-				
-		
-			var jsonVetrinaSession = JSON.parse(window.sessionStorage.getItem("jsonVetrina"));
-			
-			var L = jsonVetrinaSession.length;
+							
+			var L = jsonVetrina.length;
 			for (var i = 0; i < L; i++)
 			{
-				var obj = jsonVetrinaSession[i];
+				var obj = jsonVetrina[i];
 				for (var j in obj.Distanze)
 				{
 					if(nearestEsercizio in obj.Distanze){
@@ -305,7 +301,8 @@
 
 // CLICK DIRECTIONS GOOGLE
 	$(document).on("click", 'a.directions', function(){
-		directions(esercizioLatitude, esercizioLongitude);
+		geoPosition = $(this).attr('geoPosition');
+		directions(geoPosition);
 	});
 	
 // CLICK TRANSLATE GOOGLE
@@ -344,14 +341,11 @@
 		
 // FUNZIONE DIRECTIONS GOOGLE
 	
-	function directions(esercizioLatitude, esercizioLongitude) {
-		var latLongDirections = ""+esercizioLatitude+","+esercizioLongitude+"";
-		$(".directions").click(function(){
-		navigator.google_navigate.navigate(latLongDirections, function() {
+	function directions(geoPosition) {
+		navigator.google_navigate.navigate(geoPosition, function() {
 			console.log('Success');
 		}, function(errMsg) {
 			console.log("Failed: " + errMsg);
-		});
 		});
 	}
 	
@@ -368,7 +362,7 @@
 	<!-- /NOME ESERCIZIO -->
 	
 	<!-- MAPPA + INDIRIZZO + DIRECTIONS + PANORAMICA + DISTANZA -->
-	<div id="map" style="width: 1920px; height:400px"></div>
+	<div id="mappa"></div>
 	<ul class="funzionalitaMappa">
 	<li class="singolaFunzionalitaMappa indirizzoEsercizio"></li>
 	<li class="singolaFunzionalitaMappa navigateEsercizio"></li>
@@ -387,7 +381,6 @@
 	<!-- PARCHEGGIO VICINO ESERCIZIO -->
 	
 	<ul class="parcheggioVicino">
-	<li class="immagineParcheggio"><img class="imgParcheggio" src="images/parcheggioVicino.png" style="width: 37px; height: 50px;"><p class="nomeParcheggio"></p></li>
 	</ul>
 	<!-- /PARCHEGGIO VICINO ESERCIZIO -->
 		
