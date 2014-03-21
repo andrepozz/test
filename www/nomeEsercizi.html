@@ -260,6 +260,7 @@
 					if(nearestEsercizio in obj.Distanze){
 						$.each(obj.Distanze, function(index, info) {
 							if(info.idEsercizio == nearestEsercizio){
+								alert(info.idEsercizio);
 								var minutes = Math.floor(info.time / 60);
 								var seconds = info.time - minutes * 60;
 								$(".distanzaEsercizio").html(info.distance+"m - "+minutes+":"+seconds+" min<p class='esercizioVicino'>Ora sei vicino a "+info.nomeEsercizio+"</p>");
