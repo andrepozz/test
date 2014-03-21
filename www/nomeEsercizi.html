@@ -254,23 +254,19 @@
 				});
 				console.log("Nodo vicino: "+nearestEsercizio);
 							
-				var obj = jsonVetrina[0];
-				for (var j in obj.Distanze)
-				{
+					var obj = jsonVetrina[0];
 					if(nearestEsercizio in obj.Distanze){
-						$.each(obj.Distanze, function(index, info) {
-							if(info.idEsercizio == nearestEsercizio){
-								alert(info.idEsercizio);
-								var minutes = Math.floor(info.time / 60);
-								var seconds = info.time - minutes * 60;
-								$(".distanzaEsercizio").html(info.distance+"m - "+minutes+":"+seconds+" min<p class='esercizioVicino'>Ora sei vicino a "+info.nomeEsercizio+"</p>");
-							}
-						});
+							$.each(obj.Distanze, function(index, infoDistance) {
+								if(infoDistance.idEsercizio == nearestEsercizio){
+									var minutes = Math.floor(infoDistance.time / 60);
+									var seconds = infoDistance.time - minutes * 60;
+									$(".distanzaEsercizio").html(infoDistance.distance+"m - "+minutes+":"+seconds+" min<p class='esercizioVicino'>Ora sei vicino a "+infoDistance.nomeEsercizio+"</p>");
+								}
+							});
 					}
-				else{
-						$(".distanzaEsercizio").html("+200m");
-				}
-				}
+					else{
+					$(".distanzaEsercizio").html("+200m");
+					}
 			
 			}); //END GET JSON POSITION 
 	
