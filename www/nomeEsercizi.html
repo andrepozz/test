@@ -237,7 +237,8 @@
 			userLongitude = position.coords.longitude;
 	
 			var distance = 5000;
-			$.getJSON("js/position.js", function( jsonPosition ) {
+			var jsonPositionDir = path + "/position.js";
+			$.getJSON(jsonPositionDir, function( jsonPosition ) {
 				$.each(jsonPosition, function(index, info) {
 					currentDistance = getDistanceFromLatLonInKm(userLatitude,userLongitude,info.latEsercizio,info.lonEsercizio);
 					if(distance > currentDistance && info.idEsercizio != idEsercizio)
