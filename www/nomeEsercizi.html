@@ -254,10 +254,7 @@
 				});
 				console.log("Nodo vicino: "+nearestEsercizio);
 							
-			var L = jsonVetrina.length;
-			for (var i = 0; i < L; i++)
-			{
-				var obj = jsonVetrina[i];
+				var obj = jsonVetrina[0];
 				for (var j in obj.Distanze)
 				{
 					if(nearestEsercizio in obj.Distanze){
@@ -273,7 +270,7 @@
 						$(".distanzaEsercizio").html("+200m");
 				}
 				}
-			}
+			
 			}); //END GET JSON POSITION 
 	
 			var userAccuracy = position.coords.accuracy 
