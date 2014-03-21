@@ -162,6 +162,7 @@
 		if(!(codLingua == 'ru' || codLingua == 'en')){
 			if(descrizioneEsercizio != undefined)
 			{
+			$( "#box-descrizioneEsercizio" ).show();
 			$( ".traduciDescrizioneEsercizio" ).html("");
 			$( ".traduciDescrizioneEsercizio" ).html( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
 			}
@@ -226,7 +227,9 @@
 		});
 		
 		markerEsercizio = L.marker([esercizioLatitude, esercizioLongitude], {icon: markerIcon}).addTo(map).bindPopup(nomeEsercizioMappa);
-
+		
+		$(".distanzaEsercizio").html("<img src='img/download.gif'>");
+		
 		watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
 		
 // FUNCTION SUCCESS WATCH POSITION
