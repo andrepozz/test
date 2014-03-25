@@ -88,7 +88,7 @@
 	$('a.lista').attr('userLongitude', userLongitude);
 	
 	
-	//CARICA JSON CATEGORIE
+	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
@@ -264,10 +264,9 @@
 	$( document ).on( "pageshow", "#eserciziViciniLista", function() {
 	
 	alert("ciao");
-	alert("lat"+userLatitude);
-	var latUser = userLatitude;
-	var lonUser = userLongitude;		
+	/*
 	
+	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
@@ -335,7 +334,7 @@
 	
 	return deg * (Math.PI/180)
 	}
-	
+	*/
 	</script>
 		
 	<ul data-role="listview" id="listaEsercizi" data-inset="true">
