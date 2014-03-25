@@ -44,7 +44,7 @@
 		<a href="#" data-rel="back" id="indietro" class="jqm-navmenu-link ui-btn ui-corner-all ui-nodisc-icon ui-alt-icon ui-btn-left" data-transition="slide" data-direction="reverse" style="vertical-align: middle; margin: 0.5em; ">indietro</a>
 	</div><!-- /header -->
 
-	<div role="main" id="map" class="ui-content" >
+	<div role="main" id="mapEsercizi" class="ui-content" >
 		
 	<script type="text/javascript" charset="utf-8">
 	
@@ -54,9 +54,9 @@
 	
 	var actualHeight = height.context.activeElement.clientHeight;
 	
-    $('#map').css('height', actualHeight);
+    $('#mapEsercizi').css('height', actualHeight);
 	
-	var map;
+	var mapEsercizi;
 	var userLatitude;
 	var userLongitude;
 	var userAccuracy;
@@ -111,11 +111,11 @@
 	
 	
 	//INIZIALIZZA MAPPA
-	map = new L.Map('map');
+	mapEsercizi = new L.Map('mapEsercizi');
 	
 	
 	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-	L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(map);
+	L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
 	
 	/*
 	L.tileLayer('map/{z}/{x}/{y}.jpg', {
@@ -137,13 +137,13 @@
 	
 	$.each(eserciziSort, function(index, info) {
 
-	markerEsercizio = L.marker([info.latEsercizio, info.lonEsercizio], {icon: markerIcon}).addTo(map).bindPopup(info.nomeEsercizio);
+	markerEsercizio = L.marker([info.latEsercizio, info.lonEsercizio], {icon: markerIcon}).addTo(mapEsercizi).bindPopup(info.nomeEsercizio);
 	
 	});
 	
 	//SET ICONA UTENTE
 	if (!markerUtente) {
-	markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").addTo(map);
+	markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").addTo(mapEsercizi);
 	markerUtente.setAccuracy(userAccuracy);
 	
 	//ADATTA LA MAPPA
@@ -155,7 +155,7 @@
 	
 	//RAGGRUPPA MARKER
 	group = new L.featureGroup([markerEsercizio, markerUtente]);
-	map.fitBounds(group.getBounds().pad(0.25));
+	mapEsercizi.fitBounds(group.getBounds().pad(0.25));
 	
 	
 	}); // FINE GET JSON POSITION
