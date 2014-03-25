@@ -104,7 +104,7 @@
 
 		currentDistance = getDistanceFromLatLonInKm(userLatitude, userLongitude, info.latEsercizio, info.lonEsercizio);
 		currentEsercizio = info.idEsercizio;
-			if(currentDistance < 800) {
+			if(currentDistance < 1000) {
 			
 			var time = Math.round(parseInt(currentDistance)/(1.4)/60);
 			
@@ -263,6 +263,7 @@
 	
 	$( document ).on( "pageshow", "#eserciziViciniLista", function() {
 	
+	alert("lat"+userLatitude);
 	var latUser = userLatitude;
 	var lonUser = userLongitude;		
 	
