@@ -84,8 +84,8 @@
 	userLatitude = position.coords.latitude;
 	userLongitude = position.coords.longitude;
 	userAccuracy = position.coords.accuracy;
-	//$('a.lista').attr('userLatitude', userLatitude);
-	//$('a.lista').attr('userLongitude', userLongitude);
+	$('a.lista').attr('userLatitude', userLatitude);
+	$('a.lista').attr('userLongitude', userLongitude);
 	
 	
 	//CARICA JSON POSITION
@@ -264,7 +264,12 @@
 	$( document ).on( "pageshow", "#eserciziViciniLista", function() {
 	
 	alert("ciao");
+	alert(userLatitude);
+	
+	
 	/*
+	var latUser = 45.803979;
+	var lonUser = 9.086079;
 	
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
