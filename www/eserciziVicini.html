@@ -81,6 +81,8 @@
 	
 	userLatitude = position.coords.latitude;
 	userLongitude = position.coords.longitude;
+	alert(userLatitude);
+	alert(userLongitude);
 	userAccuracy = position.coords.accuracy;
 	$('a.lista').attr('userLatitude', userLatitude);
 	$('a.lista').attr('userLongitude', userLongitude);
@@ -96,8 +98,6 @@
 	alert("ciao");
 	alert(path);
 	alert(jsonPositionDir);
-	alert(userLatitude);
-	alert(userLongitude);
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 		
 	
