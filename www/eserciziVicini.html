@@ -74,8 +74,10 @@
 	var userLongitude;
 	var userAccuracy;
 	var eserciziSort;
+	var watchID = null;
+	var options = { maximumAge: 1500, timeout: 30000, enableHighAccuracy: true };
 	
-	navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
 	
 	function onSuccess(position) {
 	
@@ -86,11 +88,7 @@
 	userAccuracy = position.coords.accuracy;
 	$('a.lista').attr('userLatitude', userLatitude);
 	$('a.lista').attr('userLongitude', userLongitude);
-	}
 	
-	function onError(error) {
-        //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-	}
 	
 	//CARICA JSON CATEGORIE
 	var path = window.localStorage.getItem("pathSD");
@@ -179,6 +177,12 @@
 	
 	
 	}); // FINE GET JSON POSITION
+	
+	}
+	
+	function onError(error) {
+        //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+	}
 	
 	}); // FINE PAGESHOW
 	
