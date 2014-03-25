@@ -77,16 +77,12 @@
 	var watchID = null;
 	var options = { maximumAge: 1500, timeout: 30000, enableHighAccuracy: true };
 	
-	watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-	alert("out success");
-	function onSuccess(position) {
+	watchID = navigator.geolocation.watchPosition(onSuccess, onErrorPosition, options);
 	
-	alert("success");
+	function onSuccess(position) {
 	
 	userLatitude = position.coords.latitude;
 	userLongitude = position.coords.longitude;
-	alert(userLatitude);
-	alert(userLongitude);
 	userAccuracy = position.coords.accuracy;
 	$('a.lista').attr('userLatitude', userLatitude);
 	$('a.lista').attr('userLongitude', userLongitude);
@@ -95,9 +91,6 @@
 	//CARICA JSON CATEGORIE
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
-	alert("ciao");
-	alert(path);
-	alert(jsonPositionDir);
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 		
 	
@@ -111,7 +104,7 @@
 
 		currentDistance = getDistanceFromLatLonInKm(userLatitude, userLongitude, info.latEsercizio, info.lonEsercizio);
 		currentEsercizio = info.idEsercizio;
-			if(currentDistance < 500) {
+			if(currentDistance < 800) {
 			
 			var time = Math.round(parseInt(currentDistance)/(1.4)/60);
 			
@@ -180,11 +173,15 @@
 	
 	}); // FINE GET JSON POSITION
 	
+	navigator.geolocation.clearWatch(watchID);
+
+	
 	}
 	
 	function onError(error) {
         //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 	}
+	
 	
 	}); // FINE PAGESHOW
 	
