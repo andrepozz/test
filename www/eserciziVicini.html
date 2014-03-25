@@ -263,13 +263,9 @@
 	
 	$( document ).on( "pageshow", "#eserciziViciniLista", function() {
 	
-	alert("ciao");
-	alert(userLatitude);
 	
-	
-	/*
-	var latUser = 45.803979;
-	var lonUser = 9.086079;
+	var latUser = userLatitude;
+	var lonUser = userLongitude;
 	
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
@@ -287,7 +283,7 @@
 		currentDistance = getDistanceFromLatLonInKm(latUser, lonUser, info.latEsercizio, info.lonEsercizio);
 		currentEsercizio = info.idEsercizio;
 		
-			if(currentDistance < 500) {
+			if(currentDistance < 1000) {
 			
 			var time = Math.round(parseInt(currentDistance)/(1.4)/60);
 			
@@ -314,7 +310,7 @@
 		$("ul#listaEsercizi").listview().listview('refresh');
 	
 	}); // FINE GET JSON POSITION
-	*/
+	
 	});
 	
 	function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
