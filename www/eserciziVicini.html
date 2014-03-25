@@ -266,6 +266,8 @@
 	
 	var latUser = userLatitude;
 	var lonUser = userLongitude;
+	alert(latUser);
+	alert(lonUser);
 	
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
@@ -304,7 +306,7 @@
 		$("ul#listaEsercizi").html("");
 		
 		$.each(eserciziSort, function(index, info) {
-		$("ul#listaEsercizi").append($("<li></li>",{"html":'<a href="#" class="esercizio" idEsercizio='" + info.idEsercizio + "' data-transition="slide" ><img src="../_assets/img/album-p.jpg"><h2>'+info.nomeEsercizio+'</h2><p>'+info.time+'</p></a>' }));
+		$("ul#listaEsercizi").append($("<li></li>",{"html":"<a href='#' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' ><img src='../_assets/img/album-p.jpg'><h2>'"+info.nomeEsercizio+"'</h2><p>'"+info.time+"'</p></a>" }));
 		});
 		
 		$("ul#listaEsercizi").listview().listview('refresh');
