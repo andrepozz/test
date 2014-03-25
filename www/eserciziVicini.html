@@ -261,6 +261,7 @@
 	
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
+	alert(jsonPositionDir);
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 	
 	var eserciziVicini = [];
