@@ -1,0 +1,43 @@
+@media only screen and (max-width: 300px) {
+.ui-page {
+background: url(../img/woman-small.png), url(../img/quadrati-small.png);
+background-repeat:no-repeat, no-repeat;
+background-position: bottom right, top right;
+}
+
+.ui-header{
+background: #000000 url(../img/header-small.png) no-repeat center center !important;
+}
+
+}
+ 
+ 
+ 
+@media only screen and (min-width:301px) and (max-width:789px){
+ 
+.ui-page {
+background: url(../img/woman-medium.png), url(../img/quadrati-medium.png);
+background-repeat:no-repeat, no-repeat;
+background-position: bottom right, top right;
+}
+
+.ui-header{
+background: #000000 url(../img/header-medium.png) no-repeat center center !important;
+}
+
+ 
+}
+ 
+@media only screen and (min-width: 790px) {
+ 
+.ui-page {
+background: url(../img/woman-big.png), url(../img/quadrati-big.png);
+background-repeat:no-repeat, no-repeat;
+background-position: bottom right, top right;
+}
+
+.ui-header{
+background: #000000 url(../img/header-big.png) no-repeat center center !important;
+}
+ 
+}
