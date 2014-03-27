@@ -7,8 +7,11 @@ background-position: bottom right, top right;
 
 .ui-header{
 background: #000000 url(../img/header-small.png) no-repeat center center !important;
-height: 2.2em !important;
+height: 2.5em !important;
+border: 0;
 }
+
+
 
 }
  
@@ -25,6 +28,14 @@ background-position: bottom right, top right;
 .ui-header{
 background: #000000 url(../img/header-medium.png) no-repeat center center !important;
 height: 3.5em !important;
+border: 0;
+}
+
+.ui-header .ui-btn-left, .ui-header .ui-btn-right{
+vertical-align: middle;
+margin: auto !important;
+position: absolute;
+top: .8em;
 }
 
  
@@ -41,7 +52,32 @@ background-position: bottom right, top right;
 .ui-header{
 background: #000000 url(../img/header-big.png) no-repeat center center !important;
 height: 4em !important;
+border: 0;
 }
 
- 
+.ui-header .ui-btn-left, .ui-header .ui-btn-right{
+vertical-align: middle;
+margin: auto !important;
+position: absolute;
+top: 1em;
+}
+
+.ui-listview .ui-btn{
+background-color:rgba(246,246,246,0.9);
+}
+
+.ui-listview .ui-btn:hover{
+background-color:rgba(237,237,237,0.9);
+}
+
+.ui-listview .ui-btn:pressed{
+background-color:rgba(232,232,232,0.9);
+}
+
+.ui-listview .ui-icon-carat-r{
+opacity: 1;
+}
+
+
+
 }

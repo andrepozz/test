@@ -264,17 +264,17 @@
 									if(infoDistance.idEsercizio == nearestEsercizio){
 										var minutes = Math.floor(infoDistance.time / 60);
 										var seconds = infoDistance.time - minutes * 60;
-										$(".distanzaEsercizio").html(infoDistance.distance+"m - "+minutes+":"+seconds+" min<p class='esercizioVicino'>Ora sei vicino a "+infoDistance.nomeEsercizio+"</p>");
+										$(".distanzaEsercizio").html("<img class='immagineDistanza' src='img/distanza.png'> "+infoDistance.distance+"m - "+minutes+":"+seconds+" min");
 									}
 								});
 						}
 						else{
-						$(".distanzaEsercizio").html("+200m");
+							$(".distanzaEsercizio").html("<img class='immagineDistanza' src='img/distanza.png'> +200m");
 						}
 				}
 				else
 				{
-				$(".distanzaEsercizio").html("Troppo lontato per calcolare");
+					$(".distanzaEsercizio").html("<img class='immagineDistanza' src='img/distanza.png'> Vuoi andare a piedi?!?");
 				}
 			
 			}); //END GET JSON POSITION 
@@ -402,7 +402,6 @@
                 <li><a href="#vetrinaOrari" data-transition="slide"><img src="img/orari.png"></a></li>
                 <li><a href="#vetrinaContatti" data-transition="slide"><img src="img/contatti.png"></a></li>
 				<li><a href="#vetrinaStatistiche" data-transition="slide"><img src="img/statistiche.png"></a></li>
-				<!-- <li><a href="#" data-icon="camera">Gallery</a></li> -->
             </ul>
         </div><!-- /navbar -->
 	</div><!-- /footer -->
@@ -470,11 +469,10 @@
 	<div data-role="footer" data-theme="a" data-position="fixed">
 		<div data-role="navbar" data-iconpos="top">
             <ul>
-                <li><a href="#vetrinaMappa" data-transition="slide" data-icon="location" data-direction="reverse">Mappa</a></li>
-                <li><a href="#vetrinaOrari" data-transition="slide" data-icon="clock" class="ui-btn-active ui-state-persist">Orari</a></li>
-                <li><a href="#vetrinaContatti" data-transition="slide" data-icon="phone">Contatti</a></li>
-				<li><a href="#vetrinaStatistiche" data-transition="slide" data-icon="gear">Statistiche</a></li>
-				<!-- <li><a href="#" data-icon="camera">Gallery</a></li> -->
+                <li><a href="#vetrinaMappa" data-transition="slide" data-direction="reverse"><img src="img/vetrina.png"></a></li>
+                <li><a href="#vetrinaOrari" data-transition="slide" class="ui-btn-active ui-state-persist"><img src="img/orari.png"></a></li>
+                <li><a href="#vetrinaContatti" data-transition="slide"><img src="img/contatti.png"></a></li>
+				<li><a href="#vetrinaStatistiche" data-transition="slide"><img src="img/statistiche.png"></a></li>
             </ul>
         </div><!-- /navbar -->
 	</div><!-- /footer -->
@@ -544,11 +542,10 @@
 	<div data-role="footer" data-theme="a" data-position="fixed">
 		<div data-role="navbar" data-iconpos="top">
             <ul>
-                <li><a href="#vetrinaMappa" data-transition="slide" data-icon="location" data-direction="reverse">Mappa</a></li>
-                <li><a href="#vetrinaOrari" data-transition="slide" data-icon="clock" data-direction="reverse">Orari</a></li>
-                <li><a href="#vetrinaContatti" data-transition="slide" data-icon="phone" class="ui-btn-active ui-state-persist">Contatti</a></li>
-				<li><a href="#vetrinaStatistiche" data-transition="slide" data-icon="gear">Statistiche</a></li>
-				<!-- <li><a href="#" data-icon="camera">Gallery</a></li> -->
+                <li><a href="#vetrinaMappa" data-transition="slide" data-direction="reverse"><img src="img/vetrina.png"></a></li>
+                <li><a href="#vetrinaOrari" data-transition="slide" data-direction="reverse"><img src="img/orari.png"></a></li>
+                <li><a href="#vetrinaContatti" data-transition="slide" class="ui-btn-active ui-state-persist"><img src="img/contatti.png"></a></li>
+				<li><a href="#vetrinaStatistiche" data-transition="slide" ><img src="img/statistiche.png"></a></li>
             </ul>
         </div><!-- /navbar -->
 	</div><!-- /footer -->
@@ -829,11 +826,10 @@
 	<div data-role="footer" data-theme="a" data-position="fixed">
 		<div data-role="navbar" data-iconpos="top">
             <ul>
-                <li><a href="#vetrinaMappa" data-transition="slide" data-icon="location" data-direction="reverse">Mappa</a></li>
-                <li><a href="#vetrinaOrari" data-transition="slide" data-icon="clock" data-direction="reverse">Orari</a></li>
-                <li><a href="#vetrinaContatti" data-transition="slide" data-icon="phone" data-direction="reverse">Contatti</a></li>
-				<li><a href="#vetrinaStatistiche" data-transition="slide" data-icon="gear" class="ui-btn-active ui-state-persist">Statistiche</a></li>
-				<!-- <li><a href="#" data-icon="camera">Gallery</a></li> -->
+                <li><a href="#vetrinaMappa" data-transition="slide" data-direction="reverse"><img src="img/vetrina.png"></a></li>
+                <li><a href="#vetrinaOrari" data-transition="slide" data-direction="reverse"><img src="img/orari.png"></a></li>
+                <li><a href="#vetrinaContatti" data-transition="slide" data-direction="reverse"><img src="img/contatti.png"></a></li>
+				<li><a href="#vetrinaStatistiche" data-transition="slide" class="ui-btn-active ui-state-persist"><img src="img/statistiche.png"></a></li>
             </ul>
         </div><!-- /navbar -->
 	</div><!-- /footer -->

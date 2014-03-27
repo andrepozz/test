@@ -48,7 +48,11 @@ li.singolaFunzionalitaMappa{
 }
 
 li.singolaFunzionalitaMappa.distanzaEsercizio{
-	line-height: 30px;
+	line-height: 35px;
+}
+
+.immagineDistanza{
+vertical-align: middle;
 }
 
 p.esercizioVicino{
