@@ -208,7 +208,7 @@
 		var controlloZoom = L.control({ position: 'bottomleft' });
 		controlloZoom.onAdd = function (map) {
 			this._div = L.DomUtil.create('div', 'controlloZoom');
-			this._div.innerHTML = '<button class="groupMarker">Fit to group marker</button><button class="userMarker">Fit to user marker</button>';
+			this._div.innerHTML = '<button class="groupMarker"><img src="img/userShop.png"></button><button class="userMarker"><img src="img/userPosition.png"></button>';
 			return this._div;
 		};
 		controlloZoom.addTo(map);
@@ -399,9 +399,9 @@
 		<div data-role="navbar" data-iconpos="top">
             <ul>
                 <li><a href="#vetrinaMappa" data-transition="slide" class="ui-btn-active ui-state-persist"><img src="img/vetrina.png"></a></li>
-                <li><a href="#vetrinaOrari" data-transition="slide" data-icon="clock"><img src="img/orari.png"></a></li>
-                <li><a href="#vetrinaContatti" data-transition="slide" data-icon="phone"><img src="img/contatti.png"></a></li>
-				<li><a href="#vetrinaStatistiche" data-transition="slide" data-icon="gear"><img src="img/statistiche.png"></a></li>
+                <li><a href="#vetrinaOrari" data-transition="slide"><img src="img/orari.png"></a></li>
+                <li><a href="#vetrinaContatti" data-transition="slide"><img src="img/contatti.png"></a></li>
+				<li><a href="#vetrinaStatistiche" data-transition="slide"><img src="img/statistiche.png"></a></li>
 				<!-- <li><a href="#" data-icon="camera">Gallery</a></li> -->
             </ul>
         </div><!-- /navbar -->
