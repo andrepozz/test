@@ -70,7 +70,7 @@ background-color:rgba(246,246,246,0.9);
 background-color:rgba(237,237,237,0.9);
 }
 
-.ui-listview .ui-btn:pressed{
+.ui-listview .ui-btn:active{
 background-color:rgba(232,232,232,0.9);
 }
 
