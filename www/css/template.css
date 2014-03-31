@@ -11,6 +11,48 @@ height: 2.5em !important;
 border: 0;
 }
 
+.manicoBorsa{
+background: url(../img/manico.png) no-repeat center center !important;
+height: 250px;
+}
+
+#manicoBorsa{
+background: url(../img/manico.png) no-repeat center center !important;
+height: 250px;
+width: 400px;
+background: red;
+margin: auto;
+}
+
+#rigaBorsa{
+width: 350px;
+height: 180px;
+
+margin: auto;
+}
+
+#rigaBorsa .blocco_sx{
+float: left;
+margin: 0 10px 0 0;
+}
+
+
+.ui-listview .ui-btn{
+background-color:rgba(246,246,246,0.9);
+}
+
+.ui-listview .ui-btn:hover{
+background-color:rgba(237,237,237,0.9);
+}
+
+.ui-listview .ui-btn:active{
+background-color:rgba(232,232,232,0.9);
+}
+
+.ui-listview .ui-icon-carat-r{
+opacity: 1;
+}
+
 
 
 }
@@ -38,6 +80,44 @@ position: absolute;
 top: .8em;
 }
 
+#manicoBorsa{
+background: url(../img/manico.png) no-repeat center center !important;
+height: 250px;
+width: 400px;
+background: red;
+margin: auto;
+}
+
+#rigaBorsa{
+width: 350px;
+height: 180px;
+
+margin: auto;
+}
+
+#rigaBorsa .blocco_sx{
+float: left;
+margin: 0 10px 0 0;
+}
+
+
+.ui-listview .ui-btn{
+background-color:rgba(246,246,246,0.9);
+}
+
+.ui-listview .ui-btn:hover{
+background-color:rgba(237,237,237,0.9);
+}
+
+.ui-listview .ui-btn:active{
+background-color:rgba(232,232,232,0.9);
+}
+
+.ui-listview .ui-icon-carat-r{
+opacity: 1;
+}
+
+
  
 }
  
@@ -61,6 +141,33 @@ margin: auto !important;
 position: absolute;
 top: 1em;
 }
+
+.manicoBorsa{
+background: url(../img/manico.png) no-repeat center center !important;
+height: 250px;
+}
+
+#manicoBorsa{
+background: url(../img/manico.png) no-repeat center center !important;
+height: 250px;
+width: 400px;
+background: red;
+margin: auto;
+}
+
+#rigaBorsa{
+width: 350px;
+height: 180px;
+
+margin: auto;
+}
+
+#rigaBorsa .blocco_sx{
+float: left;
+margin: 0 10px 0 0;
+}
+
+
 
 .ui-listview .ui-btn{
 background-color:rgba(246,246,246,0.9);

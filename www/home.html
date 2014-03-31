@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="css/themes/shopincomo.min.css" />
+	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.min.css" />
+	
+	<link rel="stylesheet" href="css/template.css" />
+	
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/jquery.mobile-1.4.2.min.js"></script>
+	
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/function_checkConnection.js"></script>
+	<!-- cordova facebook plugin -->
+	<script src="cdv-plugin-fb-connect.js"></script>
+	<!-- facebook js sdk -->
+	<script src="facebook-js-sdk.js"></script>
+</head>
+<body>
+
+<!-- PAGE #index -->
+<div data-role="page" id="index">
+
+	<!-- /HEADER -->
+	<div data-role="header">
+	<h1></h1>
+	</div>
+	<!-- /HEADER -->
+	
+	<!-- CONTENT -->
+	<div role="main" class="ui-content" >
+	
+	<script>   
+	$( "#index" ).on( "pagebeforeshow", function() {	
+	
+	document.addEventListener("backbutton", function(e){
+    
+		navigator.app.backHistory()
+		
+	}, false);
+	
+	
+
+		
+	</script>
+	
+	<div id="manicoBorsa">
+	</div>
+	<div id="rigaBorsa">
+	<div class="blocco_sx"><a href="eserciziVicini.html" rel="external" data-transition="slide"><img src="img/ricercaDistanza.png"></a></div><div class="blocco_dx"><a href="categorie.html" rel="external" data-transition="slide"><img src="img/ricercaCategoria.png"></a></div>
+	</div>
+	<div id="rigaBorsa">
+	<div class="blocco_sx"><a href="nomeEsercizi.html" rel="external" data-transition="slide"><img src="img/ricerche.png"></a></div><div class="blocco_dx"><a href="brandEsercizi.html" rel="external" data-transition="slide"><img src="img/ricerche.png"></a></div>
+	</div>
+	
+	</div>
+	<!-- /CONTENT -->
+
+	<!-- FOOTER -->
+	<div data-role="footer" data-position="fixed" data-tap-toggle="false">
+		<div data-role="navbar">
+			<ul>
+			<li><a href="#" class="qrCode"><img src="img/qrcode.png"></a></li>
+			<li><a href="opzioni.html" rel="external" data-transition="slide"><img src="img/opzioni.png"></a></li>
+			<li><a href="#"><img src="img/info.png"></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div>
+	<!-- /FOOTER -->
+	
+</div><!-- /PAGE #index -->
+
+
+
+</body>
+</html>
