@@ -11,30 +11,94 @@ height: 2.5em !important;
 border: 0;
 }
 
-.manicoBorsa{
-background: url(../img/manico.png) no-repeat center center !important;
-height: 250px;
+#manicoBorsa{
+height: 6.5em;
+margin: auto;
+margin-left: 5px;
 }
 
-#manicoBorsa{
-background: url(../img/manico.png) no-repeat center center !important;
-height: 250px;
-width: 400px;
-background: red;
-margin: auto;
+#manicoBorsa img{
+height: 6em !important;
 }
 
 #rigaBorsa{
-width: 350px;
-height: 180px;
-
+height: 6.5em;
 margin: auto;
+}
+
+#rigaBorsa img{
+height: 6em !important;
 }
 
 #rigaBorsa .blocco_sx{
 float: left;
 margin: 0 10px 0 0;
 }
+
+
+
+.ui-listview .ui-btn{
+background-color:rgba(246,246,246,0.9);
+}
+
+.ui-listview .ui-btn:hover{
+background-color:rgba(237,237,237,0.9);
+}
+
+.ui-listview .ui-btn:active{
+background-color:rgba(232,232,232,0.9);
+}
+
+.ui-listview .ui-icon-carat-r{
+opacity: 1;
+}
+
+}
+
+@media only screen and (min-width:301px) and (max-width:400px){
+.ui-page {
+background: url(../img/woman-medium.png), url(../img/quadrati-medium.png);
+background-repeat:no-repeat, no-repeat;
+background-position: bottom right, top right;
+}
+
+.ui-header{
+background: #000000 url(../img/header-medium.png) no-repeat center center !important;
+height: 3.5em !important;
+border: 0;
+}
+
+.ui-header .ui-btn-left, .ui-header .ui-btn-right{
+vertical-align: middle;
+margin: auto !important;
+position: absolute;
+top: .8em;
+}
+
+#manicoBorsa{
+height: 6.5em;
+margin: auto;
+margin-left: 5px;
+}
+
+#manicoBorsa img{
+height: 6em !important;
+}
+
+#rigaBorsa{
+height: 6.5em;
+margin: auto;
+}
+
+#rigaBorsa img{
+height: 6em !important;
+}
+
+#rigaBorsa .blocco_sx{
+float: left;
+margin: 0 10px 0 0;
+}
+
 
 
 .ui-listview .ui-btn{
@@ -59,7 +123,7 @@ opacity: 1;
  
  
  
-@media only screen and (min-width:301px) and (max-width:789px){
+@media only screen and (min-width:401px) and (max-width:789px){
  
 .ui-page {
 background: url(../img/woman-medium.png), url(../img/quadrati-medium.png);
@@ -81,18 +145,22 @@ top: .8em;
 }
 
 #manicoBorsa{
-background: url(../img/manico.png) no-repeat center center !important;
-height: 250px;
-width: 400px;
-background: red;
+height: 10.5em;
 margin: auto;
+margin-left: 5px;
+}
+
+#manicoBorsa img{
+height: 10em !important;
 }
 
 #rigaBorsa{
-width: 350px;
-height: 180px;
-
+height: 10.5em;
 margin: auto;
+}
+
+#rigaBorsa img{
+height: 10em !important;
 }
 
 #rigaBorsa .blocco_sx{
@@ -142,24 +210,24 @@ position: absolute;
 top: 1em;
 }
 
-.manicoBorsa{
-background: url(../img/manico.png) no-repeat center center !important;
-height: 250px;
-}
 
 #manicoBorsa{
-background: url(../img/manico.png) no-repeat center center !important;
-height: 250px;
-width: 400px;
-background: red;
+height: 11.5em;
 margin: auto;
+margin-left: 5px;
+}
+
+#manicoBorsa img{
+height: 11em !important;
 }
 
 #rigaBorsa{
-width: 350px;
-height: 180px;
-
+height: 11.5em;
 margin: auto;
+}
+
+#rigaBorsa img{
+height: 11em !important;
 }
 
 #rigaBorsa .blocco_sx{
