@@ -66,11 +66,34 @@
 	var userLatitude;
 	var userLongitude;
 	var userAccuracy;
+	var circle;
 	var eserciziSort;
 	var watchID = null;
 	var options = { maximumAge: 1500, timeout: 30000, enableHighAccuracy: true };
 	
 	watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+	
+	//INIZIALIZZA MAPPA
+	mapEsercizi = new L.Map('mapEsercizi');
+	
+	
+	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
+	
+	/*
+	L.tileLayer('map/{z}/{x}/{y}.jpg', {
+		maxZoom: 18
+	}).addTo(map);
+	*/
+	
+	//BOTTONI CONTROLLO ZOOM
+	var controlloDistance = L.control({ position: 'topright' });
+		controlloDistance.onAdd = function (mapEsercizi) {
+			this._div = L.DomUtil.create('div', 'controlloDistance');
+			this._div.innerHTML = '<button class="circleDistance" circleDistance="100">100</button><button class="circleDistance" circleDistance="200">200</button><button class="circleDistance" circleDistance="300">300</button>';
+			return this._div;
+	};
+	controlloDistance.addTo(mapEsercizi);
 	
 	function onSuccess(position) {
 	
@@ -80,6 +103,16 @@
 	$('a.lista').attr('userLatitude', userLatitude);
 	$('a.lista').attr('userLongitude', userLongitude);
 	
+	var markerUtente;
+	var group;
+	//SET ICONA ESERCIZIO
+	var markerIcon = L.icon({
+		iconUrl: 'img/marker-icon.png',
+		iconSize:     [25, 41], // size of the icon
+		popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
+	});
+		
+	var markerEsercizio;
 	
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
@@ -97,7 +130,7 @@
 
 		currentDistance = getDistanceFromLatLonInKm(userLatitude, userLongitude, info.latEsercizio, info.lonEsercizio);
 		currentEsercizio = info.idEsercizio;
-			if(currentDistance < 800) {
+			if(currentDistance < 200) {
 			
 			var time = Math.round(parseInt(currentDistance)/(1.4)/60);
 			
@@ -114,62 +147,102 @@
 		});
 		
 		eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
-	
-	
-	//INIZIALIZZA MAPPA
-	mapEsercizi = new L.Map('mapEsercizi');
-	
-	
-	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-	L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
-	
-	/*
-	L.tileLayer('map/{z}/{x}/{y}.jpg', {
-		maxZoom: 18
-	}).addTo(map);
-	*/
-	
-	var markerUtente;
-	var group;
-	
-	//SET ICONA ESERCIZIO
-	var markerIcon = L.icon({
-		iconUrl: 'img/marker-icon.png',
-		iconSize:     [25, 41], // size of the icon
-		popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
-	});
-		
-	var markerEsercizio;
-	
-	$.each(eserciziSort, function(index, info) {
-
-	markerEsercizio = L.marker([info.latEsercizio, info.lonEsercizio], {icon: markerIcon}).addTo(mapEsercizi).bindPopup(info.nomeEsercizio);
-	
-	});
+		var markers = new L.FeatureGroup();
+		$.each(eserciziSort, function(index, info) {
+		markerEsercizio = L.marker([info.latEsercizio, info.lonEsercizio], {icon: markerIcon}).bindPopup(info.nomeEsercizio);
+		markers.addLayer(markerEsercizio);
+		});
+		mapEsercizi.addLayer(markers);
 	
 	//SET ICONA UTENTE
 	if (!markerUtente) {
 	markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").addTo(mapEsercizi);
 	markerUtente.setAccuracy(userAccuracy);
+	circle = L.circle([userLatitude, userLongitude], 200, {
+    color: '#008000',
+    fillColor: '#008000',
+    fillOpacity: 0.5
+	}).addTo(mapEsercizi);
 	
 	//ADATTA LA MAPPA
-	group = new L.featureGroup([markerEsercizio, markerUtente]);
+	group = new L.featureGroup([markers, markerUtente, circle]);
 	}
 	
 	//UPDATE POSIZIONE UTENTE
 	markerUtente.setLatLng([userLatitude, userLongitude],{pulsing:true}).update();
 	
 	//RAGGRUPPA MARKER
-	group = new L.featureGroup([markerEsercizio, markerUtente]);
+	group = new L.featureGroup([markers, markerUtente, circle]);
 	mapEsercizi.fitBounds(group.getBounds().pad(0.25));
 	
 	
 	}); // FINE GET JSON POSITION
 	
 	navigator.geolocation.clearWatch(watchID);
-
 	
-	}
+	// CLICK ZOOM BUTTONS
+	
+	$(document).on("click", 'button.circleDistance', function(){
+		
+		mapEsercizi.removeLayer(markers);
+		
+		circleDistance = $(this).attr('circleDistance');
+		//CARICA JSON POSITION
+		var path = window.localStorage.getItem("pathSD");
+		var jsonPositionDir = path + "/position.js";
+		$.getJSON(jsonPositionDir, function( jsonPosition ) {
+			
+		
+		var eserciziVicini = [];
+		
+			//NEAREST NODE
+			$.each(jsonPosition, function(index, info) {
+
+			var currentDistance;
+			var currentEsercizio;
+
+			currentDistance = getDistanceFromLatLonInKm(userLatitude, userLongitude, info.latEsercizio, info.lonEsercizio);
+			currentEsercizio = info.idEsercizio;
+				if(currentDistance < circleDistance) {
+				
+				var time = Math.round(parseInt(currentDistance)/(1.4)/60);
+				
+				eserciziVicini.push({
+				idEsercizio: info.idEsercizio,
+				nomeEsercizio: info.nomeEsercizio,
+				latEsercizio: info.latEsercizio,
+				lonEsercizio: info.lonEsercizio,
+				idCategoria: info.idCategoria,
+				distance: currentDistance,
+				time: time
+				});
+				}
+			});
+			
+			eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
+			markers = new L.FeatureGroup();
+			$.each(eserciziSort, function(index, info) {
+			markerEsercizio = L.marker([info.latEsercizio, info.lonEsercizio], {icon: markerIcon}).bindPopup(info.nomeEsercizio);
+			markers.addLayer(markerEsercizio);
+			});
+			mapEsercizi.addLayer(markers);
+		
+		}); // FINE GET JSON POSITION
+		
+		circleDistance = $(this).attr('circleDistance');
+		circle.setLatLng([userLatitude, userLongitude]);
+        circle.setRadius(circleDistance);
+        circle.setStyle({color: '#008000', fillColor: '#008000'})
+		circle.redraw();
+		group = new L.featureGroup([markers, markerUtente, circle]);
+		mapEsercizi.fitBounds(group.getBounds().pad(0.25));
+	
+	
+	});
+	
+			
+	
+	} //SUCCESS
 	
 	function onError(error) {
         //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
