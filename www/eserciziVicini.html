@@ -92,13 +92,18 @@
 	window.sessionStorage.setItem("userLongitude", userLongitude);
 	window.sessionStorage.setItem("userAccuracy", userAccuracy);
 	
+	eserciziVicini();
+	
 	navigator.geolocation.clearWatch(watchID);
+	
 	} // ON SUCCESS GEOLOCATION
 	
 	function onError(error) {
         //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 	} // ON ERROR GEOLOCATION
 		
+	function eserciziVicini() {
+	
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
@@ -289,6 +294,8 @@
 		
 	
 	}); // FINE ONCLICK CIRCLE DISTANCE
+	
+	}
 	
 	}); // FINE PAGESHOW
 	
