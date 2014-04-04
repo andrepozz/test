@@ -85,8 +85,11 @@
 	userLatitude = position.coords.latitude;
 	userLongitude = position.coords.longitude;
 	userAccuracy = position.coords.accuracy;
+	maxDistance = 200;
 	$('a.lista').attr('userLatitude', userLatitude);
 	$('a.lista').attr('userLongitude', userLongitude);
+	$('a.lista').attr('maxDistance', maxDistance);
+	
 		
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
@@ -105,7 +108,7 @@
 
 		currentDistance = getDistanceFromLatLonInKm(userLatitude, userLongitude, info.latEsercizio, info.lonEsercizio);
 		currentEsercizio = info.idEsercizio;
-			if(currentDistance < 200) {
+			if(currentDistance < maxDistance) {
 			
 			var time = Math.round(parseInt(currentDistance)/(1.4)/60);
 			
@@ -185,9 +188,11 @@
 	$(document).on("click", 'button.circleDistance', function(){
 		
 		
+		
 		mapEsercizi.removeLayer(markers);
 		
 		circleDistance = $(this).attr('circleDistance');
+		$('a.lista').attr('maxDistance', circleDistance);
 		//CARICA JSON POSITION
 		var path = window.localStorage.getItem("pathSD");
 		var jsonPositionDir = path + "/position.js";
@@ -311,6 +316,7 @@
 	$(document).on("click", 'a.lista', function(){
 		userLatitude = $(this).attr('userLatitude');
 		userLongitude = $(this).attr('userLongitude');
+		maxDistance = $(this).attr('maxDistance');
 	});
 	
 	
@@ -356,7 +362,8 @@
 	
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
-	var jsonPositionDir = path + "/position.js";
+	//var jsonPositionDir = path + "/position.js";
+	var jsonPositionDir = "js/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 	
 	var eserciziVicini = [];
@@ -370,7 +377,7 @@
 		currentDistance = getDistanceFromLatLonInKm(latUser, lonUser, info.latEsercizio, info.lonEsercizio);
 		currentEsercizio = info.idEsercizio;
 		
-			if(currentDistance < 800) {
+			if(currentDistance < maxDistance) {
 			
 			var time = Math.round(parseInt(currentDistance)/(1.4)/60);
 			
