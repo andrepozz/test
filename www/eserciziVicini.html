@@ -70,29 +70,7 @@
 	var options = { maximumAge: 1500, timeout: 30000, enableHighAccuracy: true };
 	
 	watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-	
-	//INIZIALIZZA MAPPA
-	mapEsercizi = new L.Map('mapEsercizi');
-	
-	
-	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-	L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
-	
-	/*
-	L.tileLayer('map/{z}/{x}/{y}.jpg', {
-		maxZoom: 18
-	}).addTo(map);
-	*/
-	
-	//BOTTONI CONTROLLO ZOOM
-	var controlloDistance = L.control({ position: 'topright' });
-		controlloDistance.onAdd = function (mapEsercizi) {
-			this._div = L.DomUtil.create('div', 'controlloDistance');
-			this._div.innerHTML = '<button class="circleDistance" circleDistance="100"><img src="img/100m.png"></button><button class="circleDistance" circleDistance="200"><img src="img/200m.png"></button><button class="circleDistance" circleDistance="300"><img src="img/300m.png"></button>';
-			return this._div;
-	};
-	controlloDistance.addTo(mapEsercizi);
-	
+		
 	function onSuccess(position) {
 	
 	userLatitude = position.coords.latitude;
@@ -134,6 +112,30 @@
 		});
 		
 		eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
+		
+		
+		//INIZIALIZZA MAPPA
+	mapEsercizi = new L.Map('mapEsercizi');
+	
+	
+	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
+	
+	/*
+	L.tileLayer('map/{z}/{x}/{y}.jpg', {
+		maxZoom: 18
+	}).addTo(map);
+	*/
+	
+	//BOTTONI CONTROLLO ZOOM
+	var controlloDistance = L.control({ position: 'topright' });
+		controlloDistance.onAdd = function (mapEsercizi) {
+			this._div = L.DomUtil.create('div', 'controlloDistance');
+			this._div.innerHTML = '<button class="circleDistance" circleDistance="100"><img src="img/100m.png"></button><button class="circleDistance" circleDistance="200"><img src="img/200m.png"></button><button class="circleDistance" circleDistance="300"><img src="img/300m.png"></button>';
+			return this._div;
+	};
+	controlloDistance.addTo(mapEsercizi);
+		
 		
 		var markerUtente;
 		var group;
