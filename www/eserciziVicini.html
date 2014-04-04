@@ -65,7 +65,16 @@
 	var userLongitude;
 	var userAccuracy;
 	var circle;
+	var markers;
+	var markerUtente;
+	var group;
+	var markerEsercizio;
 	var eserciziSort;
+	var markerIcon = L.icon({
+		iconUrl: 'img/marker-icon.png',
+		iconSize:     [25, 41], // size of the icon
+		popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
+	});
 	var watchID = null;
 	var options = { maximumAge: 1500, timeout: 30000, enableHighAccuracy: true };
 	
@@ -82,8 +91,9 @@
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
+	//var jsonPositionDir = "js/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
-		
+	
 	
 	var eserciziVicini = [];
 		
@@ -117,7 +127,6 @@
 		//INIZIALIZZA MAPPA
 	mapEsercizi = new L.Map('mapEsercizi');
 	
-	
 	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
 	
@@ -137,28 +146,16 @@
 	controlloDistance.addTo(mapEsercizi);
 		
 		
-		var markerUtente;
-		var group;
-		//SET ICONA ESERCIZIO
-		var markerIcon = L.icon({
-			iconUrl: 'img/marker-icon.png',
-			iconSize:     [25, 41], // size of the icon
-			popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
-		});
+
 		
-	var markerEsercizio;
-		
-		var markers = new L.FeatureGroup();
+		markers = new L.FeatureGroup();
 		$.each(eserciziSort, function(index, info) {
 		markerEsercizio = L.marker([info.latEsercizio, info.lonEsercizio], {icon: markerIcon}).bindPopup(info.nomeEsercizio);
 		markers.addLayer(markerEsercizio);
 		});
 		mapEsercizi.addLayer(markers);
 	
-	//SET ICONA UTENTE
-	alert(markerUtente);
 	if (!markerUtente) {
-	alert("prova");
 	markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").addTo(mapEsercizi);
 	markerUtente.setAccuracy(userAccuracy);
 	circle = L.circle([userLatitude, userLongitude], 200, {
@@ -187,7 +184,6 @@
 	
 	$(document).on("click", 'button.circleDistance', function(){
 		
-		alert("ciao");
 		
 		mapEsercizi.removeLayer(markers);
 		
@@ -195,6 +191,7 @@
 		//CARICA JSON POSITION
 		var path = window.localStorage.getItem("pathSD");
 		var jsonPositionDir = path + "/position.js";
+		//var jsonPositionDir = "js/position.js";
 		$.getJSON(jsonPositionDir, function( jsonPosition ) {
 		
 		
