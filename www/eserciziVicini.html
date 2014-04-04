@@ -154,6 +154,7 @@
 	
 	//SET ICONA UTENTE
 	if (!markerUtente) {
+	alert("prova");
 	markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").addTo(mapEsercizi);
 	markerUtente.setAccuracy(userAccuracy);
 	circle = L.circle([userLatitude, userLongitude], 200, {
