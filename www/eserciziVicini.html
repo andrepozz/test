@@ -154,6 +154,7 @@
 		mapEsercizi.addLayer(markers);
 	
 	//SET ICONA UTENTE
+	alert(markerUtente);
 	if (!markerUtente) {
 	alert("prova");
 	markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").addTo(mapEsercizi);
