@@ -69,6 +69,33 @@
 	var group;
 	var markerEsercizio;
 	var eserciziSort;
+	
+	//INIZIALIZZA MAPPA
+		$( "#mapEsercizi" ).remove();
+		var $mapEsercizi = $("<div>", {id: "mapEsercizi", class: "a", style:"height:"+actualHeight+"px"});
+		$("#mappaEsercizi").append($mapEsercizi);
+		
+		mapEsercizi = new L.Map('mapEsercizi');
+	
+		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
+	
+		/*
+		L.tileLayer('map/{z}/{x}/{y}.jpg', {
+			maxZoom: 18
+		}).addTo(map);
+		*/
+	
+	//BOTTONI CONTROLLO ZOOM
+		var controlloDistance = L.control({ position: 'topright' });
+			controlloDistance.onAdd = function (mapEsercizi) {
+				this._div = L.DomUtil.create('div', 'controlloDistance');
+				this._div.innerHTML = '<button class="circleDistance" circleDistance="100"><img src="img/100m.png"></button><button class="circleDistance" circleDistance="200"><img src="img/200m.png"></button><button class="circleDistance" circleDistance="300"><img src="img/300m.png"></button>';
+				return this._div;
+			};
+		
+		controlloDistance.addTo(mapEsercizi);
+	
 	var markerIcon = L.icon({
 		iconUrl: 'img/marker-icon.png',
 		iconSize:     [25, 41], // size of the icon
@@ -91,8 +118,19 @@
 	window.sessionStorage.setItem("userLatitude", userLatitude);
 	window.sessionStorage.setItem("userLongitude", userLongitude);
 	window.sessionStorage.setItem("userAccuracy", userAccuracy);
+	
+	eserciziVicini();
+	
+	
+	
+	} // ON SUCCESS GEOLOCATION
+	
+	function onError(error) {
+        //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+	} // ON ERROR GEOLOCATION
 		
-			
+	function eserciziVicini() {
+	
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
@@ -134,37 +172,7 @@
 			}
 		});
 		
-		eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
-		
-		
-	//INIZIALIZZA MAPPA
-		$( "#mapEsercizi" ).remove();
-		var $mapEsercizi = $("<div>", {id: "mapEsercizi", class: "a", style:"height:"+actualHeight+"px"});
-		$("#mappaEsercizi").append($mapEsercizi);
-		
-		mapEsercizi = new L.Map('mapEsercizi');
-	
-		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-		L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
-	
-		/*
-		L.tileLayer('map/{z}/{x}/{y}.jpg', {
-			maxZoom: 18
-		}).addTo(map);
-		*/
-	
-	//BOTTONI CONTROLLO ZOOM
-		var controlloDistance = L.control({ position: 'topright' });
-			controlloDistance.onAdd = function (mapEsercizi) {
-				this._div = L.DomUtil.create('div', 'controlloDistance');
-				this._div.innerHTML = '<button class="circleDistance" circleDistance="100"><img src="img/100m.png"></button><button class="circleDistance" circleDistance="200"><img src="img/200m.png"></button><button class="circleDistance" circleDistance="300"><img src="img/300m.png"></button>';
-				return this._div;
-			};
-		
-		controlloDistance.addTo(mapEsercizi);
-		
-		
-
+		eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );	
 		
 		markers = new L.FeatureGroup();
 		
@@ -198,8 +206,6 @@
 	
 		}); // FINE GET JSON POSITION
 		
-	
-	
 	// CLICK ZOOM BUTTONS
 	
 	$(document).on("click", 'button.circleDistance', function(){
@@ -286,11 +292,7 @@
 	
 	}); // FINE ONCLICK CIRCLE DISTANCE
 	
-	} // ON SUCCESS GEOLOCATION
-	
-	function onError(error) {
-        //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-	} // ON ERROR GEOLOCATION
+	}
 	
 	}); // FINE PAGESHOW
 	
