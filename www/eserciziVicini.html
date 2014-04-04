@@ -91,18 +91,8 @@
 	window.sessionStorage.setItem("userLatitude", userLatitude);
 	window.sessionStorage.setItem("userLongitude", userLongitude);
 	window.sessionStorage.setItem("userAccuracy", userAccuracy);
-	
-	eserciziVicini();
-	
-	
-	} // ON SUCCESS GEOLOCATION
-	
-	function onError(error) {
-        //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-	} // ON ERROR GEOLOCATION
 		
-	function eserciziVicini() {
-	
+			
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
@@ -209,7 +199,7 @@
 		}); // FINE GET JSON POSITION
 		
 	
-	/*
+	
 	// CLICK ZOOM BUTTONS
 	
 	$(document).on("click", 'button.circleDistance', function(){
@@ -295,9 +285,12 @@
 		
 	
 	}); // FINE ONCLICK CIRCLE DISTANCE
-	*/
 	
-	}
+	} // ON SUCCESS GEOLOCATION
+	
+	function onError(error) {
+        //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+	} // ON ERROR GEOLOCATION
 	
 	}); // FINE PAGESHOW
 	
