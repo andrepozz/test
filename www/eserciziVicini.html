@@ -49,7 +49,7 @@
 		<a href="#" data-rel="back" id="indietro" class="jqm-navmenu-link ui-btn ui-corner-all ui-nodisc-icon ui-alt-icon ui-btn-left" data-transition="slide" data-direction="reverse" style="vertical-align: middle; margin: 0.5em; ">indietro</a>
 	</div><!-- /header -->
 
-	<div role="main" id="mapEsercizi" class="ui-content" >
+	<div role="main" class="ui-content" style="padding:0">
 		
 	<script type="text/javascript" charset="utf-8">
 	
@@ -57,14 +57,13 @@
 	var height = $('[data-role="content"]').height(getRealContentHeight());
 	
 	var actualHeight = height.context.activeElement.clientHeight;
-	
-    $('#mapEsercizi').css('height', actualHeight);
-	
+		
 	var mapEsercizi;
 	var userLatitude;
 	var userLongitude;
 	var userAccuracy;
 	var circle;
+	var maxDistance;
 	var markers;
 	var markerUtente;
 	var group;
@@ -85,29 +84,46 @@
 	userLatitude = position.coords.latitude;
 	userLongitude = position.coords.longitude;
 	userAccuracy = position.coords.accuracy;
-	maxDistance = 200;
 	$('a.lista').attr('userLatitude', userLatitude);
 	$('a.lista').attr('userLongitude', userLongitude);
 	$('a.lista').attr('maxDistance', maxDistance);
 	
+	window.sessionStorage.setItem("userLatitude", userLatitude);
+	window.sessionStorage.setItem("userLongitude", userLongitude);
+	window.sessionStorage.setItem("userAccuracy", userAccuracy);
+	
+	navigator.geolocation.clearWatch(watchID);
+	} // ON SUCCESS GEOLOCATION
+	
+	function onError(error) {
+        //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+	} // ON ERROR GEOLOCATION
 		
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
-	var jsonPositionDir = path + "/position.js";
-	//var jsonPositionDir = "js/position.js";
+	//var jsonPositionDir = path + "/position.js";
+	var jsonPositionDir = "js/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 	
+	userLatitude = window.sessionStorage.getItem("userLatitude");
+	userLongitude = window.sessionStorage.getItem("userLongitude");
+	userAccuracy = window.sessionStorage.getItem("userAccuracy");
 	
 	var eserciziVicini = [];
 		
-		//NEAREST NODE
-		$.each(jsonPosition, function(index, info) {
+	//NEAREST NODE
+	$.each(jsonPosition, function(index, info) {
 
 		var currentDistance;
 		var currentEsercizio;
-
+		
+		if(!maxDistance){
+		maxDistance = 200;
+		}
+		
 		currentDistance = getDistanceFromLatLonInKm(userLatitude, userLongitude, info.latEsercizio, info.lonEsercizio);
 		currentEsercizio = info.idEsercizio;
+		
 			if(currentDistance < maxDistance) {
 			
 			var time = Math.round(parseInt(currentDistance)/(1.4)/60);
@@ -127,65 +143,71 @@
 		eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
 		
 		
-		//INIZIALIZZA MAPPA
-	mapEsercizi = new L.Map('mapEsercizi');
+	//INIZIALIZZA MAPPA
+		$( "#mapEsercizi" ).remove();
+		var $mapEsercizi = $("<div>", {id: "mapEsercizi", class: "a", style:"height:"+actualHeight+"px"});
+		$("#mappaEsercizi").append($mapEsercizi);
+		
+		mapEsercizi = new L.Map('mapEsercizi');
 	
-	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-	L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
+		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+		L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
 	
-	/*
-	L.tileLayer('map/{z}/{x}/{y}.jpg', {
-		maxZoom: 18
-	}).addTo(map);
-	*/
+		/*
+		L.tileLayer('map/{z}/{x}/{y}.jpg', {
+			maxZoom: 18
+		}).addTo(map);
+		*/
 	
 	//BOTTONI CONTROLLO ZOOM
-	var controlloDistance = L.control({ position: 'topright' });
-		controlloDistance.onAdd = function (mapEsercizi) {
-			this._div = L.DomUtil.create('div', 'controlloDistance');
-			this._div.innerHTML = '<button class="circleDistance" circleDistance="100"><img src="img/100m.png"></button><button class="circleDistance" circleDistance="200"><img src="img/200m.png"></button><button class="circleDistance" circleDistance="300"><img src="img/300m.png"></button>';
-			return this._div;
-	};
-	controlloDistance.addTo(mapEsercizi);
+		var controlloDistance = L.control({ position: 'topright' });
+			controlloDistance.onAdd = function (mapEsercizi) {
+				this._div = L.DomUtil.create('div', 'controlloDistance');
+				this._div.innerHTML = '<button class="circleDistance" circleDistance="100"><img src="img/100m.png"></button><button class="circleDistance" circleDistance="200"><img src="img/200m.png"></button><button class="circleDistance" circleDistance="300"><img src="img/300m.png"></button>';
+				return this._div;
+			};
+		
+		controlloDistance.addTo(mapEsercizi);
 		
 		
 
 		
 		markers = new L.FeatureGroup();
+		
 		$.each(eserciziSort, function(index, info) {
 		markerEsercizio = L.marker([info.latEsercizio, info.lonEsercizio], {icon: markerIcon}).bindPopup(info.nomeEsercizio);
 		markers.addLayer(markerEsercizio);
 		});
+		
 		mapEsercizi.addLayer(markers);
 	
-	if (!markerUtente) {
-	markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").addTo(mapEsercizi);
-	markerUtente.setAccuracy(userAccuracy);
-	circle = L.circle([userLatitude, userLongitude], 200, {
-    color: '#008000',
-    fillColor: '#008000',
-    fillOpacity: 0.5
-	}).addTo(mapEsercizi);
+		if (!markerUtente) {
+		markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").addTo(mapEsercizi);
+		markerUtente.setAccuracy(userAccuracy);
+		circle = L.circle([userLatitude, userLongitude], 200, {
+		color: '#008000',
+		fillColor: '#008000',
+		fillOpacity: 0.5
+		}).addTo(mapEsercizi);
+		
+		//ADATTA LA MAPPA
+		group = new L.featureGroup([markers, markerUtente, circle]);
+		}
 	
-	//ADATTA LA MAPPA
-	group = new L.featureGroup([markers, markerUtente, circle]);
-	}
+		//UPDATE POSIZIONE UTENTE
+		markerUtente.setLatLng([userLatitude, userLongitude],{pulsing:true}).update();
 	
-	//UPDATE POSIZIONE UTENTE
-	markerUtente.setLatLng([userLatitude, userLongitude],{pulsing:true}).update();
-	
-	//RAGGRUPPA MARKER
-	group = new L.featureGroup([markers, markerUtente, circle]);
-	mapEsercizi.fitBounds(group.getBounds().pad(0.25));
+		//RAGGRUPPA MARKER
+		group = new L.featureGroup([markers, markerUtente, circle]);
+		mapEsercizi.fitBounds(group.getBounds().pad(0.25));
 	
 	
-	}); // FINE GET JSON POSITION
-	
-	navigator.geolocation.clearWatch(watchID);
-	
+		}); // FINE GET JSON POSITION
+		
 	// CLICK ZOOM BUTTONS
 	
 	$(document).on("click", 'button.circleDistance', function(){
+		
 		
 		mapEsercizi.removeLayer(markers);
 		
@@ -193,10 +215,13 @@
 		$('a.lista').attr('maxDistance', circleDistance);
 		//CARICA JSON POSITION
 		var path = window.localStorage.getItem("pathSD");
-		var jsonPositionDir = path + "/position.js";
-		//var jsonPositionDir = "js/position.js";
+		//var jsonPositionDir = path + "/position.js";
+		var jsonPositionDir = "js/position.js";
 		$.getJSON(jsonPositionDir, function( jsonPosition ) {
 		
+		userLatitude = window.sessionStorage.getItem("userLatitude");
+		userLongitude = window.sessionStorage.getItem("userLongitude");
+		userAccuracy = window.sessionStorage.getItem("userAccuracy");
 		
 		
 		var eserciziVicini = [];
@@ -237,7 +262,7 @@
 			if (!markerUtente) {
 			markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").addTo(mapEsercizi);
 			markerUtente.setAccuracy(userAccuracy);
-			circle = L.circle([userLatitude, userLongitude], 200, {
+			circle = L.circle([userLatitude, userLongitude], maxDistance, {
 			color: '#008000',
 			fillColor: '#008000',
 			fillOpacity: 0.5
@@ -260,18 +285,10 @@
 		circle.redraw();
 		group = new L.featureGroup([markers, markerUtente, circle]);
 		mapEsercizi.fitBounds(group.getBounds().pad(0.25));
+		
+		
 	
-	
-	});
-	
-			
-	
-	} //SUCCESS
-	
-	function onError(error) {
-        //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-	}
-	
+	}); // FINE ONCLICK CIRCLE DISTANCE
 	
 	}); // FINE PAGESHOW
 	
@@ -320,7 +337,7 @@
 	 
 	
 	</script>
-	
+	<div id="mappaEsercizi"></div>
 	</div><!-- /content -->
 
 	<!-- FOOTER -->
