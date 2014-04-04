@@ -352,16 +352,17 @@
 	
 	<script>
 	
-	$( document ).on( "pageshow", "#eserciziViciniLista", function() {
+	$( document ).on( "pagebeforeshow", "#eserciziViciniLista", function() {
 	
 	
 	var latUser = userLatitude;
 	var lonUser = userLongitude;
+	var maxDistance = maxDistance;
 	
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
-	//var jsonPositionDir = path + "/position.js";
-	var jsonPositionDir = "js/position.js";
+	var jsonPositionDir = path + "/position.js";
+	//var jsonPositionDir = "js/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 	
 	var eserciziVicini = [];
