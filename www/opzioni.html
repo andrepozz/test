@@ -3,12 +3,15 @@
 <head>
 	<title>Page Title</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css" />
+	<link rel="stylesheet" href="css/themes/shopincomo.min.css" />
+	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.min.css" />
+	
+	<link rel="stylesheet" href="css/template.css" />
 	
 	<script src="js/jquery-1.11.0.min.js"></script>
-	<script src="js/jquery.mobile-1.4.1.min.js"></script>
+	<script src="js/jquery.mobile-1.4.2.min.js"></script>
+	
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="js/function_checkConnection.js"></script>
 	<!-- cordova facebook plugin -->
@@ -23,8 +26,8 @@
 
 		<!-- /HEADER -->
 		<div data-role="header">
-		<h1>Opzioni</h1>
-		<a href="#" data-rel="back" id="indietro" class="jqm-navmenu-link ui-btn ui-corner-all ui-nodisc-icon ui-alt-icon ui-btn-left" data-transition="slide" data-direction="reverse">indietro</a>
+		<h1></h1>
+		<a href="index.html" rel="external" class="ui-btn ui-icon-home ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" data-transition="slide" data-direction="reverse">indietro</a>
 		</div>
 		<!-- /HEADER -->
 	
@@ -33,16 +36,15 @@
 		
 		<script>
 		
-		document.addEventListener("backbutton", function(e){
-    
-		if($.mobile.activePage.is('#index')){
-        e.preventDefault();
-        return false;
+		$( "#opzioni" ).on( "pagebeforeshow", function() {
+		
+		document.addEventListener("backbutton", onBackKeyDown, false);
+		
+		function onBackKeyDown(e) {
+		e.preventDefault();
 		}
-		else {
-        navigator.app.backHistory()
-		}
-		}, false);
+		
+		});
 		
 		</script>
 		
@@ -67,8 +69,8 @@
 
 		<!-- /HEADER -->
 		<div data-role="header">
-		<h1>Social Networks</h1>
-		<a href="#" data-rel="back" id="indietro" class="jqm-navmenu-link ui-btn ui-corner-all ui-nodisc-icon ui-alt-icon ui-btn-left" data-transition="slide" data-direction="reverse">indietro</a>
+		<h1></h1>
+		<a href="#opzioni" class="ui-btn ui-icon-gear ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" data-transition="slide" data-direction="reverse">indietro</a>
 		</div>
 		<!-- /HEADER -->
 	
@@ -77,6 +79,12 @@
 		
 		<script>
 		$( "#socialNetworks" ).on( "pagebeforeshow", function() {	
+		
+		document.addEventListener("backbutton", onBackKeyDown, false);
+		
+		function onBackKeyDown(e) {
+		e.preventDefault();
+		}
 		
 		//FACEBOOK
 			FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
@@ -92,12 +100,10 @@
 				}
 				//APP NON AUTORIZZATA
 				else if (response.status === 'not_authorized') {
-				alert("facebook non connesso");
 				$("img.imageFacebook").attr("src", "img/facebookListbn.png");
 				} 
 				//NON CONNESSO
 				else {
-				alert("facebook non connesso");
 				$("img.imageFacebook").attr("src", "img/facebookListbn.png");
 				}
 			}, true);
@@ -106,7 +112,6 @@
 		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
 	
 			if(tokenFoursquare == null) {
-			alert("foursquare non connesso");
 			$("img.imageFoursquare").attr("src", "img/foursquareListbn.png");
 			}
 			else {
@@ -135,9 +140,8 @@
 		$(document).on("click", 'a.collegaTwitter', function(){
 		
 		twitterToken = window.localStorage.getItem("twitterToken");
+		
 		if(twitterToken == null) {
-
-			alert("token foursquare nullo");
 			
 			var ref = window.open('http://www.wificomo.com/twitter/twitterConnect.php', '_blank', 'location=no');
 			ref.addEventListener('loadstart', function(event) {
@@ -151,20 +155,21 @@
 				var twitterVerifier = loc.substring(loc.indexOf("oauth_verifier=")+15, loc.indexOf("&t"));
 				var twitterName = loc.substring(loc.indexOf("twitterName=")+12);
 				twitterName = decodeURIComponent(twitterName);
-		
+				
+				if(twitterToken !== "") {
 				window.localStorage.setItem("twitterToken", twitterToken);
 				window.localStorage.setItem("twitterVerifier", twitterVerifier);
 				window.localStorage.setItem("twitterName", twitterName);
 		
 				$("img.imageTwitter").attr("src", "img/twitterList.png");
 				$("p.accountTwitter").html(twitterName);
-		
+				}
+				
 				ref.close();
 				}
 			}
 		}
 		else {
-		alert("elimino twitter token");
 		localStorage.removeItem("twitterToken");
 		localStorage.removeItem("twitterVerifier");
 		localStorage.removeItem("twitterName");
@@ -180,15 +185,12 @@
 			tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
 			if(tokenFoursquare == null) {
 			
-			alert("token foursquare nullo");
-			
 				var ref = window.open('https://foursquare.com/oauth2/authenticate?client_id=4P4XY5XMV2EEGL4THQFXJFMJBTJN4WBNX1VIQGAUWDPHYZZF&response_type=token&redirect_uri=http://www.wificomo.com/ccn20/closeFoursquare.html', '_blank', 'location=no');
 				ref.addEventListener('loadstart', function(event) {
 				closeFoursquare(event.url,ref);
 				}); 
 			}
 			else {
-			alert("elimino twitter foursquare");
 			localStorage.removeItem("tokenFoursquare");
 			$("img.imageFoursquare").attr("src", "img/foursquareListbn.png");
 			$("p.accountFoursquare").html("");
@@ -285,8 +287,8 @@
 
 		<!-- /HEADER -->
 		<div data-role="header">
-		<h1>Lingua</h1>
-		<a href="#" data-rel="back" id="indietro" class="jqm-navmenu-link ui-btn ui-corner-all ui-nodisc-icon ui-alt-icon ui-btn-left" data-transition="slide" data-direction="reverse">indietro</a>
+		<h1></h1>
+		<a href="#opzioni" class="ui-btn ui-icon-gear ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" data-transition="slide" data-direction="reverse">indietro</a>
 		</div>
 		<!-- /HEADER -->
 	
@@ -295,6 +297,12 @@
 	
 		<script>
 		$( "#lingua" ).on( "pagebeforeshow", function() {	
+		
+		document.addEventListener("backbutton", onBackKeyDown, false);
+		
+		function onBackKeyDown(e) {
+		e.preventDefault();
+		}
 		
 		//LISTA LINGUE
 		$("ul#listaLingue").html("");
@@ -345,14 +353,78 @@
 
 		<!-- /HEADER -->
 		<div data-role="header">
-		<h1>pagina</h1>
-		<a href="#" data-rel="back" id="indietro" class="jqm-navmenu-link ui-btn ui-corner-all ui-nodisc-icon ui-alt-icon ui-btn-left" data-transition="slide" data-direction="reverse">indietro</a>
+		<h1></h1>
+		<a href="#opzioni" class="ui-btn ui-icon-gear ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" data-transition="slide" data-direction="reverse">indietro</a>
 		</div>
 		<!-- /HEADER -->
 	
 		<!-- CONTENT -->
 		<div role="main" class="ui-content" >
+		
+		<script>
+		
+		$( "#database" ).on( "pagebeforeshow", function() {	
+		
+		document.addEventListener("backbutton", onBackKeyDown, false);
+		
+		function onBackKeyDown(e) {
+		e.preventDefault();
+		}
+		
+		$("p.countUpdates").html("");
+		$("a.updateDatabase").html("");
+		
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+			
+			fileSystem.root.getDirectory("ccn", {create: true, exclusive: false}, function(dirEntry) {
+			
+				dirEntry.getFile("categorie.js", {create: true, exclusive: false}, function(fileEntry) {
+										
+					fileEntry.getMetadata(function(metadata) {
+					var dataDownload = Date.parse(metadata.modificationTime) / 1000;
+					
+					localStorage.setItem("dataDownload", dataDownload );
+					
+					var urlJSON = "http://www.wificomo.com/ccn20/JSONidEserciziUpdate.php?language="+localStorage.getItem("codLingua")+"&dataDownload="+dataDownload;
+
+						$.getJSON(urlJSON, function( data ) {
+
+							if (typeof data === 'undefined') {
+							alert("database aggiornato");
+							}
+							else {
+								$.each(data, function(index, info) {
+			
+								var countUpdates = data.length;
+								$("p.countUpdates").html(countUpdates+" esercizi da aggiornare");
+								$("a.updateDatabase").html("aggiorna");
+								});
+							}
+						});
+					});
+					 
+				}); // end of dirEntry.getFile
+			
+			}); // fileSystem.root.getDirectory
+			
+		}); // end of window.requestFileSystem
+		
+		
+		
+		
+		}); //ON pageshow
 	
+	//ON "click"
+	$(document).on("click", 'a.updateDatabase', function(){
+	$.mobile.changePage( "aggiornaDatabase.html", { reloadPage: true, transition: "slide"} );
+	
+	}); //ON "click"
+	
+		</script>
+		
+		<p class="countUpdates"></p>
+		<a href="#" class="updateDatabase"></a>
+		
 		</div>
 		<!-- /CONTENT -->
 
@@ -362,29 +434,6 @@
 		
 		</div>
 <!-- /PAGE #database -->
-
-<!-- PAGE #pagina -->
-		<div data-role="page" id="pagina">
-
-		<!-- /HEADER -->
-		<div data-role="header">
-		<h1>pagina</h1>
-		<a href="#" data-rel="back" id="indietro" class="jqm-navmenu-link ui-btn ui-corner-all ui-nodisc-icon ui-alt-icon ui-btn-left" data-transition="slide" data-direction="reverse">indietro</a>
-		</div>
-		<!-- /HEADER -->
-	
-		<!-- CONTENT -->
-		<div role="main" class="ui-content" >
-	
-		</div>
-		<!-- /CONTENT -->
-
-		<!-- FOOTER -->
-		<div data-role="footer" data-theme="a" data-position="fixed"><h4>Page Footer</h4></div>
-		<!-- /FOOTER -->
-		
-		</div>
-<!-- /PAGE #pagina -->
 
 </body>
 </html>

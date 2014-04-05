@@ -49,7 +49,7 @@
 		<a href="#" data-rel="back" id="indietro" class="jqm-navmenu-link ui-btn ui-corner-all ui-nodisc-icon ui-alt-icon ui-btn-left" data-transition="slide" data-direction="reverse" style="vertical-align: middle; margin: 0.5em; ">indietro</a>
 	</div><!-- /header -->
 
-	<div role="main" class="ui-content" style="padding:0">
+	<div role="main" id="mapEsercizi" class="ui-content" >
 		
 	<script type="text/javascript" charset="utf-8">
 	
@@ -57,7 +57,9 @@
 	var height = $('[data-role="content"]').height(getRealContentHeight());
 	
 	var actualHeight = height.context.activeElement.clientHeight;
-		
+	
+    $('#mapEsercizi').css('height', actualHeight);
+	
 	var mapEsercizi;
 	var userLatitude;
 	var userLongitude;
@@ -69,12 +71,14 @@
 	var group;
 	var markerEsercizio;
 	var eserciziSort;
+	var markerIcon = L.icon({
+		iconUrl: 'img/marker-icon.png',
+		iconSize:     [25, 41], // size of the icon
+		popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
+	});
 	
 	//INIZIALIZZA MAPPA
-		$( "#mapEsercizi" ).remove();
-		var $mapEsercizi = $("<div>", {id: "mapEsercizi", class: "a", style:"height:"+actualHeight+"px"});
-		$("#mappaEsercizi").append($mapEsercizi);
-		
+	
 		mapEsercizi = new L.Map('mapEsercizi');
 	
 		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -96,11 +100,6 @@
 		
 		controlloDistance.addTo(mapEsercizi);
 	
-	var markerIcon = L.icon({
-		iconUrl: 'img/marker-icon.png',
-		iconSize:     [25, 41], // size of the icon
-		popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
-	});
 	var watchID = null;
 	var options = { maximumAge: 1500, timeout: 30000, enableHighAccuracy: true };
 	
@@ -119,22 +118,17 @@
 	window.sessionStorage.setItem("userLongitude", userLongitude);
 	window.sessionStorage.setItem("userAccuracy", userAccuracy);
 	
-	eserciziVicini();
-	
-	
-	
+	navigator.geolocation.clearWatch(watchID);
 	} // ON SUCCESS GEOLOCATION
 	
 	function onError(error) {
         //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 	} // ON ERROR GEOLOCATION
 		
-	function eserciziVicini() {
-	
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
-	var jsonPositionDir = path + "/position.js";
-	//var jsonPositionDir = "js/position.js";
+	//var jsonPositionDir = path + "/position.js";
+	var jsonPositionDir = "js/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 	
 	userLatitude = window.sessionStorage.getItem("userLatitude");
@@ -172,7 +166,7 @@
 			}
 		});
 		
-		eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );	
+		eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
 		
 		markers = new L.FeatureGroup();
 		
@@ -217,8 +211,8 @@
 		$('a.lista').attr('maxDistance', circleDistance);
 		//CARICA JSON POSITION
 		var path = window.localStorage.getItem("pathSD");
-		var jsonPositionDir = path + "/position.js";
-		//var jsonPositionDir = "js/position.js";
+		//var jsonPositionDir = path + "/position.js";
+		var jsonPositionDir = "js/position.js";
 		$.getJSON(jsonPositionDir, function( jsonPosition ) {
 		
 		userLatitude = window.sessionStorage.getItem("userLatitude");
@@ -292,8 +286,6 @@
 	
 	}); // FINE ONCLICK CIRCLE DISTANCE
 	
-	}
-	
 	}); // FINE PAGESHOW
 	
 	function getRealContentHeight() {
@@ -341,7 +333,7 @@
 	 
 	
 	</script>
-	<div id="mappaEsercizi"></div>
+	
 	</div><!-- /content -->
 
 	<!-- FOOTER -->
@@ -381,8 +373,8 @@
 	alert(maxDistance);
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
-	var jsonPositionDir = path + "/position.js";
-	//var jsonPositionDir = "js/position.js";
+	//var jsonPositionDir = path + "/position.js";
+	var jsonPositionDir = "js/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 	
 	var eserciziVicini = [];
