@@ -79,16 +79,16 @@
 	
 	//INIZIALIZZA MAPPA
 	
-		mapEsercizi = new L.Map('mapEsercizi');
+	mapEsercizi = new L.Map('mapEsercizi');
 	
-		var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-		L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
+	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	L.tileLayer(osmUrl, {minZoom: 13, maxZoom: 18}).addTo(mapEsercizi);
 	
-		/*
-		L.tileLayer('map/{z}/{x}/{y}.jpg', {
-			maxZoom: 18
-		}).addTo(map);
-		*/
+	/*
+	L.tileLayer('map/{z}/{x}/{y}.jpg', {
+		maxZoom: 18
+	}).addTo(map);
+	*/
 	
 	//BOTTONI CONTROLLO ZOOM
 		var controlloDistance = L.control({ position: 'topright' });
@@ -118,6 +118,8 @@
 	window.sessionStorage.setItem("userLongitude", userLongitude);
 	window.sessionStorage.setItem("userAccuracy", userAccuracy);
 	
+	caricaVetrine();
+	
 	navigator.geolocation.clearWatch(watchID);
 	} // ON SUCCESS GEOLOCATION
 	
@@ -125,6 +127,8 @@
         //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 	} // ON ERROR GEOLOCATION
 		
+	
+	function caricaVetrine() {
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
@@ -282,7 +286,7 @@
 		group = new L.featureGroup([markers, markerUtente, circle]);
 		mapEsercizi.fitBounds(group.getBounds().pad(0.25));
 		
-		
+	}
 	
 	}); // FINE ONCLICK CIRCLE DISTANCE
 	
