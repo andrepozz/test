@@ -53,7 +53,7 @@
 		
 	<script type="text/javascript" charset="utf-8">
 	
-	$( document ).on( "pageshow", "#eserciziViciniMappa", function() {
+	$( document ).on( "pagebeforeshow", "#eserciziViciniMappa", function() {
 	var height = $('[data-role="content"]').height(getRealContentHeight());
 	
 	var actualHeight = height.context.activeElement.clientHeight;
@@ -101,7 +101,7 @@
 		controlloDistance.addTo(mapEsercizi);
 	
 	var watchID = null;
-	var options = {enableHighAccuracy: true };
+	var options = {enableHighAccuracy: true};
 	
 	//watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
 	navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
