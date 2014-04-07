@@ -113,7 +113,7 @@
 	userAccuracy = position.coords.accuracy;
 	$('a.lista').attr('userLatitude', userLatitude);
 	$('a.lista').attr('userLongitude', userLongitude);
-	$('a.lista').attr('maxDistance', maxDistance);
+	
 	
 	window.sessionStorage.setItem("userLatitude", userLatitude);
 	window.sessionStorage.setItem("userLongitude", userLongitude);
@@ -150,7 +150,9 @@
 		
 		if(!maxDistance){
 		maxDistance = 200;
+		$('a.lista').attr('maxDistance', maxDistance);
 		}
+		$('a.lista').attr('maxDistance', maxDistance);
 		
 		currentDistance = getDistanceFromLatLonInKm(userLatitude, userLongitude, info.latEsercizio, info.lonEsercizio);
 		currentEsercizio = info.idEsercizio;
