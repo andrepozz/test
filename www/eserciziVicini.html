@@ -172,7 +172,7 @@
 		
 		eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
 		
-		//mapEsercizi.removeLayer(markers);
+		alert(markers);
 		markers = new L.FeatureGroup();
 		
 		$.each(eserciziSort, function(index, info) {
