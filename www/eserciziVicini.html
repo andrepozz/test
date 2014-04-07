@@ -53,7 +53,7 @@
 		
 	<script type="text/javascript" charset="utf-8">
 	
-	$( document ).on( "pagebeforeshow", "#eserciziViciniMappa", function() {
+	$( document ).on( "pageshow", "#eserciziViciniMappa", function() {
 	var height = $('[data-role="content"]').height(getRealContentHeight());
 	
 	var actualHeight = height.context.activeElement.clientHeight;
