@@ -172,8 +172,13 @@
 		
 		eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
 		
-		alert(markers);
+		if(!markers){
 		markers = new L.FeatureGroup();
+		}
+		else
+		{
+		mapEsercizi.removeLayer(markers);
+		}
 		
 		$.each(eserciziSort, function(index, info) {
 		markerEsercizio = L.marker([info.latEsercizio, info.lonEsercizio], {icon: markerIcon}).bindPopup(info.nomeEsercizio);
