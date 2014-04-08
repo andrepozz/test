@@ -132,8 +132,8 @@
 	function caricaVetrine() {
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
-	var jsonPositionDir = path + "/position.js";
-	//var jsonPositionDir = "js/position.js";
+	//var jsonPositionDir = path + "/position.js";
+	var jsonPositionDir = "js/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 	
 	userLatitude = window.sessionStorage.getItem("userLatitude");
@@ -174,6 +174,8 @@
 		});
 		
 		eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
+		
+		
 		
 		if(!markers){
 		markers = new L.FeatureGroup();
@@ -230,8 +232,8 @@
 		$('a.lista').attr('maxDistance', circleDistance);
 		//CARICA JSON POSITION
 		var path = window.localStorage.getItem("pathSD");
-		var jsonPositionDir = path + "/position.js";
-		//var jsonPositionDir = "js/position.js";
+		//var jsonPositionDir = path + "/position.js";
+		var jsonPositionDir = "js/position.js";
 		$.getJSON(jsonPositionDir, function( jsonPosition ) {
 		
 		userLatitude = window.sessionStorage.getItem("userLatitude");
@@ -266,6 +268,9 @@
 			});
 			
 			eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
+			
+			console.log(eserciziSort);
+			
 			markers = new L.FeatureGroup();
 			$.each(eserciziSort, function(index, info) {
 			markerEsercizio = L.marker([info.latEsercizio, info.lonEsercizio], {icon: markerIcon}).bindPopup(info.nomeEsercizio);
