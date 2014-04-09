@@ -1,61 +1,37 @@
 [
     {
-        "idEsercizio": "157",
-        "NomeEsercizio": "Enoteca da Gigi",
-        "Indirizzo": "via Bernardino Luini 48",
+        "idEsercizio": "1207",
+        "NomeEsercizio": "Babylonia Il Mercatino Usato Del Bambino",
+        "Descrizione": "Babylonia 0-12 è un negozio dell'usato nato per ofrirvi la possibilità di vendere ciò che i vostri piccoli non utilizzano e per acquistare abbigliamento, attrezzature, giocattoli e articoli di puericultura assolutamente selezionati, a prezzi convenienti.",
+        "LinguaDescrizione": "it",
+        "Indirizzo": "Via Anzani 28",
         "Citta": "Como",
         "Cap": "22100",
-        "Latitudine": "45.809857200000",
-        "Longitudine": "9.083437300000",
+        "Latitudine": "45.799940600000",
+        "Longitudine": "9.089760200000",
         "Orario": {
-            "lunedi": "15.00-18.00",
-            "martedi": "9.30-18.00",
-            "mercoledi": "15.00-18.00",
-            "giovedi": "9.30-18.00",
-            "venerdi": "9.30-18.00",
-            "sabato": "9.30-18.00",
-            "domenica": "9.30-18.00"
+            "domenica": "chiuso",
+            "lunedi": "chiuso",
+            "martedi": "chiuso",
+            "mercoledi": "chiuso",
+            "giovedi": "chiuso",
+            "venerdi": "chiuso",
+            "sabato": "chiuso"
         },
-        "Website": "http://www.enotecagigi.com",
-        "Email": "info@enotecagigi.com",
+        "Website": "www.babylonia0-12.it",
+        "Telefono": "031 2071889",
+        "Email": "info@babylonia0-12.it",
         "Statistiche": "si",
-        "Distanze": {
-            "34": {
-                "idEsercizio": "34",
-                "nomeEsercizio": "Moglia",
-                "distance": "79",
-                "time": "57"
-            },
-            "35": {
-                "idEsercizio": "35",
-                "nomeEsercizio": "Seveso",
-                "distance": "118",
-                "time": "85"
-            },
-            "147": {
-                "idEsercizio": "147",
-                "nomeEsercizio": "Viamaestra",
-                "distance": "29",
-                "time": "21"
-            },
-            "151": {
-                "idEsercizio": "151",
-                "nomeEsercizio": "Hops!",
-                "distance": "44",
-                "time": "32"
-            },
-            "152": {
-                "idEsercizio": "152",
-                "nomeEsercizio": "Filippo Caimi",
-                "distance": "138",
-                "time": "99"
-            },
-            "153": {
-                "idEsercizio": "153",
-                "nomeEsercizio": "Gloook",
-                "distance": "91",
-                "time": "66"
-            }
-        }
+        "mostraOrari": "no",
+        "Brand": [
+            "Abbigliamento E Accessori Da 0-12 Anni",
+            "Attrezzature Da Passeggio",
+            "Attrezzature Per La Pappa",
+            "Attrezzature Per La Nanna",
+            "Articoli Di Puericultura",
+            "Libri",
+            "Giochi",
+            "Premaman"
+        ]
     }
 ]

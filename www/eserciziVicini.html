@@ -401,8 +401,8 @@
 	var lonUser = userLongitude;
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
-	var jsonPositionDir = path + "/position.js";
-	//var jsonPositionDir = "js/position.js";
+	//var jsonPositionDir = path + "/position.js";
+	var jsonPositionDir = "js/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 	
 	var eserciziVicini = [];
@@ -437,7 +437,9 @@
 		$("ul#listaEsercizi").html("");
 		
 		$.each(eserciziSort, function(index, info) {
-		$("ul#listaEsercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' ><img src='img/categorie/"+info.idCategoria+".png'><h2>"+info.nomeEsercizio+"</h2><p><img src='img/tempoVicini.png'> "+info.time+" min</p></a>" }));
+		if(info.idCategoria > 1644){idCategoriaIcon = "other.png";}
+		else{idCategoriaIcon = ""+info.idCategoria+".png";}
+		$("ul#listaEsercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' ><img src='img/categorie/"+idCategoriaIcon+"'><h2>"+info.nomeEsercizio+"</h2><p><img src='img/tempoVicini.png'> "+info.time+" min</p></a>" }));
 		});
 		
 		$("ul#listaEsercizi").listview().listview('refresh');

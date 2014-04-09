@@ -76,6 +76,7 @@
 				
 				$("h3.nomeEsercizio").html(info.NomeEsercizio);
 				$(".indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
+				$(".brandEsercizio").html(info.Brand.join(", "));
 				
 				 
 				esercizioLatitude = info.Latitudine;
@@ -294,6 +295,7 @@
 	
 	<div id="box-nomeEsercizio">
 	<h3 class="nomeEsercizio"></h3>
+	<p class="brandEsercizio"></p>
 	</div>
 	
 	<!-- /NOME ESERCIZIO -->
