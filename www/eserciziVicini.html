@@ -112,6 +112,15 @@
 	var actualHeight = height.context.activeElement.clientHeight;
 	
     $('#mapEsercizi').css('height', actualHeight);
+	
+	$.mobile.loading( "show", {
+		text: "",
+        textVisible: false,
+        theme: "a",
+        textonly: false,
+        html: "<img src='img/positioning.gif'>"
+    });
+	
 	var mapEsercizi;
 	var userLatitudeVicini;
 	var userLongitudeVicini;
@@ -157,7 +166,7 @@
 	navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
 	
 	function onSuccess(position) {
-	
+	$.mobile.loading( "hide" );
 	userLatitudeVicini = position.coords.latitude;
 	userLongitudeVicini = position.coords.longitude;
 	userAccuracyVicini = position.coords.accuracy;
@@ -480,7 +489,6 @@
 		
 		alert(eserciziSort.length);
 		$.each(eserciziSort, function(index, info) {
-		alert(index.length);
 		if(info.idCategoria > 1644){idCategoriaIcon = "other.png";}
 		else{idCategoriaIcon = ""+info.idCategoria+".png";}
 		$("ul#listaEsercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' ><img src='img/categorie/"+idCategoriaIcon+"'><h2>"+info.nomeEsercizio+"</h2><p><img src='img/tempoVicini.png'> "+info.time+" min</p></a>" }));
