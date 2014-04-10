@@ -483,11 +483,13 @@
 		
 		var eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
 		
-		
+			$("p.noResult").html("");
+			if(eserciziSort.length == 0){
+			$("p.noResult").html("Non ci sono esercizi nelle vicinanze");
+			}
 		
 		$("ul#listaEsercizi").html("");
-		
-		alert(eserciziSort.length);
+				
 		$.each(eserciziSort, function(index, info) {
 		if(info.idCategoria > 1644){idCategoriaIcon = "other.png";}
 		else{idCategoriaIcon = ""+info.idCategoria+".png";}
@@ -531,6 +533,7 @@
 		
 	<ul data-role="listview" id="listaEsercizi" data-inset="true">
 	</ul>
+	<p class="noResults"></p>
 	
 	</div><!-- /content -->
 
