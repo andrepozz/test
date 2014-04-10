@@ -2,10 +2,14 @@
 
 /*GENERALE*/
 
-.ui-page {
+body.ui-mobile-viewport {
 background: url(../img/woman-small.png), url(../img/quadrati-small.png);
 background-repeat:no-repeat, no-repeat;
 background-position: bottom right, top right;
+}
+
+.ui-page {
+background: transparent;
 }
 
 .ui-header{
@@ -71,10 +75,14 @@ border:1px solid #dcdcdc;
 
 /*GENERALE*/
 
-.ui-page {
+body.ui-mobile-viewport {
 background: url(../img/woman-medium.png), url(../img/quadrati-medium.png);
 background-repeat:no-repeat, no-repeat;
 background-position: bottom right, top right;
+}
+
+.ui-page {
+background: transparent;
 }
 
 .ui-header{
@@ -150,10 +158,14 @@ border:1px solid #dcdcdc;
 
 /*GENERALE*/
 
-.ui-page {
+body.ui-mobile-viewport {
 background: url(../img/woman-medium.png), url(../img/quadrati-medium.png);
 background-repeat:no-repeat, no-repeat;
 background-position: bottom right, top right;
+}
+
+.ui-page {
+background: transparent;
 }
 
 .ui-header{
@@ -228,10 +240,14 @@ border:1px solid #dcdcdc;
  
 /*GENERALE*/
  
-.ui-page {
+body.ui-mobile-viewport {
 background: url(../img/woman-big.png), url(../img/quadrati-big.png);
 background-repeat:no-repeat, no-repeat;
 background-position: bottom right, top right;
+}
+ 
+.ui-page {
+background: transparent;
 }
 
 .ui-header{
