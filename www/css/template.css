@@ -318,6 +318,18 @@ float: left;
 margin: 0 10px 0 0;
 }
 
+ul.downloadList{
+list-style-type: none;
+padding: 0;
+}
+
+ul.downloadList li{
+background: #ffffff;
+padding: 5px 0 5px 5px;
+border: 1px solid black;
+margin: 0;
+}
+
 /*ESERCIZI VICINI*/
 
 button.circleDistance{
