@@ -486,8 +486,9 @@
 		
 		var eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
 		
+			alert(eserciziSort.length);
 			$("p.noResult").html("");
-			if(eserciziSort.length = 0){
+			if(eserciziSort.length == 0){
 			$("p.noResult").html("Non ci sono esercizi nelle vicinanze");
 			}
 		
