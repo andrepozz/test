@@ -64,9 +64,13 @@ margin: 0 10px 0 0;
 
 button.circleDistance{
 background-color: #FFFFFF;
-padding: 4px;
+padding: 2px;
 text-decoration: none;
 border:1px solid #dcdcdc;
+}
+
+button.circleDistance img{
+width: 2em;
 }
 
 }
@@ -144,9 +148,13 @@ margin: 0 10px 0 0;
 
 button.circleDistance{
 background-color: #FFFFFF;
-padding: 4px;
+padding: 2px;
 text-decoration: none;
 border:1px solid #dcdcdc;
+}
+
+button.circleDistance img{
+width: 2em;
 }
 
 
@@ -228,9 +236,13 @@ margin: 0 10px 0 0;
 
 button.circleDistance{
 background-color: #FFFFFF;
-padding: 4px;
+padding: 2px;
 text-decoration: none;
 border:1px solid #dcdcdc;
+}
+
+button.circleDistance img{
+width: 3em;
 }
 
  
@@ -314,6 +326,7 @@ padding: 2px;
 text-decoration: none;
 border:1px solid #dcdcdc;
 }
+
 
 
 }

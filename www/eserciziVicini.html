@@ -90,7 +90,7 @@
 
 <!-- Start of page: #eserciziViciniMappa -->
 <div data-role="page" id="eserciziViciniMappa">
-	<div data-role="header">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
 		<h1></h1>
 		<a href="index.html" rel="external" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" data-transition="slide" data-direction="reverse">indietro</a>
 	</div><!-- /header -->
@@ -330,8 +330,7 @@
 			
 			eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
 			
-			console.log(eserciziSort);
-			
+						
 			markersVicini = new L.FeatureGroup();
 			$.each(eserciziSort, function(index, info) {
 			markerEsercizio = L.marker([info.latEsercizio, info.lonEsercizio], {icon: markerIcon}).bindPopup(info.nomeEsercizio);
@@ -439,7 +438,7 @@
 <!-- Start of page: #eserciziViciniLista -->
 <div data-role="page" id="eserciziViciniLista">
 
-	<div data-role="header">
+	<div data-role="header" data-position="fixed" data-tap-toggle="false">
 		<h1></h1>
 		<a href="#eserciziViciniMappa" class="ui-btn ui-icon-location ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" data-transition="slide" data-direction="reverse">indietro</a>
 		<a href="index.html" rel="external" class="ui-btn ui-icon-home ui-btn-icon-notext ui-alt-icon ui-nodisc-icon" data-transition="slide" data-direction="reverse">indietro</a>
@@ -486,7 +485,6 @@
 		
 		var eserciziSort = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
 		
-			alert(eserciziSort.length);
 			$("p.noResult").html("");
 			if(eserciziSort.length == 0){
 			$("p.noResult").html("Non ci sono esercizi nelle vicinanze");
