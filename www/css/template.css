@@ -326,8 +326,8 @@ padding: 0;
 ul.downloadList li{
 background: #ffffff;
 padding: 5px 0 5px 5px;
-border: 1px solid black;
-margin: 0;
+border: 1px solid #4B4B4B;
+margin-bottom: 3px;
 }
 
 /*ESERCIZI VICINI*/
