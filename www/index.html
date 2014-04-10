@@ -67,7 +67,7 @@
 	
 	var codLinguaMenu = window.localStorage.getItem("codLingua");
 	alert("codLinguaMenu "+codLinguaMenu);
-	if(codLinguaMenu == "it"){
+	if(codLinguaMenu == "it" || codLinguaMenu == null){
 	estensioneImmagine = "it";
 	alert("estensioneImmagine "+estensioneImmagine);
 	}
@@ -76,8 +76,9 @@
 	alert("estensioneImmagine "+estensioneImmagine);
 	}
 	
+	$("div#rigaBorsa_1").html("");
+	$("div#rigaBorsa_2").html("");
 	$("div#rigaBorsa_1").append($("<div class='blocco_sx'><a href='eserciziVicini.html' rel='external' data-transition='slide'><img src='img/ricercaDistanza_"+estensioneImmagine+".png'></a></div><div class='blocco_dx'><a href='categorie.html' rel='external' data-transition='slide'><img src='img/ricercaCategoria_"+estensioneImmagine+".png'></a></div>"));
-	
 	$("div#rigaBorsa_2").append($("<div class='blocco_sx'><a href='nomeEsercizi.html' rel='external' data-transition='slide'><img src='img/ricercaNegozio_"+estensioneImmagine+".png'></a></div><div class='blocco_dx'><a href='brandEsercizi.html' rel='external' data-transition='slide'><img src='img/ricercaBrand_"+estensioneImmagine+".png'></a></div>"));
 	
 	
