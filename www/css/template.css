@@ -60,6 +60,22 @@ float: left;
 margin: 0 10px 0 0;
 }
 
+ul.downloadList{
+list-style-type: none;
+padding: 0;
+}
+
+ul.downloadList li{
+background: #ffffff;
+padding: 5px 0 5px 5px;
+border: 1px solid #4B4B4B;
+margin-bottom: 3px;
+}
+
+ul.downloadList li img{
+vertical-align: middle;
+}
+
 /*ESERCIZI VICINI*/
 
 button.circleDistance{
@@ -142,6 +158,22 @@ height: 6em !important;
 #rigaBorsa_1 .blocco_sx, #rigaBorsa_2 .blocco_sx{
 float: left;
 margin: 0 10px 0 0;
+}
+
+ul.downloadList{
+list-style-type: none;
+padding: 0;
+}
+
+ul.downloadList li{
+background: #ffffff;
+padding: 5px 0 5px 5px;
+border: 1px solid #4B4B4B;
+margin-bottom: 3px;
+}
+
+ul.downloadList li img{
+vertical-align: middle;
 }
 
 /*ESERCIZI VICINI*/
@@ -230,6 +262,22 @@ height: 10em !important;
 #rigaBorsa_1 .blocco_sx, #rigaBorsa_2 .blocco_sx{
 float: left;
 margin: 0 10px 0 0;
+}
+
+ul.downloadList{
+list-style-type: none;
+padding: 0;
+}
+
+ul.downloadList li{
+background: #ffffff;
+padding: 5px 0 5px 5px;
+border: 1px solid #4B4B4B;
+margin-bottom: 3px;
+}
+
+ul.downloadList li img{
+vertical-align: middle;
 }
 
 /*ESERCIZI VICINI*/
