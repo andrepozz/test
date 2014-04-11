@@ -543,9 +543,11 @@
 		
 		var numeroBlocchiDownload = Math.ceil(totaleEsercizi/50);
 		var widthBlocchiDownload = 100/numeroBlocchiDownload;
-		
+		alert(numeroBlocchiDownload);
+		alert(widthBlocchiDownload.toFixed(2));
+		var background = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
 		for (i=1; i<=numeroBlocchiDownload; i++) {
-		$("div#progressBar").append("<div class='"+i+"' style='width:"+widthBlocchiDownload+"%; height:30px; float:left'></div>");
+		$("div#progressBar").append("<div class='"+i+"' style='width:"+widthBlocchiDownload.toFixed(2)+"%; height:30px; float:left; background:"+background+"'></div>");
 		}
 		
 		window.sessionStorage.setItem("totaleEsercizi", totaleEsercizi);
