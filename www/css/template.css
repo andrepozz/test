@@ -67,13 +67,14 @@ padding: 0;
 
 ul.downloadList li{
 background: #ffffff;
-padding: 5px 0 5px 5px;
+padding: 2px 0 2px 5px;
 border: 1px solid #4B4B4B;
 margin-bottom: 3px;
 }
 
 ul.downloadList li img{
 vertical-align: middle;
+width: 1em;
 }
 
 /*ESERCIZI VICINI*/
@@ -167,13 +168,14 @@ padding: 0;
 
 ul.downloadList li{
 background: #ffffff;
-padding: 5px 0 5px 5px;
+padding: 2px 0 2px 5px;
 border: 1px solid #4B4B4B;
 margin-bottom: 3px;
 }
 
-ul.downloadList li img{
+ul.downloadList li img.iconaTipologia{
 vertical-align: middle;
+width: 2em;
 }
 
 /*ESERCIZI VICINI*/
