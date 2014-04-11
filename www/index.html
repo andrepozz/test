@@ -541,13 +541,10 @@
 		
 		var totaleEsercizi = data.length;
 		
-		var numeroBlocchiDownload = Math.ceil(totaleEsercizi/50);
+		var numeroBlocchiDownload = Math.floor(totaleEsercizi/50);
 		var widthBlocchiDownload = 100/numeroBlocchiDownload;
-		alert(numeroBlocchiDownload);
-		alert(widthBlocchiDownload.toFixed(2));
-		var background = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
 		for (i=1; i<=numeroBlocchiDownload; i++) {
-		$("div.progressBar").append("<div class='"+i+"' style='width:"+widthBlocchiDownload.toFixed(2)+"%; height:30px; float:left; background:"+background+"'></div>");
+		$("div.progressBar").append("<div class='"+i+"' style='width:"+widthBlocchiDownload.toFixed(2)+"%; height:40px; float:left'></div>");
 		}
 		
 		window.sessionStorage.setItem("totaleEsercizi", totaleEsercizi);
@@ -670,12 +667,16 @@
 	
 	</script>
 	
-	<div class="progressBar" style="width: 100%; height: 30px; background:white">
+	<h3>DOWNLOAD ESERCIZI</h3>
+	
+	<div class="progressBar" style="width: 100%; height: 40px; background:white">
 	</div>
 	
+	<!--
 	<ul style="list-style-type: none">
 	<li class="downloadVetrine">download vetrine...<img src="img/download.gif"></li>
 	</ul>
+	-->
 	
 	<p class="downloadCompleteVetrina">attendere...</p>
 	
