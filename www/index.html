@@ -246,7 +246,7 @@
 								pathSD = pathSD+"/ccn";
 								window.localStorage.setItem('pathSD', pathSD);
 								
-								$("li.categorie").html("download categorie <img src='img/downloadok.png'>");
+								$("li.categorie").html("<img src='img/downloadCategorie.png'> DOWNLOAD CATEGORIE <img src='img/downloadok.png'>");
 								$("li.categorie").css("color","white");
 								$("li.categorie").css("background","#00CC00");
 								
@@ -332,6 +332,8 @@
 	
 	downloadJSON(directory, filePosition, urlposition, pClass);
 	
+	/*
+	
 	//JSON DISTANCE
 	
 	var urldistance = encodeURI("http://www.wificomo.com/ccn20/JSONdistance.php");
@@ -340,7 +342,9 @@
 	var pClass = "distance";
 	
 	downloadJSON(directory, fileDistance, urldistance, pClass);
-		
+	
+	*/
+	
 	// TRADUZIONI------------------------------------------------------------------------------
 	
 	// T.Indietro
@@ -380,7 +384,7 @@
 						localPath,
 						function(entry) {
 						
-						$("li."+pClass+"").html("download "+pClass+" <img src='img/downloadok.png'>");
+						$("li."+pClass+"").html("<img src='img/download"+pClass+".png'> DOWNLOAD "+pClass+" <img src='img/downloadok.png'>");
 						$("li."+pClass+"").css("color","white");
 						$("li."+pClass+"").css("background","#00CC00");
 						
@@ -439,7 +443,7 @@
 						numElementi = parseInt(numElementi)-1;							
 								if(numElementi == 0) {
 								
-									$("li.sottocategorie").html("download sottocategorie <img src='img/downloadok.png'>");
+									$("li.sottocategorie").html("<img src='img/downloadSottocategorie.png'> DOWNLOAD SOTTOCATEGORIE <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
 									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
@@ -455,7 +459,7 @@
 							
 							if(numElementiError == 0) {
 								
-									$("li.sottocategorie").html("download sottocategorie <img src='img/downloadok.png'>");
+									$("li.sottocategorie").html("<img src='img/downloadSottocategorie.png'> DOWNLOAD SOTTOCATEGORIE <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
 									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
@@ -483,13 +487,13 @@
 	</script>
 	
 	<ul class="downloadList">
-	<li class="categorie">download categorie...<img src="img/download.gif"></li>
-	<li class="sottocategorie">download sottocategorie...<img src="img/download.gif"></li>
-	<li class="nome">configurazione ricerca per nome... <img src="img/download.gif"></li>
-	<li class="brandEsercizi">configurazione brand... <img src="img/download.gif"></li>
-	<li class="brand">download brand... <img src="img/download.gif"></li>
-	<li class="position">download posizioni esercizi... <img src="img/download.gif"></li>
-	<li class="distance">configurazione distanze... <img src="img/download.gif"></li>
+	<li class="categorie"><img src="img/downloadCategorie.png"> DOWNLOAD CATEGORIE...<img src="img/download.gif"></li>
+	<li class="sottocategorie"><img src="img/downloadSottocategorie.png"> DOWNLOAD SOTTOCATEGORIE...<img src="img/download.gif"></li>
+	<li class="nome"><img src="img/downloadnome.png"> CONFIGURAZIONE RICERCA ESERCIZI... <img src="img/download.gif"></li>
+	<li class="brandEsercizi"><img src="img/downloadbrand.png"> CONFIGURAZIONE RICERCA BRAND/PRODOTTI... <img src="img/download.gif"></li>
+	<li class="brand"><img src="img/downloadbrandesercizi.png"> DOWNLOAD BRAND/PRODOTTI... <img src="img/download.gif"></li>
+	<li class="position"><img src="img/downloadposition.png"> DOWNLOAD POSIZIONE ESERCIZI... <img src="img/download.gif"></li>
+	<!-- <li class="distance">configurazione distanze... <img src="img/download.gif"></li> -->
 	</ul>
 	
 	<p class="downloadComplete">attendere...</p>

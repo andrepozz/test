@@ -330,6 +330,10 @@ border: 1px solid #4B4B4B;
 margin-bottom: 3px;
 }
 
+ul.downloadList li img{
+vertical-align: middle;
+}
+
 /*ESERCIZI VICINI*/
 
 button.circleDistance{
