@@ -246,7 +246,7 @@
 								pathSD = pathSD+"/ccn";
 								window.localStorage.setItem('pathSD', pathSD);
 								
-								$("li.categorie").html("<img src='img/downloadCategorie.png'> DOWNLOAD CATEGORIE <img src='img/downloadok.png'>");
+								$("li.categorie").html("<img src='img/downloadCategorie.png'> DOWNLOAD categorie <img src='img/downloadok.png'>");
 								$("li.categorie").css("color","white");
 								$("li.categorie").css("background","#00CC00");
 								
@@ -541,6 +541,13 @@
 		
 		var totaleEsercizi = data.length;
 		
+		var numeroBlocchiDownload = Math.ceil(totaleEsercizi/50);
+		var widthBlocchiDownload = 100/numeroBlocchiDownload;
+		
+		for (i=1; i<=numeroBlocchiDownload; i++) {
+		$("div#progressBar").append("<div class='"+i+"' style='width:"+widthBlocchiDownload+"%; height:30px; float:left'></div>");
+		}
+		
 		window.sessionStorage.setItem("totaleEsercizi", totaleEsercizi);
 		window.sessionStorage.setItem("start", 0);
 		window.sessionStorage.setItem("iteration", 1);
@@ -662,16 +669,6 @@
 	</script>
 	
 	<div class="progressBar" style="width: 100%; height: 30px; background:white">
-	<div class="1" style="width:10%; height:30px; float:left"></div>
-	<div class="2" style="width:10%; height:30px; float:left"></div>
-	<div class="3" style="width:10%; height:30px; float:left"></div>
-	<div class="4" style="width:10%; height:30px; float:left"></div>
-	<div class="5" style="width:10%; height:30px; float:left"></div>
-	<div class="6" style="width:10%; height:30px; float:left"></div>
-	<div class="7" style="width:10%; height:30px; float:left"></div>
-	<div class="8" style="width:10%; height:30px; float:left"></div>
-	<div class="9" style="width:10%; height:30px; float:left"></div>
-	<div class="10" style="width:10%; height:30px; float:left"></div>
 	</div>
 	
 	<ul style="list-style-type: none">
