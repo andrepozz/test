@@ -447,7 +447,8 @@
 									$("li.sottocategorie").html("<img src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");
+			
 								}
 								else {
 								sessionStorage.setItem("numElementi", numElementi);
@@ -488,12 +489,12 @@
 	</script>
 	
 	<ul class="downloadList">
-	<li class="categorie"><img src="img/downloadCategorie.png"> DOWNLOAD categorie...<img src="img/download.gif"></li>
-	<li class="sottocategorie"><img src="img/downloadSottocategorie.png"> DOWNLOAD sottocategorie...<img src="img/download.gif"></li>
 	<li class="nome"><img src="img/downloadnome.png"> CONFIGURAZIONE nomi... <img src="img/download.gif"></li>
 	<li class="brandEsercizi"><img src="img/downloadbrand.png"> CONFIGURAZIONE brand... <img src="img/download.gif"></li>
 	<li class="brand"><img src="img/downloadbrandEsercizi.png"> DOWNLOAD brandEsercizi... <img src="img/download.gif"></li>
 	<li class="position"><img src="img/downloadposition.png"> DOWNLOAD position... <img src="img/download.gif"></li>
+	<li class="categorie"><img src="img/downloadCategorie.png"> DOWNLOAD categorie...<img src="img/download.gif"></li>
+	<li class="sottocategorie"><img src="img/downloadSottocategorie.png"> DOWNLOAD sottocategorie...<img src="img/download.gif"></li>
 	<!-- <li class="distance">configurazione distanze... <img src="img/download.gif"></li> -->
 	</ul>
 	
@@ -615,6 +616,7 @@
 							
 							$("li.downloadVetrine").html("download vetrine <img src='img/downloadok.png'>");
 							$("li.downloadVetrine").css("color","#00CC00");	
+							$("div.progressBar").css("background","#00CC00");
 							$("p.downloadCompleteVetrina").html("<a href='#facebook' class='ui-btn' data-transition='slide'>continua</a>");
 							}
 							else if(count == parseInt(iteration)*50) {
@@ -638,6 +640,7 @@
 							
 							$("li.downloadVetrine").html("download vetrine <img src='img/downloadok.png'>");
 							$("li.downloadVetrine").css("color","#00CC00");	
+							$("div.progressBar").css("background","#00CC00");
 							$("p.downloadCompleteVetrina").html("<a href='#facebook' class='ui-btn' data-transition='slide'>continua</a>");
 							}
 							else if(countError == parseInt(iterationError)*50) {
