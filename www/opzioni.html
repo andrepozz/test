@@ -441,11 +441,13 @@
 					for (var i=0;i<entries.length;i++) {
 					rv = false;
 					for (var j=0;j<idEsercizi.length;j++) {
-					rv = rv || idEsercizi[j].idEsercizio==entries[i];
+					
+					
+					rv = rv || idEsercizi[j].idEsercizio==entries[i].name.substring(0, entries[i].name.length - 3);
 					}
 					if(!rv)
-					alert(entries[i]);
-					fruits.push(entries[i]);
+					alert(entries[i].name.substring(0, entries[i].name.length - 3));
+					fruits.push(entries[i].name.substring(0, entries[i].name.length - 3));
 					}
 					console.log(fruits);
 					});
