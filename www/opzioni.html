@@ -444,8 +444,10 @@
 					rv = rv || idEsercizi[j].idEsercizio == entries[i].name.substring(0, entries[i].name.length - 3);
 					}
 					if(!rv)
+					{
 					alert(entries[i].name.substring(0, entries[i].name.length - 3));
 					fruits.push(entries[i].name.substring(0, entries[i].name.length - 3));
+					}
 					}
 					console.log(fruits);
 					});
