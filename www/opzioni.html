@@ -422,6 +422,31 @@
 				directoryReader.readEntries(success,fail);
 				
 				function success(entries) {
+					var eserciziMancanti = [];
+					var i;
+					var j;
+					var path = window.localStorage.getItem("pathSD");
+					var jsonPath = path + "/nomeEsercizi.js";
+					$.getJSON(jsonPath, function( listaEsercizi ) {
+							
+								
+							
+							
+							for(i=0;i<listaEsercizi.length;i++){
+								
+								var nomeNegozio = listaNegozi[i];
+							
+									for (var j in nomeNegozio) {
+									var id = nomeNegozio[j];
+									
+									alert(id);
+									
+									}
+							}
+
+					}
+					
+					
 					alert("Numero esercizi "+entries.length);
 					alert("Nome "+entries[4].name);
 				}
