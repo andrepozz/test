@@ -75,13 +75,13 @@
 						
 						});
 					
-					var ar2= [32,45,1191];
+					var ar2= [32,1191];
 					for (var i=0;i<ar2.length;i++) {
 					rv = false;
 					for (var j=0;j<idEsercizi.length;j++) {
 					rv = rv || idEsercizi[j].idEsercizio==ar2[i];
 					}
-					if(rv)
+					if(!rv)
 					
 					fruits.push(ar2[i]);
 					}

@@ -438,15 +438,15 @@
 						
 						});
 					
-					for (var i=0;i<entries.length;i++) {
+					for (var i=0;i<idEsercizi.length;i++) {
 					rv = false;
-					for (var j=0;j<idEsercizi.length;j++) {
-					rv = rv || parseInt(idEsercizi[j].idEsercizio) == parseInt(entries[i].name.substring(0, entries[i].name.length - 3));
+					for (var j=0;j<entries.length;j++) {
+					rv = rv ||  parseInt(idEsercizi[i].idEsercizio) == parseInt(entries[j].name.substring(0, entries[j].name.length - 3));
 					}
 					if(!rv)
 					{
-					alert(entries[i].name.substring(0, entries[i].name.length - 3));
-					fruits.push(entries[i].name.substring(0, entries[i].name.length - 3));
+					alert(idEsercizi[i].idEsercizio);
+					fruits.push(idEsercizi[i].idEsercizio);
 					}
 					}
 					alert(fruits.length);
