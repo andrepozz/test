@@ -422,12 +422,10 @@
 				directoryReader.readEntries(success,fail);
 				
 				function success(entries) {
-					/*
-					var eserciziMancanti = [];
-					var i;
-					var j;
+					
 					var path = window.localStorage.getItem("pathSD");
 					var jsonPath = path + "/nomeEsercizi.js";
+					
 					$.getJSON(jsonPath, function( listaEsercizi ) {
 					
 						var idEsercizi = [];
@@ -439,8 +437,8 @@
 						
 						});
 					
-					idEsercizi
-					
+					alert("ID ARRAY "+idEsercizi[5]);
+					/*
 					for (var i=0;i<idEsercizi.length;i++) {
 					rv = false;
 					for (var j=0;j<entries.length.length;j++) {
