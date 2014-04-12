@@ -425,30 +425,30 @@
 					
 					var path = window.localStorage.getItem("pathSD");
 					var jsonPath = path + "/nomeEsercizi.js";
-					
+
+					var fruits = [];		
 					$.getJSON(jsonPath, function( listaEsercizi ) {
-					
 						var idEsercizi = [];
 						$.each(listaEsercizi, function(index, info) {
 						
 							idEsercizi.push({
 							idEsercizio: info.idEsercizio
 							});
+
 						
 						});
 					
-					alert("ID ARRAY "+idEsercizi.length);
-					/*
-					for (var i=0;i<idEsercizi.length;i++) {
+					for (var i=0;i<entries.length;i++) {
 					rv = false;
-					for (var j=0;j<entries.length.length;j++) {
-					entries[j].name
-					rv = rv || ar2[i]==ar1[j];
+					for (var j=0;j<idEsercizi.length;j++) {
+					rv = rv || idEsercizi[j].idEsercizio==entries[i];
 					}
-					if(!rv) alert(ar2[i])
+					if(!rv)
+					alert(entries[i]);
+					fruits.push(entries[i]);
 					}
-					*/
-					}
+					console.log(fruits);
+					});
 					
 					
 					fileMancante = entries[4].name;
