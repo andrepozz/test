@@ -441,6 +441,8 @@
 					for (var i=0;i<entries.length;i++) {
 					rv = false;
 					for (var j=0;j<idEsercizi.length;j++) {
+					alert(idEsercizi[j].idEsercizio);
+					alert(entries[i].name.substring(0, entries[i].name.length - 3));
 					rv = rv || idEsercizi[j].idEsercizio == entries[i].name.substring(0, entries[i].name.length - 3);
 					}
 					if(!rv)
