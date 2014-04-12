@@ -422,33 +422,41 @@
 				directoryReader.readEntries(success,fail);
 				
 				function success(entries) {
+					/*
 					var eserciziMancanti = [];
 					var i;
 					var j;
 					var path = window.localStorage.getItem("pathSD");
 					var jsonPath = path + "/nomeEsercizi.js";
 					$.getJSON(jsonPath, function( listaEsercizi ) {
-							
-								
-							
-							
-							for(i=0;i<listaEsercizi.length;i++){
-								
-								var nomeNegozio = listaNegozi[i];
-							
-									for (var j in nomeNegozio) {
-									var id = nomeNegozio[j];
-									
-									alert(id);
-									
-									}
-							}
-
+					
+						var idEsercizi = [];
+						$.each(listaEsercizi, function(index, info) {
+						
+							idEsercizi.push({
+							idEsercizio: info.idEsercizio
+							});
+						
+						});
+					
+					idEsercizi
+					
+					for (var i=0;i<idEsercizi.length;i++) {
+					rv = false;
+					for (var j=0;j<entries.length.length;j++) {
+					entries[j].name
+					rv = rv || ar2[i]==ar1[j];
+					}
+					if(!rv) alert(ar2[i])
 					}
 					
+					}
+					*/
 					
+					fileMancante = entries[4].name;
+					fileMancante.substring(0, fileMancante.length - 3)
 					alert("Numero esercizi "+entries.length);
-					alert("Nome "+entries[4].name);
+					alert("Nome "fileMancante);
 				}
 
 				function fail(error) {
