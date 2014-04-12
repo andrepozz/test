@@ -389,10 +389,7 @@
 
 						$.getJSON(urlJSON, function( data ) {
 
-							
-							alert(data.NumeroEsercizi);
-							alert(data.EserciziUpdate);
-							if (data.EserciziUpdate.length == 0) {
+							if (data.EserciziUpdate == 'undefined') {
 							alert("database aggiornato");
 							}
 							else {
