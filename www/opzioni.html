@@ -390,7 +390,7 @@
 						$.getJSON(urlJSON, function( data ) {
 
 							alert(data);
-							if (typeof data == null) {
+							if (data == undefined) {
 							alert("database aggiornato");
 							}
 							else {
@@ -423,7 +423,8 @@
 				directoryReader.readEntries(success,fail);
 				
 				function success(entries) {
-					alert(entries.length);
+					alert("Numero esercizi "+entries.length);
+					alert("Nome "+entries[4].name);
 				}
 
 				function fail(error) {
