@@ -390,7 +390,7 @@
 						$.getJSON(urlJSON, function( data ) {
 
 							alert(data);
-							if (data == undefined) {
+							if (data.length == 0) {
 							alert("database aggiornato");
 							}
 							else {
