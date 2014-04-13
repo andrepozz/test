@@ -455,8 +455,10 @@
 							else {
 								alert("ciao3");
 								$.each(data.EserciziUpdate, function(index, info) {
+								
 								var countUpdates = data.EserciziUpdate.length;
-								var updates = parseInt(countUpdates) + parseInt(fileEserciziMancanti.length);
+								alert(countUpdates);
+								var updates = countUpdates+fileEserciziMancanti.length;
 								alert("ciao4");
 								alert(updates);
 								$("p.countUpdates").html(updates+" esercizi da aggiornare");
