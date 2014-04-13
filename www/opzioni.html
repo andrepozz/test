@@ -391,7 +391,7 @@
 					var path = window.localStorage.getItem("pathSD");
 					var jsonPath = path + "/nomeEsercizi.js";
 
-					var fruits = [];		
+					var fileEserciziMancanti = [];		
 					$.getJSON(jsonPath, function( listaEsercizi ) {
 						var idEsercizi = [];
 						$.each(listaEsercizi, function(index, info) {
@@ -410,12 +410,11 @@
 					}
 					if(!rv)
 					{
-					alert(idEsercizi[i].idEsercizio);
-					fruits.push(idEsercizi[i].idEsercizio);
+					fileEserciziMancanti.push(idEsercizi[i].idEsercizio);
 					}
 					}
-					alert(fruits.length);
-					eserciziUpdate();
+					alert(fileEserciziMancanti.length);
+					eserciziUpdate(fileEserciziMancanti);
 					});
 					
 				}
@@ -429,7 +428,7 @@
 		}); // end of window.requestFileSystem
 		
 		
-		function eserciziUpdate(){
+		function eserciziUpdate(fileEserciziMancanti){
 		
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
 			
@@ -446,14 +445,14 @@
 
 						$.getJSON(urlJSON, function( data ) {
 
-							if (data.EserciziUpdate == undefined) {
+							if (data.EserciziUpdate == undefined && fileEserciziMancanti.lenght == 0) {
 							alert("database aggiornato");
 							}
 							else {
 								$.each(data.EserciziUpdate, function(index, info) {
-			
 								var countUpdates = data.EserciziUpdate.length;
-								$("p.countUpdates").html(countUpdates+" esercizi da aggiornare");
+								var updates = parseInt(countUpdates) + parseInt(fileEserciziMancanti);
+								$("p.countUpdates").html(updates+" esercizi da aggiornare");
 								$("a.updateDatabase").html("aggiorna");
 								});
 							}
