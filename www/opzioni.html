@@ -447,14 +447,17 @@
 					var urlJSON = "http://www.wificomo.com/ccn20/JSONidEserciziUpdate.php?language="+localStorage.getItem("codLingua")+"&dataDownload="+dataDownload;
 
 						$.getJSON(urlJSON, function( data ) {
-
+							alert("ciao2");
+							alert(fileEserciziMancanti.length);
 							if (data.EserciziUpdate == undefined && fileEserciziMancanti.length == 0) {
 							alert("database aggiornato");
 							}
 							else {
+								alert("ciao3");
 								$.each(data.EserciziUpdate, function(index, info) {
 								var countUpdates = data.EserciziUpdate.length;
 								var updates = parseInt(countUpdates) + parseInt(fileEserciziMancanti.length);
+								alert("ciao4");
 								alert(updates);
 								$("p.countUpdates").html(updates+" esercizi da aggiornare");
 								$("a.updateDatabase").html("aggiorna");
