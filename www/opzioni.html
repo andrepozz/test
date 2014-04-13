@@ -374,42 +374,7 @@
 		$("p.countUpdates").html("");
 		$("a.updateDatabase").html("");
 		
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-			
-			fileSystem.root.getDirectory("ccn", {create: true, exclusive: false}, function(dirEntry) {
-			
-				dirEntry.getFile("categorie.js", {create: true, exclusive: false}, function(fileEntry) {
-										
-					fileEntry.getMetadata(function(metadata) {
-					var dataDownload = Date.parse(metadata.modificationTime) / 1000;
-					
-					localStorage.setItem("dataDownload", dataDownload );
-					
-					var urlJSON = "http://www.wificomo.com/ccn20/JSONidEserciziUpdate.php?language="+localStorage.getItem("codLingua")+"&dataDownload="+dataDownload;
-
-						$.getJSON(urlJSON, function( data ) {
-
-							if (data.EserciziUpdate == undefined) {
-							alert("database aggiornato");
-							}
-							else {
-								$.each(data.EserciziUpdate, function(index, info) {
-			
-								var countUpdates = data.EserciziUpdate.length;
-								$("p.countUpdates").html(countUpdates+" esercizi da aggiornare");
-								$("a.updateDatabase").html("aggiorna");
-								});
-							}
-						});
-					});
-					 
-				}); // end of dirEntry.getFile
-			
-			}); // fileSystem.root.getDirectory
-			
-		}); // end of window.requestFileSystem
-		
-		// CONTA FILE IN ESERCIZI
+		// CHECK ESISTENZA FILES ESERCIZI
 		
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
 			
@@ -450,22 +415,59 @@
 					}
 					}
 					alert(fruits.length);
+					eserciziUpdate();
 					});
 					
-					
-					fileMancante = entries[4].name;
-					fileMancante = fileMancante.substring(0, fileMancante.length - 3);
-					alert("Numero esercizi "+entries.length);
-					alert("Nome "+fileMancante);
 				}
 
 				function fail(error) {
-					alert("Failed to list directory contents: " + error.code);
+					console.log("Failed to list directory contents: " + error.code);
 				}
 			
 			}); // fileSystem.root.getDirectory
 			
 		}); // end of window.requestFileSystem
+		
+		
+		function eserciziUpdate(){
+		
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+			
+			fileSystem.root.getDirectory("ccn", {create: true, exclusive: false}, function(dirEntry) {
+			
+				dirEntry.getFile("categorie.js", {create: true, exclusive: false}, function(fileEntry) {
+										
+					fileEntry.getMetadata(function(metadata) {
+					var dataDownload = Date.parse(metadata.modificationTime) / 1000;
+					
+					localStorage.setItem("dataDownload", dataDownload );
+					
+					var urlJSON = "http://www.wificomo.com/ccn20/JSONidEserciziUpdate.php?language="+localStorage.getItem("codLingua")+"&dataDownload="+dataDownload;
+
+						$.getJSON(urlJSON, function( data ) {
+
+							if (data.EserciziUpdate == undefined) {
+							alert("database aggiornato");
+							}
+							else {
+								$.each(data.EserciziUpdate, function(index, info) {
+			
+								var countUpdates = data.EserciziUpdate.length;
+								$("p.countUpdates").html(countUpdates+" esercizi da aggiornare");
+								$("a.updateDatabase").html("aggiorna");
+								});
+							}
+						});
+					});
+					 
+				}); // end of dirEntry.getFile
+			
+			}); // fileSystem.root.getDirectory
+			
+		}); // end of window.requestFileSystem
+		
+		}
+		
 		
 		
 		
