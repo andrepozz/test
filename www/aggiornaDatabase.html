@@ -3,12 +3,15 @@
 <head>
 	<title>Page Title</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css" />
+	<link rel="stylesheet" href="css/themes/shopincomo.min.css" />
+	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.min.css" />
+	
+	<link rel="stylesheet" href="css/template.css" />
 	
 	<script src="js/jquery-1.11.0.min.js"></script>
-	<script src="js/jquery.mobile-1.4.1.min.js"></script>
+	<script src="js/jquery.mobile-1.4.2.min.js"></script>
+	
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="js/function_checkConnection.js"></script>
 	<!-- cordova facebook plugin -->
@@ -262,7 +265,8 @@
 									if(sessionStorage.getItem("vetrineOK") == 0) {
 									$("li.sottocategorie").html("download sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","green");
-									getVetrine();
+									updateVetrine();
+									downloadVetrine();
 									}
 									else if(sessionStorage.getItem("vetrineOK") == 1) {
 									$("li.vetrine").html("download vetrine <img src='img/downloadok.png'>");
@@ -295,7 +299,7 @@
 		
 	} //FUNCTION downloadJSONmulti
 	
-	function getVetrine() {
+	function updateVetrine() {
 	
 		sessionStorage.setItem("vetrineOK", 1);
 		
@@ -320,6 +324,25 @@
 		});
 	window.localStorage.removeItem(dataDownload);
 	}
+	
+	function downloadVetrine() {
+	
+		sessionStorage.setItem("vetrineOK", 1);
+		fileEserciziMancanti = window.sessionStorage.getItem("fileEserciziMancanti");
+		
+		var totaleEsercizi = fileEserciziMancanti.length;
+		window.sessionStorage.setItem("numElementi", totaleEsercizi);
+		
+		for(var i=0;i<fileEserciziMancanti.length;i++){
+		
+			var urlEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONvetrinaEsercizio.php?language="+localStorage.getItem("codLingua")+"&idEsercizio="+fileEserciziMancanti[i]+"");	
+			var fileNameEsercizi = fileEserciziMancanti[i]+".js";	
+			var directoryEsercizi = "ccn/esercizi";
+			downloadJSONmulti(directoryEsercizi, fileNameEsercizi, urlEsercizi);
+		
+		}
+	}
+	
 	
 	</script>
 		
