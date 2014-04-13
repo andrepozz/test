@@ -445,13 +445,14 @@
 
 						$.getJSON(urlJSON, function( data ) {
 
-							if (data.EserciziUpdate == undefined && fileEserciziMancanti.lenght == 0) {
+							if (data.EserciziUpdate == undefined && fileEserciziMancanti.length == 0) {
 							alert("database aggiornato");
 							}
 							else {
 								$.each(data.EserciziUpdate, function(index, info) {
 								var countUpdates = data.EserciziUpdate.length;
-								var updates = parseInt(countUpdates) + parseInt(fileEserciziMancanti);
+								var updates = parseInt(countUpdates) + parseInt(fileEserciziMancanti.length);
+								alert(updates);
 								$("p.countUpdates").html(updates+" esercizi da aggiornare");
 								$("a.updateDatabase").html("aggiorna");
 								});
