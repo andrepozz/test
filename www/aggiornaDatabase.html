@@ -328,7 +328,7 @@
 	function downloadVetrine(){
 	
 		sessionStorage.setItem("vetrineOK", 1);
-		fileEserciziMancanti = window.sessionStorage.getItem("fileEserciziMancanti");
+		fileEserciziMancanti = JSON.parse(window.sessionStorage.getItem("fileEserciziMancanti"));
 		
 		var totaleEsercizi = fileEserciziMancanti.length;
 		alert(totaleEsercizi);
