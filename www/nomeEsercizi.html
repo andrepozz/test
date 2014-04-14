@@ -191,6 +191,12 @@
 	var linguaDescrizioneEsercizio;
 	var map;
 	
+	//INIZIALIZZAZIONE MAPPA
+		
+	$( "#map" ).remove();
+	var $map = $("<div>", {id: "map", class: "a", style:"width: 1920px; height:200px"});
+	$("#mappa").append($map);
+	
 	$.each(jsonVetrina, function(index, info) {
 		$("h3.nomeEsercizio").html(info.NomeEsercizio);
 		$("p.indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
@@ -286,11 +292,7 @@
 		
 // MAPPA + POSIZIONE UTENTE
 	
-		//INIZIALIZZAZIONE MAPPA
-		
-		$( "#map" ).remove();
-		var $map = $("<div>", {id: "map", class: "a", style:"width: 1920px; height:200px"});
-		$("#mappa").append($map);
+
 		
 		map = new L.Map('map');
 	
