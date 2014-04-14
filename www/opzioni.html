@@ -444,16 +444,16 @@
 					var urlJSON = "http://www.wificomo.com/ccn20/JSONidEserciziUpdate.php?language="+localStorage.getItem("codLingua")+"&dataDownload="+dataDownload;
 
 						$.getJSON(urlJSON, function( data ) {
-							if (data.EserciziUpdate == undefined && fileEserciziMancanti.length == 0) {
+							if (data == undefined && fileEserciziMancanti.length == 0) {
 								alert("database aggiornato");
 							}
-							else if(data.EserciziUpdate == undefined && fileEserciziMancanti.length != 0){
+							else if(data == undefined && fileEserciziMancanti.length != 0){
 								$("p.countUpdates").html(fileEserciziMancanti.length+" esercizi da aggiornare");
 								$("a.updateDatabase").html("aggiorna");
 							}
 							else {
-								$.each(data.EserciziUpdate, function(index, info) {
-								var countUpdates = data.EserciziUpdate.length;
+								$.each(data, function(index, info) {
+								var countUpdates = data.length;
 								var updates = countUpdates+fileEserciziMancanti.length;
 								$("p.countUpdates").html(updates+" esercizi da aggiornare");
 								$("a.updateDatabase").html("aggiorna");
