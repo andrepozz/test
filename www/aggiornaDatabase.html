@@ -68,7 +68,7 @@
 								pathSD = pathSD+"/ccn";
 								window.localStorage.setItem('pathSD', pathSD);
 								
-								$("li.categorie").html("<img class='iconaTipologia' src='img/downloadCategorie.png'> DOWNLOAD categorie <img src='img/downloadok.png'>");
+								$("li.categorie").html("<img class='iconaTipologia' src='img/downloadCategorie.png'> UPDATE categorie <img src='img/downloadok.png'>");
 								$("li.categorie").css("color","white");
 								$("li.categorie").css("background","#00CC00");
 								
@@ -206,7 +206,7 @@
 						localPath,
 						function(entry) {
 						
-						$("li."+pClass+"").html("<img class='iconaTipologia' src='img/download"+pClass+".png'> DOWNLOAD "+pClass+" <img src='img/downloadok.png'>");
+						$("li."+pClass+"").html("<img class='iconaTipologia' src='img/download"+pClass+".png'> UPDATE "+pClass+" <img src='img/downloadok.png'>");
 						$("li."+pClass+"").css("color","white");
 						$("li."+pClass+"").css("background","#00CC00");
 						
@@ -265,7 +265,116 @@
 						numElementi = parseInt(numElementi)-1;							
 								if(numElementi == 0) {
 								
+									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> UPDATE sottocategorie <img src='img/downloadok.png'>");
+									$("li.sottocategorie").css("color","white");
+									$("li.sottocategorie").css("background","#00CC00");
+									updateVetrine();
+									//$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");		
+								}
+								else {
+								sessionStorage.setItem("numElementi", numElementi);
+								}
+						},
+						function(error) {
+							
+							var numElementiError = window.sessionStorage.getItem("numElementi");
+							numElementiError = parseInt(numElementiError)-1;							
+							
+							if(numElementiError == 0) {
+								
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
+									$("li.sottocategorie").css("color","white");
+									$("li.sottocategorie").css("background","#00CC00");
+									updateVetrine();
+									//$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
+							}
+							else {
+							sessionStorage.setItem("numElementi", numElementiError);
+							}
+						},
+						false,
+						{
+							headers: {
+								"Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+							}
+						}
+				
+					); // end of fileTransfer.download
+				}); // end of dirEntry.getFile
+			
+			}); // fileSystem.root.getDirectory
+			
+		}); // end of window.requestFileSystem
+		
+	} //FUNCTION downloadJSONsottocategorie
+	
+	// UPDATE VETRINE	
+	function updateVetrine() {
+	
+		sessionStorage.setItem("vetrineOK", 1);
+		
+		$.ajax({
+			url: "http://www.wificomo.com/ccn20/JSONidEserciziUpdate.php?language="+localStorage.getItem("codLingua")+"&dataDownload="+localStorage.getItem("dataDownload")+"",
+			dataType: 'json',
+			success: function(data) {
+		
+				fileEserciziMancanti = JSON.parse(window.sessionStorage.getItem("fileEserciziMancanti"));
+				var totaleEsercizi = data.length + fileEserciziMancanti.length;
+				alert("totale esercizi "+totaleEsercizi);
+				window.sessionStorage.setItem("numElementi", totaleEsercizi);
+		
+					$.each(data, function(index, info) {
+		
+						var urlEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONvetrinaEsercizio.php?language="+localStorage.getItem("codLingua")+"&idEsercizio="+info.idEsercizio+"");	
+						var fileNameEsercizi = info.idEsercizio+".js";	
+						var directoryEsercizi = "ccn/esercizi";
+		
+						downloadJSONupdateEsercizi(directoryEsercizi, fileNameEsercizi, urlEsercizi);
+					});
+					
+						
+					for(var i=0;i<fileEserciziMancanti.length;i++){
+					var urlEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONvetrinaEsercizio.php?language="+localStorage.getItem("codLingua")+"&idEsercizio="+fileEserciziMancanti[i]+"");	
+					var fileNameEsercizi = fileEserciziMancanti[i]+".js";	
+					var directoryEsercizi = "ccn/esercizi";
+					downloadJSONupdateEsercizi(directoryEsercizi, fileNameEsercizi, urlEsercizi);
+					}
+					
+					
+					
+			}
+		});
+	window.localStorage.removeItem(dataDownload);
+	}
+	
+	
+	//DOWNLOAD downloadJSONupdateEsercizi FUNCTION
+	function downloadJSONupdateEsercizi(directory, fileName, fileURL) {
+		
+		var fileTransfer = new FileTransfer();
+		
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+			
+			fileSystem.root.getDirectory(directory, {create: true, exclusive: false}, function(dirEntry) {
+			
+				dirEntry.getFile(fileName, {create: true, exclusive: false}, function(fileEntry) {
+										
+					var localPath = fileEntry.fullPath;
+
+					if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
+							localPath = localPath.substring(7);
+					}
+					
+					fileTransfer.download(
+						fileURL,
+						localPath,
+						function(entry) {
+						
+						var numElementi = window.sessionStorage.getItem("numElementi");
+						numElementi = parseInt(numElementi)-1;							
+								if(numElementi == 0) {
+								
+									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> UPDATE sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
 									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");		
@@ -304,42 +413,16 @@
 			
 		}); // end of window.requestFileSystem
 		
-	} //FUNCTION downloadJSONsottocategorie
-	
-	function updateVetrine() {
-	
-		sessionStorage.setItem("vetrineOK", 1);
-		
-		$.ajax({
-			url: "http://www.wificomo.com/ccn20/JSONidEserciziUpdate.php?language="+localStorage.getItem("codLingua")+"&dataDownload="+localStorage.getItem("dataDownload")+"",
-			dataType: 'json',
-			success: function(data) {
-		
-				var totaleEsercizi = data.length;
-		
-				window.sessionStorage.setItem("numElementi", totaleEsercizi);
-		
-					$.each(data, function(index, info) {
-		
-						var urlEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONvetrinaEsercizio.php?language="+localStorage.getItem("codLingua")+"&idEsercizio="+info.idEsercizio+"");	
-						var fileNameEsercizi = info.idEsercizio+".js";	
-						var directoryEsercizi = "ccn/esercizi";
-		
-						downloadJSONmulti(directoryEsercizi, fileNameEsercizi, urlEsercizi);
-					});
-			}
-		});
-	window.localStorage.removeItem(dataDownload);
-	}
+	} //FUNCTION downloadJSONupdateEsercizi
+
 	
 	function downloadVetrine(){
-	
-		sessionStorage.setItem("vetrineOK", 1);
-		fileEserciziMancanti = JSON.parse(window.sessionStorage.getItem("fileEserciziMancanti"));
-		
 		var totaleEsercizi = fileEserciziMancanti.length;
 		window.sessionStorage.setItem("numElementi", totaleEsercizi);
+		sessionStorage.setItem("vetrineOK", 1);
 		
+		
+		fileEserciziMancanti = JSON.parse(window.sessionStorage.getItem("fileEserciziMancanti"));	
 		for(var i=0;i<fileEserciziMancanti.length;i++){
 			var urlEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONvetrinaEsercizio.php?language="+localStorage.getItem("codLingua")+"&idEsercizio="+fileEserciziMancanti[i]+"");	
 			var fileNameEsercizi = fileEserciziMancanti[i]+".js";	
