@@ -229,31 +229,26 @@
 		
 		//FOURSQUARE
 		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
-		alert("foursquare token: "+tokenFoursquare);
 		if (tokenFoursquare == null) {
-		alert("foursquare token null");
+
 		$( "img#votaFoursquare" ).attr('src', 'img/collegaFoursquare_bn.png');
 		var cnt = $("a.votaFoursquare").contents();
 		$("a.votaFoursquare").replaceWith(cnt);
 		$("ul.listaSocial").listview("refresh");
 		}
 		else {
-		alert("foursquare token: "+tokenFoursquare);
 		$( "img#votaFoursquare" ).attr('src', 'img/collegaFoursquare.png');
 		}
 		
 		//TWITTER
 		var twitterToken = window.localStorage.getItem("twitterToken");
-		alert("twitter token: "+twitterToken);
 		if (twitterToken == null) {
-		alert("twitter token null");
 		$( "img#votaTwitter" ).attr('src', 'img/collegaTwitter_bn.png');
 		var cnt = $("a.votaTwitter").contents();
 		$("a.votaTwitter").replaceWith(cnt);
 		$("ul.listaSocial").listview("refresh");
 		}
 		else {
-		alert("twitter token: "+twitterToken);
 		$( "img#votaTwitter" ).attr('src', 'img/collegaTwitter.png');
 		}
 		
@@ -294,7 +289,7 @@
 		//INIZIALIZZAZIONE MAPPA
 		
 		$( "#map" ).remove();
-		var $map = $("<div>", {id: "map", class: "a", style:"width: 1920px; height:400px"});
+		var $map = $("<div>", {id: "map", class: "a", style:"width: 1920px; height:200px"});
 		$("#mappa").append($map);
 		
 		map = new L.Map('map');
@@ -557,8 +552,6 @@
 		var tokenTwitter = window.localStorage.getItem("twitterToken");		
 		var tokenTwitterSecret = window.localStorage.getItem("twitterVerifier");	
 		
-		alert(tokenTwitterSecret);
-		alert(tokenTwitter);
 		
 		var urlTwitter = 'http://www.wificomo.com/twitter/votaTwitter.php';
 		var tweet = "prova tweet";
