@@ -331,11 +331,9 @@
 		fileEserciziMancanti = JSON.parse(window.sessionStorage.getItem("fileEserciziMancanti"));
 		
 		var totaleEsercizi = fileEserciziMancanti.length;
-		alert(totaleEsercizi);
 		window.sessionStorage.setItem("numElementi", totaleEsercizi);
 		
 		for(var i=0;i<fileEserciziMancanti.length;i++){
-			alert(fileEserciziMancanti[i]);
 			var urlEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONvetrinaEsercizio.php?language="+localStorage.getItem("codLingua")+"&idEsercizio="+fileEserciziMancanti[i]+"");	
 			var fileNameEsercizi = fileEserciziMancanti[i]+".js";	
 			var directoryEsercizi = "ccn/esercizi";
