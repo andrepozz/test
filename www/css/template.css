@@ -26,11 +26,13 @@ color: #333333;
 .ui-listview .ui-btn:hover{
 background-color:rgba(237,237,237,0.9);
 color: #333333;
+text-shadow: none;
 }
 
 .ui-listview .ui-btn:active{
 background-color:rgba(232,232,232,0.9);
 color: #333333;
+text-shadow: none;
 }
 
 .ui-listview .ui-icon-carat-r{
@@ -137,11 +139,13 @@ color: #333333;
 .ui-listview .ui-btn:hover{
 background-color:rgba(237,237,237,0.9);
 color: #333333;
+text-shadow: none;
 }
 
 .ui-listview .ui-btn:active{
 background-color:rgba(232,232,232,0.9);
 color: #333333;
+text-shadow: none;
 }
 
 .ui-listview .ui-icon-carat-r{
@@ -251,11 +255,13 @@ color: #333333;
 .ui-listview .ui-btn:hover{
 background-color:rgba(237,237,237,0.9);
 color: #333333;
+text-shadow: none;
 }
 
 .ui-listview .ui-btn:active{
 background-color:rgba(232,232,232,0.9);
 color: #333333;
+text-shadow: none;
 }
 
 .ui-listview .ui-icon-carat-r{
@@ -363,11 +369,13 @@ color: #333333;
 .ui-listview .ui-btn:hover{
 background-color:rgba(237,237,237,0.9);
 color: #333333;
+text-shadow: none;
 }
 
 .ui-listview .ui-btn:active{
 background-color:rgba(232,232,232,0.9);
 color: #333333;
+text-shadow: none;
 }
 
 .ui-listview .ui-icon-carat-r{
