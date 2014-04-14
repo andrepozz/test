@@ -120,6 +120,7 @@
 		
 	} //FUNCTION getSottocategorie()
 	
+	
 	//JSON RICERCA PER NOME
 	
 	var urlnomeEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONnomeEsercizi.php");	
@@ -374,7 +375,7 @@
 									$("li.vetrine").html("<img class='iconaTipologia' src='img/downloadEsercizi.png'> UPDATE esercizi <img src='img/downloadok.png'>");
 									$("li.vetrine").css("color","white");
 									$("li.vetrine").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>OK</a>");		
+									$("p.downloadComplete").html("<a href='opzioni.html' rel='external' class='ui-btn' data-transition='slide'>Update Complete</a>");		
 								}
 								else {
 								sessionStorage.setItem("numElementi", numElementi);
@@ -390,7 +391,7 @@
 									$("li.vetrine").html("<img class='iconaTipologia' src='img/downloadEsercizi.png'> UPDATE esercizi <img src='img/downloadok.png'>");
 									$("li.vetrine").css("color","white");
 									$("li.vetrine").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>OK</a>");			
+									$("p.downloadComplete").html("<a href='opzioni.html' rel='external' class='ui-btn' data-transition='slide'>Update Complete</a>");			
 							}
 							else {
 							sessionStorage.setItem("numElementi", numElementiError);
