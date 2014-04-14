@@ -282,7 +282,7 @@
 							
 							if(numElementiError == 0) {
 								
-									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
+									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> UPDATE sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
 									updateVetrine();
@@ -374,10 +374,10 @@
 						numElementi = parseInt(numElementi)-1;							
 								if(numElementi == 0) {
 								
-									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> UPDATE sottocategorie <img src='img/downloadok.png'>");
-									$("li.sottocategorie").css("color","white");
-									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");		
+									$("li.vetrine").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> UPDATE esercizi <img src='img/downloadok.png'>");
+									$("li.vetrine").css("color","white");
+									$("li.vetrine").css("background","#00CC00");
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>OK</a>");		
 								}
 								else {
 								sessionStorage.setItem("numElementi", numElementi);
@@ -390,10 +390,10 @@
 							
 							if(numElementiError == 0) {
 								
-									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
-									$("li.sottocategorie").css("color","white");
-									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
+									$("li.vetrine").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> UPDATE esercizi <img src='img/downloadok.png'>");
+									$("li.vetrine").css("color","white");
+									$("li.vetrine").css("background","#00CC00");
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>OK</a>");			
 							}
 							else {
 							sessionStorage.setItem("numElementi", numElementiError);
