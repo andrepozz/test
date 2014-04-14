@@ -68,8 +68,9 @@
 								pathSD = pathSD+"/ccn";
 								window.localStorage.setItem('pathSD', pathSD);
 								
-								$("li.categorie").html("download categorie <img src='img/downloadok.png'>");
-								$("li.categorie").css("color","green");
+								$("li.categorie").html("<img class='iconaTipologia' src='img/downloadCategorie.png'> DOWNLOAD categorie <img src='img/downloadok.png'>");
+								$("li.categorie").css("color","white");
+								$("li.categorie").css("background","#00CC00");
 								
 								getSottocategorie();
 						},
@@ -155,6 +156,7 @@
 	
 	downloadJSON(directory, filePosition, urlposition, pClass);
 	
+	/*
 	//JSON DISTANCE
 	
 	var urldistance = encodeURI("http://www.wificomo.com/ccn20/JSONdistance.php");
@@ -163,7 +165,8 @@
 	var pClass = "distance";
 	
 	downloadJSON(directory, fileDistance, urldistance, pClass);
-		
+	*/
+	
 	// TRADUZIONI------------------------------------------------------------------------------
 	
 	// T.Indietro
@@ -203,6 +206,61 @@
 						localPath,
 						function(entry) {
 						
+						$("li."+pClass+"").html("<img class='iconaTipologia' src='img/download"+pClass+".png'> DOWNLOAD "+pClass+" <img src='img/downloadok.png'>");
+						$("li."+pClass+"").css("color","white");
+						$("li."+pClass+"").css("background","#00CC00");
+						
+							/*
+							conteggioEsercizi = parseInt(conteggioEsercizi)+1;
+															
+								if(conteggioEsercizi == totaleEsercizi) {
+								alert("scaricati "+conteggioEsercizi+" esercizi");
+								sessionStorage.setItem("downloadEsercizi", "ok");
+								}
+							*/
+						},
+						function(error) {
+							console.log("download error source " + error.source);
+							console.log("download error target " + error.target);
+						},
+						false,
+						{
+							headers: {
+								"Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+							}
+						}
+				
+					); // end of fileTransfer.download
+				}); // end of dirEntry.getFile
+			
+			}); // fileSystem.root.getDirectory
+			
+		}); // end of window.requestFileSystem
+		
+	} //FUNCTION downloadJSON
+	
+	//DOWNLOAD downloadJSONsottocategorie FUNCTION
+	function downloadJSONsottocategorie(directory, fileName, fileURL) {
+		
+		var fileTransfer = new FileTransfer();
+		
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+			
+			fileSystem.root.getDirectory(directory, {create: true, exclusive: false}, function(dirEntry) {
+			
+				dirEntry.getFile(fileName, {create: true, exclusive: false}, function(fileEntry) {
+										
+					var localPath = fileEntry.fullPath;
+
+					if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
+							localPath = localPath.substring(7);
+					}
+					
+					fileTransfer.download(
+						fileURL,
+						localPath,
+						function(entry) {
+						
 						var numElementi = window.sessionStorage.getItem("numElementi");
 						numElementi = parseInt(numElementi)-1;							
 								if(numElementi == 0) {
@@ -210,7 +268,7 @@
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									//$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");		
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");		
 								}
 								else {
 								sessionStorage.setItem("numElementi", numElementi);
@@ -226,7 +284,7 @@
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									//$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
 							}
 							else {
 							sessionStorage.setItem("numElementi", numElementiError);
@@ -246,7 +304,7 @@
 			
 		}); // end of window.requestFileSystem
 		
-	} //FUNCTION downloadJSONmulti
+	} //FUNCTION downloadJSONsottocategorie
 	
 	function updateVetrine() {
 	
@@ -290,70 +348,6 @@
 		
 		}
 	}
-	
-	//DOWNLOAD JSONesercizi FUNCTION
-	function downloadJSONesercizi(directory, fileName, fileURL) {
-		
-		var fileTransfer = new FileTransfer();
-		
-		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-			
-			fileSystem.root.getDirectory(directory, {create: true, exclusive: false}, function(dirEntry) {
-			
-				dirEntry.getFile(fileName, {create: true, exclusive: false}, function(fileEntry) {
-										
-					var localPath = fileEntry.fullPath;
-
-					if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
-							localPath = localPath.substring(7);
-					}
-					
-					fileTransfer.download(
-						fileURL,
-						localPath,
-						function(entry) {
-						
-						var numElementi = window.sessionStorage.getItem("numElementi");
-						numElementi = parseInt(numElementi)-1;	
-
-								if(numElementi == 0) {
-							
-									if(sessionStorage.getItem("vetrineOK") == 0) {
-									$("li.sottocategorie").html("download sottocategorie <img src='img/downloadok.png'>");
-									$("li.sottocategorie").css("color","green");
-									//updateVetrine();
-									downloadVetrine();
-									}
-									else if(sessionStorage.getItem("vetrineOK") == 1) {
-									$("li.vetrine").html("download vetrine <img src='img/downloadok.png'>");
-									$("li.vetrine").css("color","green");
-									
-									$.mobile.changePage( "opzioni.html", { reloadPage: true, transition: "slide"} );
-									}
-								}
-								else {
-								sessionStorage.setItem("numElementi", numElementi);
-								}
-						},
-						function(error) {
-							alert("download error source " + error.source);
-							alert("download error target " + error.target);
-						},
-						false,
-						{
-							headers: {
-								"Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-							}
-						}
-				
-					); // end of fileTransfer.download
-				}); // end of dirEntry.getFile
-			
-			}); // fileSystem.root.getDirectory
-			
-		}); // end of window.requestFileSystem
-		
-	} //FUNCTION downloadJSONmulti
 	
 	
 	</script>
