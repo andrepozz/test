@@ -77,6 +77,13 @@ vertical-align: middle;
 width: 1em;
 }
 
+/*OPZIONI*/
+
+p.countUpdates{
+background-color: #FFFFFF;
+padding: 2px;
+}
+
 /*ESERCIZI VICINI*/
 
 button.circleDistance{
@@ -176,6 +183,13 @@ margin-bottom: 3px;
 ul.downloadList li img.iconaTipologia{
 vertical-align: middle;
 width: 2em;
+}
+
+/*OPZIONI*/
+
+p.countUpdates{
+background-color: #FFFFFF;
+padding: 2px;
 }
 
 /*ESERCIZI VICINI*/
@@ -282,6 +296,13 @@ ul.downloadList li img{
 vertical-align: middle;
 }
 
+/*OPZIONI*/
+
+p.countUpdates{
+background-color: #FFFFFF;
+padding: 2px;
+}
+
 /*ESERCIZI VICINI*/
 
 button.circleDistance{
@@ -382,6 +403,13 @@ margin-bottom: 3px;
 
 ul.downloadList li img{
 vertical-align: middle;
+}
+
+/*OPZIONI*/
+
+p.countUpdates{
+background-color: #FFFFFF;
+padding: 2px;
 }
 
 /*ESERCIZI VICINI*/
