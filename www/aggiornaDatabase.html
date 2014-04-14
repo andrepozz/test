@@ -318,7 +318,6 @@
 		
 				fileEserciziMancanti = JSON.parse(window.sessionStorage.getItem("fileEserciziMancanti"));
 				var totaleEsercizi = data.length + fileEserciziMancanti.length;
-				alert("totale esercizi "+totaleEsercizi);
 				window.sessionStorage.setItem("numElementi", totaleEsercizi);
 		
 					$.each(data, function(index, info) {
@@ -372,7 +371,7 @@
 						numElementi = parseInt(numElementi)-1;							
 								if(numElementi == 0) {
 								
-									$("li.vetrine").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> UPDATE esercizi <img src='img/downloadok.png'>");
+									$("li.vetrine").html("<img class='iconaTipologia' src='img/downloadEsercizi.png'> UPDATE esercizi <img src='img/downloadok.png'>");
 									$("li.vetrine").css("color","white");
 									$("li.vetrine").css("background","#00CC00");
 									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>OK</a>");		
@@ -388,7 +387,7 @@
 							
 							if(numElementiError == 0) {
 								
-									$("li.vetrine").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> UPDATE esercizi <img src='img/downloadok.png'>");
+									$("li.vetrine").html("<img class='iconaTipologia' src='img/downloadEsercizi.png'> UPDATE esercizi <img src='img/downloadok.png'>");
 									$("li.vetrine").css("color","white");
 									$("li.vetrine").css("background","#00CC00");
 									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>OK</a>");			
@@ -419,13 +418,13 @@
 		
 	
 	<ul class="downloadList">
-	<li class="nome"><img class="iconaTipologia" src="img/downloadnome.png"> CONFIGURAZIONE nomi... <img src="img/download.gif"></li>
-	<li class="brandEsercizi"><img class="iconaTipologia" src="img/downloadbrand.png"> CONFIGURAZIONE brand... <img src="img/download.gif"></li>
-	<li class="brand"><img class="iconaTipologia" src="img/downloadbrandEsercizi.png"> DOWNLOAD brandEsercizi... <img src="img/download.gif"></li>
-	<li class="position"><img class="iconaTipologia" src="img/downloadposition.png"> DOWNLOAD position... <img src="img/download.gif"></li>
-	<li class="categorie"><img class="iconaTipologia" src="img/downloadCategorie.png"> DOWNLOAD categorie...<img src="img/download.gif"></li>
-	<li class="sottocategorie"><img class="iconaTipologia" src="img/downloadSottocategorie.png"> DOWNLOAD sottocategorie...<img src="img/download.gif"></li>
-	<li class="vetrine">aggiornamento vetrine...<img src="img/download.gif"></li>
+	<li class="nome"><img class="iconaTipologia" src="img/downloadnome.png"> UPDATE nomi... <img src="img/download.gif"></li>
+	<li class="brandEsercizi"><img class="iconaTipologia" src="img/downloadbrand.png"> UPDATE brand... <img src="img/download.gif"></li>
+	<li class="brand"><img class="iconaTipologia" src="img/downloadbrandEsercizi.png"> UPDATE brandEsercizi... <img src="img/download.gif"></li>
+	<li class="position"><img class="iconaTipologia" src="img/downloadposition.png"> UPDATE position... <img src="img/download.gif"></li>
+	<li class="categorie"><img class="iconaTipologia" src="img/downloadCategorie.png"> UPDATE categorie...<img src="img/download.gif"></li>
+	<li class="sottocategorie"><img class="iconaTipologia" src="img/downloadSottocategorie.png"> UPDATE sottocategorie...<img src="img/download.gif"></li>
+	<li class="vetrine"><img class="iconaTipologia" src="img/downloadEsercizi.png">aggiornamento vetrine...<img src="img/download.gif"></li>
 	<!-- <li class="distance">configurazione distanze... <img src="img/download.gif"></li> -->
 	</ul>
 	
