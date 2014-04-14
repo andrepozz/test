@@ -446,11 +446,11 @@
 						$.getJSON(urlJSON, function( data ) {
 							alert(data.length);
 							if (data.length == 0 && fileEserciziMancanti.length == 0) {
-								alert("database aggiornato");
+								$("p.countUpdates").html("Database aggiornato");
 							}
 							else if(data.length == 0 && fileEserciziMancanti.length != 0){
 								$("p.countUpdates").html(fileEserciziMancanti.length+" esercizi da aggiornare");
-								$("a.updateDatabase").html("aggiorna");
+								$( "div#update" ).append( $("<a href='#' class='ui-btn updateDatabase'></a>" ));
 							}
 							else {
 								$.each(data, function(index, info) {
@@ -458,6 +458,7 @@
 								var updates = countUpdates+fileEserciziMancanti.length;
 								$("p.countUpdates").html(updates+" esercizi da aggiornare");
 								$("a.updateDatabase").html("aggiorna");
+								$( "div#update" ).append( $("<a href='#' class='ui-btn updateDatabase'></a>" ));
 								});
 							}
 						});
@@ -486,7 +487,8 @@
 		</script>
 		
 		<p class="countUpdates"></p>
-		<a href="#" class='ui-btn updateDatabase'></a>
+		<div id="update"></div>
+		
 		
 		</div>
 		<!-- /CONTENT -->
