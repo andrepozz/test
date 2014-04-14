@@ -444,13 +444,12 @@
 					var urlJSON = "http://www.wificomo.com/ccn20/JSONidEserciziUpdate.php?language="+localStorage.getItem("codLingua")+"&dataDownload="+dataDownload;
 
 						$.getJSON(urlJSON, function( data ) {
-							alert(data.length);
 							if (data.length == 0 && fileEserciziMancanti.length == 0) {
 								$("p.countUpdates").html("Database aggiornato");
 							}
 							else if(data.length == 0 && fileEserciziMancanti.length != 0){
 								$("p.countUpdates").html(fileEserciziMancanti.length+" esercizi da aggiornare");
-								$( "div#update" ).append( $("<a href='#' class='ui-btn updateDatabase'></a>" ));
+								$( "div#update" ).append( $("<a href='#' class='ui-btn updateDatabase'>UPDATE</a>" ));
 							}
 							else {
 								$.each(data, function(index, info) {
@@ -458,7 +457,7 @@
 								var updates = countUpdates+fileEserciziMancanti.length;
 								$("p.countUpdates").html(updates+" esercizi da aggiornare");
 								$("a.updateDatabase").html("aggiorna");
-								$( "div#update" ).append( $("<a href='#' class='ui-btn updateDatabase'></a>" ));
+								$( "div#update" ).append( $("<a href='#' class='ui-btn updateDatabase'>UPDATE</a>" ));
 								});
 							}
 						});
