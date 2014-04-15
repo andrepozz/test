@@ -236,17 +236,18 @@
 		} //FINE DESCRIZIONE
 				
 		var checkConnection = checkConnection();
+		alert("check "+checkConnection);
 		
 		//FACEBOOK
 		FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 		//GET LOGIN STATUS
 		FB.getLoginStatus(function(response) {
 			//CONNESSO
-			if (response.status === 'connected' && checkConnection =! "No_network") {
+			if (response.status === 'connected') {
 			$( "img#votaFoursquare" ).attr('src', 'img/collegaFacebook.png');		
 			}
 			//APP NON AUTORIZZATA
-			else if (response.status === 'not_authorized') {
+			else if (response.status === 'not_authorized' || checkConnection == "No_network") {
 			$( "img#votaFacebook" ).attr('src', 'img/collegaFacebook_bn.png');
 			var cnt = $("a.votaFacebook").contents();
 			$("a.votaFacebook").replaceWith(cnt);
@@ -263,7 +264,7 @@
 		
 		//FOURSQUARE
 		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
-		if (tokenFoursquare == null || && checkConnection =! "No_network") {
+		if (tokenFoursquare == null || checkConnection == "No_network") {
 		$( "img#votaFoursquare" ).attr('src', 'img/collegaFoursquare_bn.png');
 		var cnt = $("a.votaFoursquare").contents();
 		$("a.votaFoursquare").replaceWith(cnt);
@@ -275,7 +276,7 @@
 		
 		//TWITTER
 		var twitterToken = window.localStorage.getItem("twitterToken");
-		if (twitterToken == null || && checkConnection =! "No_network") {
+		if (twitterToken == null || checkConnection == "No_network") {
 		$( "img#votaTwitter" ).attr('src', 'img/collegaTwitter_bn.png');
 		var cnt = $("a.votaTwitter").contents();
 		$("a.votaTwitter").replaceWith(cnt);
