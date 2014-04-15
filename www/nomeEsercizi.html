@@ -97,8 +97,8 @@
 	
 	//CARICA JSON CATEGORIE
 	var path = window.localStorage.getItem("pathSD");
-	var jsonPath = path + "/nomeEsercizi.js";
-	//var jsonPath = "js/nomeesercizi.js";
+	//var jsonPath = path + "/nomeEsercizi.js";
+	var jsonPath = "js/nomeesercizi.js";
 	
 		$( "#cerca_negozio" ).on( "filterablebeforefilter", function ( e, data ) {
 			var $ul = $( this ),
@@ -171,8 +171,8 @@
 	
 	// CARICA FILE VETRINA
 	var path = window.localStorage.getItem("pathSD");
-	var jsonPath = path + "/esercizi/"+idEsercizio+".js";
-	//var jsonPath = "js/16.js";
+	//var jsonPath = path + "/esercizi/"+idEsercizio+".js";
+	var jsonPath = "js/16.js";
 	var jsonVetrina;
 		
 	$.ajax({
@@ -235,7 +235,7 @@
 		} //FINE DESCRIZIONE
 				
 
-		
+		/*
 		//FACEBOOK
 		FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 		//GET LOGIN STATUS
@@ -259,7 +259,7 @@
 			$("ul.listaSocial").listview("refresh");
 			}
 		}, true);
-		
+		*/
 		//FOURSQUARE
 		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
 		if (tokenFoursquare == null) {
@@ -333,7 +333,7 @@
 		}).addTo(map);
 		*/
 		
-		map.setView(new L.LatLng(45.80806, 9.08518),14); //MAPPA SU COMO
+		map.setView(new L.LatLng(esercizioLatitude, esercizioLongitude),16); //MAPPA SU COMO
 		
 		//BOTTONI CONTROLLO ZOOM
 		var controlloZoom = L.control({ position: 'bottomleft' });
@@ -355,7 +355,7 @@
       		
 		var markerIcon = L.icon({
 			iconUrl: 'img/marker-icon.png',
-			iconSize:     [25, 41], // size of the icon
+			iconSize:     [30, 41], // size of the icon
 			popupAnchor:  [0, -20] // point from which the popup should open relative to the iconAnchor
 		});
 		
@@ -417,11 +417,11 @@
 			var userAccuracy = position.coords.accuracy 
 
 			if (!markerUtente) {
-			markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).bindPopup("Sei qui.").openPopup().addTo(map);
+			markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).addTo(map);
 			markerUtente.setAccuracy(userAccuracy);
-			map.setView(new L.LatLng(userLatitude, userLongitude),16);
+			//map.setView(new L.LatLng(esercizioLatitude, esercizioLongitude),16);
 			}
-			markerUtente.setLatLng([userLatitude, userLongitude],{pulsing:true}).update().bindPopup("Sei qui.").openPopup();
+			markerUtente.setLatLng([userLatitude, userLongitude],{pulsing:true}).update();
 	
 		} // END ON SUCCESS
 	
