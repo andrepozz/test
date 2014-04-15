@@ -209,11 +209,11 @@
 		$(".descrizioneEsercizio").html(""); // SVUOTA DESCRIZIONE PER PREVENIRE DESCRIZIONI NULLE
 		$(".brandEsercizio").html(""); // SVUOTA BRAND PER PREVENIRE BRAND NULLI
 		
-		if (info.Parcheggio != undefined) {
+		if (info.Brand != undefined) {
 		$(".brandEsercizio").html(info.Brand.join(", "));
 		} //FINE BRAND
 				
-		if (info.Parcheggio != undefined) {
+		if (info.Descrizione != undefined) {
 			$(".descrizioneEsercizio").html(info.Descrizione);
 			descrizioneEsercizio = info.Descrizione;
 			sessionStorage.setItem('descrizioneEsercizio', info.Descrizione);
