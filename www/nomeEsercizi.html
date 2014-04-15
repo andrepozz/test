@@ -64,7 +64,6 @@
 	<link rel="stylesheet" href="css/vetrina.css" />
 	<script src="js/leaflet.js"></script>
 	<script src="js/leaflet.usermarker.js"></script>
-	<script src="js/function_checkConnection.js"></script>
 	<script type="text/javascript" src="cordova.js"></script>
 	
 	<title>Ricerca Negozio</title>
@@ -245,7 +244,7 @@
 		FB.getLoginStatus(function(response) {
 			//CONNESSO
 			if (response.status === 'connected') {
-			$( "img#votaFoursquare" ).attr('src', 'img/collegaFacebook.png');		
+			$( "img#votaFacebook" ).attr('src', 'img/collegaFacebook.png');		
 			}
 			//APP NON AUTORIZZATA
 			else if (response.status === 'not_authorized' || connectionStatus == "offline") {
@@ -376,9 +375,17 @@
 			userLatitude = position.coords.latitude;
 			userLongitude = position.coords.longitude;
 			
+			//FACEBOOK
+			$(".votaFacebook").attr("latitude", userLatitude);
+			$(".votaFacebook").attr("longitude", userLongitude);
+			
 			//FOURSQUARE
 			$(".votaFoursquare").attr("latitude", userLatitude);
 			$(".votaFoursquare").attr("longitude", userLongitude);
+			
+			//TWITTER
+			$(".votaTwitter").attr("latitude", userLatitude);
+			$(".votaTwitter").attr("longitude", userLongitude);
 	
 			var distance = 5000;
 			var jsonPositionDir = path + "/position.js";
@@ -581,13 +588,16 @@
 	$(document).on("click", '.votaTwitter', function(){
 		
 		idEsercizio = $("h3.nomeEsercizio").attr('idEsercizio');
+		latitudeTwitter = $(".votaTwitter").attr('latitude');
+		longitudeTwitter = $(".votaTwitter").attr('longitude');
+		urlEsercizio = "http://www.wificomo.com/it/node/"+idEsercizio;
+		nomeEsercizio = $("h3.nomeEsercizio").html();
 		
-		//var nomeEsercizioFoursquare = $(this).attr('nomeEsercizio');
 		var tokenTwitter = window.localStorage.getItem("twitterToken");		
 		var tokenTwitterSecret = window.localStorage.getItem("twitterVerifier");			
 		var urlTwitter = 'http://www.wificomo.com/twitter/votaTwitter.php';
-		var tweet = "prova tweet";
-		
+		var tweet = "ShopInComo @"+nomeEsercizio.substr(0, 50)+" "+urlEsercizio;
+
 		 // fire off the request to /form.php
 		var request = $.ajax({
 			url: urlTwitter,
@@ -600,7 +610,7 @@
         	$.ajax({
 				type: 'POST',
 				url: 'http://www.wificomo.com/ccn20/votiSocial.php',
-				data: { idNegozio: idEsercizio, socialNetwork: 'Twitter', nomeNegozio: $("h3.nomeEsercizio").html()}
+				data: { idNegozio: idEsercizio, socialNetwork: 'Twitter', nomeNegozio: $("h3.nomeEsercizio").html(), latitude: latitudeTwitter, longitude: longitudeTwitter}
 				}).done(function( msg ) {
 				alert("Tweet ok");
 					});		
@@ -896,8 +906,8 @@
 	
 	if(checkStatistiche == "si"){
 	
-		var checkConnection = checkConnection();
-		if (checkConnection =! "No_network")
+		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+		if (connectionStatus == "online")
 		{
 			$(function () {
 			var chart;
