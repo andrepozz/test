@@ -123,6 +123,19 @@ background: #FFFFFF;
 padding: 10px 10px 5px 10px;
 }
 
+a.morelink {
+    text-decoration:none;
+    outline: none;
+}
+.morecontent span {
+    display: none;
+}
+.comment {
+    width: 400px;
+    background-color: #f0f0f0;
+    margin: 10px;
+}
+
 /* ORARI */
 
 ul#orariEsercizio .ui-li-divider{

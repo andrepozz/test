@@ -196,13 +196,34 @@
 		$("p.indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
 		$(".descrizioneEsercizio").html(""); // SVUOTA DESCRIZIONE PER PREVENIRE DESCRIZIONI NULLE
 		$(".descrizioneEsercizio").html(info.Descrizione);
-				
+		$(".brandEsercizio").html(info.Brand.join(", "));
+		
 		esercizioLatitude = info.Latitudine;
 		esercizioLongitude = info.Longitudine;
 		nomeEsercizioMappa = info.NomeEsercizio;
 		descrizioneEsercizio = info.Descrizione;
+		sessionStorage.setItem('descrizioneEsercizio', info.Descrizione);
 		linguaDescrizioneEsercizio = info.LinguaDescrizione;
+		descrizioneEsercizioShowMore = info.Descrizione;
+		var maxCharacters = 50;
+		var ellipsestext = "...";
+		var moretext = "show more";
+		var lesstext = "show less";
+		$('.showDescrizione').each(function() {
 		
+			if(descrizioneEsercizioShowMore.length > maxCharacters) {
+
+			var minText = descrizioneEsercizioShowMore.substr(0, maxCharacters);
+			var allText = descrizioneEsercizioShowMore.substr(maxCharacters, descrizioneEsercizioShowMore.length - maxCharacters);
+			var descrizioneShow = minText + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + allText + '</span>&nbsp;&nbsp;<a href="#" class="morelink">' + moretext + '</a></span>';
+			$(this).html(descrizioneShow);
+		}
+		});
+		
+		
+				
+
+		/*
 		//FACEBOOK
 		FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 		//GET LOGIN STATUS
@@ -226,34 +247,28 @@
 			$("ul.listaSocial").listview("refresh");
 			}
 		}, true);
-		
+		*/
 		//FOURSQUARE
 		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
-		alert("foursquare token: "+tokenFoursquare);
 		if (tokenFoursquare == null) {
-		alert("foursquare token null");
 		$( "img#votaFoursquare" ).attr('src', 'img/collegaFoursquare_bn.png');
 		var cnt = $("a.votaFoursquare").contents();
 		$("a.votaFoursquare").replaceWith(cnt);
 		$("ul.listaSocial").listview("refresh");
 		}
 		else {
-		alert("foursquare token: "+tokenFoursquare);
 		$( "img#votaFoursquare" ).attr('src', 'img/collegaFoursquare.png');
 		}
 		
 		//TWITTER
 		var twitterToken = window.localStorage.getItem("twitterToken");
-		alert("twitter token: "+twitterToken);
 		if (twitterToken == null) {
-		alert("twitter token null");
 		$( "img#votaTwitter" ).attr('src', 'img/collegaTwitter_bn.png');
 		var cnt = $("a.votaTwitter").contents();
 		$("a.votaTwitter").replaceWith(cnt);
 		$("ul.listaSocial").listview("refresh");
 		}
 		else {
-		alert("twitter token: "+twitterToken);
 		$( "img#votaTwitter" ).attr('src', 'img/collegaTwitter.png');
 		}
 		
@@ -281,12 +296,12 @@
 		if(!(codLingua == 'it' || codLingua == 'en')){
 			if(descrizioneEsercizio != undefined)
 			{
-			$( "#box-descrizioneEsercizio" ).show();
+			$( ".descrizioneEsercizio" ).show();
 			$( ".traduciDescrizioneEsercizio" ).html("");
-			$( ".traduciDescrizioneEsercizio" ).html( "<button class='translate' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Traduci</button>" );	
+			$( ".traduciDescrizioneEsercizio" ).html( "<a class='translate ui-btn ui-mini ui-btn-inline' codLingua='"+codLingua+"' linguaDescrizione='"+linguaDescrizioneEsercizio+"'>Translate</a>" );	
 			}
 			else{
-			$( "#box-descrizioneEsercizio" ).hide();
+			$( ".descrizioneEsercizio" ).hide();
 			}
 		}
 		
@@ -427,7 +442,7 @@
 	
 // CLICK TRANSLATE GOOGLE
 	$(document).on("click", '.translate', function(){
-		var descrizioneTranslate = $(".descrizioneEsercizio").text();
+		var descrizioneTranslate = sessionStorage.getItem('descrizioneEsercizio');
 		var linguaDescrizione = $(this).attr('linguaDescrizione');
 		var codLingua = $(this).attr('codLingua');
 		var urlTranslate = encodeURI("http://translate.google.com/#"+linguaDescrizione+"/"+codLingua+"/"+descrizioneTranslate+"");
@@ -470,6 +485,21 @@
 	}
 	
 	// /FUNZIONE DIRECTIONS
+	
+	    $(document).on("click", '.morelink', function(){
+        var moretext = "more";
+		var lesstext = "less";
+		if($(this).hasClass("less")) {
+            $(this).removeClass("less");
+            $(this).html(moretext);
+        } else {
+            $(this).addClass("less");
+            $(this).html(lesstext);
+        }
+        $(this).parent().prev().toggle();
+        $(this).prev().toggle();
+        return false;
+    });
 	
 	$(document).on("click", '.showDescrizione', function(){
 	
@@ -593,13 +623,13 @@
     <li style="background:#fd613d">
 	<h3 class="nomeEsercizio" style="color:white; text-shadow:none"></h3>
 	<p class="indirizzoEsercizio" style="color:white; text-shadow:none"></p>
-    </li>
+    <p class="brandEsercizio" style="color:white; text-shadow:none"></p>
+	</li>
 	<li>
-		<!-- DESCRIZIONE ESERCIZIO -->
-		<p class="descrizioneEsercizio"></p>
-		<p><a href="#" class="showDescrizione">show more</a></p>
+		<!-- DESCRIZIONE + BRAND ESERCIZIO -->
+		<p class="descrizioneEsercizio showDescrizione"></p>
 		<p class="traduciDescrizioneEsercizio"></p>
-		<!-- /DESCRIZIONE ESERCIZIO -->
+		<!-- /DESCRIZIONE + BRAND ESERCIZIO -->
     </li>
 	<li>
 	<div id="mappa" style="height:200px"></div>
@@ -693,7 +723,7 @@
 	
 	$.each(JSON.parse(jsonVetrina), function(index, info) {
 				
-		$("h3.nomeEsercizio").html(info.NomeEsercizio);
+		if (info.mostraOrari == "si"){
 		$("ul#orariEsercizio").append($("<li data-role='list-divider'>Orari di Apertura</li>"));
 		$("ul#orariEsercizio").append($("<li>Lunedi: "+info.Orario.lunedi+"</li>"));
 		$("ul#orariEsercizio").append($("<li>Martedi: "+info.Orario.martedi+"</li>"));
@@ -703,7 +733,10 @@
 		$("ul#orariEsercizio").append($("<li>Sabato: "+info.Orario.sabato+"</li>"));
 		$("ul#orariEsercizio").append($("<li>Domenica: "+info.Orario.domenica+"</li>"));
 		$("ul#orariEsercizio").listview("refresh");
-							
+		}
+		else {
+		$("#checkOrari").html("Orari di apertura non comunicati dal negoziante");
+		}
 	});
 		
 		
@@ -718,6 +751,7 @@
 	<!-- ORARI -->
 	<ul id="orariEsercizio" data-role="listview" data-inset="true">
 	</ul>
+	<p id="checkOrari"></p>
 	<!-- /ORARI -->
 			
 	</div><!-- /content -->
@@ -770,7 +804,6 @@
 	
 	$.each(JSON.parse(jsonVetrina), function(index, info) {
 				
-		$("h3.nomeEsercizio").html(info.NomeEsercizio);
 		$("ul#contattiEsercizio").append($("<li data-role='list-divider'>Contatti</li>"));
 		$("ul#contattiEsercizio").append($("<li>Indirizzo: "+info.Indirizzo+" "+info.Citta+"</li>"));
 		if (info.Telefono != undefined){$("ul#contattiEsercizio").append($("<li><a href=tel:"+info.Telefono.replace(/ /g,'')+"><img src='img/contattiTelefono.png'><h2>telefono</h2><p>"+info.Telefono+"</p></a></li>"))};

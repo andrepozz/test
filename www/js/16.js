@@ -1,37 +1,35 @@
 [
     {
-        "idEsercizio": "1207",
-        "NomeEsercizio": "Babylonia Il Mercatino Usato Del Bambino",
-        "Descrizione": "Babylonia 0-12 è un negozio dell'usato nato per ofrirvi la possibilità di vendere ciò che i vostri piccoli non utilizzano e per acquistare abbigliamento, attrezzature, giocattoli e articoli di puericultura assolutamente selezionati, a prezzi convenienti.",
+        "idEsercizio": "1693",
+        "NomeEsercizio": "Tea World Shop",
+        "Descrizione": "Tea world shop importa e distribuisce oltre 150 tipologie di tè, infusi, tisane e rooibos da tutto il mondo. Spediamo in tutta italia tramite sito e -commerce www.teaworldshop.it",
         "LinguaDescrizione": "it",
-        "Indirizzo": "Via Anzani 28",
+        "Indirizzo": "Via Odescalchi 8",
         "Citta": "Como",
         "Cap": "22100",
-        "Latitudine": "45.799940600000",
-        "Longitudine": "9.089760200000",
+        "Latitudine": "45.809135300000",
+        "Longitudine": "9.084254600000",
         "Orario": {
-            "domenica": "chiuso",
-            "lunedi": "chiuso",
-            "martedi": "chiuso",
-            "mercoledi": "chiuso",
-            "giovedi": "chiuso",
-            "venerdi": "chiuso",
-            "sabato": "chiuso"
+            "lunedi": "15.00-19.00",
+            "martedi": "10.00-19.00",
+            "mercoledi": "10.00-19.00",
+            "giovedi": "10.00-19.00",
+            "venerdi": "10.00-19.00",
+            "sabato": "10.00-19.00",
+            "domenica": "chiuso"
         },
-        "Website": "www.babylonia0-12.it",
-        "Telefono": "031 2071889",
-        "Email": "info@babylonia0-12.it",
+        "Website": "www.teaworldshop.it",
+        "Telefono": "031 241366",
+        "Email": "info@teaworldshop.it",
         "Statistiche": "si",
-        "mostraOrari": "no",
+        "mostraOrari": "si",
         "Brand": [
-            "Abbigliamento E Accessori Da 0-12 Anni",
-            "Attrezzature Da Passeggio",
-            "Attrezzature Per La Pappa",
-            "Attrezzature Per La Nanna",
-            "Articoli Di Puericultura",
-            "Libri",
-            "Giochi",
-            "Premaman"
+            "Tè",
+            "Infusi",
+            "Tisane",
+            "Rooibos",
+            "Accessori Per La Preparazione Del Tè",
+            "Caffè Aromatizzati"
         ]
     }
 ]
