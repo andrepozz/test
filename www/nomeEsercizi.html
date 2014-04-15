@@ -189,9 +189,11 @@
 	
 	$.each(jsonVetrina, function(index, info) {
 		$("h3.nomeEsercizio").html(info.NomeEsercizio);
-		$(".indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
+		$("p.indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
 		$(".descrizioneEsercizio").html(""); // SVUOTA DESCRIZIONE PER PREVENIRE DESCRIZIONI NULLE
 		$(".descrizioneEsercizio").html(info.Descrizione);
+		$(".brandEsercizio").html(""); // SVUOTA BRAND PER PREVENIRE BRAND NULLI
+		$(".brandEsercizio").html(info.Brand.join(", "));
 				 
 		esercizioLatitude = info.Latitudine;
 		esercizioLongitude = info.Longitudine;
@@ -570,18 +572,11 @@
 	
 	<div id="box-nomeEsercizio">
 	<h3 class="nomeEsercizio"></h3>
+	<p class="indirizzoEsercizio" style="color:white; text-shadow:none"></p>
+    <p class="brandEsercizio" style="color:white; text-shadow:none"></p>
 	</div>
 	
 	<!-- /NOME ESERCIZIO -->
-	
-	<!-- MAPPA + INDIRIZZO + DIRECTIONS + PANORAMICA + DISTANZA -->
-	<div id="mappa"></div>
-	<ul class="funzionalitaMappa">
-	<li class="singolaFunzionalitaMappa indirizzoEsercizio"></li>
-	<li class="singolaFunzionalitaMappa navigateEsercizio"></li>
-	<li class="singolaFunzionalitaMappa distanzaEsercizio"></li>
-	</ul>
-	<!-- /MAPPA + INDIRIZZO + DIRECTIONS + PANORAMICA + DISTANZA -->
 	
 	<!-- DESCRIZIONE ESERCIZIO -->
 	
@@ -590,6 +585,19 @@
 	<p class="traduciDescrizioneEsercizio"></p>
 	</div>
 	<!-- /DESCRIZIONE ESERCIZIO -->
+	
+	<!-- MAPPA + INDIRIZZO + DIRECTIONS + PANORAMICA + DISTANZA -->
+	<div id="mappa"></div>
+	<!--
+	<ul class="funzionalitaMappa">
+	<li class="singolaFunzionalitaMappa indirizzoEsercizio"></li>
+	<li class="singolaFunzionalitaMappa navigateEsercizio"></li>
+	<li class="singolaFunzionalitaMappa distanzaEsercizio"></li>
+	</ul>
+	-->
+	<!-- /MAPPA + INDIRIZZO + DIRECTIONS + PANORAMICA + DISTANZA -->
+	
+
 	
 	<!-- PARCHEGGIO VICINO ESERCIZIO -->
 	
