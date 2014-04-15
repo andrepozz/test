@@ -200,6 +200,7 @@
 	
 	$.each(jsonVetrina, function(index, info) {
 		$("h3.nomeEsercizio").html(info.NomeEsercizio);
+		$("h3.nomeEsercizio").attr('idEsercizio', info.idEsercizio);
 		$("p.indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
 		
 		esercizioLatitude = info.Latitudine;
@@ -234,14 +235,14 @@
 			});
 		} //FINE DESCRIZIONE
 				
-
+		var checkConnection = checkConnection();
 		
 		//FACEBOOK
 		FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 		//GET LOGIN STATUS
 		FB.getLoginStatus(function(response) {
 			//CONNESSO
-			if (response.status === 'connected') {
+			if (response.status === 'connected' && checkConnection =! "No_network") {
 			$( "img#votaFoursquare" ).attr('src', 'img/collegaFacebook.png');		
 			}
 			//APP NON AUTORIZZATA
@@ -262,7 +263,7 @@
 		
 		//FOURSQUARE
 		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
-		if (tokenFoursquare == null) {
+		if (tokenFoursquare == null || && checkConnection =! "No_network") {
 		$( "img#votaFoursquare" ).attr('src', 'img/collegaFoursquare_bn.png');
 		var cnt = $("a.votaFoursquare").contents();
 		$("a.votaFoursquare").replaceWith(cnt);
@@ -274,7 +275,7 @@
 		
 		//TWITTER
 		var twitterToken = window.localStorage.getItem("twitterToken");
-		if (twitterToken == null) {
+		if (twitterToken == null || && checkConnection =! "No_network") {
 		$( "img#votaTwitter" ).attr('src', 'img/collegaTwitter_bn.png');
 		var cnt = $("a.votaTwitter").contents();
 		$("a.votaTwitter").replaceWith(cnt);
@@ -319,8 +320,6 @@
 // MAPPA + POSIZIONE UTENTE
 	
 		//INIZIALIZZAZIONE MAPPA
-		
-
 		
 		map = new L.Map('map');
 		map.dragging.disable();
@@ -511,23 +510,7 @@
         $(this).prev().toggle();
         return false;
     });
-	
-	$(document).on("click", '.showDescrizione', function(){
-	
-	$('p.descrizioneEsercizio').css('white-space', 'normal');
-	$('a.showDescrizione').addClass('hideDescrizione').removeClass('showDescrizione');
-	$('a.hideDescrizione').html('show less');
-	
-	});
-	
-	$(document).on("click", '.hideDescrizione', function(){
-	
-	$('p.descrizioneEsercizio').css('white-space', '');
-	$('a.hideDescrizione').addClass('showDescrizione').removeClass('hideDescrizione');
-	$('a.showDescrizione').html('show more');
-	
-	});
-	
+		
 	$(document).on("click", '.votaFacebook', function(){
 	
 	idEsercizio = $(this).attr('idEsercizio');
@@ -595,13 +578,11 @@
 	
 	$(document).on("click", '.votaTwitter', function(){
 		
+		idEsercizio = $("h3.nomeEsercizio").attr('idEsercizio');
+		
 		//var nomeEsercizioFoursquare = $(this).attr('nomeEsercizio');
 		var tokenTwitter = window.localStorage.getItem("twitterToken");		
-		var tokenTwitterSecret = window.localStorage.getItem("twitterVerifier");	
-		
-		alert(tokenTwitterSecret);
-		alert(tokenTwitter);
-		
+		var tokenTwitterSecret = window.localStorage.getItem("twitterVerifier");			
 		var urlTwitter = 'http://www.wificomo.com/twitter/votaTwitter.php';
 		var tweet = "prova tweet";
 		
@@ -614,8 +595,15 @@
 
     // callback handler that will be called on success
     request.done(function (response){
-        // log a message to the console
-        alert("tweet ok");
+        	$.ajax({
+				type: 'POST',
+				url: 'http://www.wificomo.com/ccn20/votiSocial.php',
+				data: { idNegozio: idEsercizio, socialNetwork: 'Twitter', nomeNegozio: $("h3.nomeEsercizio").html()}
+				}).done(function( msg ) {
+				alert("Tweet ok");
+					});		
+		// log a message to the console
+        
     });
 
     // callback handler that will be called on failure
@@ -906,9 +894,9 @@
 	
 	if(checkStatistiche == "si"){
 	
-		//var checkConnection = checkConnection();
-		//if (checkConnection =! "No_network")
-		//{
+		var checkConnection = checkConnection();
+		if (checkConnection =! "No_network")
+		{
 			$(function () {
 			var chart;
 			var perShapeGradient = {
@@ -1106,10 +1094,12 @@
 		
 			});
 		
-		//}
-		//else{
-		//$("#checkStatistiche").html("Questa funzionalità è disponibile solo se collegati alla rete 3G o WiFi");
-		//}
+		}
+		else{
+		$("button#intervallo").hide();
+		$("ul#statisticheEsercizio").append($("<li data-role='list-divider'>Il negoziante non permette la visualizzazione pubblica delle statistiche</li>"));
+		$("ul#statisticheEsercizio").listview("refresh");
+		}
 	
 	}
 	else{
