@@ -523,6 +523,9 @@
 	$(document).on("click", '.votaFacebook', function(){
 	
 	idEsercizio = $(this).attr('idEsercizio');
+	latitudeFacebook = $(".votaTwitter").attr('latitude');
+	longitudeFacebook = $(".votaTwitter").attr('longitude');
+	nomeEsercizio = $("h3.nomeEsercizio").html();
 	
 	FB.ui(
 	{
@@ -535,7 +538,13 @@
 	},
 	function(response) {
 		if (response) {
-		alert('Post was published.');
+			$.ajax({
+				type: 'POST',
+				url: 'http://www.wificomo.com/ccn20/votiSocial.php',
+				data: { idNegozio: idEsercizio, socialNetwork: 'Facebook', nomeNegozio: $("h3.nomeEsercizio").html(), latitude: latitudeFacebook, longitude: longitudeFacebook}
+				}).done(function( msg ) {
+				alert("Post published");
+			});	
 		} 
 		else {
 		alert('Post was not published.');
@@ -575,11 +584,22 @@
 		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");	
 		var idVenue = $(this).attr('idVenue');
 		
+		idEsercizio = $("h3.nomeEsercizio").attr('idEsercizio');
+		latitudeFoursquare = $(".votaTwitter").attr('latitude');
+		longitudeFoursquare = $(".votaTwitter").attr('longitude');
+		nomeEsercizio = $("h3.nomeEsercizio").html();
+		
 		//var idUserFoursquare = window.localStorage.getItem("idUserFoursquare");
 					
 		var urlFoursquare = 'https://api.foursquare.com/v2/checkins/add?venueId=' + idVenue +'&v=20140410&oauth_token=' + tokenFoursquare;
 		$.post(urlFoursquare, function() {
-		alert("Check In effettuato con successo!");
+		    $.ajax({
+				type: 'POST',
+				url: 'http://www.wificomo.com/ccn20/votiSocial.php',
+				data: { idNegozio: idEsercizio, socialNetwork: 'Foursquare', nomeNegozio: $("h3.nomeEsercizio").html(), latitude: latitudeFoursquare, longitude: longitudeFoursquare}
+				}).done(function( msg ) {
+				alert("Check-in ok");
+			});	
 		$( "#popupCheckin" ).popup( "close" )
 		});
 			
@@ -596,7 +616,7 @@
 		var tokenTwitter = window.localStorage.getItem("twitterToken");		
 		var tokenTwitterSecret = window.localStorage.getItem("twitterVerifier");			
 		var urlTwitter = 'http://www.wificomo.com/twitter/votaTwitter.php';
-		var tweet = "ShopInComo @"+nomeEsercizio.substr(0, 50)+" "+urlEsercizio;
+		var tweet = "ShopInComo @ "+nomeEsercizio.substr(0, 50)+" "+urlEsercizio;
 
 		 // fire off the request to /form.php
 		var request = $.ajax({
