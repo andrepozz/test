@@ -145,6 +145,7 @@ ul#orariEsercizio .ui-li-divider{
 	background: #fd613d;
 }
 
+
 /* CONTATTI */
 
 ul#contattiEsercizio .ui-li-divider{
@@ -155,6 +156,13 @@ ul#contattiEsercizio .ui-li-divider{
 }
 
 /* BARCHART */
+
+ul#statisticheEsercizio .ui-li-divider{
+    color: #ffffff;
+	border: 0;
+	text-shadow: none !important;
+	background: #fd613d;
+}
 
 #barChart{
     border: 0 none;

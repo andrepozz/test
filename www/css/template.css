@@ -120,7 +120,7 @@ background: transparent;
 
 .ui-header{
 background: #000000 url(../img/header-medium.png) no-repeat center center !important;
-height: 3.5em !important;
+height: 3em !important;
 border: 0;
 }
 
@@ -236,7 +236,7 @@ background: transparent;
 
 .ui-header{
 background: #000000 url(../img/header-medium.png) no-repeat center center !important;
-height: 3.5em !important;
+height: 3em !important;
 border: 0;
 }
 
@@ -350,7 +350,7 @@ background: transparent;
 
 .ui-header{
 background: #000000 url(../img/header-big.png) no-repeat center center !important;
-height: 5.5em !important;
+height: 5em !important;
 border: 0;
 }
 

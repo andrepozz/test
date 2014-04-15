@@ -98,6 +98,7 @@
 	//CARICA JSON CATEGORIE
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPath = path + "/nomeEsercizi.js";
+	//var jsonPath = "js/nomeesercizi.js";
 	
 		$( "#cerca_negozio" ).on( "filterablebeforefilter", function ( e, data ) {
 			var $ul = $( this ),
@@ -171,6 +172,7 @@
 	// CARICA FILE VETRINA
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPath = path + "/esercizi/"+idEsercizio+".js";
+	//var jsonPath = "js/16.js";
 	var jsonVetrina;
 		
 	$.ajax({
@@ -196,6 +198,7 @@
 		$("p.indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
 		$(".descrizioneEsercizio").html(""); // SVUOTA DESCRIZIONE PER PREVENIRE DESCRIZIONI NULLE
 		$(".descrizioneEsercizio").html(info.Descrizione);
+		$(".brandEsercizio").html(""); // SVUOTA BRAND PER PREVENIRE BRAND NULLI
 		$(".brandEsercizio").html(info.Brand.join(", "));
 		
 		esercizioLatitude = info.Latitudine;
@@ -735,7 +738,8 @@
 		$("ul#orariEsercizio").listview("refresh");
 		}
 		else {
-		$("#checkOrari").html("Orari di apertura non comunicati dal negoziante");
+		$("ul#orariEsercizio").append($("<li data-role='list-divider'>Orari di apertura non comunicati</li>"));
+		$("ul#orariEsercizio").listview("refresh");
 		}
 	});
 		
@@ -751,7 +755,6 @@
 	<!-- ORARI -->
 	<ul id="orariEsercizio" data-role="listview" data-inset="true">
 	</ul>
-	<p id="checkOrari"></p>
 	<!-- /ORARI -->
 			
 	</div><!-- /content -->
@@ -1103,7 +1106,8 @@
 	
 	}
 	else{
-	$("#checkStatistiche").html("Il negoziante non permette la visualizzazione pubblica delle statistiche");
+	$("ul#statisticheEsercizio").append($("<li data-role='list-divider'>Il negoziante non permette la visualizzazione pubblica delle statistiche</li>"));
+	$("ul#statisticheEsercizio").listview("refresh");
 	}
 		
 	// /NOME ESERCIZIO + STATISTICHE
@@ -1114,8 +1118,9 @@
 	</script>
 	
 	<!-- STATISTICHE -->
+	<ul id="statisticheEsercizio" data-role="listview" data-inset="true">
+	</ul>
 	<div id="box-statisticheEsercizio">
-	<p id="checkStatistiche"></p>
 	<div id="barChart" style="width: 1920px; height:450px"></div>
 	<div>
 	<button id="intervallo" value="7giorni">7 giorni</button>

@@ -21,8 +21,8 @@
         "Website": "www.teaworldshop.it",
         "Telefono": "031 241366",
         "Email": "info@teaworldshop.it",
-        "Statistiche": "si",
-        "mostraOrari": "si",
+        "Statistiche": "no",
+        "mostraOrari": "no",
         "Brand": [
             "Tè",
             "Infusi",
