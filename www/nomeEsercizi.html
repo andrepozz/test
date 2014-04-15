@@ -97,8 +97,8 @@
 	
 	//CARICA JSON CATEGORIE
 	var path = window.localStorage.getItem("pathSD");
-	//var jsonPath = path + "/nomeEsercizi.js";
-	var jsonPath = "js/nomeesercizi.js";
+	var jsonPath = path + "/nomeEsercizi.js";
+	//var jsonPath = "js/nomeesercizi.js";
 	
 		$( "#cerca_negozio" ).on( "filterablebeforefilter", function ( e, data ) {
 			var $ul = $( this ),
@@ -171,8 +171,8 @@
 	
 	// CARICA FILE VETRINA
 	var path = window.localStorage.getItem("pathSD");
-	//var jsonPath = path + "/esercizi/"+idEsercizio+".js";
-	var jsonPath = "js/16.js";
+	var jsonPath = path + "/esercizi/"+idEsercizio+".js";
+	//var jsonPath = "js/16.js";
 	var jsonVetrina;
 		
 	$.ajax({
@@ -1110,6 +1110,7 @@
 	
 	}
 	else{
+	$("button#intervallo").hide();
 	$("ul#statisticheEsercizio").append($("<li data-role='list-divider'>Il negoziante non permette la visualizzazione pubblica delle statistiche</li>"));
 	$("ul#statisticheEsercizio").listview("refresh");
 	}
