@@ -190,6 +190,7 @@
 	var esercizioLongitude;
 	var nomeEsercizioMappa;
 	var descrizioneEsercizio;
+	var descrizioneEsercizioShowMore;
 	var linguaDescrizioneEsercizio;
 	var map;
 	
@@ -200,38 +201,41 @@
 	$.each(jsonVetrina, function(index, info) {
 		$("h3.nomeEsercizio").html(info.NomeEsercizio);
 		$("p.indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
-		$(".descrizioneEsercizio").html(""); // SVUOTA DESCRIZIONE PER PREVENIRE DESCRIZIONI NULLE
-		$(".descrizioneEsercizio").html(info.Descrizione);
-		$(".brandEsercizio").html(""); // SVUOTA BRAND PER PREVENIRE BRAND NULLI
-		$(".brandEsercizio").html(info.Brand.join(", "));
 		
 		esercizioLatitude = info.Latitudine;
-		console.log(esercizioLatitude);
 		esercizioLongitude = info.Longitudine;
 		nomeEsercizioMappa = info.NomeEsercizio;
 		
-		descrizioneEsercizio = info.Descrizione;
-		sessionStorage.setItem('descrizioneEsercizio', info.Descrizione);
-		linguaDescrizioneEsercizio = info.LinguaDescrizione;
-		descrizioneEsercizioShowMore = info.Descrizione;
-		var maxCharacters = 50;
-		var ellipsestext = "...";
-		var moretext = "show more";
-		var lesstext = "show less";
-		$('.showDescrizione').each(function() {
+		$(".descrizioneEsercizio").html(""); // SVUOTA DESCRIZIONE PER PREVENIRE DESCRIZIONI NULLE
+		$(".brandEsercizio").html(""); // SVUOTA BRAND PER PREVENIRE BRAND NULLI
 		
-			if(descrizioneEsercizioShowMore.length > maxCharacters) {
-
-			var minText = descrizioneEsercizioShowMore.substr(0, maxCharacters);
-			var allText = descrizioneEsercizioShowMore.substr(maxCharacters, descrizioneEsercizioShowMore.length - maxCharacters);
-			var descrizioneShow = minText + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + allText + '</span>&nbsp;&nbsp;<a href="#" class="morelink">' + moretext + '</a></span>';
-			$(this).html(descrizioneShow);
-		}
-		});
-		
+		if (info.Parcheggio != undefined) {
+		$(".brandEsercizio").html(info.Brand.join(", "));
+		} //FINE BRAND
+				
+		if (info.Parcheggio != undefined) {
+			$(".descrizioneEsercizio").html(info.Descrizione);
+			descrizioneEsercizio = info.Descrizione;
+			sessionStorage.setItem('descrizioneEsercizio', info.Descrizione);
+			linguaDescrizioneEsercizio = info.LinguaDescrizione;
+			descrizioneEsercizioShowMore = info.Descrizione;
+			var maxCharacters = 50;
+			var ellipsestext = "...";
+			var moretext = "show more";
+			var lesstext = "show less";
+			$('.showDescrizione').each(function() {
+			
+				if(descrizioneEsercizioShowMore.length > maxCharacters) {
+					var minText = descrizioneEsercizioShowMore.substr(0, maxCharacters);
+					var allText = descrizioneEsercizioShowMore.substr(maxCharacters, descrizioneEsercizioShowMore.length - maxCharacters);
+					var descrizioneShow = minText + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + allText + '</span>&nbsp;&nbsp;<a href="#" class="morelink">' + moretext + '</a></span>';
+					$(this).html(descrizioneShow);
+				}
+			});
+		} //FINE DESCRIZIONE
 				
 
-		
+		/*
 		//FACEBOOK
 		FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 		//GET LOGIN STATUS
@@ -255,7 +259,7 @@
 			$("ul.listaSocial").listview("refresh");
 			}
 		}, true);
-		
+		*/
 		//FOURSQUARE
 		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
 		if (tokenFoursquare == null) {
@@ -295,10 +299,9 @@
 	});
 		
 //NAVIGATE BUTTON
-		
-		$( ".navigateEsercizio" ).html("");
-		$( ".navigateEsercizio" ).append("<a href='#' geoPosition='"+esercizioLatitude+","+esercizioLongitude+"'class='directions'><img src='img/navigation.png'>portami qui</a>");
 
+		$( ".directions" ).attr('geoPosition', esercizioLatitude+","+esercizioLongitude);
+		
 // DESCRIZIONE + TRANSLATE BUTTON
 		var codLingua = localStorage.getItem("codLingua");
 		if(!(codLingua == 'it' || codLingua == 'en')){
@@ -396,21 +399,21 @@
 									if(infoDistance.idEsercizio == nearestEsercizio){
 										var minutes = Math.floor(infoDistance.time / 60);
 										var seconds = infoDistance.time - minutes * 60;
-										$(".distanzaEsercizio").html(infoDistance.distance+"m - "+minutes+":"+seconds+" min<p class='esercizioVicino'>Ora sei vicino a "+infoDistance.nomeEsercizio+"</p>");
+										$(".distanzaEsercizio").html("<img width='16px' height='16px' src='img/distanza.png'>"+infoDistance.distance+"m - "+minutes+":"+seconds+" min<p class='esercizioVicino'>Ora sei vicino a "+infoDistance.nomeEsercizio+"</p>");
 									}
 								});
 						}
 						else{
-						$(".distanzaEsercizio").html("+200m");
+						$(".distanzaEsercizio").html("<img width='16px' height='16px' src='img/distanza.png'>+200m");
 						}
 				}
 				else
 				{
-				$(".distanzaEsercizio").html("Troppo lontato per calcolare");
+				$(".distanzaEsercizio").html("<img width='16px' height='16px' src='img/distanza.png'>Troppo lontato per calcolare");
 				}
 			
 			}); //END GET JSON POSITION 
-	
+			
 			var userAccuracy = position.coords.accuracy 
 
 			if (!markerUtente) {
@@ -624,7 +627,7 @@
 	
 	
 	</script>
-	<ul data-role="listview" data-inset="true" style="background:fd613d">
+	<ul data-role="listview" data-inset="true" style="background:fd613d" class="listaMappa">
     <li style="background:#fd613d">
 	<h3 class="nomeEsercizio" style="color:white; text-shadow:none"></h3>
 	<p class="indirizzoEsercizio" style="color:white; text-shadow:none"></p>
@@ -639,10 +642,10 @@
 	<li>
 	<div id="mappa"></div>
 	</li>
-	<li>
-	<a href="#" class="navigateEsercizio"><img src="img/navigation.png">
+	<li class="navigateEsercizio">
+	<a class="directions" href="#"><img src="img/navigation.png">
 	<h2>portami qui</h2>
-	<p><img width="16px" height="16px" src="img/distanza.png">5 min / 450 m</p>
+	<p class="distanzaEsercizio"></p>
 	</a>
 	</li>
 	<li>

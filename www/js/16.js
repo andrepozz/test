@@ -2,7 +2,6 @@
     {
         "idEsercizio": "1693",
         "NomeEsercizio": "Tea World Shop",
-        "Descrizione": "Tea world shop importa e distribuisce oltre 150 tipologie di tè, infusi, tisane e rooibos da tutto il mondo. Spediamo in tutta italia tramite sito e -commerce www.teaworldshop.it",
         "LinguaDescrizione": "it",
         "Indirizzo": "Via Odescalchi 8",
         "Citta": "Como",
@@ -23,13 +22,15 @@
         "Email": "info@teaworldshop.it",
         "Statistiche": "no",
         "mostraOrari": "no",
-        "Brand": [
-            "Tè",
-            "Infusi",
-            "Tisane",
-            "Rooibos",
-            "Accessori Per La Preparazione Del Tè",
-            "Caffè Aromatizzati"
-        ]
+		"Distanze": {
+        "1350": {
+            "idEsercizio": "1350",
+            "distanza": "185.9085"
+        },
+        "154": {
+            "idEsercizio": "154",
+            "distanza": "123.5354"
+        }
+    }
     }
 ]
