@@ -193,6 +193,10 @@
 	var linguaDescrizioneEsercizio;
 	var map;
 	
+	$( "#map" ).remove();
+	var $map = $("<div>", {id: "map", class: "a", style:"width: 1920px; height:200px"});
+	$("#mappa").append($map);
+	
 	$.each(jsonVetrina, function(index, info) {
 		$("h3.nomeEsercizio").html(info.NomeEsercizio);
 		$("p.indirizzoEsercizio").html(info.Indirizzo+" "+info.Citta);
@@ -202,6 +206,7 @@
 		$(".brandEsercizio").html(info.Brand.join(", "));
 		
 		esercizioLatitude = info.Latitudine;
+		console.log(esercizioLatitude);
 		esercizioLongitude = info.Longitudine;
 		nomeEsercizioMappa = info.NomeEsercizio;
 		
@@ -226,7 +231,7 @@
 		
 				
 
-		/*
+		
 		//FACEBOOK
 		FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 		//GET LOGIN STATUS
@@ -250,7 +255,7 @@
 			$("ul.listaSocial").listview("refresh");
 			}
 		}, true);
-		*/
+		
 		//FOURSQUARE
 		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
 		if (tokenFoursquare == null) {
@@ -312,9 +317,7 @@
 	
 		//INIZIALIZZAZIONE MAPPA
 		
-		$( "#map" ).remove();
-		var $map = $("<div>", {id: "map", class: "a", style:"width: 1920px; height:200px"});
-		$("#mappa").append($map);
+
 		
 		map = new L.Map('map');
 	
@@ -621,7 +624,7 @@
 	
 	
 	</script>
-	
+	<div id="mappa"></div>
 
 	<h3 class="nomeEsercizio" style="color:white; text-shadow:none"></h3>
 	<p class="indirizzoEsercizio" style="color:white; text-shadow:none"></p>
@@ -632,7 +635,7 @@
 		<p class="traduciDescrizioneEsercizio"></p>
 		<!-- /DESCRIZIONE + BRAND ESERCIZIO -->
 
-	<div id="mappa"></div>
+	
 
 	<a href="#" class="navigateEsercizio"><img src="img/navigation.png">
 	<h2>portami qui</h2>
