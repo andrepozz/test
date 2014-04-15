@@ -432,8 +432,7 @@
 // CLICK ZOOM BUTTONS
 	
 		$(document).on("click", 'button.groupMarker', function(){
-			group = new L.featureGroup([markerEsercizio, markerUtente]);
-			map.fitBounds(group.getBounds().pad(0.25));
+			map.setView(new L.LatLng(esercizioLatitude, esercizioLongitude),16);
 		});
 		
 		$(document).on("click", 'button.userMarker', function(){
