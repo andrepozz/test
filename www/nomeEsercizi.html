@@ -202,6 +202,59 @@
 			if (info.Parcheggio != undefined) {
 			parcheggioVicino = info.Parcheggio.nomeParcheggio+" "+info.Parcheggio.indirizzoParcheggio;
 			}
+	
+	
+		//FACEBOOK
+		FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
+		//GET LOGIN STATUS
+		FB.getLoginStatus(function(response) {
+			//CONNESSO
+			if (response.status === 'connected') {
+			$( "img#votaFoursquare" ).attr('src', 'img/collegaFacebook.png');		
+			}
+			//APP NON AUTORIZZATA
+			else if (response.status === 'not_authorized') {
+			$( "img#votaFacebook" ).attr('src', 'img/collegaFacebook_bn.png');
+			var cnt = $("a.votaFacebook").contents();
+			$("a.votaFacebook").replaceWith(cnt);
+			$("ul.listaSocial").listview("refresh");
+			} 
+			//NON CONNESSO
+			else {
+			$( "img#votaFacebook" ).attr('src', 'img/collegaFacebook_bn.png');
+			var cnt = $("a.votaFacebook").contents();
+			$("a.votaFacebook").replaceWith(cnt);
+			$("ul.listaSocial").listview("refresh");
+			}
+		}, true);
+		
+		//FOURSQUARE
+		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
+		if (tokenFoursquare == null) {
+		$( "img#votaFoursquare" ).attr('src', 'img/collegaFoursquare_bn.png');
+		var cnt = $("a.votaFoursquare").contents();
+		$("a.votaFoursquare").replaceWith(cnt);
+		$("ul.listaSocial").listview("refresh");
+		}
+		else {
+		$( "img#votaFoursquare" ).attr('src', 'img/collegaFoursquare.png');
+		}
+		
+		//TWITTER
+		var twitterToken = window.localStorage.getItem("twitterToken");
+		if (twitterToken == null) {
+		$( "img#votaTwitter" ).attr('src', 'img/collegaTwitter_bn.png');
+		var cnt = $("a.votaTwitter").contents();
+		$("a.votaTwitter").replaceWith(cnt);
+		$("ul.listaSocial").listview("refresh");
+		}
+		else {
+		$( "img#votaTwitter" ).attr('src', 'img/collegaTwitter.png');
+		}
+	
+	
+	
+	
 	});
 		
 //NAVIGATE BUTTON
@@ -411,6 +464,105 @@
 	}
 	
 	// /FUNZIONE DIRECTIONS
+	
+	
+	$(document).on("click", '.votaFacebook', function(){
+	
+	idEsercizio = $(this).attr('idEsercizio');
+	
+	FB.ui(
+	{
+		method: 'feed',
+		name: $("h3.nomeEsercizio").html(),
+		link: 'http://www.wificomo.com/it/node/'+idEsercizio,
+		picture: 'http://www.wificomo.com/imgs/logoShopincomo.jpg',
+		caption: 'Shopincomo',
+		description: $("p.descrizioneEsercizio").html()
+	},
+	function(response) {
+		if (response) {
+		alert('Post was published.');
+		} 
+		else {
+		alert('Post was not published.');
+		}
+	}
+	);
+	
+	});
+	
+	$(document).on("click", '.votaFoursquare', function(){
+		
+		var latitude = $(this).attr('latitude');
+		var longitude = $(this).attr('longitude');
+		var nomeEsercizioFoursquare = $(this).attr('nomeEsercizio');
+		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");		
+									
+		$.getJSON('https://api.foursquare.com/v2/venues/search?ll='+latitude+','+longitude+'&limit=4&query='+nomeEsercizioFoursquare+'&radius=100&oauth_token='+tokenFoursquare+'&v=20140410',
+			function(data) {
+			venues = data.response.venues;
+			$("ul#lista_checkin").html("");
+			$("ul#lista_checkin").append($("<li data-role='divider' data-theme='b'>Check In</li>"));
+				if (venues.length == 0) {
+					$("ul#lista_checkin").append($("<li></li>",{"html":"Non sei nelle vicinanze di questo negozio!" }));
+				}
+				else {
+					for (var i = 0; i < venues.length; i++) {
+					$("ul#lista_checkin").append($("<li></li>",{"html":"<a href='#' class='link_ckeckin' idVenue='"+venues[i].id+"'>"+venues[i].name+"</a>" }));
+					}
+				}
+				$("ul#lista_checkin").listview("destroy").listview();
+			});
+	});
+	
+	
+	$(document).on("click", '.link_ckeckin', function(){
+				
+		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");	
+		var idVenue = $(this).attr('idVenue');
+		
+		//var idUserFoursquare = window.localStorage.getItem("idUserFoursquare");
+					
+		var urlFoursquare = 'https://api.foursquare.com/v2/checkins/add?venueId=' + idVenue +'&v=20140410&oauth_token=' + tokenFoursquare;
+		$.post(urlFoursquare, function() {
+		alert("Check In effettuato con successo!");
+		$( "#popupCheckin" ).popup( "close" )
+		});
+			
+	});
+	
+	$(document).on("click", '.votaTwitter', function(){
+		
+		//var nomeEsercizioFoursquare = $(this).attr('nomeEsercizio');
+		var tokenTwitter = window.localStorage.getItem("twitterToken");		
+		var tokenTwitterSecret = window.localStorage.getItem("twitterVerifier");	
+		
+		alert(tokenTwitterSecret);
+		alert(tokenTwitter);
+		
+		var urlTwitter = 'http://www.wificomo.com/twitter/votaTwitter.php';
+		var tweet = "prova tweet";
+		
+		 // fire off the request to /form.php
+		var request = $.ajax({
+			url: urlTwitter,
+			type: "post",
+			data: {access_token: tokenTwitter, access_token_secret: tokenTwitterSecret, tweet: tweet}
+    });
+
+    // callback handler that will be called on success
+    request.done(function (response){
+        // log a message to the console
+        alert("tweet ok");
+    });
+
+    // callback handler that will be called on failure
+    request.fail(function (response){
+        // log the error to the console
+        alert("error");
+    });
+		
+	});
 		
 	</script>
 	
@@ -444,6 +596,27 @@
 	<ul class="parcheggioVicino">
 	</ul>
 	<!-- /PARCHEGGIO VICINO ESERCIZIO -->
+	
+	<ul data-role="listview" data-inset="true" class="listaSocial">
+	<li id="buttonFacebook">
+	<a href="#" class="votaFacebook" idEsercizio=""><img id="votaFacebook" src="img/collegaFacebook.png">
+	<h2>Facebook</h2>
+	<p>vota il negozio su Facebook</p>
+	</a>
+	</li>
+	<li id="buttonFoursquare">
+	<a href="#" class="votaFoursquare" idEsercizio=""><img id="votaFoursquare" src="">
+	<h2>Foursquare</h2>
+	<p>vota il negozio su Foursquare</p>
+	</a>
+	</li>
+	<li id="buttonTwitter">
+	<a href="#" class="votaTwitter" idEsercizio=""><img id="votaTwitter" src="">
+	<h2>Twitter</h2>
+	<p>vota il negozio su Twitter</p>
+	</a>
+	</li>
+	</ul>
 		
 	</div><!-- /content -->
 
