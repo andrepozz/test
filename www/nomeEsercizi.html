@@ -202,7 +202,7 @@
 		nomeEsercizioMappa = info.NomeEsercizio;
 		descrizioneEsercizio = info.Descrizione;
 		linguaDescrizioneEsercizio = info.LinguaDescrizione;
-		/*
+		
 		//FACEBOOK
 		FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 		//GET LOGIN STATUS
@@ -229,30 +229,33 @@
 		
 		//FOURSQUARE
 		var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
+		alert("foursquare token: "+tokenFoursquare);
 		if (tokenFoursquare == null) {
-
+		alert("foursquare token null");
 		$( "img#votaFoursquare" ).attr('src', 'img/collegaFoursquare_bn.png');
 		var cnt = $("a.votaFoursquare").contents();
 		$("a.votaFoursquare").replaceWith(cnt);
 		$("ul.listaSocial").listview("refresh");
 		}
 		else {
+		alert("foursquare token: "+tokenFoursquare);
 		$( "img#votaFoursquare" ).attr('src', 'img/collegaFoursquare.png');
 		}
 		
 		//TWITTER
 		var twitterToken = window.localStorage.getItem("twitterToken");
+		alert("twitter token: "+twitterToken);
 		if (twitterToken == null) {
+		alert("twitter token null");
 		$( "img#votaTwitter" ).attr('src', 'img/collegaTwitter_bn.png');
 		var cnt = $("a.votaTwitter").contents();
 		$("a.votaTwitter").replaceWith(cnt);
 		$("ul.listaSocial").listview("refresh");
 		}
 		else {
+		alert("twitter token: "+twitterToken);
 		$( "img#votaTwitter" ).attr('src', 'img/collegaTwitter.png');
 		}
-		
-		*/
 		
 		if (info.Parcheggio == undefined) {
 		$( "h2.nomeParcheggioVicino" ).html("");
@@ -260,11 +263,12 @@
 		$( "h2.nomeParcheggioVicino" ).html("-");
 		$( "p.indirizzoParcheggioVicino" ).html("-");
 		}
+		else{
 		$( "h2.nomeParcheggioVicino" ).html("");
 		$( "p.indirizzoParcheggioVicino" ).html("");
 		$( "h2.nomeParcheggioVicino" ).html(info.Parcheggio.nomeParcheggio);
 		$( "p.indirizzoParcheggioVicino" ).html(info.Parcheggio.indirizzoParcheggio);
-	
+		}
 	});
 		
 //NAVIGATE BUTTON
@@ -290,11 +294,9 @@
 	
 		//INIZIALIZZAZIONE MAPPA
 		
-		
 		$( "#map" ).remove();
-		var $map = $("<div>", {id: "map", class: "a", style:"width: 1920px; height:200px"});
+		var $map = $("<div>", {id: "map", class: "a", style:"width: 1920px; height:400px"});
 		$("#mappa").append($map);
-		
 		
 		map = new L.Map('map');
 	
@@ -485,7 +487,6 @@
 	
 	});
 	
-	/*
 	$(document).on("click", '.votaFacebook', function(){
 	
 	idEsercizio = $(this).attr('idEsercizio');
@@ -557,6 +558,8 @@
 		var tokenTwitter = window.localStorage.getItem("twitterToken");		
 		var tokenTwitterSecret = window.localStorage.getItem("twitterVerifier");	
 		
+		alert(tokenTwitterSecret);
+		alert(tokenTwitter);
 		
 		var urlTwitter = 'http://www.wificomo.com/twitter/votaTwitter.php';
 		var tweet = "prova tweet";
@@ -581,14 +584,66 @@
     });
 		
 	});
-	*/
+	
 	
 	
 	</script>
 	
-	<div id="mappa"></div>
+	<ul data-role="listview" data-inset="true" style="background:fd613d">
+    <li style="background:#fd613d">
+	<h3 class="nomeEsercizio" style="color:white; text-shadow:none"></h3>
+	<p class="indirizzoEsercizio" style="color:white; text-shadow:none"></p>
+    </li>
+	<li>
+		<!-- DESCRIZIONE ESERCIZIO -->
+		<p class="descrizioneEsercizio"></p>
+		<p><a href="#" class="showDescrizione">show more</a></p>
+		<p class="traduciDescrizioneEsercizio"></p>
+		<!-- /DESCRIZIONE ESERCIZIO -->
+    </li>
+	<li>
+	<div id="mappa" style="height:200px"></div>
+	</li>
+	<li>
+	<a href="#"><img src="img/navigation.png">
+	<h2>portami qui</h2>
+	<p><img width="16px" height="16px" src="img/distanza.png">5 min / 450 m</p>
+	</a>
+	</li>
+	<li>
+	<img src="img/parcheggio.png">
+	<h2 class="nomeParcheggioVicino"></h2>
+	<p class="indirizzoParcheggioVicino"></p>
+	</li>
+	</ul>
 	
+	<ul data-role="listview" data-inset="true" class="listaSocial">
+	<li id="buttonFacebook">
+	<a href="#" class="votaFacebook" idEsercizio=""><img id="votaFacebook" src="img/collegaFacebook.png">
+	<h2>Facebook</h2>
+	<p>vota il negozio su Facebook</p>
+	</a>
+	</li>
+	<li id="buttonFoursquare">
+	<a href="#" class="votaFoursquare" idEsercizio=""><img id="votaFoursquare" src="">
+	<h2>Foursquare</h2>
+	<p>vota il negozio su Foursquare</p>
+	</a>
+	</li>
+	<li id="buttonTwitter">
+	<a href="#" class="votaTwitter" idEsercizio=""><img id="votaTwitter" src="">
+	<h2>Twitter</h2>
+	<p>vota il negozio su Twitter</p>
+	</a>
+	</li>
+	</ul>
 	
+	<div data-role="popup" id="popupCheckin" data-theme="b">
+		<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+		<ul id="lista_checkin" data-role="listview" style="min-width:210px;" data-theme="d">
+		</ul>
+	</div>
+		
 	</div><!-- /content -->
 
 	<!-- FOOTER -->
