@@ -117,7 +117,7 @@ min-height: 25px;
 
 /* DESCRIZIONE */
 
-.descrizioneEsercizio{
+p.descrizioneEsercizio{
 white-space: normal;
 }
 
