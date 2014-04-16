@@ -140,7 +140,7 @@
 		
 		}
 		else{
-			$( "#connection" ).popup("open",{ dismissible: false });
+			$( "#connection" ).popup("open");
 		}
 		
 		}); //ON "pagebeforeshow"
@@ -281,7 +281,7 @@
 			<li><a href="#" class="collegaTwitter" data-transition="slide"><img src="img/twitterList.png" alt="Twitter" class="imageTwitter ui-li-icon ui-corner-none">Twitter<p class="accountTwitter"></p></a></li>
 		</ul>
 		
-		<div data-role="popup" id="connection">
+		<div data-role="popup" id="connection" data-dismissible="false">
 		<p>OFFLINE</p>
 		</div>
 	
