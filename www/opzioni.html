@@ -86,6 +86,10 @@
 		e.preventDefault();
 		}
 		
+		
+		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+		if (connectionStatus == "online")
+		{
 		//FACEBOOK
 			FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 			//GET LOGIN STATUS
@@ -133,6 +137,11 @@
 			$("img.imageTwitter").attr("src", "img/twitterList.png");
 			$("p.accountTwitter").html(localStorage.getItem("twitterName"));
 			}
+		
+		}
+		else{
+			$( "#connection" ).popup("open");
+		}
 		
 		}); //ON "pagebeforeshow"
 		
@@ -271,6 +280,10 @@
 			<li><a href="#" class="collegaFoursquare" data-transition="slide"><img src="img/foursquareList.png" alt="Foursquare" class="imageFoursquare ui-li-icon ui-corner-none">Foursquare<p class="accountFoursquare"></p></a></li>
 			<li><a href="#" class="collegaTwitter" data-transition="slide"><img src="img/twitterList.png" alt="Twitter" class="imageTwitter ui-li-icon ui-corner-none">Twitter<p class="accountTwitter"></p></a></li>
 		</ul>
+		
+		<div data-role="popup" id="connection">
+		<p>OFFLINE</p>
+		</div>
 	
 		</div>
 		<!-- /CONTENT -->
