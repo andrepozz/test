@@ -118,7 +118,7 @@ min-height: 25px;
 /* DESCRIZIONE */
 
 p.descrizioneEsercizio{
-white-space: normal;
+white-space: normal !important;
 }
 
 a.morelink {
