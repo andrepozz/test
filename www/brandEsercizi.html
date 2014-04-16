@@ -188,7 +188,7 @@
 		
 	for(var i=0; i<jsonPath.length; i++ ){
 		var distance;	
-		distance = getDistanceFromLatLonInKm(userLatitude, userLongitude, jsonSottocategorie[i].latitudeEsercizio, jsonSottocategorie[i].longitudeEsercizio);
+		distance = getDistanceFromLatLonInKm(userLatitude, userLongitude, jsonPath[i].latitudeEsercizio, jsonPath[i].longitudeEsercizio);
 		jsonPath[i].distance = distance;
 	}
 	
