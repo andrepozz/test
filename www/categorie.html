@@ -214,7 +214,7 @@
 			for (var j in obj) {
 			var id = obj[j];
 				
-				if(j != "idEsercizio" && j != "nomeEsercizio" && j != "Punteggio") {
+				if(j != "idEsercizio" && j != "nomeEsercizio" && j != "Punteggio" && j != "latitudeEsercizio" && j != "longitudeEsercizio") {
 		
 					if ($.inArray(j, sottocategorie) == -1) {
 					sottocategorie.push(j);
@@ -281,11 +281,14 @@
 		case "votoTrendy":
 			jsonOrdinamento = jsonFiltro.sort(function(a,b) { return parseFloat(b.Punteggio.votoTrendy) - parseFloat(a.Punteggio.votoTrendy) } );
 			break;
+		case "distanza":
+			jsonOrdinamento = jsonFiltro.sort(function(a,b) { return parseFloat(a.distance) - parseFloat(b.distance) } );
+			break;
 		}
 	
 		$("ul#lista_esercizi").html("");
 		$.each(jsonOrdinamento, function(index, info) {
-			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + "" }));
+			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + "  ("+info.distance+")</a>" }));
 		});
 		
 		$("ul#lista_esercizi").listview("refresh");
@@ -295,7 +298,7 @@
 	else {
 		$("ul#lista_esercizi").html("");
 		$.each(jsonFiltro, function(index, info) {
-			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + "" }));
+			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " ("+info.distance+")</a>" }));
 		});
 		
 		$("ul#lista_esercizi").listview("refresh");
@@ -331,6 +334,9 @@
 	case "votoTrendy":
 	jsonOrdinamento = jsonSottocategorie.sort(function(a,b) { return parseFloat(b.Punteggio.votoTrendy) - parseFloat(a.Punteggio.votoTrendy) } );
 	break;
+	case "distanza":
+	jsonOrdinamento = jsonSottocategorie.sort(function(a,b) { return parseFloat(a.distance) - parseFloat(b.distance) } );
+	break;
 	}
 	
 	//RIFILTRA SE SELEZIONATO UN FILTRO
@@ -359,7 +365,7 @@
 		$("ul#lista_esercizi").html("");
 		
 		$.each(jsonFiltro, function(index, info) {
-			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + "" }));
+			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " ("+info.distance+")</a>" }));
 		});
 		
 		$("ul#lista_esercizi").listview("refresh");
@@ -370,7 +376,7 @@
 	$("ul#lista_esercizi").html("");
 	
 	$.each(jsonOrdinamento, function(index, info) {
-		$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + "" }));
+		$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " ("+info.distance+")</a>" }));
 	});
 
 	$("ul#lista_esercizi").listview("refresh");
@@ -424,6 +430,7 @@
 		<input type="radio" class="ordinamento" name="ordinamento" id="nome" value="nome" checked="checked"><label for="nome">Nome</label> 
 		<input type="radio" class="ordinamento" name="ordinamento" id="votoPopular" value="votoPopular"><label for="votoPopular">Popular</label> 
 		<input type="radio" class="ordinamento" name="ordinamento" id="votoTrendy" value="votoTrendy"><label for="votoTrendy">Trendy</label>
+		<input type="radio" class="ordinamento" name="ordinamento" id="distanza" value="distanza"><label for="distanza">Distanza</label>
 		</fieldset>
 		</form>
 		<!-- /ORDINAMENTO -->
