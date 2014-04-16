@@ -183,14 +183,10 @@
 	for(var i=0; i<jsonSottocategorie.length; i++ ){
 		var distance;	
 		distance = getDistanceFromLatLonInKm(userLatitudeVicini, userLongitudeVicini, jsonSottocategorie[i].latitudeEsercizio, jsonSottocategorie[i].longitudeEsercizio);
-		jsonSottocategorie[i].distance = ""+distance+"";
+		jsonSottocategorie[i].distance = distance;
 	}
 		
-	jsonSottocategorie = jsonSottocategorie.sort(function (a, b) {
-			a = a.distance
-			b = b.distance;
-			return a.localeCompare(b);
-	});
+	jsonSottocategorie = jsonSottocategorie.sort(function(a,b) { return parseFloat(a.distance) - parseFloat(b.distance) } );
 	
 	//LISTA ESERCIZI
 	$.each(jsonSottocategorie, function(index, info) {

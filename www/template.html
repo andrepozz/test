@@ -65,16 +65,16 @@
 	});
 	
 	
-		var eserciziVicini = [];
 		userLatitudeVicini = 45.80103;
 		userLongitudeVicini = 9.09192;
-		//NEAREST NODE
 		
 		for(var i=0; i<jsonSottocategorie.length; i++ ){
 		var distance;	
 		distance = getDistanceFromLatLonInKm(userLatitudeVicini, userLongitudeVicini, jsonSottocategorie[i].latitudeEsercizio, jsonSottocategorie[i].longitudeEsercizio);
-		jsonSottocategorie[i].distance = ""+distance+"";
+		jsonSottocategorie[i].distance = distance;
 		}
+		
+	jsonSottocategorie = jsonSottocategorie.sort(function(a,b) { return parseFloat(a.distance) - parseFloat(b.distance) } );
 		console.log(jsonSottocategorie);
 
 	});
