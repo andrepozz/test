@@ -214,7 +214,7 @@
 			for (var j in obj) {
 			var id = obj[j];
 				
-				if(j != "idEsercizio" && j != "nomeEsercizio" && j != "Punteggio" && j != "latitudeEsercizio" && j != "longitudeEsercizio") {
+				if(j != "idEsercizio" && j != "nomeEsercizio" && j != "Punteggio" && j != "latitudeEsercizio" && j != "longitudeEsercizio" && j != "distance") {
 		
 					if ($.inArray(j, sottocategorie) == -1) {
 					sottocategorie.push(j);
@@ -427,10 +427,10 @@
 		<!-- ORDINAMENTO -->
 		<form id="formOrdinamento">
 		<fieldset id="fieldsetOrdinamento" data-role="controlgroup" data-type="vertical">
-		<input type="radio" class="ordinamento" name="ordinamento" id="nome" value="nome" checked="checked"><label for="nome">Nome</label> 
+		<input type="radio" class="ordinamento" name="ordinamento" id="distanza" value="distanza" checked="checked"><label for="distanza">Distanza</label>
+		<input type="radio" class="ordinamento" name="ordinamento" id="nome" value="nome"><label for="nome">Nome</label> 
 		<input type="radio" class="ordinamento" name="ordinamento" id="votoPopular" value="votoPopular"><label for="votoPopular">Popular</label> 
 		<input type="radio" class="ordinamento" name="ordinamento" id="votoTrendy" value="votoTrendy"><label for="votoTrendy">Trendy</label>
-		<input type="radio" class="ordinamento" name="ordinamento" id="distanza" value="distanza"><label for="distanza">Distanza</label>
 		</fieldset>
 		</form>
 		<!-- /ORDINAMENTO -->

@@ -183,22 +183,27 @@
 		}
 	});
 	
+	userLatitude = 45.80103;
+	userLongitude = 9.09192;
+		
+	for(var i=0; i<jsonPath.length; i++ ){
+		var distance;	
+		distance = getDistanceFromLatLonInKm(userLatitude, userLongitude, jsonSottocategorie[i].latitudeEsercizio, jsonSottocategorie[i].longitudeEsercizio);
+		jsonPath[i].distance = distance;
+	}
+	
 	//FILTRA PER BRAND
 		
 		jsonPath = $.grep(jsonPath, function(v) {
 			return v[brand] == idBrand;
 		});
 		
-		jsonPath = jsonPath.sort(function (a, b) {
-			a = a.nomeEsercizio
-			b = b.nomeEsercizio;
-			return a.localeCompare(b);
-		});
-	
+		jsonPath = jsonPath.sort(function(a,b) { return parseFloat(a.distance) - parseFloat(b.distance) } );
+			
 		$("ul#listaEsercizi").html("");
 
 		$.each(jsonPath, function(index, info) {
-		$("ul#listaEsercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='"+info.idEsercizio+"' data-transition='slide' >"+info.nomeEsercizio+"</a>" }));
+		$("ul#listaEsercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='"+info.idEsercizio+"' data-transition='slide' >"+info.nomeEsercizio+"("+info.distance+")</a>" }));
 		});
 
 		$("ul#listaEsercizi").listview("refresh");
@@ -231,12 +236,15 @@
 	case "votoTrendy":
 	jsonOrdinamento = jsonPath.sort(function(a,b) { return parseFloat(b.Punteggio.votoTrendy) - parseFloat(a.Punteggio.votoTrendy) } );
 	break;
+	case "distanza":
+	jsonOrdinamento = jsonPath.sort(function(a,b) { return parseFloat(a.distance) - parseFloat(b.distance) } );
+	break;
 	}
 	
 	$("ul#listaEsercizi").html("");
 
 		$.each(jsonPath, function(index, info) {
-		$("ul#listaEsercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='"+info.idEsercizio+"' data-transition='slide' >"+info.nomeEsercizio+"</a>" }));
+		$("ul#listaEsercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='"+info.idEsercizio+"' data-transition='slide' >"+info.nomeEsercizio+"("+info.distance+")</a>" }));
 		});
 
 		$("ul#listaEsercizi").listview("refresh");
@@ -262,7 +270,8 @@
 		<!-- ORDINAMENTO -->
 		<form id="formOrdinamento">
 		<fieldset id="fieldsetOrdinamento" data-role="controlgroup" data-type="vertical">
-		<input type="radio" class="ordinamento" name="ordinamento" id="nome" value="nome" checked="checked"><label for="nome">Nome</label> 
+		<input type="radio" class="ordinamento" name="ordinamento" id="distanza" value="distanza" checked="checked"><label for="distanza">Distanza</label>
+		<input type="radio" class="ordinamento" name="ordinamento" id="nome" value="nome"><label for="nome">Nome</label> 
 		<input type="radio" class="ordinamento" name="ordinamento" id="votoPopular" value="votoPopular"><label for="votoPopular">Popular</label> 
 		<input type="radio" class="ordinamento" name="ordinamento" id="votoTrendy" value="votoTrendy"><label for="votoTrendy">Trendy</label>
 		</fieldset>
@@ -278,8 +287,7 @@
 	<!-- NAVBAR -->
 		<div data-role="navbar">
 			<ul>
-			<li><a id="filtro" href="#popupFiltro" data-rel="popup" data-transition="flip" data-icon="gear">Filtra</a></li>
-			<li><a href="#popupNested" id="ordinamento" data-rel="popup" data-transition="flip" data-icon="gear">Ordina</a></li>
+			<li><a href="#popupNested" id="ordinamento" data-rel="popup" data-transition="flip"><img src="img/order.png"></a></li>
 		</ul>
 		</div>
 	<!-- /NAVBAR -->
