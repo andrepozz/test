@@ -185,15 +185,13 @@
 		distance = getDistanceFromLatLonInKm(userLatitudeVicini, userLongitudeVicini, jsonSottocategorie[i].latitudeEsercizio, jsonSottocategorie[i].longitudeEsercizio);
 		jsonSottocategorie[i].distance = ""+distance+"";
 	}
-	
-	jsonSottocategorie = eserciziVicini.sort(function(a,b) { return parseInt(a.distance) - parseInt(b.distance) } );
-	/*
+		
 	jsonSottocategorie = jsonSottocategorie.sort(function (a, b) {
-			a = a.nomeEsercizio
-			b = b.nomeEsercizio;
+			a = a.distance
+			b = b.distance;
 			return a.localeCompare(b);
 	});
-	*/
+	
 	//LISTA ESERCIZI
 	$.each(jsonSottocategorie, function(index, info) {
 		$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " ("+info.distance+")</a>" }));
