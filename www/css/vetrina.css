@@ -117,10 +117,8 @@ min-height: 25px;
 
 /* DESCRIZIONE */
 
-#box-descrizioneEsercizio{
-margin: 10px 0 10px 0;
-background: #FFFFFF;
-padding: 10px 10px 5px 10px;
+.descrizioneEsercizio{
+white-space: normal;
 }
 
 a.morelink {
