@@ -48,10 +48,6 @@
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
-		
-	var lingua = window.localStorage.getItem("lingua");
-	var idLingua = window.localStorage.getItem("idLingua");
-	var codLingua = window.localStorage.getItem("codLingua");
 	
 	var urlCategorie = encodeURI("http://www.wificomo.com/ccn20/JSONcategorie.php?language="+codLingua+"");	
 	var fileNameCategorie = "categorie.js";
@@ -282,7 +278,7 @@
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegoziLingua' class='ui-btn' data-transition='slide'>setupNegoziLingua</a>");		
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");		
 								}
 								else {
 								sessionStorage.setItem("numElementi", numElementi);
@@ -298,7 +294,7 @@
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegoziLingua' class='ui-btn' data-transition='slide'>setupNegoziLingua</a>");			
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
 							}
 							else {
 							sessionStorage.setItem("numElementi", numElementiError);
@@ -346,8 +342,8 @@
 </div>
 <!-- /PAGE #setupCategorie -->
 
-<!-- PAGE #setupNegoziLingua -->
-	<div data-role="page" id="setupNegoziLingua">
+<!-- PAGE #setupNegozi -->
+	<div data-role="page" id="setupNegozi">
 
 	<!-- /HEADER -->
 	<div data-role="header" data-position="fixed" data-tap-toggle="false">
@@ -359,14 +355,15 @@
 	<div role="main" class="ui-content" >
 	
 	<script>   
-	/*
-	$( "#setupNegoziLingua" ).on( "pageshow", function() {	
+	$( "#setupNegozi" ).on( "pageshow", function() {	
 	
 	document.addEventListener("backbutton", onBackKeyDown, false);
 		
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
+	
+	
 	
 	$.ajax({
 		url: "http://www.wificomo.com/ccn20/JSONidEsercizi.php?start=0&end=2000",
@@ -450,7 +447,7 @@
 							$("li.downloadVetrine").html("download vetrine <img src='img/downloadok.png'>");
 							$("li.downloadVetrine").css("color","#00CC00");	
 							$("div.progressBar").css("background","#00CC00");
-							$("p.downloadCompleteVetrina").html("<a href='opzioni.html' rel='external' class='ui-btn' data-transition='slide'>continua</a>");
+							$("p.downloadCompleteVetrina").html("<a href='#facebook' class='ui-btn' data-transition='slide'>continua</a>");
 							}
 							else if(count == parseInt(iteration)*50) {
 							
@@ -474,7 +471,7 @@
 							$("li.downloadVetrine").html("download vetrine <img src='img/downloadok.png'>");
 							$("li.downloadVetrine").css("color","#00CC00");	
 							$("div.progressBar").css("background","#00CC00");
-							$("p.downloadCompleteVetrina").html("<a href='opzioni.html' rel='external' class='ui-btn' data-transition='slide'>continua</a>");
+							$("p.downloadCompleteVetrina").html("<a href='#facebook' class='ui-btn' data-transition='slide'>continua</a>");
 							}
 							else if(countError == parseInt(iterationError)*50) {
 							
@@ -500,7 +497,7 @@
 		}); // end of window.requestFileSystem
 		
 	} //FUNCTION downloadJSONmulti
-	*/
+	
 	</script>
 	
 	<h3>DOWNLOAD ESERCIZI</h3>
@@ -526,7 +523,7 @@
 	<!-- /FOOTER -->
 
 </div>
-<!-- /PAGE #setupNegoziLingua -->
+<!-- /PAGE #setupNegozi -->
 
 </body>
 </html>
