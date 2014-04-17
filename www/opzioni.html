@@ -77,7 +77,7 @@
 		<div role="main" class="ui-content" >
 		
 		<script>
-		$( "#socialNetworks" ).on( "pagebeforeshow", function() {	
+		$( "#socialNetworks" ).on( "pageshow", function() {	
 		
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -281,8 +281,8 @@
 		</ul>
 		
 		<div data-role="popup" id="connectionOffline" data-dismissible="false">
-		OFFLINE
-        Devi essere online per utilizzare questa funzionalità
+		<p class="headerOffline">OFFLINE</p>
+        <p>Devi essere online per utilizzare questa funzionalità</p>
 		<a href="#opzioni" class="ui-btn" data-transition="slide" data-direction="reverse">Torna alle Opzioni</a>
 		</div>
 	
