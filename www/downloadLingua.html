@@ -292,7 +292,7 @@
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua ok</a>");		
+									$("p.downloadComplete").html("<a href='#setupNegoziLingua' class='ui-btn' data-transition='slide'>setupNegoziLingua</a>");		
 								}
 								else {
 								sessionStorage.setItem("numElementi", numElementi);
@@ -308,7 +308,7 @@
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua no</a>");			
+									$("p.downloadComplete").html("<a href='#setupNegoziLingua' class='ui-btn' data-transition='slide'>setupNegoziLingua</a>");			
 							}
 							else {
 							sessionStorage.setItem("numElementi", numElementiError);
@@ -356,8 +356,8 @@
 </div>
 <!-- /PAGE #setupCategorie -->
 
-<!-- PAGE #setupNegozi -->
-	<div data-role="page" id="setupNegozi">
+<!-- PAGE #setupNegoziLingua -->
+	<div data-role="page" id="setupNegoziLingua">
 
 	<!-- /HEADER -->
 	<div data-role="header" data-position="fixed" data-tap-toggle="false">
@@ -369,7 +369,7 @@
 	<div role="main" class="ui-content" >
 	
 	<script>   
-	$( "#setupNegozi" ).on( "pageshow", function() {	
+	$( "#setupNegoziLingua" ).on( "pageshow", function() {	
 	
 	document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -459,7 +459,7 @@
 							$("li.downloadVetrine").html("download vetrine <img src='img/downloadok.png'>");
 							$("li.downloadVetrine").css("color","#00CC00");	
 							$("div.progressBar").css("background","#00CC00");
-							$("p.downloadCompleteVetrina").html("<a href='opzioni.html' rel='external' id='continua' class='ui-btn' data-transition='slide'>continua</a>");
+							$("p.downloadCompleteVetrina").html("<a href='opzioni.html' rel='external' class='ui-btn' data-transition='slide'>continua</a>");
 							}
 							else if(count == parseInt(iteration)*50) {
 							
@@ -483,7 +483,7 @@
 							$("li.downloadVetrine").html("download vetrine <img src='img/downloadok.png'>");
 							$("li.downloadVetrine").css("color","#00CC00");	
 							$("div.progressBar").css("background","#00CC00");
-							$("p.downloadCompleteVetrina").html("<a href='opzioni.html' rel='external' id='continua' class='ui-btn' data-transition='slide'>continua</a>");
+							$("p.downloadCompleteVetrina").html("<a href='opzioni.html' rel='external' class='ui-btn' data-transition='slide'>continua</a>");
 							}
 							else if(countError == parseInt(iterationError)*50) {
 							
@@ -535,7 +535,7 @@
 	<!-- /FOOTER -->
 
 </div>
-<!-- /PAGE #setupNegozi -->
+<!-- /PAGE #setupNegoziLingua -->
 
 </body>
 </html>
