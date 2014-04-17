@@ -292,7 +292,7 @@
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");		
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua ok</a>");		
 								}
 								else {
 								sessionStorage.setItem("numElementi", numElementi);
@@ -308,7 +308,7 @@
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua no</a>");			
 							}
 							else {
 							sessionStorage.setItem("numElementi", numElementiError);
@@ -376,14 +376,6 @@
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
-	
-	var continua = window.localStorage.getItem("continua");
-	$("a#continua").text(continua);
-	
-	var attendere = window.localStorage.getItem("attendere");
-	$("p.downloadCompleteVetrina").text(attendere);
-	
-	
 	
 	$.ajax({
 		url: "http://www.wificomo.com/ccn20/JSONidEsercizi.php?start=0&end=2000",
