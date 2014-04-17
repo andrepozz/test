@@ -77,7 +77,7 @@
 		<div role="main" class="ui-content" >
 		
 		<script>
-		$( "#socialNetworks" ).on( "pageshow", function() {	
+		$( "#socialNetworks" ).on( "pagebeforeshow", function() {	
 		
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -86,9 +86,6 @@
 		}
 		
 		
-		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-		if (connectionStatus == "online")
-		{
 		//FACEBOOK
 			FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 			//GET LOGIN STATUS
@@ -137,16 +134,16 @@
 			$("p.accountTwitter").html(localStorage.getItem("twitterName"));
 			}
 		
-		}
-		else{
-			$( "#connectionOffline" ).popup("open");
-		}
+
 		
 		}); //ON "pagebeforeshow"
 		
 		//TWITTER
 		$(document).on("click", 'a.collegaTwitter', function(){
 		
+		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+		if (connectionStatus == "offline")
+		{
 		twitterToken = window.localStorage.getItem("twitterToken");
 		
 		if(twitterToken == null) {
@@ -183,7 +180,11 @@
 		localStorage.removeItem("twitterName");
 		$("img.imageTwitter").attr("src", "img/twitterListbn.png");
 		$("p.accountTwitter").html("");
-		}	
+		}
+		}
+		else{
+		$( "#connectionOffline" ).popup( "open");
+		}
 		
 		});
 		
@@ -310,7 +311,7 @@
 		<div role="main" class="ui-content" >
 	
 		<script>
-		$( "#lingua" ).on( "pageshow", function() {	
+		$( "#lingua" ).on( "pagebeforeshow", function() {	
 		
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -318,9 +319,6 @@
 		e.preventDefault();
 		}
 		
-		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-		if (connectionStatus == "online")
-		{
 		
 		//LISTA LINGUE
 		$("ul#listaLingue").html("");
@@ -333,10 +331,7 @@
 	
 			$("ul#listaLingue").listview("refresh");
 		});
-		}
-		else{
-			$( "#connectionOffline" ).popup("open");
-		}
+
 		
 	}); //ON "pageshow"
 	
@@ -391,7 +386,7 @@
 		
 		<script>
 		
-		$( "#database" ).on( "pageshow", function() {	
+		$( "#database" ).on( "pagebeforeshow", function() {	
 		
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -402,9 +397,6 @@
 		$("p.countUpdates").html("");
 		$("a.updateDatabase").html("");
 		
-		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-		if (connectionStatus == "online")
-		{
 		
 		// CHECK ESISTENZA FILES ESERCIZI
 		
@@ -500,12 +492,6 @@
 			
 		}); // end of window.requestFileSystem
 		
-		}
-		
-		
-		}
-		else{
-			$( "#connectionOffline" ).popup("open");
 		}
 		
 		
