@@ -53,6 +53,7 @@
 			<li><a href="#database" data-transition="slide"><h2>Database</h2><p>Aggiorna il database degli esercizi</p></a></li>
 		</ul>
 		
+		
 		</div>
 		<!-- /CONTENT -->
 
@@ -142,7 +143,7 @@
 		$(document).on("click", 'a.collegaTwitter', function(){
 		
 		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-		if (connectionStatus == "offline")
+		if (connectionStatus == "online")
 		{
 		twitterToken = window.localStorage.getItem("twitterToken");
 		
@@ -192,7 +193,7 @@
 		$(document).on("click", 'a.collegaFoursquare', function(){
 		
 		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-		if (connectionStatus == "offline")
+		if (connectionStatus == "online")
 		{
 		
 			tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
@@ -236,7 +237,7 @@
 		$(document).on("click", 'a.collegaFacebook', function(){
 		
 		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-		if (connectionStatus == "offline")
+		if (connectionStatus == "online")
 		{
 		
 			//GET LOGIN STATUS
@@ -286,14 +287,14 @@
 			
 		}
 		else{
-		$( "#connectionOffline" ).popup("open");
+		$( "#connectionOfflineSocial" ).popup("open");
 		}
 		
 		}); //ON "click" button.facebookLogin
 		
 		$(document).on("click", 'a.closePopup', function(){
 		
-		$( "#connectionOffline" ).popup("close");
+		$( "#connectionOfflineSocial" ).popup("close");
 		
 		});
 		
@@ -305,7 +306,7 @@
 			<li><a href="#" class="collegaTwitter" data-transition="slide"><img src="img/twitterList.png" alt="Twitter" class="imageTwitter ui-li-icon ui-corner-none">Twitter<p class="accountTwitter"></p></a></li>
 		</ul>
 		
-		<div data-role="popup" id="connectionOffline" data-dismissible="false">
+		<div data-role="popup" id="connectionOfflineSocial" data-dismissible="false">
 		<p class="headerOffline">OFFLINE</p>
         <p>Devi essere online per utilizzare questa funzionalità</p>
 		<a href="#" class="ui-btn closePopup">Close</a>
@@ -362,6 +363,10 @@
 	//ON "click"
 	$(document).on("click", 'a.lingua', function(){
 	
+	var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+	if (connectionStatus == "online")
+	{
+	
 	idLingua = $(this).attr('id');
 	lingua = $(this).attr('nomeLingua');
 	codLingua = $(this).attr('codiceLingua');
@@ -371,15 +376,25 @@
 	window.localStorage.setItem("codLingua", codLingua);
 	
 	$.mobile.changePage( "downloadLingua.html", { reloadPage: true, transition: "slide"} );
-	
+	}
+	else{
+	$( "#connectionOfflineLingua" ).popup("open");
+	}
+		
 	}); //ON "click"
+	
+	$(document).on("click", 'a.closePopup', function(){
+		
+		$( "#connectionOfflineLingua" ).popup("close");
+		
+	});
 	
 		</script>
 		
 		<ul data-role="listview" id="listaLingue" data-inset="true">
 		</ul>
 		
-		<div data-role="popup" id="connectionOffline" data-dismissible="false">
+		<div data-role="popup" id="connectionOfflineLingua" data-dismissible="false">
 		<p class="headerOffline">OFFLINE</p>
         <p>Devi essere online per utilizzare questa funzionalità</p>
 		<a href="#opzioni" class="ui-btn" data-transition="slide" data-direction="reverse">Torna alle Opzioni</a>
@@ -410,7 +425,7 @@
 		
 		<script>
 		
-		$( "#database" ).on( "pagebeforeshow", function() {	
+		$( "#database" ).on( "pageshow", function() {	
 		
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -421,6 +436,9 @@
 		$("p.countUpdates").html("");
 		$("a.updateDatabase").html("");
 		
+		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+		if (connectionStatus == "online")
+		{
 		
 		// CHECK ESISTENZA FILES ESERCIZI
 		
@@ -518,6 +536,11 @@
 		
 		}
 		
+		}
+		else{
+			$( "#connectionOfflineUpdate" ).popup("open");
+		}
+		
 		
 		
 		}); //ON pageshow
@@ -529,12 +552,18 @@
 	
 	}); //ON "click"
 	
+	$(document).on("click", 'a.closePopup', function(){
+		
+		$( "#connectionOfflineUpdate" ).popup("close");
+		
+	});
+	
 		</script>
 		
 		<p class="countUpdates"></p>
 		<div id="update"></div>
 		
-		<div data-role="popup" id="connectionOffline" data-dismissible="false">
+		<div data-role="popup" id="connectionOfflineUpdate" data-dismissible="false">
 		<p class="headerOffline">OFFLINE</p>
         <p>Devi essere online per utilizzare questa funzionalità</p>
 		<a href="#opzioni" class="ui-btn" data-transition="slide" data-direction="reverse">Torna alle Opzioni</a>
