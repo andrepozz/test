@@ -463,14 +463,14 @@
 							}
 							else if(data.length == 0 && fileEserciziMancanti.length != 0){
 								$("p.countUpdates").html(fileEserciziMancanti.length+" esercizi da aggiornare");
-								$( "div#update" ).append( $("<a href='#' class='ui-btn updateDatabase'>UPDATE</a>" ));
+								$( "div#update" ).html( $("<a href='#' class='ui-btn updateDatabase'>UPDATE</a>" ));
 							}
 							else {
 								$.each(data, function(index, info) {
 								var countUpdates = data.length;
 								var updates = countUpdates+fileEserciziMancanti.length;
 								$("p.countUpdates").html(updates+" esercizi da aggiornare");
-								$( "div#update" ).append( $("<a href='#' class='ui-btn updateDatabase'>UPDATE</a>" ));
+								$( "div#update" ).html( $("<a href='#' class='ui-btn updateDatabase'>UPDATE</a>" ));
 								});
 							}
 						});
