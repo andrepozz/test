@@ -432,6 +432,11 @@ background-color: #FFFFFF;
 padding: 5px;
 }
 
+.headerOffline{
+background: #FF3300;
+color: #ffffff;
+}
+
 /*ESERCIZI VICINI*/
 
 button.circleDistance{

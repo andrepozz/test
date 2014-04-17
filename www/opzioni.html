@@ -139,7 +139,7 @@
 		
 		}
 		else{
-			$( "#connection" ).popup("open");
+			$( "#connectionOffline" ).popup("open");
 		}
 		
 		}); //ON "pagebeforeshow"
@@ -280,11 +280,11 @@
 			<li><a href="#" class="collegaTwitter" data-transition="slide"><img src="img/twitterList.png" alt="Twitter" class="imageTwitter ui-li-icon ui-corner-none">Twitter<p class="accountTwitter"></p></a></li>
 		</ul>
 		
-		<div data-role="popup" id="connection" data-dismissible="false">
-		<div data-role="header"><h1>OFFLINE</h1></div>
-		<div role="main" class="ui-content">
+		<div data-role="popup" id="connectionOffline" data-dismissible="false">
+		<div class="headerOffline"><h1>OFFLINE</h1></div>
+		<div class="contentOffline">
         <h3>Devi essere online per utilizzare questa funzionalità</h3>
-		<a href="#opzioni" class="ui-btn" data-transition="slide">Torna alle Opzioni</a>
+		<a href="#opzioni" class="ui-btn" data-transition="slide" data-direction="reverse">Torna alle Opzioni</a>
 		</div>
 		</div>
 	
