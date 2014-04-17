@@ -183,13 +183,17 @@
 		}
 		}
 		else{
-		$( "#connectionOffline" ).popup( "open");
+		$( "#connectionOffline" ).popup("open");
 		}
 		
 		});
 		
 		//FOURSQUARE
 		$(document).on("click", 'a.collegaFoursquare', function(){
+		
+		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+		if (connectionStatus == "offline")
+		{
 		
 			tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
 			if(tokenFoursquare == null) {
@@ -219,12 +223,21 @@
 				
 			ref.close();
 			}
-		}		
+		}
+
+		}
+		else{
+		$( "#connectionOffline" ).popup("open");
+		}
 		
 		}); //ON "click" button.foursquareLogin
 		
 		//FACEBOOK
 		$(document).on("click", 'a.collegaFacebook', function(){
+		
+		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+		if (connectionStatus == "offline")
+		{
 		
 			//GET LOGIN STATUS
 			FB.getLoginStatus(function(response) {
@@ -270,9 +283,20 @@
 					);
 				}
 			}, true);
+			
+		}
+		else{
+		$( "#connectionOffline" ).popup("open");
+		}
 		
 		}); //ON "click" button.facebookLogin
-	
+		
+		$(document).on("click", 'a.closePopup', function(){
+		
+		$( "#connectionOffline" ).popup("close");
+		
+		});
+		
 		</script>
 		
 		<ul data-role="listview" data-inset="true">
@@ -284,7 +308,7 @@
 		<div data-role="popup" id="connectionOffline" data-dismissible="false">
 		<p class="headerOffline">OFFLINE</p>
         <p>Devi essere online per utilizzare questa funzionalità</p>
-		<a href="#opzioni" class="ui-btn" data-transition="slide" data-direction="reverse">Torna alle Opzioni</a>
+		<a href="#" class="ui-btn closePopup">Close</a>
 		</div>
 	
 		</div>
