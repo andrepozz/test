@@ -310,13 +310,17 @@
 		<div role="main" class="ui-content" >
 	
 		<script>
-		$( "#lingua" ).on( "pagebeforeshow", function() {	
+		$( "#lingua" ).on( "pageshow", function() {	
 		
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		
 		function onBackKeyDown(e) {
 		e.preventDefault();
 		}
+		
+		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+		if (connectionStatus == "online")
+		{
 		
 		//LISTA LINGUE
 		$("ul#listaLingue").html("");
@@ -330,7 +334,11 @@
 			$("ul#listaLingue").listview("refresh");
 		});
 		
-	}); //ON "pagebeforeshow"
+		else{
+			$( "#connectionOffline" ).popup("open");
+		}
+		
+	}); //ON "pageshow"
 	
 	//ON "click"
 	$(document).on("click", 'a.lingua', function(){
@@ -351,6 +359,12 @@
 		
 		<ul data-role="listview" id="listaLingue" data-inset="true">
 		</ul>
+		
+		<div data-role="popup" id="connectionOffline" data-dismissible="false">
+		<p class="headerOffline">OFFLINE</p>
+        <p>Devi essere online per utilizzare questa funzionalità</p>
+		<a href="#opzioni" class="ui-btn" data-transition="slide" data-direction="reverse">Torna alle Opzioni</a>
+		</div>
 	
 		</div>
 		<!-- /CONTENT -->
@@ -377,7 +391,7 @@
 		
 		<script>
 		
-		$( "#database" ).on( "pagebeforeshow", function() {	
+		$( "#database" ).on( "pageshow", function() {	
 		
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -387,6 +401,10 @@
 		
 		$("p.countUpdates").html("");
 		$("a.updateDatabase").html("");
+		
+		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+		if (connectionStatus == "online")
+		{
 		
 		// CHECK ESISTENZA FILES ESERCIZI
 		
@@ -484,7 +502,9 @@
 		
 		}
 		
-		
+		else{
+			$( "#connectionOffline" ).popup("open");
+		}
 		
 		
 		
@@ -501,6 +521,11 @@
 		<p class="countUpdates"></p>
 		<div id="update"></div>
 		
+		<div data-role="popup" id="connectionOffline" data-dismissible="false">
+		<p class="headerOffline">OFFLINE</p>
+        <p>Devi essere online per utilizzare questa funzionalità</p>
+		<a href="#opzioni" class="ui-btn" data-transition="slide" data-direction="reverse">Torna alle Opzioni</a>
+		</div>
 		
 		</div>
 		<!-- /CONTENT -->
