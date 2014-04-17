@@ -432,6 +432,10 @@ background-color: #FFFFFF;
 padding: 5px;
 }
 
+#connectionOffline{
+width: 100%;
+}
+
 .headerOffline{
 background: #FF3300;
 color: #ffffff;
