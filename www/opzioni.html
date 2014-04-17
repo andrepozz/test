@@ -87,7 +87,7 @@
 		
 		
 		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-		if (connectionStatus == "online")
+		if (connectionStatus == "offline")
 		{
 		//FACEBOOK
 			FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
@@ -280,10 +280,10 @@
 			<li><a href="#" class="collegaTwitter" data-transition="slide"><img src="img/twitterList.png" alt="Twitter" class="imageTwitter ui-li-icon ui-corner-none">Twitter<p class="accountTwitter"></p></a></li>
 		</ul>
 		
-		<div data-role="popup" id="connectionOffline" data-dismissible="false">
-		<div class="headerOffline"><h1>OFFLINE</h1></div>
+		<div data-role="popup" id="connectionOffline" data-dismissible="false" data-position-to="window">
+		<div class="headerOffline">OFFLINE</div>
 		<div class="contentOffline">
-        <h3>Devi essere online per utilizzare questa funzionalità</h3>
+        Devi essere online per utilizzare questa funzionalità
 		<a href="#opzioni" class="ui-btn" data-transition="slide" data-direction="reverse">Torna alle Opzioni</a>
 		</div>
 		</div>
