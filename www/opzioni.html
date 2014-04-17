@@ -391,7 +391,7 @@
 		
 		<script>
 		
-		$( "#database" ).on( "pageshow", function() {	
+		$( "#database" ).on( "pagebeforeshow", function() {	
 		
 		document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -402,9 +402,6 @@
 		$("p.countUpdates").html("");
 		$("a.updateDatabase").html("");
 		
-		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-		if (connectionStatus == "online")
-		{
 		
 		// CHECK ESISTENZA FILES ESERCIZI
 		
@@ -501,14 +498,19 @@
 		}); // end of window.requestFileSystem
 		
 		}
+			
 		
-		else{
-			$( "#connectionOffline" ).popup("open");
+		
+		}); //ON pagebeforeshow
+		
+		$( "#database" ).on( "pageshow", function() {
+		
+		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+		if (connectionStatus == "online")
+		{
+		$( "#connectionOffline" ).popup("open");
 		}
-		
-		
-		
-		}); //ON pageshow
+		});
 	
 	//ON "click"
 	$(document).on("click", 'a.updateDatabase', function(){
