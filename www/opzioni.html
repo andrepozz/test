@@ -433,11 +433,10 @@
 	var idLingua = window.localStorage.getItem("idLingua");
 	var codLingua = window.localStorage.getItem("codLingua");
 	
-	alert("cod Lingua "+codLingua);
 	
 	var urlCategorie = encodeURI("http://www.wificomo.com/ccn20/JSONcategorie.php?language="+codLingua+"");	
 	var fileNameCategorie = "categorie.js";
-	alert("urlCategorie "+urlCategorie);	
+	
 		var fileTransfer = new FileTransfer();
 			
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
@@ -457,7 +456,7 @@
 						localPath,
 						
 						function(entry) {
-								alert("directory "+directory);	
+						
 								//MEMORIZZA PATH
 								var directory = dirEntry.fullPath;
 								var indexPath = directory.lastIndexOf("/");
@@ -472,7 +471,6 @@
 								getSottocategorie();
 						},
 						function(error) {
-							alert("error.source "+error.source);
 							console.log("download error source " + error.source);
 							console.log("download error target " + error.target);
 							console.log("download error code " + error.code);
@@ -665,7 +663,7 @@
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");		
+									$("p.downloadComplete").html("<a href='#setupNegoziLingua' class='ui-btn' data-transition='slide'>continua</a>");		
 								}
 								else {
 								sessionStorage.setItem("numElementi", numElementi);
@@ -681,7 +679,7 @@
 									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
+									$("p.downloadComplete").html("<a href='#setupNegoziLingua' class='ui-btn' data-transition='slide'>continua</a>");			
 							}
 							else {
 							sessionStorage.setItem("numElementi", numElementiError);
