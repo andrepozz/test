@@ -337,8 +337,8 @@
 	$("h3.titoloDownloadfunzionalita").html(window.localStorage.getItem("downloadFunzionalita"));
 	
 	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("nomiEsercizi")+'"><img class="iconaTipologia" src="img/downloadnome.png"> DOWNLOAD '+window.localStorage.getItem("nomiEsercizi")+'... <img src="img/download.gif"></li>'));
-	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("brandEsercizi")+'"><img class="iconaTipologia" src="img/downloadbrand.png"> DOWNLOAD brand... <img src="img/download.gif"></li>'));
-	$("ul.downloadList").append($('<li class="brand"><img class="iconaTipologia" src="img/downloadbrandEsercizi.png"> DOWNLOAD '+window.localStorage.getItem("brandEsercizi")+'... <img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="brand"><img class="iconaTipologia" src="img/downloadbrand.png"> DOWNLOAD brand... <img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("brandEsercizi")+'"><img class="iconaTipologia" src="img/downloadbrandEsercizi.png"> DOWNLOAD '+window.localStorage.getItem("brandEsercizi")+'... <img src="img/download.gif"></li>'));
 	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("position")+'"><img class="iconaTipologia" src="img/downloadposition.png"> DOWNLOAD position... <img src="img/download.gif"></li>'));
 	$("ul.downloadList").append($('<li class="categorie"><img class="iconaTipologia" src="img/downloadCategorie.png"> DOWNLOAD '+window.localStorage.getItem("categorie")+'...<img src="img/download.gif"></li>'));
 	$("ul.downloadList").append($('<li class="sottocategorie"><img class="iconaTipologia" src="img/downloadSottocategorie.png"> DOWNLOAD '+window.localStorage.getItem("sottoCategorie")+'...<img src="img/download.gif"></li>'));
@@ -431,7 +431,7 @@
 	var pClass = ""+window.localStorage.getItem("nomiEsercizi")+"";
 	var imgName = "nome";
 	
-	downloadJSON(directory, fileNamenomeEsercizi, urlnomeEsercizi, pClass);
+	downloadJSON(directory, fileNamenomeEsercizi, urlnomeEsercizi, pClass, imgName);
 	
 	//JSON BRAND ESERCIZI
 	
@@ -441,7 +441,7 @@
 	var pClass = ""+window.localStorage.getItem("brandEsercizi")+"";
 	var imgName = "brandEsercizi";
 	
-	downloadJSON(directory, fileNamebrandEsercizi, urlbrandEsercizi, pClass);
+	downloadJSON(directory, fileNamebrandEsercizi, urlbrandEsercizi, pClass, imgName);
 	
 	//JSON RICERCA PER BRAND
 	
@@ -451,7 +451,7 @@
 	var pClass = "brand";
 	var imgName = "brand";
 	
-	downloadJSON(directory, fileNamebrand, urlbrand, pClass);
+	downloadJSON(directory, fileNamebrand, urlbrand, pClass, imgName);
 	
 	//JSON POSITION
 	
@@ -826,8 +826,8 @@
 	e.preventDefault();
 	}
 	
-	$("h2#h2skipFacebook").html(""+window.localStorage.getItem("continua")+"");
-	$("p#pskipFacebook").html(""+window.localStorage.getItem("noCollegaSocial")+"");
+	$("h2#h2skipFacebook").html(""+window.localStorage.getItem("noCollegaSocial")+"");
+	$("p#pskipFacebook").html(""+window.localStorage.getItem("continua")+"");
 	
 	FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 	
@@ -840,8 +840,8 @@
 			FB.api('/me', function(response) {
 			$("h2#h2loginFacebook").html(""+window.localStorage.getItem("accountCollegato")+"");
 			$("p#ploginFacebook").html(""+response.name+"");
-			$("h2#h2skipFacebook").html(""+window.localStorage.getItem("continua")+"");
-			$("p#pskipFacebook").html(""+window.localStorage.getItem("prossimoPasso")+"");
+			$("h2#h2skipFacebook").html(""+window.localStorage.getItem("prossimoPasso")+"");
+			$("p#pskipFacebook").html(""+window.localStorage.getItem("continua")+"");
 			});
 		}
 		//APP NON AUTORIZZATA
@@ -870,8 +870,8 @@
 			$("p#ploginFacebook").html(""+response.name+"");
 			$("a.facebook").attr('href', '#foursquare');
 			$("a.facebook").removeClass('facebook');
-			$("h2#h2skipFacebook").html(""+window.localStorage.getItem("continua")+"");
-			$("p#pskipFacebook").html(""+window.localStorage.getItem("prossimoPasso")+"");
+			$("h2#h2skipFacebook").html(""+window.localStorage.getItem("prossimoPasso")+"");
+			$("p#pskipFacebook").html(""+window.localStorage.getItem("continua")+"");
 			});
 		}
 		else {
@@ -933,8 +933,8 @@
 	e.preventDefault();
 	}
 	
-	$("h2#h2skipFoursquare").html(""+window.localStorage.getItem("continua")+"");
-	$("p#pskipFoursquare").html(""+window.localStorage.getItem("noCollegaSocial")+"");
+	$("h2#h2skipFoursquare").html(""+window.localStorage.getItem("noCollegaSocial")+"");
+	$("p#pskipFoursquare").html(""+window.localStorage.getItem("continua")+"");
 	
 	var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
 	
@@ -946,7 +946,7 @@
 		$.getJSON('https://api.foursquare.com/v2/users/self?oauth_token='+tokenFoursquare+'&v=20140304', function(data){
 		var user = data['response']['user']['firstName'];
 		
-		$("h2#h2loginFoursquare").html("Account Foursquare collegato!");
+		$("h2#h2loginFoursquare").html(""+window.localStorage.getItem("accountCollegato")+"");
 		$("p#ploginFoursquare").html(""+user+"");
 		$("a.foursquare").setAttribute("href", "#twitter");
 		$("a.foursquare").removeClass('foursquare');
@@ -978,8 +978,8 @@
 		$("p#ploginFoursquare").html(""+user+"");
 		$("a.foursquare").setAttribute("href", "#twitter");
 		$("a.foursquare").removeClass('foursquare');
-		$("h2#h2skipFoursquare").html(""+window.localStorage.getItem("continua")+"");
-		$("p#pskipFoursquare").html(""+window.localStorage.getItem("prossimoPasso")+"");
+		$("h2#h2skipFoursquare").html(""+window.localStorage.getItem("prossimoPasso")+"");
+		$("p#pskipFoursquare").html(""+window.localStorage.getItem("continua")+"");
 		});
 		
 		ref.close();
@@ -1039,8 +1039,8 @@
 	e.preventDefault();
 	}
 	
-	$("h2#h2skipTwitter").html(""+window.localStorage.getItem("continua")+"");
-	$("p#pskipTwitter").html(""+window.localStorage.getItem("noCollegaSocial")+"");
+	$("h2#h2skipTwitter").html(""+window.localStorage.getItem("noCollegaSocial")+"");
+	$("p#pskipTwitter").html(""+window.localStorage.getItem("continua")+"");
 	
 	var twitterToken = window.localStorage.getItem("twitterToken");
 	
@@ -1056,8 +1056,8 @@
 		$("p#ploginFoursquare").html(""+twitterName+"");
 		$("a.twitter").setAttribute("href", "#index");
 		$("a.twitter").removeClass('twitter');
-		$("h2#h2skipTwitter").html(""+window.localStorage.getItem("continua")+"");
-		$("p#pskipTwitter").html(""+window.localStorage.getItem("prossimoPasso")+"");
+		$("h2#h2skipTwitter").html(""+window.localStorage.getItem("prossimoPasso")+"");
+		$("p#pskipTwitter").html(""+window.localStorage.getItem("continua")+"");
 		}
 	
 	}); //ON "pagebeforeshow"
@@ -1088,8 +1088,8 @@
 		$("p#ploginFoursquare").html(""+twitterName+"");
 		$("a.twitter").setAttribute("href", "#index");
 		$("a.twitter").removeClass('twitter');
-		$("h2#h2skipTwitter").html(""+window.localStorage.getItem("continua")+"");
-		$("p#pskipTwitter").html(""+window.localStorage.getItem("prossimoPasso")+"");
+		$("h2#h2skipTwitter").html(""+window.localStorage.getItem("prossimoPasso")+"");
+		$("p#pskipTwitter").html(""+window.localStorage.getItem("continua")+"");
 		
 		ref.close();
 		}
