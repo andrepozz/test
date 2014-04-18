@@ -190,7 +190,7 @@
 	
 	//LISTA ESERCIZI
 	$.each(jsonSottocategorie, function(index, info) {
-		$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " ("+info.distance+")</a>" }));
+		$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + "<span class='ui-li-count'>"+info.distance+"m</span></a>" }));
 	});
 	
 	$("ul#lista_esercizi").listview("refresh");
@@ -288,7 +288,7 @@
 	
 		$("ul#lista_esercizi").html("");
 		$.each(jsonOrdinamento, function(index, info) {
-			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + "  ("+info.distance+")</a>" }));
+			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " <span class='ui-li-count'>"+info.distance+"m</span></a>" }));
 		});
 		
 		$("ul#lista_esercizi").listview("refresh");
@@ -298,7 +298,7 @@
 	else {
 		$("ul#lista_esercizi").html("");
 		$.each(jsonFiltro, function(index, info) {
-			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " ("+info.distance+")</a>" }));
+			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " <span class='ui-li-count'>"+info.distance+"m</span></a>" }));
 		});
 		
 		$("ul#lista_esercizi").listview("refresh");
@@ -365,7 +365,7 @@
 		$("ul#lista_esercizi").html("");
 		
 		$.each(jsonFiltro, function(index, info) {
-			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " ("+info.distance+")</a>" }));
+			$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " <span class='ui-li-count'>"+info.distance+"m</span></a>" }));
 		});
 		
 		$("ul#lista_esercizi").listview("refresh");
@@ -376,7 +376,7 @@
 	$("ul#lista_esercizi").html("");
 	
 	$.each(jsonOrdinamento, function(index, info) {
-		$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " ("+info.distance+")</a>" }));
+		$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + " <span class='ui-li-count'>"+info.distance+"m</span></a>" }));
 	});
 
 	$("ul#lista_esercizi").listview("refresh");
