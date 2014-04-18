@@ -95,7 +95,7 @@
 	
 	$("#cerca_negozio").change(function() {
 	var $searchResults = $(this);
-	$searchResults.attr("placeholder", ""++"");
+	$searchResults.attr("placeholder", ""+window.localStorage.getItem("placeholderNome")+"");
 	}
 
 	
