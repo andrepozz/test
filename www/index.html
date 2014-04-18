@@ -256,6 +256,8 @@
 	window.localStorage.setItem("categorie", lingue[lingua].categorie);
 	window.localStorage.setItem("sottoCategorie", lingue[lingua].sottoCategorie);
 	window.localStorage.setItem("brandEsercizi", lingue[lingua].brandEsercizi);
+	window.localStorage.setItem("downloadFunzionalita", lingue[lingua].downloadFunzionalita);
+	window.localStorage.setItem("downloadEsercizi", lingue[lingua].downloadEsercizi);
 	window.localStorage.setItem("attendere", lingue[lingua].attendere);
 	window.localStorage.setItem("continua", lingue[lingua].continua);
 	window.localStorage.setItem("salta", lingue[lingua].salta);
@@ -331,6 +333,8 @@
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
+	
+	$("h3.titoloDownloadfunzionalita").html(window.localStorage.getItem("downloadFunzionalita"));
 	
 	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("nomiEsercizi")+'"><img class="iconaTipologia" src="img/downloadnome.png"> DOWNLOAD '+window.localStorage.getItem("nomiEsercizi")+'... <img src="img/download.gif"></li>'));
 	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("brandEsercizi")+'"><img class="iconaTipologia" src="img/downloadbrand.png"> DOWNLOAD brand... <img src="img/download.gif"></li>'));
@@ -597,6 +601,8 @@
 	
 	</script>
 	
+	<h3 class="titoloDownloadFunzionalita"></h3>
+	
 	<ul class="downloadList">
 	</ul>
 	
@@ -635,7 +641,7 @@
 	e.preventDefault();
 	}
 	
-	
+	$("h3.titoloDownloadEsercizi").html(window.localStorage.getItem("downloadEsercizi"));
 	
 	$.ajax({
 		url: "http://www.wificomo.com/ccn20/JSONidEsercizi.php?start=0&end=2000",
@@ -772,7 +778,7 @@
 	
 	</script>
 	
-	<h3>DOWNLOAD ESERCIZI</h3>
+	<h3 class="titoloDownloadEsercizi"></h3>
 	
 	<div class="progressBar" style="width: 100%; height: 40px; background:#C0C0C0">
 	</div>
@@ -819,6 +825,9 @@
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
+	
+	$("h2#h2skipFacebook").html(""+window.localStorage.getItem("continua")+"");
+	$("p#pskipFacebook").html(""+window.localStorage.getItem("noCollegaSocial")+"");
 	
 	FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
 	
@@ -886,8 +895,8 @@
 		</li>
 		<li><a href="#foursquare" id="saltaAFoursquare" data-transition="slide">
 			<img src="img/skip.png">
-			<h2 id="h2skipFacebook">Prosegui</h2>
-			<p id="pskipFacebook">collega account in un secondo momento</p></a>
+			<h2 id="h2skipFacebook"></h2>
+			<p id="pskipFacebook"></p></a>
 		</li>
 	</ul>
 	
@@ -923,6 +932,9 @@
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
+	
+	$("h2#h2skipFoursquare").html(""+window.localStorage.getItem("continua")+"");
+	$("p#pskipFoursquare").html(""+window.localStorage.getItem("noCollegaSocial")+"");
 	
 	var tokenFoursquare = window.localStorage.getItem("tokenFoursquare");
 	
@@ -989,8 +1001,8 @@
 		</li>
 		<li><a href="#twitter" data-transition="slide">
 			<img src="img/skip.png">
-			<h2 id="h2skipFoursquare">Prosegui</h2>
-			<p id="pskipFoursquare">collega account in un secondo momento</p></a>
+			<h2 id="h2skipFoursquare"></h2>
+			<p id="pskipFoursquare"></p></a>
 		</li>
 	</ul>
 	
@@ -1026,6 +1038,9 @@
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
+	
+	$("h2#h2skipTwitter").html(""+window.localStorage.getItem("continua")+"");
+	$("p#pskipTwitter").html(""+window.localStorage.getItem("noCollegaSocial")+"");
 	
 	var twitterToken = window.localStorage.getItem("twitterToken");
 	
@@ -1094,8 +1109,8 @@
 		</li>
 		<li><a href="#index" id="saltaAIndex" data-transition="slide">
 			<img src="img/skip.png">
-			<h2 id="h2skipTwitter">Prosegui</h2>
-			<p id="pskipTwitter">collega account in un secondo momento</p></a>
+			<h2 id="h2skipTwitter"></h2>
+			<p id="pskipTwitter"></p></a>
 		</li>
 	</ul>
 	
