@@ -93,10 +93,7 @@
 	e.preventDefault();
 	}
 	
-	$("#cerca_negozio").change(function() {
-	var $searchResults = $(this);
-	$searchResults.attr("placeholder", ""+window.localStorage.getItem("placeholderNome")+"");
-	}
+	$("#cerca_negozio").prev().find(".ui-input-search .ui-input-text").attr("placeholder", window.localStorage.getItem("placeholderNome"));
 
 	
 	//CARICA JSON CATEGORIE
