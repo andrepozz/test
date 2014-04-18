@@ -246,6 +246,43 @@
 	window.localStorage.setItem("idLingua", idLingua);
 	window.localStorage.setItem("codLingua", codLingua);
 	
+	// TRADUZIONI------------------------------------------------------------------------------
+	
+	window.localStorage.setItem("nome", lingue[lingua].nome);
+	window.localStorage.setItem("categorie", lingue[lingua].categorie);
+	window.localStorage.setItem("brandEsercizi", lingue[lingua].brandEsercizi);
+	window.localStorage.setItem("attendere", lingue[lingua].attendere);
+	window.localStorage.setItem("continua", lingue[lingua].continua);
+	window.localStorage.setItem("salta", lingue[lingua].salta);
+	window.localStorage.setItem("vota", lingue[lingua].vota);
+	window.localStorage.setItem("essereOnline", lingue[lingua].essereOnline);
+	window.localStorage.setItem("distanza", lingue[lingua].distanza);
+	window.localStorage.setItem("votoTrendy", lingue[lingua].votoTrendy);
+	window.localStorage.setItem("votoPopular", lingue[lingua].votoPopular);
+	window.localStorage.setItem("giorni", lingue[lingua].giorni);
+	window.localStorage.setItem("noStatistiche", lingue[lingua].noStatistiche);
+	window.localStorage.setItem("contatti", lingue[lingua].contatti);
+	window.localStorage.setItem("orariApertura", lingue[lingua].orariApertura);
+	window.localStorage.setItem("lunedi", lingue[lingua].lunedi);
+	window.localStorage.setItem("martedi", lingue[lingua].martedi);
+	window.localStorage.setItem("mercoledi", lingue[lingua].mercoledi);
+	window.localStorage.setItem("giovedi", lingue[lingua].giovedi);
+	window.localStorage.setItem("venerdi", lingue[lingua].venerdi);
+	window.localStorage.setItem("sabato", lingue[lingua].sabato);
+	window.localStorage.setItem("domenica", lingue[lingua].domenica);
+	window.localStorage.setItem("votaNegozio", lingue[lingua].votaNegozio);
+	window.localStorage.setItem("portamiQui", lingue[lingua].portamiQui);
+	window.localStorage.setItem("mostra", lingue[lingua].mostra);
+	window.localStorage.setItem("nascondi", lingue[lingua].nascondi);
+	window.localStorage.setItem("postPubblicato", lingue[lingua].postPubblicato);
+	window.localStorage.setItem("tweetPubblicato", lingue[lingua].tweetPubblicato);
+	window.localStorage.setItem("checkinPubblicato", lingue[lingua].checkinPubblicato);
+	window.localStorage.setItem("troppoLontano", lingue[lingua].troppoLontano);
+	window.localStorage.setItem("collegaSocial", lingue[lingua].collegaSocial);
+	window.localStorage.setItem("noCollegaSocial", lingue[lingua].noCollegaSocial);
+	
+	// /TRADUZIONI----------------------------------------------------------------------------
+	
 	}); //ON "click"
 	
 	</script>
@@ -286,6 +323,13 @@
 	e.preventDefault();
 	}
 	
+	$("ul#downloadList").append($('<li class="nome"><img class="iconaTipologia" src="img/downloadnome.png"> DOWNLOAD '+window.localStorage.getItem("nomi")+'... <img src="img/download.gif"></li>'));
+	$("ul#downloadList").append($('<li class="brandEsercizi"><img class="iconaTipologia" src="img/downloadbrand.png"> DOWNLOAD brand... <img src="img/download.gif"></li>'));
+	$("ul#downloadList").append($('<li class="brand"><img class="iconaTipologia" src="img/downloadbrandEsercizi.png"> DOWNLOAD '+window.localStorage.getItem("brandEsercizi")+'... <img src="img/download.gif"></li>'));
+	$("ul#downloadList").append($('<li class="position"><img class="iconaTipologia" src="img/downloadposition.png"> DOWNLOAD position... <img src="img/download.gif"></li>'));
+	$("ul#downloadList").append($('<li class="categorie"><img class="iconaTipologia" src="img/downloadCategorie.png"> DOWNLOAD '+window.localStorage.getItem("categorie")+'...<img src="img/download.gif"></li>'));
+	$("ul#downloadList").append($('<li class="sottocategorie"><img class="iconaTipologia" src="img/downloadSottocategorie.png"> DOWNLOAD '+window.localStorage.getItem("sottocategorie")+'...<img src="img/download.gif"></li>'));
+	
 	var urlCategorie = encodeURI("http://www.wificomo.com/ccn20/JSONcategorie.php?language="+codLingua+"");	
 	var fileNameCategorie = "categorie.js";
 		
@@ -316,7 +360,7 @@
 								pathSD = pathSD+"/ccn";
 								window.localStorage.setItem('pathSD', pathSD);
 								
-								$("li.categorie").html("<img class='iconaTipologia' src='img/downloadCategorie.png'> DOWNLOAD categorie <img src='img/downloadok.png'>");
+								$("li.categorie").html("<img class='iconaTipologia' src='img/downloadCategorie.png'> DOWNLOAD "+window.localStorage.getItem("categorie")+" <img src='img/downloadok.png'>");
 								$("li.categorie").css("color","white");
 								$("li.categorie").css("background","#00CC00");
 								
@@ -371,7 +415,7 @@
 	var urlnomeEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONnomeEsercizi.php");	
 	var fileNamenomeEsercizi = "nomeEsercizi.js";
 	var directory = "ccn";
-	var pClass = "nome";
+	var pClass = window.localStorage.getItem("nome");
 	
 	downloadJSON(directory, fileNamenomeEsercizi, urlnomeEsercizi, pClass);
 	
@@ -380,7 +424,7 @@
 	var urlbrandEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONbrandEsercizi.php");
 	var fileNamebrandEsercizi = "brandEsercizi.js";
 	var directory = "ccn";
-	var pClass = "brandEsercizi";
+	var pClass = window.localStorage.getItem("brandEsercizi");
 	
 	downloadJSON(directory, fileNamebrandEsercizi, urlbrandEsercizi, pClass);
 	
@@ -413,21 +457,6 @@
 	downloadJSON(directory, fileDistance, urldistance, pClass);
 	
 	*/
-		
-	// TRADUZIONI------------------------------------------------------------------------------
-	
-	// T.Indietro
-	window.localStorage.setItem("indietro", lingue[lingua].indietro);
-	// T.Categories
-	window.localStorage.setItem("Categorie", lingue[lingua].Categorie);
-	// T.filtra
-	window.localStorage.setItem("filtra", lingue[lingua].filtra);
-	// T.ordina
-	window.localStorage.setItem("ordina", lingue[lingua].ordina);
-	// T.salta
-	window.localStorage.setItem("salta", lingue[lingua].salta);
-	
-	// /TRADUZIONI----------------------------------------------------------------------------
 	
 	}); // ON "pageshow"
 	
@@ -512,10 +541,10 @@
 						numElementi = parseInt(numElementi)-1;							
 								if(numElementi == 0) {
 								
-									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
+									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD "+window.localStorage.getItem("sottoCategorie")+" <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");		
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>"+window.localStorage.getItem("continua")+"</a>");		
 								}
 								else {
 								sessionStorage.setItem("numElementi", numElementi);
@@ -528,10 +557,10 @@
 							
 							if(numElementiError == 0) {
 								
-									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD sottocategorie <img src='img/downloadok.png'>");
+									$("li.sottocategorie").html("<img class='iconaTipologia' src='img/downloadSottocategorie.png'> DOWNLOAD "+window.localStorage.getItem("sottoCategorie")+" <img src='img/downloadok.png'>");
 									$("li.sottocategorie").css("color","white");
 									$("li.sottocategorie").css("background","#00CC00");
-									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>continua</a>");			
+									$("p.downloadComplete").html("<a href='#setupNegozi' class='ui-btn' data-transition='slide'>"+window.localStorage.getItem("continua")+"</a>");			
 							}
 							else {
 							sessionStorage.setItem("numElementi", numElementiError);
@@ -556,16 +585,9 @@
 	</script>
 	
 	<ul class="downloadList">
-	<li class="nome"><img class="iconaTipologia" src="img/downloadnome.png"> CONFIGURAZIONE nomi... <img src="img/download.gif"></li>
-	<li class="brandEsercizi"><img class="iconaTipologia" src="img/downloadbrand.png"> CONFIGURAZIONE brand... <img src="img/download.gif"></li>
-	<li class="brand"><img class="iconaTipologia" src="img/downloadbrandEsercizi.png"> DOWNLOAD brandEsercizi... <img src="img/download.gif"></li>
-	<li class="position"><img class="iconaTipologia" src="img/downloadposition.png"> DOWNLOAD position... <img src="img/download.gif"></li>
-	<li class="categorie"><img class="iconaTipologia" src="img/downloadCategorie.png"> DOWNLOAD categorie...<img src="img/download.gif"></li>
-	<li class="sottocategorie"><img class="iconaTipologia" src="img/downloadSottocategorie.png"> DOWNLOAD sottocategorie...<img src="img/download.gif"></li>
-	<!-- <li class="distance">configurazione distanze... <img src="img/download.gif"></li> -->
 	</ul>
 	
-	<p class="downloadComplete">attendere...</p>
+	<p class="downloadComplete"><img src="img/download.gif"></p>
 	
 	</div>
 	<!-- CONTENT -->
@@ -684,7 +706,7 @@
 							$("li.downloadVetrine").html("download vetrine <img src='img/downloadok.png'>");
 							$("li.downloadVetrine").css("color","#00CC00");	
 							$("div.progressBar").css("background","#00CC00");
-							$("p.downloadCompleteVetrina").html("<a href='#facebook' class='ui-btn' data-transition='slide'>continua</a>");
+							$("p.downloadCompleteVetrina").html("<a href='#facebook' class='ui-btn' data-transition='slide'>"+window.localStorage.getItem("continua")+"</a>");
 							}
 							else if(count == parseInt(iteration)*50) {
 							
@@ -708,7 +730,7 @@
 							$("li.downloadVetrine").html("download vetrine <img src='img/downloadok.png'>");
 							$("li.downloadVetrine").css("color","#00CC00");	
 							$("div.progressBar").css("background","#00CC00");
-							$("p.downloadCompleteVetrina").html("<a href='#facebook' class='ui-btn' data-transition='slide'>continua</a>");
+							$("p.downloadCompleteVetrina").html("<a href='#facebook' class='ui-btn' data-transition='slide'>"+window.localStorage.getItem("continua")+"</a>");
 							}
 							else if(countError == parseInt(iterationError)*50) {
 							
@@ -748,7 +770,7 @@
 	</ul>
 	-->
 	
-	<p class="downloadCompleteVetrina">attendere... <img src="img/download.gif"></p>
+	<p class="downloadCompleteVetrina"><img src="img/download.gif"></p>
 	
 	</div>
 	<!-- CONTENT -->
@@ -794,21 +816,21 @@
 		if (response.status === 'connected') {
 		
 			FB.api('/me', function(response) {
-			$("h2#h2loginFacebook").html("Account Facebook collegato!");
-			$("p#ploginFacebook").html("Benvenuto, "+response.name+"");
-			$("h2#h2skipFacebook").html("Avanti");
-			$("p#pskipFacebook").html("prosegui con il setup dell'applicazione");
+			$("h2#h2loginFacebook").html(""+window.localStorage.getItem("accountCollegato")+"");
+			$("p#ploginFacebook").html(""+response.name+"");
+			$("h2#h2skipFacebook").html(""+window.localStorage.getItem("continua")+"");
+			$("p#pskipFacebook").html(""+window.localStorage.getItem("prossimoPasso")+"");
 			});
 		}
 		//APP NON AUTORIZZATA
 		else if (response.status === 'not_authorized') {
 		$("h2#h2loginFacebook").html("Login Facebook");
-		$("p#ploginFacebook").html("collega Shopincomo al mio account Foursquare");
+		$("p#ploginFacebook").html(""+window.localStorage.getItem("collegaSocial")+"");
 		} 
 		//NON CONNESSO
 		else {
 		$("h2#h2loginFacebook").html("Login Facebook");
-		$("p#ploginFacebook").html("collega Shopincomo al mio account Facebook");
+		$("p#ploginFacebook").html(""+window.localStorage.getItem("collegaSocial")+"");
 		}
 		
 	}, true);
@@ -822,12 +844,12 @@
 		if (response.authResponse) {
 			
 			FB.api('/me', function(response) {
-			$("h2#h2loginFacebook").html("Account Facebook collegato!");
-			$("p#ploginFacebook").html("Benvenuto, "+response.name+"");
+			$("h2#h2loginFacebook").html(""+window.localStorage.getItem("accountCollegato")+"");
+			$("p#ploginFacebook").html(""+response.name+"");
 			$("a.facebook").attr('href', '#foursquare');
 			$("a.facebook").removeClass('facebook');
-			$("h2#h2skipFacebook").html("Avanti");
-			$("p#pskipFacebook").html("prosegui con il setup dell'applicazione");
+			$("h2#h2skipFacebook").html(""+window.localStorage.getItem("continua")+"");
+			$("p#pskipFacebook").html(""+window.localStorage.getItem("prossimoPasso")+"");
 			});
 		}
 		else {
@@ -893,18 +915,18 @@
 	
 		if(tokenFoursquare == null) {
 		$("h2#h2loginFoursquare").html("Login Foursquare");
-		$("p#ploginFoursquare").html("collega Shopincomo al mio account Foursquare");
+		$("p#ploginFoursquare").html(""+window.localStorage.getItem("collegaSocial")+"");
 		}
 		else {
 		$.getJSON('https://api.foursquare.com/v2/users/self?oauth_token='+tokenFoursquare+'&v=20140304', function(data){
 		var user = data['response']['user']['firstName'];
 		
 		$("h2#h2loginFoursquare").html("Account Foursquare collegato!");
-		$("p#ploginFoursquare").html("Benvenuto, "+user+"");
+		$("p#ploginFoursquare").html(""+user+"");
 		$("a.foursquare").setAttribute("href", "#twitter");
 		$("a.foursquare").removeClass('foursquare');
 		$("h2#h2skipFoursquare").html("Avanti");
-		$("p#pskipFoursquare").html("prosegui con il setup dell'applicazione");
+		$("p#pskipFoursquare").html(""+window.localStorage.getItem("continua")+"");
 		});
 		
 		}
@@ -927,12 +949,12 @@
 		
 		$.getJSON('https://api.foursquare.com/v2/users/self?oauth_token='+tokenFoursquare+'&v=20140304', function(data){
 		var user = data['response']['user']['firstName'];
-		$("h2#h2loginFoursquare").html("Account Foursquare collegato!");
-		$("p#ploginFoursquare").html("Benvenuto, "+user+"");
+		$("h2#h2loginFoursquare").html(""+window.localStorage.getItem("accountCollegato")+"");
+		$("p#ploginFoursquare").html(""+user+"");
 		$("a.foursquare").setAttribute("href", "#twitter");
 		$("a.foursquare").removeClass('foursquare');
-		$("h2#h2skipFoursquare").html("Avanti");
-		$("p#pskipFoursquare").html("prosegui con il setup dell'applicazione");
+		$("h2#h2skipFoursquare").html(""+window.localStorage.getItem("continua")+"");
+		$("p#pskipFoursquare").html(""+window.localStorage.getItem("prossimoPasso")+"");
 		});
 		
 		ref.close();
@@ -996,18 +1018,18 @@
 	
 		if(twitterToken == null) {
 		$("h2#h2loginTwitter").html("Login Twitter");
-		$("p#ploginTwitter").html("collega Shopincomo al mio account Twitter");
+		$("p#ploginTwitter").html(""+window.localStorage.getItem("collegaSocial")+"");
 		}
 		else {
 		
 		var twitterName = window.localStorage.getItem("twitterName");
 		
-		$("h2#h2loginTwitter").html("Account Twitter collegato!");
-		$("p#ploginFoursquare").html("Benvenuto, "+twitterName+"");
+		$("h2#h2loginTwitter").html(""+window.localStorage.getItem("accountCollegato")+"");
+		$("p#ploginFoursquare").html(""+twitterName+"");
 		$("a.twitter").setAttribute("href", "#index");
 		$("a.twitter").removeClass('twitter');
-		$("h2#h2skipTwitter").html("Avanti");
-		$("p#pskipTwitter").html("prosegui con il setup dell'applicazione");
+		$("h2#h2skipTwitter").html(""+window.localStorage.getItem("continua")+"");
+		$("p#pskipTwitter").html(""+window.localStorage.getItem("prossimoPasso")+"");
 		}
 	
 	}); //ON "pagebeforeshow"
@@ -1034,12 +1056,12 @@
 		window.localStorage.setItem("twitterVerifier", twitterVerifier);
 		window.localStorage.setItem("twitterName", twitterName);
 		
-		$("h2#h2loginTwitter").html("Account Twitter collegato!");
-		$("p#ploginFoursquare").html("Benvenuto, "+twitterName+"");
+		$("h2#h2loginTwitter").html(""+window.localStorage.getItem("accountCollegato")+"");
+		$("p#ploginFoursquare").html(""+twitterName+"");
 		$("a.twitter").setAttribute("href", "#index");
 		$("a.twitter").removeClass('twitter');
-		$("h2#h2skipTwitter").html("Avanti");
-		$("p#pskipTwitter").html("prosegui con il setup dell'applicazione");
+		$("h2#h2skipTwitter").html(""+window.localStorage.getItem("continua")+"");
+		$("p#pskipTwitter").html(""+window.localStorage.getItem("prossimoPasso")+"");
 		
 		ref.close();
 		}
