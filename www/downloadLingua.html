@@ -49,7 +49,9 @@
 	e.preventDefault();
 	}
 	
-	var codLingua = window.localStorage.getItem('codLingua');
+	var lingua = window.localStorage.setItem("lingua");
+	var idLingua = window.localStorage.setItem("idLingua");
+	var codLingua = window.localStorage.setItem("codLingua");
 	
 	var urlCategorie = encodeURI("http://www.wificomo.com/ccn20/JSONcategorie.php?language="+codLingua+"");	
 	var fileNameCategorie = "categorie.js";
@@ -178,7 +180,22 @@
 	downloadJSON(directory, fileDistance, urldistance, pClass);
 	
 	*/
-			
+		
+	// TRADUZIONI------------------------------------------------------------------------------
+	
+	// T.Indietro
+	window.localStorage.setItem("indietro", lingue[lingua].indietro);
+	// T.Categories
+	window.localStorage.setItem("Categorie", lingue[lingua].Categorie);
+	// T.filtra
+	window.localStorage.setItem("filtra", lingue[lingua].filtra);
+	// T.ordina
+	window.localStorage.setItem("ordina", lingue[lingua].ordina);
+	// T.salta
+	window.localStorage.setItem("salta", lingue[lingua].salta);
+	
+	// /TRADUZIONI----------------------------------------------------------------------------
+	
 	}); // ON "pageshow"
 	
 	//DOWNLOAD JSON FUNCTION
