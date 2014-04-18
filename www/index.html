@@ -251,7 +251,8 @@
 			
 	
 	window.localStorage.setItem("nome", lingue[lingua].nome);
-	window.localStorage.setItem("nomi", lingue[lingua].nomi);
+	window.localStorage.setItem("nomiEsercizi", lingue[lingua].nomiEsercizi);
+	window.localStorage.setItem("position", lingue[lingua].position);
 	window.localStorage.setItem("categorie", lingue[lingua].categorie);
 	window.localStorage.setItem("sottoCategorie", lingue[lingua].sottoCategorie);
 	window.localStorage.setItem("brandEsercizi", lingue[lingua].brandEsercizi);
@@ -331,12 +332,12 @@
 	e.preventDefault();
 	}
 	
-	$("ul.downloadList").append($('<li class="nome"><img class="iconaTipologia" src="img/downloadnome.png"> DOWNLOAD '+window.localStorage.getItem("nomi")+'... <img src="img/download.gif"></li>'));
-	$("ul.downloadList").append($('<li class="brandEsercizi"><img class="iconaTipologia" src="img/downloadbrand.png"> DOWNLOAD brand... <img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("nomiEsercizi")+'"><img class="iconaTipologia" src="img/downloadnome.png"> DOWNLOAD '+window.localStorage.getItem("nomiEsercizi")+'... <img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("brandEsercizi")+'"><img class="iconaTipologia" src="img/downloadbrand.png"> DOWNLOAD brand... <img src="img/download.gif"></li>'));
 	$("ul.downloadList").append($('<li class="brand"><img class="iconaTipologia" src="img/downloadbrandEsercizi.png"> DOWNLOAD '+window.localStorage.getItem("brandEsercizi")+'... <img src="img/download.gif"></li>'));
-	$("ul.downloadList").append($('<li class="position"><img class="iconaTipologia" src="img/downloadposition.png"> DOWNLOAD position... <img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("position")+'"><img class="iconaTipologia" src="img/downloadposition.png"> DOWNLOAD position... <img src="img/download.gif"></li>'));
 	$("ul.downloadList").append($('<li class="categorie"><img class="iconaTipologia" src="img/downloadCategorie.png"> DOWNLOAD '+window.localStorage.getItem("categorie")+'...<img src="img/download.gif"></li>'));
-	$("ul.downloadList").append($('<li class="sottocategorie"><img class="iconaTipologia" src="img/downloadSottocategorie.png"> DOWNLOAD '+window.localStorage.getItem("sottocategorie")+'...<img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="sottocategorie"><img class="iconaTipologia" src="img/downloadSottocategorie.png"> DOWNLOAD '+window.localStorage.getItem("sottoCategorie")+'...<img src="img/download.gif"></li>'));
 	
 	var urlCategorie = encodeURI("http://www.wificomo.com/ccn20/JSONcategorie.php?language="+codLingua+"");	
 	var fileNameCategorie = "categorie.js";
@@ -423,7 +424,7 @@
 	var urlnomeEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONnomeEsercizi.php");	
 	var fileNamenomeEsercizi = "nomeEsercizi.js";
 	var directory = "ccn";
-	var pClass = ""+window.localStorage.getItem("nome")+"";
+	var pClass = ""+window.localStorage.getItem("nomiEsercizi")+"";
 	
 	downloadJSON(directory, fileNamenomeEsercizi, urlnomeEsercizi, pClass);
 	
@@ -450,7 +451,7 @@
 	var urlposition = encodeURI("http://www.wificomo.com/ccn20/JSONposition.php");
 	var filePosition = "position.js";
 	var directory = "ccn";
-	var pClass = "position";
+	var pClass = ""+window.localStorage.getItem("position")+"";
 	
 	downloadJSON(directory, filePosition, urlposition, pClass);
 	
