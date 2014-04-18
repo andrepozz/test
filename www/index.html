@@ -457,7 +457,7 @@
 	var pClass = ""+window.localStorage.getItem("position")+"";
 	var imgName = "position";
 	
-	downloadJSON(directory, filePosition, urlposition, pClass);
+	downloadJSON(directory, filePosition, urlposition, pClass, imgName);
 	
 	/*
 	//JSON DISTANCE
@@ -475,7 +475,7 @@
 	
 	//DOWNLOAD JSON FUNCTION
 	function downloadJSON(directory, fileName, fileURL, pClass, imgName) {
-		
+
 		var fileTransfer = new FileTransfer();
 		
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
