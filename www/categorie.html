@@ -161,6 +161,12 @@
 	
 	$("ul#lista_esercizi").html("");
 	
+	$("fieldset#fieldsetOrdinamento").append($('<input type="radio" class="ordinamento" name="ordinamento" id="distanza" value="distanza" checked="checked"><label for="distanza">'+window.localStorage.getItem("distanza")+'</label>'));
+	$("fieldset#fieldsetOrdinamento").append($('<input type="radio" class="ordinamento" name="ordinamento" id="nome" value="nome"><label for="nome">'+window.localStorage.getItem("nome")+'</label>'));
+	$("fieldset#fieldsetOrdinamento").append($('<input type="radio" class="ordinamento" name="ordinamento" id="votoPopular" value="votoPopular"><label for="votoPopular">'+window.localStorage.getItem("votoPopular")+'</label>'));
+	$("fieldset#fieldsetOrdinamento").append($('<input type="radio" class="ordinamento" name="ordinamento" id="votoTrendy" value="votoTrendy"><label for="votoTrendy">'+window.localStorage.getItem("votoTrendy")+'</label>'));
+			
+	
 	//CARICA JSON CATEGORIE
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPath = path + "/"+jsonName+".js";
@@ -427,10 +433,6 @@
 		<!-- ORDINAMENTO -->
 		<form id="formOrdinamento">
 		<fieldset id="fieldsetOrdinamento" data-role="controlgroup" data-type="vertical">
-		<input type="radio" class="ordinamento" name="ordinamento" id="distanza" value="distanza" checked="checked"><label for="distanza">Distanza</label>
-		<input type="radio" class="ordinamento" name="ordinamento" id="nome" value="nome"><label for="nome">Nome</label> 
-		<input type="radio" class="ordinamento" name="ordinamento" id="votoPopular" value="votoPopular"><label for="votoPopular">Popular</label> 
-		<input type="radio" class="ordinamento" name="ordinamento" id="votoTrendy" value="votoTrendy"><label for="votoTrendy">Trendy</label>
 		</fieldset>
 		</form>
 		<!-- /ORDINAMENTO -->
