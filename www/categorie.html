@@ -161,10 +161,10 @@
 	
 	$("ul#lista_esercizi").html("");
 	
-	$("#fieldsetOrdinamento").append($('<input type="radio" class="ordinamento" name="ordinamento" id="distanza" value="distanza" checked="checked"><label for="distanza">'+window.localStorage.getItem("distanza")+'</label>'));
-	$("#fieldsetOrdinamento").append($('<input type="radio" class="ordinamento" name="ordinamento" id="nome" value="nome"><label for="nome">'+window.localStorage.getItem("nome")+'</label>'));
-	$("#fieldsetOrdinamento").append($('<input type="radio" class="ordinamento" name="ordinamento" id="votoPopular" value="votoPopular"><label for="votoPopular">'+window.localStorage.getItem("votoPopular")+'</label>'));
-	$("#fieldsetOrdinamento").append($('<input type="radio" class="ordinamento" name="ordinamento" id="votoTrendy" value="votoTrendy"><label for="votoTrendy">'+window.localStorage.getItem("votoTrendy")+'</label>'));
+	$("#fieldsetOrdinamento").controlgroup("container").append($('<input type="radio" class="ordinamento" name="ordinamento" id="distanza" value="distanza" checked="checked"><label for="distanza">'+window.localStorage.getItem("distanza")+'</label>'));
+	$("#fieldsetOrdinamento").controlgroup("container").append($('<input type="radio" class="ordinamento" name="ordinamento" id="nome" value="nome"><label for="nome">'+window.localStorage.getItem("nome")+'</label>'));
+	$("#fieldsetOrdinamento").controlgroup("container").append($('<input type="radio" class="ordinamento" name="ordinamento" id="votoPopular" value="votoPopular"><label for="votoPopular">'+window.localStorage.getItem("votoPopular")+'</label>'));
+	$("#fieldsetOrdinamento").controlgroup("container").append($('<input type="radio" class="ordinamento" name="ordinamento" id="votoTrendy" value="votoTrendy"><label for="votoTrendy">'+window.localStorage.getItem("votoTrendy")+'</label>'));
 	$("#fieldsetOrdinamento").enhanceWithin().controlgroup("refresh");	
 	
 	//CARICA JSON CATEGORIE
