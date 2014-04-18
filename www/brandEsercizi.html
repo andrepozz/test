@@ -95,6 +95,11 @@
 		e.preventDefault();
 		}
 	
+	$("#cerca_negozio").change(function() {
+	var $searchResults = $(this);
+	$searchResults.attr("placeholder", ""++"");
+	}
+	
 	//CARICA JSON CATEGORIE
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPath = path + "/brand.js";
@@ -174,6 +179,8 @@
 	$("#fieldsetOrdinamento").controlgroup("container").append($('<input type="radio" class="ordinamento" name="ordinamento" id="votoPopular" value="votoPopular"><label for="votoPopular">'+window.localStorage.getItem("votoPopular")+'</label>'));
 	$("#fieldsetOrdinamento").controlgroup("container").append($('<input type="radio" class="ordinamento" name="ordinamento" id="votoTrendy" value="votoTrendy"><label for="votoTrendy">'+window.localStorage.getItem("votoTrendy")+'</label>'));
 	$("#fieldsetOrdinamento").enhanceWithin().controlgroup("refresh");
+	
+
 	
 	//CARICA JSON CATEGORIE
 		

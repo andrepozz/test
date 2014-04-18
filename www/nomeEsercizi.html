@@ -80,8 +80,7 @@
 
 	<div role="main" class="ui-content" >
 		
-	<ul id="cerca_negozio" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="inserisci il nome del negozio...">
-	</ul>
+	<ul id="cerca_negozio" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="inserisci il nome del negozio..."></ul>
 	
 	<script type="text/javascript" charset="utf-8">
 	
@@ -93,6 +92,12 @@
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
+	
+	$("#cerca_negozio").change(function() {
+	var $searchResults = $(this);
+	$searchResults.attr("placeholder", ""++"");
+	}
+
 	
 	//CARICA JSON CATEGORIE
 	var path = window.localStorage.getItem("pathSD");

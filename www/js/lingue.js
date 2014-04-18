@@ -47,7 +47,9 @@
 		"collegaSocial": "Collega ShopInComo al mio account",
 		"noCollegaSocial": "Non ora",
 		"accountCollegato": "Account Collegato",
-		"prossimoPasso": "Prossimo step"
+		"prossimoPasso": "Prossimo step",
+		"placeholderNome": "Inserisci il nome di un negozio",
+		"placeholderBrand": "Cerca un brand"
 
     },
 	"English": {
@@ -98,7 +100,9 @@
 		"collegaSocial": "Connect ShopInComo with my account",
 		"noCollegaSocial": "Skip now",
 		"accountCollegato": "Account Connected",
-		"prossimoPasso": "Next Step"
+		"prossimoPasso": "Next Step",
+		"placeholderNome": "Insert shop name",
+		"placeholderBrand": "Search a brand"
 		
     },
 	"Francaise": {
@@ -149,7 +153,9 @@
 		"collegaSocial": "Connect ShopInComo with my account",
 		"noCollegaSocial": "Skip now",
 		"accountCollegato": "Account Connected",
-		"prossimoPasso": "Next Step"
+		"prossimoPasso": "Next Step",
+		"placeholderNome": "Insert shop name",
+		"placeholderBrand": "Search a brand"
 		
     },
 	"Spanish": {
@@ -200,7 +206,9 @@
 		"collegaSocial": "Connect ShopInComo with my account",
 		"noCollegaSocial": "Skip now",
 		"accountCollegato": "Account Connected",
-		"prossimoPasso": "Next Step"
+		"prossimoPasso": "Next Step",
+		"placeholderNome": "Insert shop name",
+		"placeholderBrand": "Search a brand"
 		
     },
 	"Portuguese": {
@@ -251,7 +259,9 @@
 		"collegaSocial": "Connect ShopInComo with my account",
 		"noCollegaSocial": "Skip now",
 		"accountCollegato": "Account Connected",
-		"prossimoPasso": "Next Step"
+		"prossimoPasso": "Next Step",
+		"placeholderNome": "Insert shop name",
+		"placeholderBrand": "Search a brand"
 		
     },
 	"Russian": {
@@ -302,7 +312,9 @@
 		"collegaSocial": "Connect ShopInComo with my account",
 		"noCollegaSocial": "Skip now",
 		"accountCollegato": "Account Connected",
-		"prossimoPasso": "Next Step"
+		"prossimoPasso": "Next Step",
+		"placeholderNome": "Insert shop name",
+		"placeholderBrand": "Search a brand"
 		
     },
 	"Japanese": {
@@ -353,7 +365,9 @@
 		"collegaSocial": "Connect ShopInComo with my account",
 		"noCollegaSocial": "Skip now",
 		"accountCollegato": "Account Connected",
-		"prossimoPasso": "Next Step"
+		"prossimoPasso": "Next Step",
+		"placeholderNome": "Insert shop name",
+		"placeholderBrand": "Search a brand"
 		
     },
 	"Chinese": {
@@ -404,7 +418,9 @@
 		"collegaSocial": "Connect ShopInComo with my account",
 		"noCollegaSocial": "Skip now",
 		"accountCollegato": "Account Connected",
-		"prossimoPasso": "Next Step"
+		"prossimoPasso": "Next Step",
+		"placeholderNome": "Insert shop name",
+		"placeholderBrand": "Search a brand"
 		
     },
 	"Arabic": {
@@ -455,7 +471,9 @@
 		"collegaSocial": "Connect ShopInComo with my account",
 		"noCollegaSocial": "Skip now",
 		"accountCollegato": "Account Connected",
-		"prossimoPasso": "Next Step"
+		"prossimoPasso": "Next Step",
+		"placeholderNome": "Insert shop name",
+		"placeholderBrand": "Search a brand"
 		
     }
 	}
