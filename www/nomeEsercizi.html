@@ -838,9 +838,9 @@
 				
 		$("ul#contattiEsercizio").append($("<li data-role='list-divider'>"+window.localStorage.getItem("contatti")+"</li>"));
 		$("ul#contattiEsercizio").append($("<li>"+info.Indirizzo+" "+info.Citta+"</li>"));
-		if (info.Telefono != undefined){$("ul#contattiEsercizio").append($("<li><a href=tel:"+info.Telefono.replace(/ /g,'')+"><img src='img/contattiTelefono.png'><h2>telefono</h2><p>"+info.Telefono+"</p></a></li>"))};
-		if (info.Website != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Website+"><img src='img/contattiWebsite.png'><h2>website</h2><p>"+info.Website+"</p></a></li>"))};
-		if (info.Email != undefined){$("ul#contattiEsercizio").append($("<li><a href=mailto:"+info.Email+"><img src='img/contattiEmail.png'><h2>e-mail</h2><p>"+info.Email+"</p></a></li>"))};
+		if (info.Telefono != undefined){$("ul#contattiEsercizio").append($("<li><a href=tel:"+info.Telefono.replace(/ /g,'')+"><img src='img/contattiTelefono.png'><h2>"+window.localStorage.getItem("telefono")+"</h2><p>"+info.Telefono+"</p></a></li>"))};
+		if (info.Website != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Website+"><img src='img/contattiWebsite.png'><h2>Website</h2><p>"+info.Website+"</p></a></li>"))};
+		if (info.Email != undefined){$("ul#contattiEsercizio").append($("<li><a href=mailto:"+info.Email+"><img src='img/contattiEmail.png'><h2>E-mail</h2><p>"+info.Email+"</p></a></li>"))};
 		if (info.Facebook != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Facebook.substring(info.Facebook.indexOf('w'))+"><img src='img/collegaFacebook.png'><h2>Facebook</h2></a></li>"))};
 		if (info.Twitter != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Twitter.substring(info.Twitter.indexOf('w'))+"><img src='img/collegaTwitter.png'><h2>Twitter</p></h2></li>"))};
 		if (info.Foursquare != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Foursquare.substring(info.Foursquare.indexOf('w'))+"><img src='img/collegaFoursquare.png'><h2>Foursquare</h2></a></li>"))};
@@ -911,9 +911,9 @@
 		e.preventDefault();
 		}
 		
-	$(".intervalli").append($('<button id="intervallo" value="7giorni">7 '+window.localStorage.getItem("giorni")+'</button>'));
-	$(".intervalli").append($('<button id="intervallo"value="15giorni">15 '+window.localStorage.getItem("giorni")+'</button>'));
-	$(".intervalli").append($('<button id="intervallo" value="30giorni">30 '+window.localStorage.getItem("giorni")+'</button>'));
+	$(".intervalli").append($('<button class="ui-btn" id="intervallo" value="7giorni">7 '+window.localStorage.getItem("giorni")+'</button>'));
+	$(".intervalli").append($('<button class="ui-btn" id="intervallo"value="15giorni">15 '+window.localStorage.getItem("giorni")+'</button>'));
+	$(".intervalli").append($('<button class="ui-btn" id="intervallo" value="30giorni">30 '+window.localStorage.getItem("giorni")+'</button>'));
 	
 	var jsonVetrina = window.sessionStorage.getItem("jsonVetrina");
 	
