@@ -262,6 +262,7 @@
 	window.localStorage.setItem("continua", lingue[lingua].continua);
 	window.localStorage.setItem("salta", lingue[lingua].salta);
 	window.localStorage.setItem("vota", lingue[lingua].vota);
+	window.localStorage.setItem("voti", lingue[lingua].voti);
 	window.localStorage.setItem("essereOnline", lingue[lingua].essereOnline);
 	window.localStorage.setItem("distanza", lingue[lingua].distanza);
 	window.localStorage.setItem("votoTrendy", lingue[lingua].votoTrendy);
@@ -288,6 +289,8 @@
 	window.localStorage.setItem("checkinPubblicato", lingue[lingua].checkinPubblicato);
 	window.localStorage.setItem("noCheckin", lingue[lingua].noCheckin);
 	window.localStorage.setItem("troppoLontano", lingue[lingua].troppoLontano);
+	window.localStorage.setItem("collegaSetupTitolo", lingue[lingua].collegaSetupTitolo);
+	window.localStorage.setItem("collegaSetupDescrizione", lingue[lingua].collegaSetupDescrizione);
 	window.localStorage.setItem("collegaSocial", lingue[lingua].collegaSocial);
 	window.localStorage.setItem("noCollegaSocial", lingue[lingua].noCollegaSocial);
 	window.localStorage.setItem("accountCollegato", lingue[lingua].accountCollegato);
@@ -819,6 +822,7 @@
 	<div role="main" class="ui-content" >
 	
 	<div id="fb-root"></div>
+	
 	<script>
   
 	$( "#facebook" ).on( "pagebeforeshow", function() {	
@@ -828,6 +832,9 @@
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
+	
+	$("h3.titoloCollegaFacebook").html(window.localStorage.getItem("collegaSetupTitolo")+" Facebook");
+	$("p.descrizioneCollegaFacebook").html(window.localStorage.getItem("collegaSetupDescrizione"));
 	
 	$("h2#h2skipFacebook").html(""+window.localStorage.getItem("noCollegaSocial")+"");
 	$("p#pskipFacebook").html(""+window.localStorage.getItem("continua")+"");
@@ -888,7 +895,8 @@
 	
 </script>
 	
-	<p>Titolo + breve spiegazione</p>
+	<h3 class="titoloCollegaFacebook"></h3>
+	<p class="descrizioneCollegaFacebook"></p>
 	
 	<ul data-role="listview" data-inset="true">
 		<li><a href="#" class="facebook" data-transition="slide">
@@ -935,6 +943,9 @@
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
+	
+	$("h3.titoloCollegaFoursquare").html(window.localStorage.getItem("collegaSetupTitolo")+" Foursquare");
+	$("p.descrizioneCollegaFoursquare").html(window.localStorage.getItem("collegaSetupDescrizione"));
 	
 	$("h2#h2skipFoursquare").html(""+window.localStorage.getItem("noCollegaSocial")+"");
 	$("p#pskipFoursquare").html(""+window.localStorage.getItem("continua")+"");
@@ -994,7 +1005,8 @@
 		
 	</script>
 	
-	<p>Titolo + breve spiegazione</p>
+	<h3 class="titoloCollegaFoursquare"></h3>
+	<p class="descrizioneCollegaFoursquare"></p>
 	
 	<ul data-role="listview" data-inset="true">
 		<li><a href="#" class="foursquare" data-transition="slide">
@@ -1041,6 +1053,9 @@
 	function onBackKeyDown(e) {
 	e.preventDefault();
 	}
+	
+	$("h3.titoloCollegaTwitter").html(window.localStorage.getItem("collegaSetupTitolo")+" Twitter");
+	$("p.descrizioneCollegaTwitter").html(window.localStorage.getItem("collegaSetupDescrizione"));
 	
 	$("h2#h2skipTwitter").html(""+window.localStorage.getItem("noCollegaSocial")+"");
 	$("p#pskipTwitter").html(""+window.localStorage.getItem("continua")+"");
@@ -1102,7 +1117,8 @@
 	
 	</script>
 	
-	<p>Titolo + breve spiegazione</p>
+	<h3 class="titoloCollegaTwitter"></h3>
+	<p class="descrizioneCollegaTwitter"></p>
 	
 	<ul data-role="listview" data-inset="true">
 		<li><a href="#" class="twitter">

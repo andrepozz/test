@@ -225,8 +225,8 @@
 			descrizioneEsercizioShowMore = info.Descrizione;
 			var maxCharacters = 50;
 			var ellipsestext = "...";
-			var moretext = ""+window.localStorage.getItem("show")+"";
-			var lesstext = ""+window.localStorage.getItem("hide")+"";
+			var moretext = ""+window.localStorage.getItem("mostra")+"";
+			var lesstext = ""+window.localStorage.getItem("nascondi")+"";
 			$('.showDescrizione').each(function() {
 			
 				if(descrizioneEsercizioShowMore.length > maxCharacters) {
@@ -508,8 +508,8 @@
 	// /FUNZIONE DIRECTIONS
 	
 	    $(document).on("click", '.morelink', function(){
-		var moretext = ""+window.localStorage.getItem("show")+"";
-		var lesstext = ""+window.localStorage.getItem("hide")+"";
+		var moretext = ""+window.localStorage.getItem("mostra")+"";
+		var lesstext = ""+window.localStorage.getItem("nascondi")+"";
 		if($(this).hasClass("less")) {
             $(this).removeClass("less");
             $(this).html(moretext);
