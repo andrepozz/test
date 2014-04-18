@@ -425,6 +425,7 @@
 	var fileNamenomeEsercizi = "nomeEsercizi.js";
 	var directory = "ccn";
 	var pClass = ""+window.localStorage.getItem("nomiEsercizi")+"";
+	var imgName = "downloadnome";
 	
 	downloadJSON(directory, fileNamenomeEsercizi, urlnomeEsercizi, pClass);
 	
@@ -434,6 +435,7 @@
 	var fileNamebrandEsercizi = "brandEsercizi.js";
 	var directory = "ccn";
 	var pClass = ""+window.localStorage.getItem("brandEsercizi")+"";
+	var imgName = "downloadbrandEsercizi";
 	
 	downloadJSON(directory, fileNamebrandEsercizi, urlbrandEsercizi, pClass);
 	
@@ -443,6 +445,7 @@
 	var fileNamebrand = "brand.js";
 	var directory = "ccn";
 	var pClass = "brand";
+	var imgName = "downloadbrand";
 	
 	downloadJSON(directory, fileNamebrand, urlbrand, pClass);
 	
@@ -452,6 +455,7 @@
 	var filePosition = "position.js";
 	var directory = "ccn";
 	var pClass = ""+window.localStorage.getItem("position")+"";
+	var imgName = "downloadposition";
 	
 	downloadJSON(directory, filePosition, urlposition, pClass);
 	
@@ -470,7 +474,7 @@
 	}); // ON "pageshow"
 	
 	//DOWNLOAD JSON FUNCTION
-	function downloadJSON(directory, fileName, fileURL, pClass) {
+	function downloadJSON(directory, fileName, fileURL, pClass, imgName) {
 		
 		var fileTransfer = new FileTransfer();
 		
@@ -491,7 +495,7 @@
 						localPath,
 						function(entry) {
 						
-						$("li."+pClass+"").html("<img class='iconaTipologia' src='img/download"+pClass+".png'> DOWNLOAD "+pClass+" <img src='img/downloadok.png'>");
+						$("li."+pClass+"").html("<img class='iconaTipologia' src='img/download"+imgName+".png'> DOWNLOAD "+pClass+" <img src='img/downloadok.png'>");
 						$("li."+pClass+"").css("color","white");
 						$("li."+pClass+"").css("background","#00CC00");
 						
