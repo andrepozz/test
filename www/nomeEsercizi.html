@@ -168,6 +168,8 @@
 	e.preventDefault();
 	}
 	
+	$(".titoloNavigazione").html(window.localStorage.getItem("portamiQui"));
+	$(".didascaliaSocial").html(window.localStorage.getItem("votaNegozio"));
 
 	
 	// CARICA FILE VETRINA
@@ -223,8 +225,8 @@
 			descrizioneEsercizioShowMore = info.Descrizione;
 			var maxCharacters = 50;
 			var ellipsestext = "...";
-			var moretext = "show more";
-			var lesstext = "show less";
+			var moretext = ""+window.localStorage.getItem("show")+"";
+			var lesstext = ""+window.localStorage.getItem("hide")+"";
 			$('.showDescrizione').each(function() {
 			
 				if(descrizioneEsercizioShowMore.length > maxCharacters) {
@@ -420,7 +422,7 @@
 				}
 				else
 				{
-				$(".distanzaEsercizio").html("<img width='16px' height='16px' src='img/distanza.png'>Troppo lontato per calcolare");
+				$(".distanzaEsercizio").html("<img width='16px' height='16px' src='img/distanza.png'>"+window.localStorage.getItem("troppoLontano")+"");
 				}
 			
 			}); //END GET JSON POSITION 
@@ -506,8 +508,8 @@
 	// /FUNZIONE DIRECTIONS
 	
 	    $(document).on("click", '.morelink', function(){
-        var moretext = "more";
-		var lesstext = "less";
+		var moretext = ""+window.localStorage.getItem("show")+"";
+		var lesstext = ""+window.localStorage.getItem("hide")+"";
 		if($(this).hasClass("less")) {
             $(this).removeClass("less");
             $(this).html(moretext);
@@ -543,7 +545,7 @@
 				url: 'http://www.wificomo.com/ccn20/votiSocial.php',
 				data: { idNegozio: idEsercizio, socialNetwork: 'Facebook', nomeNegozio: $("h3.nomeEsercizio").html(), latitude: latitudeFacebook, longitude: longitudeFacebook}
 				}).done(function( msg ) {
-				alert("Post published");
+				alert(window.localStorage.getItem("postPubblicato"));
 			});	
 		} 
 		else {
@@ -567,7 +569,7 @@
 			$("ul#lista_checkin").html("");
 			$("ul#lista_checkin").append($("<li data-role='divider' data-theme='b'>Check In</li>"));
 				if (venues.length == 0) {
-					$("ul#lista_checkin").append($("<li></li>",{"html":"Non sei nelle vicinanze di questo negozio!" }));
+					$("ul#lista_checkin").append($("<li></li>",{"html":""+window.localStorage.getItem("noCheckin")+"" }));
 				}
 				else {
 					for (var i = 0; i < venues.length; i++) {
@@ -598,7 +600,7 @@
 				url: 'http://www.wificomo.com/ccn20/votiSocial.php',
 				data: { idNegozio: idEsercizio, socialNetwork: 'Foursquare', nomeNegozio: $("h3.nomeEsercizio").html(), latitude: latitudeFoursquare, longitude: longitudeFoursquare}
 				}).done(function( msg ) {
-				alert("Check-in ok");
+				alert(window.localStorage.getItem("checkinPubblicato"));
 			});	
 		$( "#popupCheckin" ).popup( "close" )
 		});
@@ -632,7 +634,7 @@
 				url: 'http://www.wificomo.com/ccn20/votiSocial.php',
 				data: { idNegozio: idEsercizio, socialNetwork: 'Twitter', nomeNegozio: $("h3.nomeEsercizio").html(), latitude: latitudeTwitter, longitude: longitudeTwitter}
 				}).done(function( msg ) {
-				alert("Tweet ok");
+				alert(window.localStorage.getItem("tweetPubblicato"));
 					});		
 		// log a message to the console
         
@@ -666,7 +668,7 @@
 	</li>
 	<li class="navigateEsercizio">
 	<a class="directions" href="#"><img src="img/navigation.png">
-	<h2>portami qui</h2>
+	<h2 class="titoloNavigazione"></h2>
 	<p class="distanzaEsercizio"></p>
 	</a>
 	</li>
@@ -681,19 +683,19 @@
 	<li id="buttonFacebook">
 	<a href="#" class="votaFacebook" idEsercizio=""><img id="votaFacebook" src="img/collegaFacebook.png">
 	<h2>Facebook</h2>
-	<p>vota il negozio su Facebook</p>
+	<p class="didascaliaSocial"></p>
 	</a>
 	</li>
 	<li id="buttonFoursquare">
 	<a href="#" class="votaFoursquare" idEsercizio=""><img id="votaFoursquare" src="">
 	<h2>Foursquare</h2>
-	<p>vota il negozio su Foursquare</p>
+	<p class="didascaliaSocial"></p>
 	</a>
 	</li>
 	<li id="buttonTwitter">
 	<a href="#" class="votaTwitter" idEsercizio=""><img id="votaTwitter" src="">
 	<h2>Twitter</h2>
-	<p>vota il negozio su Twitter</p>
+	<p class="didascaliaSocial"></p>
 	</a>
 	</li>
 	</ul>
@@ -754,18 +756,18 @@
 	$.each(JSON.parse(jsonVetrina), function(index, info) {
 				
 		if (info.mostraOrari == "si"){
-		$("ul#orariEsercizio").append($("<li data-role='list-divider'>Orari di Apertura</li>"));
-		$("ul#orariEsercizio").append($("<li>Lunedi: "+info.Orario.lunedi+"</li>"));
-		$("ul#orariEsercizio").append($("<li>Martedi: "+info.Orario.martedi+"</li>"));
-		$("ul#orariEsercizio").append($("<li>Mercoledi: "+info.Orario.mercoledi+"</li>"));
-		$("ul#orariEsercizio").append($("<li>Giovedi: "+info.Orario.giovedi+"</li>"));
-		$("ul#orariEsercizio").append($("<li>Venerdi: "+info.Orario.venerdi+"</li>"));
-		$("ul#orariEsercizio").append($("<li>Sabato: "+info.Orario.sabato+"</li>"));
-		$("ul#orariEsercizio").append($("<li>Domenica: "+info.Orario.domenica+"</li>"));
+		$("ul#orariEsercizio").append($("<li data-role='list-divider'>"+window.localStorage.getItem("orariApertura")+"</li>"));
+		$("ul#orariEsercizio").append($("<li>"+window.localStorage.getItem("lunedi")+": "+info.Orario.lunedi+"</li>"));
+		$("ul#orariEsercizio").append($("<li>"+window.localStorage.getItem("martedi")+": "+info.Orario.martedi+"</li>"));
+		$("ul#orariEsercizio").append($("<li>"+window.localStorage.getItem("mercoledi")+": "+info.Orario.mercoledi+"</li>"));
+		$("ul#orariEsercizio").append($("<li>"+window.localStorage.getItem("giovedi")+": "+info.Orario.giovedi+"</li>"));
+		$("ul#orariEsercizio").append($("<li>"+window.localStorage.getItem("venerdi")+": "+info.Orario.venerdi+"</li>"));
+		$("ul#orariEsercizio").append($("<li>"+window.localStorage.getItem("sabato")+": "+info.Orario.sabato+"</li>"));
+		$("ul#orariEsercizio").append($("<li>"+window.localStorage.getItem("domenica")+": "+info.Orario.domenica+"</li>"));
 		$("ul#orariEsercizio").listview("refresh");
 		}
 		else {
-		$("ul#orariEsercizio").append($("<li data-role='list-divider'>Orari di apertura non comunicati</li>"));
+		$("ul#orariEsercizio").append($("<li data-role='list-divider'>"+window.localStorage.getItem("noOrari")+"</li>"));
 		$("ul#orariEsercizio").listview("refresh");
 		}
 	});
@@ -834,7 +836,7 @@
 	
 	$.each(JSON.parse(jsonVetrina), function(index, info) {
 				
-		$("ul#contattiEsercizio").append($("<li data-role='list-divider'>Contatti</li>"));
+		$("ul#contattiEsercizio").append($("<li data-role='list-divider'>"+window.localStorage.getItem("contatti")+"</li>"));
 		$("ul#contattiEsercizio").append($("<li>"+info.Indirizzo+" "+info.Citta+"</li>"));
 		if (info.Telefono != undefined){$("ul#contattiEsercizio").append($("<li><a href=tel:"+info.Telefono.replace(/ /g,'')+"><img src='img/contattiTelefono.png'><h2>telefono</h2><p>"+info.Telefono+"</p></a></li>"))};
 		if (info.Website != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Website+"><img src='img/contattiWebsite.png'><h2>website</h2><p>"+info.Website+"</p></a></li>"))};
@@ -908,6 +910,10 @@
 		function onBackKeyDown(e) {
 		e.preventDefault();
 		}
+		
+	$(".intervalli").append($('<button id="intervallo" value="7giorni">7 '+window.localStorage.getItem("giorni")+'</button>'));
+	$(".intervalli").append($('<button id="intervallo"value="15giorni">15 '+window.localStorage.getItem("giorni")+'</button>'));
+	$(".intervalli").append($('<button id="intervallo" value="30giorni">30 '+window.localStorage.getItem("giorni")+'</button>'));
 	
 	var jsonVetrina = window.sessionStorage.getItem("jsonVetrina");
 	
@@ -1130,14 +1136,14 @@
 		}
 		else{
 		$("button#intervallo").hide();
-		$("ul#statisticheEsercizio").append($("<li data-role='list-divider'>Questa funzionalità è disponibile solo con connessione WiFi o 3G</li>"));
+		$("ul#statisticheEsercizio").append($("<li data-role='list-divider'>"+window.localStorage.getItem("essereOnline")+"</li>"));
 		$("ul#statisticheEsercizio").listview("refresh");
 		}
 	
 	}
 	else{
 	$("button#intervallo").hide();
-	$("ul#statisticheEsercizio").append($("<li data-role='list-divider'>Il negoziante non permette la visualizzazione pubblica delle statistiche</li>"));
+	$("ul#statisticheEsercizio").append($("<li data-role='list-divider'>"+window.localStorage.getItem("noStatistiche")+"</li>"));
 	$("ul#statisticheEsercizio").listview("refresh");
 	}
 		
@@ -1153,10 +1159,7 @@
 	</ul>
 	<div id="box-statisticheEsercizio">
 	<div id="barChart" style="width: 1920px; height:450px"></div>
-	<div>
-	<button id="intervallo" value="7giorni">7 giorni</button>
-	<button id="intervallo"value="15giorni">15 giorni</button>
-	<button id="intervallo" value="30giorni">30 giorni</button>
+	<div class="intervalli">
 	</div>
 	</div>
 	<!-- /STATISTICHE -->
