@@ -251,7 +251,9 @@
 			
 	
 	window.localStorage.setItem("nome", lingue[lingua].nome);
+	window.localStorage.setItem("nomi", lingue[lingua].nomi);
 	window.localStorage.setItem("categorie", lingue[lingua].categorie);
+	window.localStorage.setItem("sottoCategorie", lingue[lingua].sottoCategorie);
 	window.localStorage.setItem("brandEsercizi", lingue[lingua].brandEsercizi);
 	window.localStorage.setItem("attendere", lingue[lingua].attendere);
 	window.localStorage.setItem("continua", lingue[lingua].continua);
@@ -282,7 +284,9 @@
 	window.localStorage.setItem("troppoLontano", lingue[lingua].troppoLontano);
 	window.localStorage.setItem("collegaSocial", lingue[lingua].collegaSocial);
 	window.localStorage.setItem("noCollegaSocial", lingue[lingua].noCollegaSocial);
-	
+	window.localStorage.setItem("accountCollegato", lingue[lingua].accountCollegato);
+	window.localStorage.setItem("prossimoPasso", lingue[lingua].prossimoPasso);
+		
 	});
 	
 	// /TRADUZIONI----------------------------------------------------------------------------
@@ -419,7 +423,7 @@
 	var urlnomeEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONnomeEsercizi.php");	
 	var fileNamenomeEsercizi = "nomeEsercizi.js";
 	var directory = "ccn";
-	var pClass = window.localStorage.getItem("nome");
+	var pClass = ""+window.localStorage.getItem("nome")+"";
 	
 	downloadJSON(directory, fileNamenomeEsercizi, urlnomeEsercizi, pClass);
 	
@@ -428,7 +432,7 @@
 	var urlbrandEsercizi = encodeURI("http://www.wificomo.com/ccn20/JSONbrandEsercizi.php");
 	var fileNamebrandEsercizi = "brandEsercizi.js";
 	var directory = "ccn";
-	var pClass = window.localStorage.getItem("brandEsercizi");
+	var pClass = ""+window.localStorage.getItem("brandEsercizi")+"";
 	
 	downloadJSON(directory, fileNamebrandEsercizi, urlbrandEsercizi, pClass);
 	
