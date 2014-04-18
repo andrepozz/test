@@ -839,10 +839,10 @@
 		if (info.Telefono != undefined){$("ul#contattiEsercizio").append($("<li><a href=tel:"+info.Telefono.replace(/ /g,'')+"><img src='img/contattiTelefono.png'><h2>telefono</h2><p>"+info.Telefono+"</p></a></li>"))};
 		if (info.Website != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Website+"><img src='img/contattiWebsite.png'><h2>website</h2><p>"+info.Website+"</p></a></li>"))};
 		if (info.Email != undefined){$("ul#contattiEsercizio").append($("<li><a href=mailto:"+info.Email+"><img src='img/contattiEmail.png'><h2>e-mail</h2><p>"+info.Email+"</p></a></li>"))};
-		if (info.Facebook != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Facebook+"><img src='img/collegaFacebook.png'><h2>Facebook</h2></a></li>"))};
-		if (info.Twitter != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Twitter+"><img src='img/collegaTwitter.png'><h2>Twitter</p></h2></li>"))};
-		if (info.Foursquare != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Foursquare+"><img src='img/collegaFoursquare.png'><h2>Foursquare</h2></a></li>"))};
-		if (info.Tripadvisor != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Tripadvisor+"><img src='img/collegaTripadvisor.png'><h2>Tripadvisor</h2></a></li>"))};
+		if (info.Facebook != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Facebook.substring(0,6)+"><img src='img/collegaFacebook.png'><h2>Facebook</h2></a></li>"))};
+		if (info.Twitter != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Twitter.substring(0,6)+"><img src='img/collegaTwitter.png'><h2>Twitter</p></h2></li>"))};
+		if (info.Foursquare != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Foursquare.substring(0,6)+"><img src='img/collegaFoursquare.png'><h2>Foursquare</h2></a></li>"))};
+		if (info.Tripadvisor != undefined){$("ul#contattiEsercizio").append($("<li><a href='#' class='website' urlWebsite="+info.Tripadvisor.substring(0,6)+"><img src='img/collegaTripadvisor.png'><h2>Tripadvisor</h2></a></li>"))};
 		$("ul#contattiEsercizio").listview("refresh");
 							
 	});
