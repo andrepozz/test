@@ -247,6 +247,8 @@
 	window.localStorage.setItem("codLingua", codLingua);
 	
 	// TRADUZIONI------------------------------------------------------------------------------
+	$.getJSON("js/lingue.js", function( lingue ) {
+			
 	
 	window.localStorage.setItem("nome", lingue[lingua].nome);
 	window.localStorage.setItem("categorie", lingue[lingua].categorie);
@@ -280,6 +282,8 @@
 	window.localStorage.setItem("troppoLontano", lingue[lingua].troppoLontano);
 	window.localStorage.setItem("collegaSocial", lingue[lingua].collegaSocial);
 	window.localStorage.setItem("noCollegaSocial", lingue[lingua].noCollegaSocial);
+	
+	});
 	
 	// /TRADUZIONI----------------------------------------------------------------------------
 	

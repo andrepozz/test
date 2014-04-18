@@ -1,5 +1,5 @@
 	{
-	"italiano": {
+	"Italiano": {
 		"idLingua": "1",
 		"codiceLingua": "it",
 		"nomeLingua": "Italiano",
@@ -41,7 +41,7 @@
 		"prossimoPasso": "Prossimo step"
 
     },
-	"inglese": {
+	"English": {
 		"idLingua": "2",
 		"codiceLingua": "en",
         "nomeLingua": "English",
@@ -83,7 +83,7 @@
 		"prossimoPasso": "Next Step"
 		
     },
-	"francese": {
+	"Francaise": {
 		"idLingua": "3",
 		"codiceLingua": "fr",
         "nomeLingua": "Francaise",
@@ -125,7 +125,7 @@
 		"prossimoPasso": "Next Step"
 		
     },
-	"spagnolo": {
+	"Spanish": {
 		"idLingua": "4",
 		"codiceLingua": "es",
         "nomeLingua": "Spanish",
@@ -167,7 +167,7 @@
 		"prossimoPasso": "Next Step"
 		
     },
-	"portoghese": {
+	"Portuguese": {
 		"idLingua": "5",
 		"codiceLingua": "pt",
         "nomeLingua": "Portuguese",
@@ -209,7 +209,7 @@
 		"prossimoPasso": "Next Step"
 		
     },
-	"russo": {
+	"Russian": {
 		"idLingua": "6",
 		"codiceLingua": "ru",
         "nomeLingua": "Russian",
@@ -251,7 +251,7 @@
 		"prossimoPasso": "Next Step"
 		
     },
-	"giapponese": {
+	"Japanese": {
 		"idLingua": "7",
 		"codiceLingua": "jp",
         "nomeLingua": "Japanese",
@@ -293,7 +293,7 @@
 		"prossimoPasso": "Next Step"
 		
     },
-	"cinese": {
+	"Chinese": {
 		"idLingua": "8",
 		"codiceLingua": "cn",
         "nomeLingua": "Chinese",
@@ -335,7 +335,7 @@
 		"prossimoPasso": "Next Step"
 		
     },
-	"arabo": {
+	"Arabic": {
 		"idLingua": "9",
 		"codiceLingua": "ae",
         "nomeLingua": "Arabic",

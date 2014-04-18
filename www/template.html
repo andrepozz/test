@@ -41,71 +41,41 @@
 	
 	$( document ).on( "pagebeforeshow", "#QRscanner", function() {
 	
-	document.addEventListener("backbutton", onBackKeyDown, false);
+	
+	$("ul#listaLingue").html("");
 		
-	function onBackKeyDown(e) {
-	e.preventDefault();
-	}
-	
-	$("ul#lista_esercizi").html("");
-	
-	//CARICA JSON CATEGORIE
-	var path = window.localStorage.getItem("pathSD");
-	var jsonPath = "js/Abbigliamento.js";
-		
-	var jsonSottocategorie;
-	
-	$.ajax({
-	url: jsonPath,
-	dataType: 'json',
-	async: false,
-		success: function(data) {
-		jsonSottocategorie = data;
-		}
-	});
-	
-	
-		userLatitudeVicini = 45.80103;
-		userLongitudeVicini = 9.09192;
-		
-		for(var i=0; i<jsonSottocategorie.length; i++ ){
-		var distance;	
-		distance = getDistanceFromLatLonInKm(userLatitudeVicini, userLongitudeVicini, jsonSottocategorie[i].latitudeEsercizio, jsonSottocategorie[i].longitudeEsercizio);
-		jsonSottocategorie[i].distance = distance;
-		}
-		
-	jsonSottocategorie = jsonSottocategorie.sort(function(a,b) { return parseFloat(a.distance) - parseFloat(b.distance) } );
-		console.log(jsonSottocategorie);
+		$.getJSON("js/lingue.js", function( data ) {
 
-	});
-	// /PAGESHOW
+			$.each(data, function(index, info) {
+			$("ul#listaLingue").append($("<li></li>",{"html":"<a href='#setupCategorie' class='lingua' id='" + info.idLingua + "' codiceLingua='"+info.codiceLingua+"' nomeLingua='"+index+"' data-transition='slide' ><img src='img/lingue/"+info.codiceLingua+".png' alt='Facebook' class='ui-li-icon ui-corner-none'>" + info.nomeLingua + "</a>" }));
+			});
 	
-	function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-  
-		var R = 6371; // Radius of the earth in km
-  
-		var dLat = deg2rad(lat2-lat1);  // deg2rad below
-		var dLon = deg2rad(lon2-lon1); 
-  
-		var a = 
-		Math.sin(dLat/2) * Math.sin(dLat/2) +
-		Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-		Math.sin(dLon/2) * Math.sin(dLon/2)
-		; 
-  
-		var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-		var d = R * c * 1000; // Distance in km
-		return Math.round(d);
-	}
+			$("ul#listaLingue").listview("refresh");
+		});
+	
+	}); //ON "pagebeforeshow"
+	
+	//ON "click"
+	$(document).on("click", 'a.lingua', function(){
+	
+	idLingua = $(this).attr('id');
+	lingua = $(this).attr('nomeLingua');
+	codLingua = $(this).attr('codiceLingua');
+	
+	window.localStorage.setItem("lingua", lingua);
+	window.localStorage.setItem("idLingua", idLingua);
+	window.localStorage.setItem("codLingua", codLingua);
+	
+		
+		alert(data[lingua].nome);
+	
 
-	function deg2rad(deg) {
 	
-	return deg * (Math.PI/180)
-	}
 	
+	});
 	</script>
-	
-
+	<ul data-role="listview" id="listaLingue" data-inset="true">
+	</ul>
 	</div><!-- /content -->
 
 	<div data-role="footer" data-position="fixed">
