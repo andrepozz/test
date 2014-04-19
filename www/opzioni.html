@@ -86,6 +86,9 @@
 		e.preventDefault();
 		}
 		
+		$("p.descrizioneOffline").html(window.localStorage.getItem("essereOnline"));
+		$("a.closePopup").html(window.localStorage.getItem("chiudi"));
+		
 		
 		//FACEBOOK
 			FB.init({ appId: "1448410138727682", nativeInterface: CDV.FB, useCachedDialogs: false });
@@ -308,8 +311,8 @@
 		
 		<div data-role="popup" id="connectionOfflineSocial" data-dismissible="false" data-history="false">
 		<p class="headerOffline">OFFLINE</p>
-        <p>Devi essere online per utilizzare questa funzionalità</p>
-		<a href="#" class="ui-btn closePopup">Close</a>
+        <p class="descrizioneOffline"></p>
+		<a href="#" class="ui-btn closePopup"></a>
 		</div>
 	
 		</div>
@@ -360,6 +363,10 @@
 	
 	//ON "click"
 	$(document).on("click", 'a.lingua', function(){
+	
+	$("p.descrizioneOffline").html(window.localStorage.getItem("essereOnline"));
+	$("a.closePopup").html(window.localStorage.getItem("chiudi"));
+	
 	
 	var	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	if (connectionStatus == "online")
@@ -431,8 +438,8 @@
 		
 		<div data-role="popup" id="connectionOfflineLingua" data-dismissible="false" data-history="false">
 		<p class="headerOffline">OFFLINE</p>
-        <p>Devi essere online per utilizzare questa funzionalità</p>
-		<a href="#" class="ui-btn closePopup">Close</a>
+        <p class="descrizioneOffline"></p>
+		<a href="#" class="ui-btn closePopup"></a>
 		</div>
 	
 		</div>
@@ -960,6 +967,9 @@
 		$("p.countUpdates").html("");
 		$("a.updateDatabase").html("");
 		
+		$("p.descrizioneOffline").html(window.localStorage.getItem("essereOnline"));
+		$("a.closePopup").html(window.localStorage.getItem("chiudi"));
+		
 		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
 		if (connectionStatus == "online")
 		{
@@ -1084,8 +1094,8 @@
 		
 		<div data-role="popup" id="connectionOfflineUpdate" data-dismissible="false" data-history="false">
 		<p class="headerOffline">OFFLINE</p>
-        <p>Devi essere online per utilizzare questa funzionalità</p>
-		<a href="#opzioni" class="ui-btn" data-transition="slide" data-direction="reverse">Torna alle opzioni</a>
+        <p class="descrizioneOffline"></p>
+		<a href="#opzioni" class="ui-btn closePopup" data-transition="slide" data-direction="reverse"></a>
 		</div>
 		
 		</div>

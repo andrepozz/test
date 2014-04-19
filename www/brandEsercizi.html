@@ -95,7 +95,8 @@
 		e.preventDefault();
 		}
 	
-	
+		$("input").attr("placeholder", ""+window.localStorage.getItem("placeholderBrand")+"");
+		
 	//CARICA JSON CATEGORIE
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPath = path + "/brand.js";
