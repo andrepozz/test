@@ -113,7 +113,7 @@
 	<div role="main" class="ui-content" >
 	
 	<script>   
-	$( "#index" ).on( "pageshow", function() {	
+	$( "#index" ).on( "pagebeforeshow", function() {	
 	
 	document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -178,12 +178,7 @@
 	<div id="rigaBorsa_2">
 	</div>
 	
-	<div data-role="popup" id="connectionOfflineSetup" data-dismissible="false" data-history="false">
-	<p class="headerOffline">OFFLINE</p>
-    <p class="descrizioneOffline">Il setup dell'Applicazione richiede una connessione WiFi o 3g</p>
-	<p class="descrizioneOffline">WiFi or 3g is necessary to setup the Application</p>
-	<a href="#" class="ui-btn closePopup">Riprova/Try Agay</a>
-	</div>
+
 	
 	</div>
 	<!-- /CONTENT -->
@@ -313,6 +308,13 @@
 
 	<ul data-role="listview" id="listaLingue" data-inset="true">
 	</ul>
+	
+	<div data-role="popup" id="connectionOfflineSetup" data-dismissible="false" data-history="false">
+	<p class="headerOffline">OFFLINE</p>
+    <p class="descrizioneOffline">Il setup dell'Applicazione richiede una connessione WiFi o 3g</p>
+	<p class="descrizioneOffline">WiFi or 3g is necessary to setup the Application</p>
+	<a href="#" class="ui-btn closePopup">Riprova/Try Agay</a>
+	</div>
 	
 	</div>
 	<!-- CONTENT -->
