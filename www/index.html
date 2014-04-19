@@ -128,6 +128,110 @@
 			$.mobile.changePage( "#lingue", { allowSamePageTransition:true } );
 	}
 	
+	// CHECK UPDATES
+	
+	var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+	if (connectionStatus == "online")
+	{
+	
+		$.mobile.loading( "show", {
+            text: "Check Updates",
+            textVisible: true,
+            theme: "a",
+            textonly: false
+		});
+
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+			
+			fileSystem.root.getDirectory("ccn/esercizi", {create: true, exclusive: false}, function(dirEntry) {
+			
+				// Get a directory reader
+				var directoryReader = dirEntry.createReader();
+
+				// Get a list of all the entries in the directory
+				directoryReader.readEntries(success,fail);
+				
+				function success(entries) {
+					
+					var path = window.localStorage.getItem("pathSD");
+					var jsonPath = path + "/nomeEsercizi.js";
+
+					var fileEserciziMancanti = [];		
+					$.getJSON(jsonPath, function( listaEsercizi ) {
+						var idEsercizi = [];
+						$.each(listaEsercizi, function(index, info) {
+						
+							idEsercizi.push({
+							idEsercizio: info.idEsercizio
+							});
+
+						
+						});
+					
+					for (var i=0;i<idEsercizi.length;i++) {
+					rv = false;
+					for (var j=0;j<entries.length;j++) {
+					rv = rv ||  parseInt(idEsercizi[i].idEsercizio) == parseInt(entries[j].name.substring(0, entries[j].name.length - 3));
+					}
+					if(!rv)
+					{
+					fileEserciziMancanti.push(idEsercizi[i].idEsercizio);
+					}
+					}
+					eserciziUpdate(fileEserciziMancanti);
+					window.sessionStorage.setItem("fileEserciziMancanti", JSON.stringify(fileEserciziMancanti));
+					});
+					
+				}
+
+				function fail(error) {
+					console.log("Failed to list directory contents: " + error.code);
+				}
+			
+			}); // fileSystem.root.getDirectory
+			
+		}); // end of window.requestFileSystem
+		
+		
+		function eserciziUpdate(fileEserciziMancanti){
+				
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
+			
+			fileSystem.root.getDirectory("ccn", {create: true, exclusive: false}, function(dirEntry) {
+			
+				dirEntry.getFile("categorie.js", {create: true, exclusive: false}, function(fileEntry) {
+										
+					fileEntry.getMetadata(function(metadata) {
+					var dataDownload = Date.parse(metadata.modificationTime) / 1000;
+					
+					localStorage.setItem("dataDownload", dataDownload );
+					
+					var urlJSON = "http://www.wificomo.com/ccn20/JSONidEserciziUpdate.php?language="+localStorage.getItem("codLingua")+"&dataDownload="+dataDownload;
+
+						$.getJSON(urlJSON, function( data ) {
+							if (data.length == 0 && fileEserciziMancanti.length == 0) {
+								
+								//$("p.countUpdates").html(""+window.localStorage.getItem("statusDatabase")+"");
+								$.mobile.loading( "hide" );
+							}
+							else {
+								alert("Ci sono aggiornamenti disponibili");
+							}
+						});
+					});
+					 
+				}); // end of dirEntry.getFile
+			
+			}); // fileSystem.root.getDirectory
+			
+		}); // end of window.requestFileSystem
+		
+		}
+	}
+	
+	//FINE CHECK UPDATES
+	
+	
 
 	var codLinguaMenu = window.localStorage.getItem("codLingua");
 	

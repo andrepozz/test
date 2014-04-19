@@ -1031,21 +1031,24 @@
 
 						$.getJSON(urlJSON, function( data ) {
 							if (data.length == 0 && fileEserciziMancanti.length == 0) {
-								$.mobile.loading( "hide" );
+								
 								$("p.countUpdates").html(""+window.localStorage.getItem("statusDatabase")+"");
+								$.mobile.loading( "hide" );
 							}
 							else if(data.length == 0 && fileEserciziMancanti.length != 0){
-								$.mobile.loading( "hide" );
+								
 								$("p.countUpdates").html(fileEserciziMancanti.length+" "+window.localStorage.getItem("aggiornamentiDisponibili")+"");
 								$( "div#update" ).html( $("<a href='#' class='ui-btn updateDatabase'>UPDATE</a>" ));
+								$.mobile.loading( "hide" );
 							}
 							else {
 								$.each(data, function(index, info) {
-								$.mobile.loading( "hide" );
+								
 								var countUpdates = data.length;
 								var updates = countUpdates+fileEserciziMancanti.length;
 								$("p.countUpdates").html(updates+" "+window.localStorage.getItem("aggiornamentiDisponibili")+"");
 								$( "div#update" ).html( $("<a href='#' class='ui-btn updateDatabase'>UPDATE</a>" ));
+								$.mobile.loading( "hide" );
 								});
 							}
 						});
