@@ -113,22 +113,28 @@
 	<div role="main" class="ui-content" >
 	
 	<script>   
-	$( "#index" ).on( "pageshow", function() {	
+	$( "#index" ).on( "pagebeforeshow", function() {	
 	
 	document.addEventListener("backbutton", onBackKeyDown, false);
 		
 		function onBackKeyDown(e) {
 		e.preventDefault();
 		}
-	var refreshIntervalId;
+		
 	var lingua = window.localStorage.getItem("lingua");
 
-	
 	if (lingua == null) {
 	
-		refreshIntervalId = setInterval(isOnline(refreshIntervalId), 500);
-		isOnline(refreshIntervalId);
+		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
 		
+		if (connectionStatus == "offline")
+		{
+			$( "#connectionOfflineSetup" ).popup("open");
+		}
+		else
+		{
+			$.mobile.changePage( "#lingue", { allowSamePageTransition:true } );
+		}
 	}
 	
 
@@ -149,23 +155,11 @@
 	
 	});
 	
-	function isOnline(refreshIntervalId) {
+	$(document).on("click", 'a.closePopup', function(){
+		connectionStatus = 'offline';
+		$( "#connectionOfflineSetup" ).popup("close");
+	});
 	
-		var connectionStatus = navigator.onLine ? 'online' : 'offline';
-		
-		if (connectionStatus == "online")
-		{
-			$( "#connectionOfflineSetup" ).popup("close");
-			$.mobile.changePage( "#lingue", { allowSamePageTransition:true } );
-			clearInterval(refreshIntervalId);
-		}
-		else{
-			$( "#connectionOfflineSetup" ).popup("open");
-		}
-
-
-	};
-
 	
 	//ON "click"
 	$(document).on("click", 'a.qrCode', function(){
