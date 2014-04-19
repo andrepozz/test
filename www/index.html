@@ -113,7 +113,7 @@
 	<div role="main" class="ui-content" >
 	
 	<script>   
-	$( "#index" ).on( "pageshow", function() {	
+	$( "#index" ).on( "pagebeforeshow", function() {	
 	
 	document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -130,7 +130,7 @@
 	
 	// CHECK UPDATES
 	
-	setTimeout(function () { checkUpdates(); }, 3000);
+	setTimeout(function () { checkUpdates(); }, 5000);
 	
 	var codLinguaMenu = window.localStorage.getItem("codLingua");
 	
