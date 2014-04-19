@@ -130,7 +130,25 @@
 	
 	// CHECK UPDATES
 	
-	setTimeout('checkUpdates()',15000);
+	setTimeout(function () { checkUpdates(); }, 15000);
+	
+	var codLinguaMenu = window.localStorage.getItem("codLingua");
+	
+	if(codLinguaMenu == "it" || codLinguaMenu == null){
+	estensioneImmagine = "it";
+	}
+	else{
+	estensioneImmagine = "en";
+	}
+	
+	$("div#rigaBorsa_1").html("");
+	$("div#rigaBorsa_2").html("");
+	$("div#rigaBorsa_1").append($("<div class='blocco_sx'><a href='eserciziVicini.html' rel='external' data-transition='slide'><img src='img/ricercaDistanza_"+estensioneImmagine+".png'></a></div><div class='blocco_dx'><a href='categorie.html' rel='external' data-transition='slide'><img src='img/ricercaCategoria_"+estensioneImmagine+".png'></a></div>"));
+	$("div#rigaBorsa_2").append($("<div class='blocco_sx'><a href='nomeEsercizi.html' rel='external' data-transition='slide'><img src='img/ricercaNegozio_"+estensioneImmagine+".png'></a></div><div class='blocco_dx'><a href='brandEsercizi.html' rel='external' data-transition='slide'><img src='img/ricercaBrand_"+estensioneImmagine+".png'></a></div>"));
+	
+	
+	});
+	
 	function checkUpdates(){
 	var	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	alert("Con "+connectionStatus);
@@ -236,25 +254,6 @@
 	}
 	}
 	//FINE CHECK UPDATES
-	
-	
-
-	var codLinguaMenu = window.localStorage.getItem("codLingua");
-	
-	if(codLinguaMenu == "it" || codLinguaMenu == null){
-	estensioneImmagine = "it";
-	}
-	else{
-	estensioneImmagine = "en";
-	}
-	
-	$("div#rigaBorsa_1").html("");
-	$("div#rigaBorsa_2").html("");
-	$("div#rigaBorsa_1").append($("<div class='blocco_sx'><a href='eserciziVicini.html' rel='external' data-transition='slide'><img src='img/ricercaDistanza_"+estensioneImmagine+".png'></a></div><div class='blocco_dx'><a href='categorie.html' rel='external' data-transition='slide'><img src='img/ricercaCategoria_"+estensioneImmagine+".png'></a></div>"));
-	$("div#rigaBorsa_2").append($("<div class='blocco_sx'><a href='nomeEsercizi.html' rel='external' data-transition='slide'><img src='img/ricercaNegozio_"+estensioneImmagine+".png'></a></div><div class='blocco_dx'><a href='brandEsercizi.html' rel='external' data-transition='slide'><img src='img/ricercaBrand_"+estensioneImmagine+".png'></a></div>"));
-	
-	
-	});
 	
 	
 	//ON "click"
