@@ -113,7 +113,7 @@
 	<div role="main" class="ui-content" >
 	
 	<script>   
-	$( "#index" ).on( "pagebeforeshow", function() {	
+	$( "#index" ).on( "pageshow", function() {	
 	
 	document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -153,11 +153,6 @@
 	$("div#rigaBorsa_2").append($("<div class='blocco_sx'><a href='nomeEsercizi.html' rel='external' data-transition='slide'><img src='img/ricercaNegozio_"+estensioneImmagine+".png'></a></div><div class='blocco_dx'><a href='brandEsercizi.html' rel='external' data-transition='slide'><img src='img/ricercaBrand_"+estensioneImmagine+".png'></a></div>"));
 	
 	
-	});
-	
-	$(document).on("click", 'a.closePopup', function(){
-		connectionStatus = 'offline';
-		$( "#connectionOfflineSetup" ).popup("close");
 	});
 	
 	
