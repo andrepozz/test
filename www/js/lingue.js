@@ -54,7 +54,8 @@
 		"placeholderBrand": "Cerca un brand",
 		"linguaApp": "Lingua",
 		"cambiaLinguaApp": "Cambia lingua",
-		"aggiornaDatabaseApp": "Aggiorna il database degli esercizi"
+		"aggiornaDatabaseApp": "Aggiorna il database degli esercizi",
+		"statusDatabase": "Non sono disponibili aggiornamenti"
 
     },
 	"English": {
@@ -112,7 +113,8 @@
 		"placeholderBrand": "Search a brand",
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
-		"aggiornaDatabaseApp": "Update shop database"
+		"aggiornaDatabaseApp": "Update shop database",
+		"statusDatabase": "No updates available"
 		
     },
 	"Francaise": {
@@ -170,7 +172,8 @@
 		"placeholderBrand": "Search a brand",
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
-		"aggiornaDatabaseApp": "Update shop database"
+		"aggiornaDatabaseApp": "Update shop database",
+		"statusDatabase": "No updates available"
 		
     },
 	"Spanish": {
@@ -228,7 +231,8 @@
 		"placeholderBrand": "Search a brand",
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
-		"aggiornaDatabaseApp": "Update shop database"
+		"aggiornaDatabaseApp": "Update shop database",
+		"statusDatabase": "No updates available"
 		
     },
 	"Portuguese": {
@@ -286,7 +290,8 @@
 		"placeholderBrand": "Search a brand",
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
-		"aggiornaDatabaseApp": "Update shop database"
+		"aggiornaDatabaseApp": "Update shop database",
+		"statusDatabase": "No updates available"
 		
     },
 	"Russian": {
@@ -344,7 +349,8 @@
 		"placeholderBrand": "Search a brand",
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
-		"aggiornaDatabaseApp": "Update shop database"
+		"aggiornaDatabaseApp": "Update shop database",
+		"statusDatabase": "No updates available"
 		
     },
 	"Japanese": {
@@ -402,7 +408,8 @@
 		"placeholderBrand": "Search a brand",
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
-		"aggiornaDatabaseApp": "Update shop database"
+		"aggiornaDatabaseApp": "Update shop database",
+		"statusDatabase": "No updates available"
 		
     },
 	"Chinese": {
@@ -460,7 +467,8 @@
 		"placeholderBrand": "Search a brand",
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
-		"aggiornaDatabaseApp": "Update shop database"
+		"aggiornaDatabaseApp": "Update shop database",
+		"statusDatabase": "No updates available"
 		
     },
 	"Arabic": {
@@ -518,7 +526,8 @@
 		"placeholderBrand": "Search a brand",
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
-		"aggiornaDatabaseApp": "Update shop database"
+		"aggiornaDatabaseApp": "Update shop database",
+		"statusDatabase": "No updates available"
 		
     }
 	}
