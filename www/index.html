@@ -210,12 +210,13 @@
 
 						$.getJSON(urlJSON, function( data ) {
 							if (data.length == 0 && fileEserciziMancanti.length == 0) {
-								
+								alert("NO aggiornamenti disponibili");
 								//$("p.countUpdates").html(""+window.localStorage.getItem("statusDatabase")+"");
 								$.mobile.loading( "hide" );
 							}
 							else {
 								alert("Ci sono aggiornamenti disponibili");
+								$.mobile.loading( "hide" );
 							}
 						});
 					});
