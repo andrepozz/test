@@ -42,9 +42,8 @@
 		function onBackKeyDown(e) {
 		e.preventDefault();
 		}
-		
-		window.localStorage.getItem("essereOnline")
-		
+				
+		$("ul.opzioni").html("");
 		$("ul.opzioni").append($('<li><a href="#socialNetworks" data-transition="slide"><h2>Social Networks</h2><p>Login/Logout Social Network account</p></a></li>'));
 		$("ul.opzioni").append($('<li><a href="#lingua" data-transition="slide"><h2>'+window.localStorage.getItem("linguaApp")+'</h2><p>'+window.localStorage.getItem("cambiaLinguaApp")+'</p></a></li>'));
 		$("ul.opzioni").append($('<li><a href="#database" data-transition="slide"><h2>Database</h2><p>'+window.localStorage.getItem("aggiornaDatabaseApp")+'</p></a></li>'));
@@ -596,7 +595,7 @@
 	}); // ON "pageshow"
 	
 	//DOWNLOAD JSON FUNCTION
-	function downloadJSON(directory, fileName, fileURL, pClass) {
+	function downloadJSON(directory, fileName, fileURL, pClass, imgName) {
 		
 		var fileTransfer = new FileTransfer();
 		
@@ -1033,7 +1032,7 @@
 						$.getJSON(urlJSON, function( data ) {
 							if (data.length == 0 && fileEserciziMancanti.length == 0) {
 								$.mobile.loading( "hide" );
-								$("p.countUpdates").html(window.localStorage.getItem("statusDatabase"));
+								$("p.countUpdates").html(""+window.localStorage.getItem("statusDatabase")+"");
 							}
 							else if(data.length == 0 && fileEserciziMancanti.length != 0){
 								$.mobile.loading( "hide" );
