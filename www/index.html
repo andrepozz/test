@@ -238,9 +238,10 @@
 	
 	var	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	alert(connectionStatus);
-	if (connectionStatus == "offline")
-	{
 	
+	if (connectionStatus == "online")
+	{
+	alert(connectionStatus);
 	idLingua = $(this).attr('id');
 	lingua = $(this).attr('nomeLingua');
 	codLingua = $(this).attr('codiceLingua');
