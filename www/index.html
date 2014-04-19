@@ -151,11 +151,8 @@
 	
 	function checkUpdates(){
 	var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-	alert("Con "+connectionStatus);
 	if (connectionStatus == "online")
 	{
-		
-		alert(connectionStatus);
 		
 		$.mobile.loading( "show", {
             text: "Check Updates",
