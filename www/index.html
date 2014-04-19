@@ -125,16 +125,7 @@
 
 	if (lingua == null) {
 	
-		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-		
-		if (connectionStatus == "offline")
-		{
-			$( "#connectionOfflineSetup" ).popup("open");
-		}
-		else
-		{
 			$.mobile.changePage( "#lingue", { allowSamePageTransition:true } );
-		}
 	}
 	
 
