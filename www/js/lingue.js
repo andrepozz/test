@@ -55,7 +55,8 @@
 		"linguaApp": "Lingua",
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Aggiorna il database degli esercizi",
-		"statusDatabase": "Non sono disponibili aggiornamenti"
+		"statusDatabase": "Non sono disponibili aggiornamenti",
+		"aggiornamentiDisponibili": "aggiornamenti disponibili"
 
     },
 	"English": {
@@ -114,7 +115,8 @@
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
-		"statusDatabase": "No updates available"
+		"statusDatabase": "No updates available",
+		"aggiornamentiDisponibili": "updates available"
 		
     },
 	"Francaise": {
@@ -173,7 +175,8 @@
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
-		"statusDatabase": "No updates available"
+		"statusDatabase": "No updates available",
+		"aggiornamentiDisponibili": "updates available"
 		
     },
 	"Spanish": {
@@ -232,7 +235,8 @@
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
-		"statusDatabase": "No updates available"
+		"statusDatabase": "No updates available",
+		"aggiornamentiDisponibili": "updates available"
 		
     },
 	"Portuguese": {
@@ -291,7 +295,8 @@
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
-		"statusDatabase": "No updates available"
+		"statusDatabase": "No updates available",
+		"aggiornamentiDisponibili": "updates available"
 		
     },
 	"Russian": {
@@ -350,7 +355,8 @@
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
-		"statusDatabase": "No updates available"
+		"statusDatabase": "No updates available",
+		"aggiornamentiDisponibili": "updates available"
 		
     },
 	"Japanese": {
@@ -409,7 +415,8 @@
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
-		"statusDatabase": "No updates available"
+		"statusDatabase": "No updates available",
+		"aggiornamentiDisponibili": "updates available"
 		
     },
 	"Chinese": {
@@ -468,7 +475,8 @@
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
-		"statusDatabase": "No updates available"
+		"statusDatabase": "No updates available",
+		"aggiornamentiDisponibili": "updates available"
 		
     },
 	"Arabic": {
@@ -527,7 +535,8 @@
 		"linguaApp": "Language",
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
-		"statusDatabase": "No updates available"
+		"statusDatabase": "No updates available",
+		"aggiornamentiDisponibili": "updates available"
 		
     }
 	}

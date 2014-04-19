@@ -448,12 +448,12 @@
 	}
 	
 	$("h3.titoloDownloadFunzionalita").html(window.localStorage.getItem("downloadFunzionalita"));
-	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("nomiEsercizi")+'"><img class="iconaTipologia" src="img/downloadnome.png"> DOWNLOAD '+window.localStorage.getItem("nomiEsercizi")+'... <img src="img/download.gif"></li>'));
-	$("ul.downloadList").append($('<li class="brand"><img class="iconaTipologia" src="img/downloadbrand.png"> DOWNLOAD brand... <img src="img/download.gif"></li>'));
-	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("brandEsercizi")+'"><img class="iconaTipologia" src="img/downloadbrandEsercizi.png"> DOWNLOAD '+window.localStorage.getItem("brandEsercizi")+'... <img src="img/download.gif"></li>'));
-	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("position")+'"><img class="iconaTipologia" src="img/downloadposition.png"> DOWNLOAD position... <img src="img/download.gif"></li>'));
-	$("ul.downloadList").append($('<li class="categorie"><img class="iconaTipologia" src="img/downloadCategorie.png"> DOWNLOAD '+window.localStorage.getItem("categorie")+'...<img src="img/download.gif"></li>'));
-	$("ul.downloadList").append($('<li class="sottocategorie"><img class="iconaTipologia" src="img/downloadSottocategorie.png"> DOWNLOAD '+window.localStorage.getItem("sottoCategorie")+'...<img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("nomiEsercizi")+'"><img class="iconaTipologia" src="img/downloadnome.png"> UPDATE '+window.localStorage.getItem("nomiEsercizi")+'... <img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="brand"><img class="iconaTipologia" src="img/downloadbrand.png"> UPDATE brand... <img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("brandEsercizi")+'"><img class="iconaTipologia" src="img/downloadbrandEsercizi.png"> UPDATE '+window.localStorage.getItem("brandEsercizi")+'... <img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="'+window.localStorage.getItem("position")+'"><img class="iconaTipologia" src="img/downloadposition.png"> UPDATE position... <img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="categorie"><img class="iconaTipologia" src="img/downloadCategorie.png"> UPDATE '+window.localStorage.getItem("categorie")+'...<img src="img/download.gif"></li>'));
+	$("ul.downloadList").append($('<li class="sottocategorie"><img class="iconaTipologia" src="img/downloadSottocategorie.png"> UPDATE '+window.localStorage.getItem("sottoCategorie")+'...<img src="img/download.gif"></li>'));
 	
 	var lingua = window.localStorage.getItem("lingua");
 	var idLingua = window.localStorage.getItem("idLingua");
@@ -1025,17 +1025,17 @@
 
 						$.getJSON(urlJSON, function( data ) {
 							if (data.length == 0 && fileEserciziMancanti.length == 0) {
-								$("p.countUpdates").html("Database aggiornato");
+								$("p.countUpdates").html(window.localStorage.getItem("statusDatabase"));
 							}
 							else if(data.length == 0 && fileEserciziMancanti.length != 0){
-								$("p.countUpdates").html(fileEserciziMancanti.length+" esercizi da aggiornare");
+								$("p.countUpdates").html(fileEserciziMancanti.length+" "+window.localStorage.getItem("aggiornamentiDisponibili")+"");
 								$( "div#update" ).html( $("<a href='#' class='ui-btn updateDatabase'>UPDATE</a>" ));
 							}
 							else {
 								$.each(data, function(index, info) {
 								var countUpdates = data.length;
 								var updates = countUpdates+fileEserciziMancanti.length;
-								$("p.countUpdates").html(updates+" esercizi da aggiornare");
+								$("p.countUpdates").html(updates+" "+window.localStorage.getItem("aggiornamentiDisponibili")+"");
 								$( "div#update" ).html( $("<a href='#' class='ui-btn updateDatabase'>UPDATE</a>" ));
 								});
 							}
