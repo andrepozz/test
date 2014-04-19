@@ -51,7 +51,10 @@
 		"accountCollegato": "Account Collegato",
 		"prossimoPasso": "Prossimo step",
 		"placeholderNome": "Inserisci il nome di un negozio",
-		"placeholderBrand": "Cerca un brand"
+		"placeholderBrand": "Cerca un brand",
+		"linguaApp": "Lingua",
+		"cambiaLinguaApp": "Cambia lingua",
+		"aggiornaDatabaseApp": "Aggiorna il database degli esercizi"
 
     },
 	"English": {
@@ -106,7 +109,10 @@
 		"accountCollegato": "Account Connected",
 		"prossimoPasso": "Next Step",
 		"placeholderNome": "Insert shop name",
-		"placeholderBrand": "Search a brand"
+		"placeholderBrand": "Search a brand",
+		"linguaApp": "Language",
+		"cambiaLinguaApp": "Cambia lingua",
+		"aggiornaDatabaseApp": "Update shop database"
 		
     },
 	"Francaise": {
@@ -161,7 +167,10 @@
 		"accountCollegato": "Account Connected",
 		"prossimoPasso": "Next Step",
 		"placeholderNome": "Insert shop name",
-		"placeholderBrand": "Search a brand"
+		"placeholderBrand": "Search a brand",
+		"linguaApp": "Language",
+		"cambiaLinguaApp": "Cambia lingua",
+		"aggiornaDatabaseApp": "Update shop database"
 		
     },
 	"Spanish": {
@@ -216,7 +225,10 @@
 		"accountCollegato": "Account Connected",
 		"prossimoPasso": "Next Step",
 		"placeholderNome": "Insert shop name",
-		"placeholderBrand": "Search a brand"
+		"placeholderBrand": "Search a brand",
+		"linguaApp": "Language",
+		"cambiaLinguaApp": "Cambia lingua",
+		"aggiornaDatabaseApp": "Update shop database"
 		
     },
 	"Portuguese": {
@@ -271,7 +283,10 @@
 		"accountCollegato": "Account Connected",
 		"prossimoPasso": "Next Step",
 		"placeholderNome": "Insert shop name",
-		"placeholderBrand": "Search a brand"
+		"placeholderBrand": "Search a brand",
+		"linguaApp": "Language",
+		"cambiaLinguaApp": "Cambia lingua",
+		"aggiornaDatabaseApp": "Update shop database"
 		
     },
 	"Russian": {
@@ -326,7 +341,10 @@
 		"accountCollegato": "Account Connected",
 		"prossimoPasso": "Next Step",
 		"placeholderNome": "Insert shop name",
-		"placeholderBrand": "Search a brand"
+		"placeholderBrand": "Search a brand",
+		"linguaApp": "Language",
+		"cambiaLinguaApp": "Cambia lingua",
+		"aggiornaDatabaseApp": "Update shop database"
 		
     },
 	"Japanese": {
@@ -381,7 +399,10 @@
 		"accountCollegato": "Account Connected",
 		"prossimoPasso": "Next Step",
 		"placeholderNome": "Insert shop name",
-		"placeholderBrand": "Search a brand"
+		"placeholderBrand": "Search a brand",
+		"linguaApp": "Language",
+		"cambiaLinguaApp": "Cambia lingua",
+		"aggiornaDatabaseApp": "Update shop database"
 		
     },
 	"Chinese": {
@@ -436,7 +457,10 @@
 		"accountCollegato": "Account Connected",
 		"prossimoPasso": "Next Step",
 		"placeholderNome": "Insert shop name",
-		"placeholderBrand": "Search a brand"
+		"placeholderBrand": "Search a brand",
+		"linguaApp": "Language",
+		"cambiaLinguaApp": "Cambia lingua",
+		"aggiornaDatabaseApp": "Update shop database"
 		
     },
 	"Arabic": {
@@ -491,7 +515,10 @@
 		"accountCollegato": "Account Connected",
 		"prossimoPasso": "Next Step",
 		"placeholderNome": "Insert shop name",
-		"placeholderBrand": "Search a brand"
+		"placeholderBrand": "Search a brand",
+		"linguaApp": "Language",
+		"cambiaLinguaApp": "Cambia lingua",
+		"aggiornaDatabaseApp": "Update shop database"
 		
     }
 	}

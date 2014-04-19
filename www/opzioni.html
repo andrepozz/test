@@ -43,14 +43,18 @@
 		e.preventDefault();
 		}
 		
+		window.localStorage.getItem("essereOnline")
+		
+		$("ul.opzioni").append($('<li><a href="#socialNetworks" data-transition="slide"><h2>Social Networks</h2><p>Login/Logout Social Network account</p></a></li>'));
+		$("ul.opzioni").append($('<li><a href="#lingua" data-transition="slide"><h2>'+window.localStorage.getItem("linguaApp")+'</h2><p>window.localStorage.getItem("cambiaLinguaApp")</p></a></li>'));
+		$("ul.opzioni").append($('<li><a href="#database" data-transition="slide"><h2>Database</h2><p>'+window.localStorage.getItem("aggiornaDatabaseApp")+'</p></a></li>'));
+		$("ul.opzioni").listview("refresh");
+		
 		});
 		
 		</script>
 		
-		<ul data-role="listview" data-inset="true">
-			<li><a href="#socialNetworks" data-transition="slide"><h2>Social Networks</h2><p>Collega/scollega account</p></a></li>
-			<li><a href="#lingua" data-transition="slide"><h2>Lingua</h2><p>Cambia lingua</p></a></li>
-			<li><a href="#database" data-transition="slide"><h2>Database</h2><p>Aggiorna il database degli esercizi</p></a></li>
+		<ul class="opzioni" data-role="listview" data-inset="true">
 		</ul>
 		
 		
@@ -940,7 +944,7 @@
 		$("a.closePopup").html(window.localStorage.getItem("chiudi"));
 		
 		var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-		if (connectionStatus == "offline")
+		if (connectionStatus == "online")
 		{
 		
 		// CHECK ESISTENZA FILES ESERCIZI
