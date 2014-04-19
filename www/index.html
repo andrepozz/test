@@ -133,7 +133,9 @@
 	var	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	if (connectionStatus == "online")
 	{
-	
+		
+		alert(connectionStatus);
+		
 		$.mobile.loading( "show", {
             text: "Check Updates",
             textVisible: true,
