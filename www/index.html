@@ -130,6 +130,8 @@
 	
 	// CHECK UPDATES
 	
+	setTimeout(checkUpdates(),3000);
+	function checkUpdates(){
 	var	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	alert("Con "+connectionStatus);
 	if (connectionStatus == "online")
@@ -232,7 +234,7 @@
 		
 		}
 	}
-	
+	}
 	//FINE CHECK UPDATES
 	
 	
