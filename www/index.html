@@ -236,6 +236,10 @@
 	//ON "click"
 	$(document).on("click", 'a.lingua', function(){
 	
+	var	connectionStatus = navigator.onLine ? 'online' : 'offline';
+	if (connectionStatus == "offline")
+	{
+	
 	idLingua = $(this).attr('id');
 	lingua = $(this).attr('nomeLingua');
 	codLingua = $(this).attr('codiceLingua');
@@ -302,14 +306,26 @@
 	
 	// /TRADUZIONI----------------------------------------------------------------------------
 	
+	}
+	else{
+	$( "#connectionOfflineLingua" ).popup("open");
+	}
+	
+	
 	}); //ON "click"
+	
+	$(document).on("click", 'a.closePopup', function(){
+		
+		$( "#connectionOfflineLingua" ).popup("close");
+		
+	});
 	
 	</script>
 
 	<ul data-role="listview" id="listaLingue" data-inset="true">
 	</ul>
 	
-	<div data-role="popup" id="connectionOfflineSetup" data-dismissible="false" data-history="false">
+	<div data-role="popup" id="connectionOfflineLingua" data-dismissible="false" data-history="false">
 	<p class="headerOffline">OFFLINE</p>
     <p class="descrizioneOffline">Il setup dell'Applicazione richiede una connessione WiFi o 3g</p>
 	<p class="descrizioneOffline">WiFi or 3g is necessary to setup the Application</p>
