@@ -127,7 +127,7 @@
 	if (lingua == null) {
 	
 		refreshIntervalId = setInterval(isOnline(refreshIntervalId), 500);
-		isOnline();
+		isOnline(refreshIntervalId);
 		
 	}
 	
