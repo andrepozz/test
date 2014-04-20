@@ -182,13 +182,12 @@
 		}
 	});
 	
-
 	userLatitude = window.sessionStorage.getItem("startUserLatitude");
 	userLongitude = window.sessionStorage.getItem("startUserLongitude");
 		
 	for(var i=0; i<jsonSottocategorie.length; i++ ){
 		var distance;	
-		distance = getDistanceFromLatLonInKm(userLatitudeVicini, userLongitudeVicini, jsonSottocategorie[i].latitudeEsercizio, jsonSottocategorie[i].longitudeEsercizio);
+		distance = getDistanceFromLatLonInKm(userLatitude, userLongitude, jsonSottocategorie[i].latitudeEsercizio, jsonSottocategorie[i].longitudeEsercizio);
 		jsonSottocategorie[i].distance = distance;
 	}
 		
