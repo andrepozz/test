@@ -139,6 +139,13 @@
 	
 	watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
 	
+	$.mobile.loading( "show", {
+            text: "Localizzando",
+            textVisible: true,
+            theme: "a",
+            textonly: false
+	});
+	
 	function onSuccess(position) {
 	
 	var startUserLatitude = position.coords.latitude;
@@ -148,7 +155,7 @@
 	window.sessionStorage.setItem("startUserLatitude", startUserLatitude);
 	window.sessionStorage.setItem("startUserLongitude", startUserLongitude);
 	window.sessionStorage.setItem("startUserAccuracy", startUserAccuracy);
-	
+	$.mobile.loading( "hide" );
     }
 	
 	function onError(error) {
