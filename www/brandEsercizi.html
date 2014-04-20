@@ -192,9 +192,9 @@
 		jsonPath = data;
 		}
 	});
-	
-	userLatitude = 45.80103;
-	userLongitude = 9.09192;
+		
+	userLatitude = window.sessionStorage.getItem("startUserLatitude");
+	userLongitude = window.sessionStorage.getItem("startUserLongitude");
 		
 	for(var i=0; i<jsonPath.length; i++ ){
 		var distance;	

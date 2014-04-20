@@ -433,7 +433,7 @@
 	
 	<script>
 	
-	$( document ).on( "pageshow", "#eserciziViciniLista", function() {
+	$( document ).on( "pagebeforeshow", "#eserciziViciniLista", function() {
 		
 	var latUser = window.sessionStorage.getItem("startUserLatitude");
 	var lonUser = window.sessionStorage.getItem("startUserLongitude");
