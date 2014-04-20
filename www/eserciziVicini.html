@@ -113,6 +113,7 @@
 	
     $('#mapEsercizi').css('height', actualHeight);
 	
+	/*
 	if (window.sessionStorage.getItem("userLatitudeVicini") == null)
 	{
 	$.mobile.loading( "show", {
@@ -123,7 +124,7 @@
         html: "<img src='img/positioning.gif'>"
     });
 	}
-	
+	*/
 	var mapEsercizi;
 	var userLatitudeVicini;
 	var userLongitudeVicini;
@@ -163,43 +164,28 @@
 			};
 		
 		controlloDistance.addTo(mapEsercizi);
+		
+	userLatitudeVicini = window.sessionStorage.getItem("startUserLatitude");
+	userLongitudeVicini = window.sessionStorage.getItem("startUserLongitude");
+	userAccuracyVicini = window.sessionStorage.getItem("startUserAccuracy");
 	
-	var options = {enableHighAccuracy: true};
-	
-	navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
-	
-	function onSuccess(position) {
-	$.mobile.loading( "hide" );
-	userLatitudeVicini = position.coords.latitude;
-	userLongitudeVicini = position.coords.longitude;
-	userAccuracyVicini = position.coords.accuracy;
 	$('a.lista').attr('userLatitudeVicini', userLatitudeVicini);
 	$('a.lista').attr('userLongitudeVicini', userLongitudeVicini);
-	
-	
-	window.sessionStorage.setItem("userLatitudeVicini", userLatitudeVicini);
-	window.sessionStorage.setItem("userLongitudeVicini", userLongitudeVicini);
-	window.sessionStorage.setItem("userAccuracyVicini", userAccuracyVicini);
-	
-	caricaVetrine();
-	
-	} // ON SUCCESS GEOLOCATION
-	
-	function onError(error) {
-        //alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-	} // ON ERROR GEOLOCATION
+
 		
-	
-	function caricaVetrine() {
+
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
 	//var jsonPositionDir = "js/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 	
-	userLatitudeVicini = window.sessionStorage.getItem("userLatitudeVicini");
-	userLongitudeVicini = window.sessionStorage.getItem("userLongitudeVicini");
-	userAccuracyVicini = window.sessionStorage.getItem("userAccuracyVicini");
+	userLatitudeVicini = window.sessionStorage.getItem("startUserLatitude");
+	userLongitudeVicini = window.sessionStorage.getItem("startUserLongitude");
+	userAccuracyVicini = window.sessionStorage.getItem("startUserAccuracy");
+	
+	$('a.lista').attr('userLatitudeVicini', userLatitudeVicini);
+	$('a.lista').attr('userLongitudeVicini', userLongitudeVicini);
 	
 	var eserciziVicini = [];
 		
@@ -297,11 +283,10 @@
 		//var jsonPositionDir = "js/position.js";
 		$.getJSON(jsonPositionDir, function( jsonPosition ) {
 		
-		userLatitudeVicini = window.sessionStorage.getItem("userLatitudeVicini");
-		userLongitudeVicini = window.sessionStorage.getItem("userLongitudeVicini");
-		userAccuracyVicini = window.sessionStorage.getItem("userAccuracyVicini");
-		
-		
+		userLatitudeVicini = window.sessionStorage.getItem("startUserLatitude");
+		userLongitudeVicini = window.sessionStorage.getItem("startUserLongitude");
+		userAccuracyVicini = window.sessionStorage.getItem("startUserAccuracy");
+
 		var eserciziVicini = [];
 		
 			//NEAREST NODE
@@ -369,7 +354,7 @@
 		}); // FINE GET JSON POSITION
 		
 	}); // FINE ONCLICK CIRCLE DISTANCE
-	}
+	
 	}); // FINE PAGESHOW
 	
 	function getRealContentHeight() {
@@ -449,9 +434,9 @@
 	<script>
 	
 	$( document ).on( "pageshow", "#eserciziViciniLista", function() {
-	
-	var latUser = userLatitudeVicini;
-	var lonUser = userLongitudeVicini;
+		
+	var latUser = window.sessionStorage.getItem("startUserLatitude");
+	var lonUser = window.sessionStorage.getItem("startUserLongitude");
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
