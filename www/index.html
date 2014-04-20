@@ -132,10 +132,31 @@
 			$.mobile.changePage( "#lingue", { allowSamePageTransition:true } );
 	}
 	
+	//CHECK GEOLOCATION
+	
+	var watchID = null;
+	var options = { maximumAge: 1500, timeout: 30000, enableHighAccuracy: true };
+	
+	watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+	
+	function onSuccess(position) {
+			position.coords.latitude;
+            position.coords.longitude;
+    }
+	
+	function onError(error) {
+            console.log('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+    }
+
+
+
+
+	
 	// CHECK UPDATES
 	
 	setTimeout(function () { checkUpdates(); }, 5000);
 	
+	// SET MENU
 	var codLinguaMenu = window.localStorage.getItem("codLingua");
 	
 	if(codLinguaMenu == "it" || codLinguaMenu == null){
