@@ -140,8 +140,15 @@
 	watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
 	
 	function onSuccess(position) {
-			position.coords.latitude;
-            position.coords.longitude;
+	
+	var startUserLatitude = position.coords.latitude;
+    var startUserLongitude = position.coords.longitude;
+	var startUserAccuracy = position.coords.accuracy;
+	
+	window.sessionStorage.setItem("startUserLatitude", startUserLatitude);
+	window.sessionStorage.setItem("startUserLongitude", startUserLongitude);
+	window.sessionStorage.setItem("startUserAccuracy", startUserAccuracy);
+	
     }
 	
 	function onError(error) {
