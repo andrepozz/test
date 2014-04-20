@@ -155,7 +155,7 @@
 	
 	function checkUpdates(){
 	var	connectionStatus = navigator.onLine ? 'online' : 'offline';
-	if (connectionStatus == "online")
+	if (connectionStatus == "online" && window.sessionStorage.getItem("doneCheckUpdates") != "si")
 	{
 		
 		$.mobile.loading( "show", {
@@ -253,6 +253,9 @@
 		
 		}
 	}
+	var doneCheckUpdates = "si"
+	window.sessionStorage.setItem("doneCheckUpdates", doneCheckUpdates);
+	
 	}
 	//FINE CHECK UPDATES
 	
