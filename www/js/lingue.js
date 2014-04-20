@@ -56,7 +56,8 @@
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Aggiorna il database degli esercizi",
 		"statusDatabase": "Non sono disponibili aggiornamenti",
-		"aggiornamentiDisponibili": "aggiornamenti disponibili"
+		"aggiornamentiDisponibili": "Aggiornamenti disponibili",
+		"aggiornamentiPopupDescrizione": "Sono disponibili aggiornamenti per gli esercizi dell'Applicazione"
 
     },
 	"English": {
@@ -116,7 +117,8 @@
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
-		"aggiornamentiDisponibili": "updates available"
+		"aggiornamentiDisponibili": "Updates available",
+		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
     },
 	"Francaise": {
@@ -176,7 +178,8 @@
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
-		"aggiornamentiDisponibili": "updates available"
+		"aggiornamentiDisponibili": "Updates available",
+		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
     },
 	"Spanish": {
@@ -236,7 +239,8 @@
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
-		"aggiornamentiDisponibili": "updates available"
+		"aggiornamentiDisponibili": "Updates available",
+		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
     },
 	"Portuguese": {
@@ -296,7 +300,8 @@
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
-		"aggiornamentiDisponibili": "updates available"
+		"aggiornamentiDisponibili": "Updates available",
+		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
     },
 	"Russian": {
@@ -356,7 +361,8 @@
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
-		"aggiornamentiDisponibili": "updates available"
+		"aggiornamentiDisponibili": "Updates available",
+		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
     },
 	"Japanese": {
@@ -416,7 +422,8 @@
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
-		"aggiornamentiDisponibili": "updates available"
+		"aggiornamentiDisponibili": "Updates available",
+		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
     },
 	"Chinese": {
@@ -476,7 +483,8 @@
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
-		"aggiornamentiDisponibili": "updates available"
+		"aggiornamentiDisponibili": "Updates available",
+		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
     },
 	"Arabic": {
@@ -536,7 +544,8 @@
 		"cambiaLinguaApp": "Cambia lingua",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
-		"aggiornamentiDisponibili": "updates available"
+		"aggiornamentiDisponibili": "Updates available",
+		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
     }
 	}

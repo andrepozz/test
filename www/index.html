@@ -120,6 +120,10 @@
 		function onBackKeyDown(e) {
 		e.preventDefault();
 		}
+	
+	$(".headerUpdateDisponibili").html(""+window.localStorage.getItem("aggiornamentiDisponibili")+"");
+	$(".descrizioneUpdateDisponibili").html(""+window.localStorage.getItem("aggiornamentiPopupDescrizione")+"");
+	$(".closePopupUpdateDisponibili").html(""+window.localStorage.getItem("chiudi")+"");
 		
 	var lingua = window.localStorage.getItem("lingua");
 
@@ -230,12 +234,12 @@
 
 						$.getJSON(urlJSON, function( data ) {
 							if (data.length == 0 && fileEserciziMancanti.length == 0) {
-								alert("NO aggiornamenti disponibili");
+								//alert("NO aggiornamenti disponibili");
 								//$("p.countUpdates").html(""+window.localStorage.getItem("statusDatabase")+"");
 								$.mobile.loading( "hide" );
 							}
 							else {
-								alert("Ci sono aggiornamenti disponibili");
+								$( "#updateDisponibili" ).popup("open");
 								$.mobile.loading( "hide" );
 							}
 						});
@@ -273,6 +277,12 @@
 	}); //END SCANNER
 	
 	}); //ON "click"
+	
+	$(document).on("click", 'a.updateDisponibili', function(){
+		
+		$( "#closePopupUpdateDisponibili" ).popup("close");
+		
+	});
 		
 	</script>
 
@@ -284,7 +294,13 @@
 	<div id="rigaBorsa_2">
 	</div>
 	
-
+	
+	
+	<div data-role="popup" id="updateDisponibili" data-dismissible="false" data-history="false">
+	<p class="headerUpdateDisponibili"></p>
+    <p class="descrizioneUpdateDisponibili"></p>
+	<a href="#" class="ui-btn closePopupUpdateDisponibili"></a>
+	</div>
 	
 	</div>
 	<!-- /CONTENT -->
@@ -412,6 +428,7 @@
 	window.localStorage.setItem("aggiornaDatabaseApp", lingue[lingua].aggiornaDatabaseApp);
 	window.localStorage.setItem("statusDatabase", lingue[lingua].statusDatabase);
 	window.localStorage.setItem("aggiornamentiDisponibili", lingue[lingua].aggiornamentiDisponibili);
+	window.localStorage.setItem("aggiornamentiPopupDescrizione", lingue[lingua].aggiornamentiPopupDescrizione);
 		
 	});
 	
