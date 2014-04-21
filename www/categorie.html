@@ -184,15 +184,30 @@
 	
 	userLatitude = window.sessionStorage.getItem("startUserLatitude");
 	userLongitude = window.sessionStorage.getItem("startUserLongitude");
-		
+	
+	if (userLatitude != null)
+	{
+	
 	for(var i=0; i<jsonSottocategorie.length; i++ ){
 		var distance;	
 		distance = getDistanceFromLatLonInKm(userLatitude, userLongitude, jsonSottocategorie[i].latitudeEsercizio, jsonSottocategorie[i].longitudeEsercizio);
 		jsonSottocategorie[i].distance = distance;
 	}
-		
+	
 	jsonSottocategorie = jsonSottocategorie.sort(function(a,b) { return parseFloat(a.distance) - parseFloat(b.distance) } );
 	
+	}
+	
+	else
+	{
+		jsonSottocategorie = jsonSottocategorie.sort(function (a, b) {
+			a = a.nomeEsercizio
+			b = b.nomeEsercizio;
+			return a.localeCompare(b);
+	});
+	
+	}
+			
 	//LISTA ESERCIZI
 	$.each(jsonSottocategorie, function(index, info) {
 		$("ul#lista_esercizi").append($("<li></li>",{"html":"<a href='#vetrinaMappa' class='esercizio' idEsercizio='" + info.idEsercizio + "' data-transition='slide' >" + info.nomeEsercizio + "<span class='ui-li-count'>"+info.distance+"m</span></a>" }));
