@@ -57,6 +57,7 @@
 		"aggiorna": "Aggiorna",
 		"aggiornaDatabaseApp": "Aggiorna il database degli esercizi",
 		"statusDatabase": "Non sono disponibili aggiornamenti",
+		"aggiornamentoCompletato": "Aggiornamento completato",
 		"aggiornamentiDisponibili": "Aggiornamenti disponibili",
 		"aggiornamentiPopupDescrizione": "Sono disponibili aggiornamenti per gli esercizi dell'Applicazione"
 
@@ -119,6 +120,7 @@
 		"aggiorna": "Update",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
+		"aggiornamentoCompletato": "Update complete",
 		"aggiornamentiDisponibili": "Updates available",
 		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
@@ -181,6 +183,7 @@
 		"aggiorna": "Update",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
+		"aggiornamentoCompletato": "Update complete",
 		"aggiornamentiDisponibili": "Updates available",
 		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
@@ -243,6 +246,7 @@
 		"aggiorna": "Update",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
+		"aggiornamentoCompletato": "Update complete",
 		"aggiornamentiDisponibili": "Updates available",
 		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
@@ -305,6 +309,7 @@
 		"aggiorna": "Update",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
+		"aggiornamentoCompletato": "Update complete",
 		"aggiornamentiDisponibili": "Updates available",
 		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
@@ -367,6 +372,7 @@
 		"aggiorna": "Update",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
+		"aggiornamentoCompletato": "Update complete",
 		"aggiornamentiDisponibili": "Updates available",
 		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
@@ -429,6 +435,7 @@
 		"aggiorna": "Update",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
+		"aggiornamentoCompletato": "Update complete",
 		"aggiornamentiDisponibili": "Updates available",
 		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
@@ -491,6 +498,7 @@
 		"aggiorna": "Update",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
+		"aggiornamentoCompletato": "Update complete",
 		"aggiornamentiDisponibili": "Updates available",
 		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
@@ -553,6 +561,7 @@
 		"aggiorna": "Update",
 		"aggiornaDatabaseApp": "Update shop database",
 		"statusDatabase": "No updates available",
+		"aggiornamentoCompletato": "Update complete",
 		"aggiornamentiDisponibili": "Updates available",
 		"aggiornamentiPopupDescrizione": "Updates available for shops in Application"
 		
