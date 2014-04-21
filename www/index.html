@@ -123,6 +123,7 @@
 	
 	$(".headerUpdateDisponibili").html(""+window.localStorage.getItem("aggiornamentiDisponibili")+"");
 	$(".descrizioneUpdateDisponibili").html(""+window.localStorage.getItem("aggiornamentiPopupDescrizione")+"");
+	$(".buttonUpdateDisponibili").html(""+window.localStorage.getItem("aggiorna")+"");
 	$(".closePopupUpdateDisponibili").html(""+window.localStorage.getItem("chiudi")+"");
 		
 	var lingua = window.localStorage.getItem("lingua");
@@ -320,9 +321,9 @@
 	
 	}); //ON "click"
 	
-	$(document).on("click", 'a.updateDisponibili', function(){
+	$(document).on("click", 'a.closePopupUpdateDisponibili', function(){
 		
-		$( "#closePopupUpdateDisponibili" ).popup("close");
+		$( "#updateDisponibili" ).popup("close");
 		
 	});
 		
@@ -341,6 +342,7 @@
 	<div data-role="popup" id="updateDisponibili" data-dismissible="false" data-history="false">
 	<p class="headerUpdateDisponibili"></p>
     <p class="descrizioneUpdateDisponibili"></p>
+	<a href="#opzioni.html" rel="external" class="ui-btn buttonUpdateDisponibili">Update</a>
 	<a href="#" class="ui-btn closePopupUpdateDisponibili"></a>
 	</div>
 	
@@ -467,6 +469,7 @@
 	window.localStorage.setItem("placeholderBrand", lingue[lingua].placeholderBrand);
 	window.localStorage.setItem("linguaApp", lingue[lingua].linguaApp);
 	window.localStorage.setItem("cambiaLinguaApp", lingue[lingua].cambiaLinguaApp);
+	window.localStorage.setItem("aggiorna", lingue[lingua].aggiorna);
 	window.localStorage.setItem("aggiornaDatabaseApp", lingue[lingua].aggiornaDatabaseApp);
 	window.localStorage.setItem("statusDatabase", lingue[lingua].statusDatabase);
 	window.localStorage.setItem("aggiornamentiDisponibili", lingue[lingua].aggiornamentiDisponibili);
