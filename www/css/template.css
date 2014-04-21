@@ -425,6 +425,13 @@ ul.downloadList li img{
 vertical-align: middle;
 }
 
+.headerUpdateDisponibili{
+background: #FD613D;
+color: #ffffff;
+text-align: center;
+text-transform:uppercase;
+}
+
 /*OPZIONI*/
 
 p.countUpdates{
