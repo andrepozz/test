@@ -379,7 +379,7 @@
     },
 	"Japanese": {
 		"idLingua": "7",
-		"codiceLingua": "jp",
+		"codiceLingua": "ja",
         "nomeLingua": "Japanese",
 		"nome": "Name",
 		"nomiEsercizi": "shopNames",
@@ -442,7 +442,7 @@
     },
 	"Chinese": {
 		"idLingua": "8",
-		"codiceLingua": "cn",
+		"codiceLingua": "zh-hans",
         "nomeLingua": "Chinese",
 		"nome": "Name",
 		"nomiEsercizi": "shopNames",
@@ -505,7 +505,7 @@
     },
 	"Arabic": {
 		"idLingua": "9",
-		"codiceLingua": "ae",
+		"codiceLingua": "ar",
         "nomeLingua": "Arabic",
 		"nome": "Name",
 		"nomiEsercizi": "shopNames",
