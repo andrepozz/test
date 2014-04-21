@@ -113,7 +113,7 @@
 	<div role="main" class="ui-content" >
 	
 	<script>   
-	$( "#index" ).on( "pagebeforeshow", function() {	
+	$( "#index" ).on( "pageshow", function() {	
 	
 	document.addEventListener("backbutton", onBackKeyDown, false);
 		
@@ -129,12 +129,10 @@
 
 	if (lingua == null) {
 	
-			$.mobile.changePage( "#lingue", { allowSamePageTransition:true } );
+			$.mobile.changePage( "#lingue", { allowSamePageTransition:true, transition: "slide" } );
 	}
 	else
 	{
-	
-	
 	
 	//CHECK GEOLOCATION
 	
