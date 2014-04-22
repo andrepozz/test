@@ -143,7 +143,7 @@
 	watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
 	
 	$.mobile.loading( "show", {
-            text: "Localizzando",
+            text: ""+window.localStorage.getItem("localizzando")+"",
             textVisible: true,
             theme: "a",
             textonly: false
@@ -428,6 +428,7 @@
 	window.localStorage.setItem("downloadEsercizi", lingue[lingua].downloadEsercizi);
 	window.localStorage.setItem("attendere", lingue[lingua].attendere);
 	window.localStorage.setItem("continua", lingue[lingua].continua);
+	window.localStorage.setItem("localizzando", lingue[lingua].localizzando);
 	window.localStorage.setItem("salta", lingue[lingua].salta);
 	window.localStorage.setItem("chiudi", lingue[lingua].chiudi);
 	window.localStorage.setItem("vota", lingue[lingua].vota);
