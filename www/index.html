@@ -155,9 +155,9 @@
     var startUserLongitude = position.coords.longitude;
 	var startUserAccuracy = position.coords.accuracy;
 	
-	window.sessionStorage.setItem("startUserLatitude", startUserLatitude);
-	window.sessionStorage.setItem("startUserLongitude", startUserLongitude);
-	window.sessionStorage.setItem("startUserAccuracy", startUserAccuracy);
+	window.sessionStorage.setItem("userLatitude", userLatitude);
+	window.sessionStorage.setItem("userLongitude", userLongitude);
+	window.sessionStorage.setItem("userAccuracy", userAccuracy);
 	checkUpdates();
 	$.mobile.loading( "hide" );
     }

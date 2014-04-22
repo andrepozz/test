@@ -165,9 +165,9 @@
 		
 		controlloDistance.addTo(mapEsercizi);
 		
-	userLatitudeVicini = window.sessionStorage.getItem("startUserLatitude");
-	userLongitudeVicini = window.sessionStorage.getItem("startUserLongitude");
-	userAccuracyVicini = window.sessionStorage.getItem("startUserAccuracy");
+	userLatitudeVicini = window.sessionStorage.getItem("userLatitude");
+	userLongitudeVicini = window.sessionStorage.getItem("userLongitude");
+	userAccuracyVicini = window.sessionStorage.getItem("userAccuracy");
 	
 	$('a.lista').attr('userLatitudeVicini', userLatitudeVicini);
 	$('a.lista').attr('userLongitudeVicini', userLongitudeVicini);
@@ -283,9 +283,9 @@
 		//var jsonPositionDir = "js/position.js";
 		$.getJSON(jsonPositionDir, function( jsonPosition ) {
 		
-		userLatitudeVicini = window.sessionStorage.getItem("startUserLatitude");
-		userLongitudeVicini = window.sessionStorage.getItem("startUserLongitude");
-		userAccuracyVicini = window.sessionStorage.getItem("startUserAccuracy");
+		userLatitudeVicini = window.sessionStorage.getItem("userLatitude");
+		userLongitudeVicini = window.sessionStorage.getItem("userLongitude");
+		userAccuracyVicini = window.sessionStorage.getItem("userAccuracy");
 
 		var eserciziVicini = [];
 		
@@ -435,8 +435,8 @@
 	
 	$( document ).on( "pagebeforeshow", "#eserciziViciniLista", function() {
 		
-	var latUser = window.sessionStorage.getItem("startUserLatitude");
-	var lonUser = window.sessionStorage.getItem("startUserLongitude");
+	var latUser = window.sessionStorage.getItem("userLatitude");
+	var lonUser = window.sessionStorage.getItem("userLongitude");
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
 	var jsonPositionDir = path + "/position.js";
@@ -664,9 +664,8 @@
 		};
 		controlloZoom.addTo(map);
 		
-		
-		var userLatitude;
-		var userLongitude;
+		var userLatitude; //= window.sessionStorage.getItem("userLatitude");
+		var userLongitude; //= window.sessionStorage.getItem("userLongitude");
 		var markerUtente;
 		var markerEsercizio;
 		var group;
@@ -691,6 +690,8 @@
 	 		
 			userLatitude = position.coords.latitude;
 			userLongitude = position.coords.longitude;
+			
+
 	
 			var distance = 5000;
 			var jsonPositionDir = path + "/position.js";

@@ -352,8 +352,8 @@
 		controlloZoom.addTo(map);
 		
 		
-		var userLatitude;
-		var userLongitude;
+		var userLatitude = window.sessionStorage.getItem("userLatitude");
+		var userLongitude = window.sessionStorage.getItem("userLongitude");
 		var markerUtente;
 		var markerEsercizio;
 		var group;
@@ -378,6 +378,8 @@
 	 		
 			userLatitude = position.coords.latitude;
 			userLongitude = position.coords.longitude;
+			window.sessionStorage.setItem("userLatitude", userLatitude);
+			window.sessionStorage.setItem("userLongitude", userLongitude);
 			
 			//FACEBOOK
 			$(".votaFacebook").attr("latitude", userLatitude);
@@ -429,7 +431,7 @@
 			
 			}); //END GET JSON POSITION 
 			
-			var userAccuracy = position.coords.accuracy 
+			var userAccuracy = position.coords.accuracy;
 
 			if (!markerUtente) {
 			markerUtente = L.userMarker([userLatitude, userLongitude],{pulsing:true}).addTo(map);
