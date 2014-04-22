@@ -151,9 +151,9 @@
 	
 	function onSuccess(position) {
 	
-	var startUserLatitude = position.coords.latitude;
-    var startUserLongitude = position.coords.longitude;
-	var startUserAccuracy = position.coords.accuracy;
+	var userLatitude = position.coords.latitude;
+    var userLongitude = position.coords.longitude;
+	var userAccuracy = position.coords.accuracy;
 	
 	window.sessionStorage.setItem("userLatitude", userLatitude);
 	window.sessionStorage.setItem("userLongitude", userLongitude);
