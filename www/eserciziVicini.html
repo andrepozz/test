@@ -163,16 +163,7 @@
 				return this._div;
 			};
 		
-		controlloDistance.addTo(mapEsercizi);
-		
-	userLatitudeVicini = window.sessionStorage.getItem("userLatitude");
-	userLongitudeVicini = window.sessionStorage.getItem("userLongitude");
-	userAccuracyVicini = window.sessionStorage.getItem("userAccuracy");
-	
-	$('a.lista').attr('userLatitudeVicini', userLatitudeVicini);
-	$('a.lista').attr('userLongitudeVicini', userLongitudeVicini);
-
-		
+		controlloDistance.addTo(mapEsercizi);	
 
 	//CARICA JSON POSITION
 	var path = window.localStorage.getItem("pathSD");
@@ -180,9 +171,9 @@
 	//var jsonPositionDir = "js/position.js";
 	$.getJSON(jsonPositionDir, function( jsonPosition ) {
 	
-	userLatitudeVicini = window.sessionStorage.getItem("startUserLatitude");
-	userLongitudeVicini = window.sessionStorage.getItem("startUserLongitude");
-	userAccuracyVicini = window.sessionStorage.getItem("startUserAccuracy");
+	userLatitudeVicini = window.sessionStorage.getItem("userLatitude");
+	userLongitudeVicini = window.sessionStorage.getItem("userLongitude");
+	userAccuracyVicini = window.sessionStorage.getItem("userAccuracy");
 	
 	$('a.lista').attr('userLatitudeVicini', userLatitudeVicini);
 	$('a.lista').attr('userLongitudeVicini', userLongitudeVicini);
